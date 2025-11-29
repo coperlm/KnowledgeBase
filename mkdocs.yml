@@ -13,7 +13,7 @@ plugins:
   # - git-revision-date-localized:  # 显示文档的最后修改日期
   #     enable_creation_date: true  # 启用创建日期显示
   # - glightbox:  # 图片显示插件，用于显示图像
-  - rss:  # 支持 RSS 订阅
+  - rss  # 支持 RSS 订阅
   - search:  # 启用搜索功能
   - social:  # 启用社交媒体卡片功能
       cards_layout_options:
