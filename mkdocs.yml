@@ -1,4 +1,10 @@
-site_name: KnowledgeBase
+site_name: Coperlm的芝士🧀库
+site_url: https://coperlm.github.io/KnowledgeBase/
+site_description: Knowledge Base of @coperlm
 
 theme:
   name: material
+
+# nav:
+#   - Home: index.md
+#   - About: about.md
