@@ -9,39 +9,6 @@ theme:
 #   - Home: index.md
 #   - About: about.md
 
-plugins:
-  # - git-revision-date-localized:  # 显示文档的最后修改日期
-  #     enable_creation_date: true  # 启用创建日期显示
-  # - glightbox:  # 图片显示插件，用于显示图像
-  - rss  # 支持 RSS 订阅
-  - search:  # 启用搜索功能
-  - social:  # 启用社交媒体卡片功能
-      cards_layout_options:
-        font_family: Noto Sans SC  # 设置社交卡片字体为 Noto Sans SC
-  - tags:  # 启用标签功能
-  - offline:  # 离线功能，支持离线访问
-  - wavedrom:  # 用于显示波形图（适用于电子工程相关内容）
-      pymdownx: true  # 启用 pymdownx 扩展
-
-extra:
-  analytics:
-    provider: custom  # 自定义分析提供者
-copyright: Copyright &copy; 2025-2025 Coperlm
-
-repo_url: https://github.com/coperlm/KnowledgeBase
-
-markdown_extensions:
-  - attr_list  # 启用 Markdown 属性列表
-  - md_in_html  # 启用 Markdown 中嵌入 HTML 代码
-  - pymdownx.arithmatex:  # 启用数学公式支持 (LaTeX)
-      generic: true  # 启用标准的 LaTeX 语法
-  - pymdownx.highlight:  # 启用代码高亮
-      anchor_linenums: true  # 启用代码行号
-      line_spans: __span  # 用于标记代码行的 HTML 类名
-      pygments_lang_class: true  # 启用语法高亮
-  - pymdownx.inlinehilite  # 启用内联高亮
-  - pymdownx.snippets  # 启用代码片段功能
-
 extra_javascript:
   - javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
@@ -50,5 +17,6 @@ extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
   - javascripts/tablesort.js
 
-extra_css:
-  - stylesheets/extra.css  # 自定义样式文件
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
