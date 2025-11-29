@@ -41,14 +41,6 @@ markdown_extensions:
       pygments_lang_class: true  # 启用语法高亮
   - pymdownx.inlinehilite  # 启用内联高亮
   - pymdownx.snippets  # 启用代码片段功能
-  - pymdownx.superfences:  # 启用自定义 Markdown 语法
-      custom_fences:
-        - name: wavedrom
-          class: wavedrom
-          format: !!python/name:markdownwavedrom.plugin.fence_wavedrom_format  # 用于显示波形图
-        - name: mermaid
-          class: mermaid  # 启用 mermaid 图表支持
-          format: !!python/name:pymdownx.superfences.fence_code_format  # Mermaid 格式化
 
 extra_javascript:
   - javascripts/mathjax.js
