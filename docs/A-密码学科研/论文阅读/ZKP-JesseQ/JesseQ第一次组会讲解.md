@@ -20,6 +20,8 @@ JesseQ，是一种基于VOLE的零知识证明，你问VOLE是什么？你知道
 
 ![slide_006](JesseQ第一次组会讲解/slide_006.jpg)
 
+通过2PC来得到最初始的$m=k-u\cdot x$，后续每次再生成直接利用同态性即可
+
 ![slide_007](JesseQ第一次组会讲解/slide_007.jpg)
 
 ![slide_008](JesseQ第一次组会讲解/slide_008.jpg)
@@ -34,7 +36,9 @@ JesseQ，是一种基于VOLE的零知识证明，你问VOLE是什么？你知道
 
 ![slide_011](JesseQ第一次组会讲解/slide_011.jpg)
 
-我们可以利用IT-MAC的加法同态性，对加法进行承诺并构建很多组$m_i=k_i-x\cdot u_i$
+利用IT-MAC的加法同态性，对加法进行承诺并构建很多组$m_i=k_i-x\cdot u_i$（无须交互，但算法瓶颈也在这，因为每个门都需要发送一个$d$）
+
+加法操作被称为是“免费的”
 
 ![slide_012](JesseQ第一次组会讲解/slide_012.jpg)
 
@@ -58,9 +62,15 @@ JesseQ，是一种基于VOLE的零知识证明，你问VOLE是什么？你知道
 
 ![slide_019](JesseQ第一次组会讲解/slide_019.jpg)
 
+JQv1的贡献在于，1.计算上只剩了常数项 2.哈希传输 减少了通讯量
+
 ![slide_020](JesseQ第一次组会讲解/slide_020.jpg)
 
 ![slide_021](JesseQ第一次组会讲解/slide_021.jpg)
+
+JQv2本质上是把偶数层需要通讯的，让奇数层去验证，代价是P需要多计算
+
+但是我还没完全看懂，下次继续讲
 
 ![slide_022](JesseQ第一次组会讲解/slide_022.jpg)
 
@@ -74,4 +84,6 @@ JesseQ，是一种基于VOLE的零知识证明，你问VOLE是什么？你知道
 
 ![slide_028](JesseQ第一次组会讲解/slide_028.jpg)
 
-后一半感觉挺清楚的，留个PPT在这；后面的工作是把JesseQ讲清楚一些
+后一半感觉挺清楚的，留个PPT在这，就不多讲了，讲也是念PPT了
+
+后续再看了论文，确定上述内容对应JesseQ论文的第一章，后面的工作是把JesseQ讲清楚一些
