@@ -959,6 +959,62 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/%E9%AB%98%E6%95%B0-01-%E5%87%BD%E6%95%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    函数极限
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/%E9%AB%98%E6%95%B0-02-%E6%95%B0%E5%88%97%E6%9E%81%E9%99%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数列极限
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1625,6 +1681,7 @@
 <p>首先是一个叫IT-MAC的东东，甭管IT是什么，反正MAC就是你知道的消息认证码的意思</p>
 <p>它的公式是<span class="arithmatex">\(m=k-x\cdot u\)</span>，具体含义见PPT，描述挺详细的我觉得</p>
 <p><img alt="slide_006" src="slide_006.jpg" /></p>
+<p>通过2PC来得到最初始的<span class="arithmatex">\(m=k-u\cdot x\)</span>，后续每次再生成直接利用同态性即可</p>
 <p><img alt="slide_007" src="slide_007.jpg" /></p>
 <p><img alt="slide_008" src="slide_008.jpg" /></p>
 <p>这里有举具体数字的例子</p>
@@ -1632,7 +1689,8 @@
 <p><img alt="slide_010" src="slide_010.jpg" /></p>
 <p>这里红色是不能获取到的，可以看出无法解出对方的私有内容</p>
 <p><img alt="slide_011" src="slide_011.jpg" /></p>
-<p>我们可以利用IT-MAC的加法同态性，对加法进行承诺并构建很多组<span class="arithmatex">\(m_i=k_i-x\cdot u_i\)</span></p>
+<p>利用IT-MAC的加法同态性，对加法进行承诺并构建很多组<span class="arithmatex">\(m_i=k_i-x\cdot u_i\)</span>（无须交互，但算法瓶颈也在这，因为每个门都需要发送一个<span class="arithmatex">\(d\)</span>）</p>
+<p>加法操作被称为是“免费的”</p>
 <p><img alt="slide_012" src="slide_012.jpg" /></p>
 <p><img alt="slide_013" src="slide_013.jpg" /></p>
 <p>接下来是乘法门，借助多项式证明的，PPT也很清楚 不再赘述</p>
@@ -1644,15 +1702,19 @@
 <p><img alt="slide_017" src="slide_017.jpg" /></p>
 <p><img alt="slide_018" src="slide_018.jpg" /></p>
 <p><img alt="slide_019" src="slide_019.jpg" /></p>
+<p>JQv1的贡献在于，1.计算上只剩了常数项 2.哈希传输 减少了通讯量</p>
 <p><img alt="slide_020" src="slide_020.jpg" /></p>
 <p><img alt="slide_021" src="slide_021.jpg" /></p>
+<p>JQv2本质上是把偶数层需要通讯的，让奇数层去验证，代价是P需要多计算</p>
+<p>但是我还没完全看懂，下次继续讲</p>
 <p><img alt="slide_022" src="slide_022.jpg" /></p>
 <p><img alt="slide_023" src="slide_023.jpg" /></p>
 <p><img alt="slide_024" src="slide_024.jpg" /></p>
 <p><img alt="slide_025" src="slide_025.jpg" /></p>
 <p><img alt="slide_027" src="slide_027.jpg" /></p>
 <p><img alt="slide_028" src="slide_028.jpg" /></p>
-<p>后一半感觉挺清楚的，留个PPT在这；后面的工作是把JesseQ讲清楚一些</p>
+<p>后一半感觉挺清楚的，留个PPT在这，就不多讲了，讲也是念PPT了</p>
+<p>后续再看了论文，确定上述内容对应JesseQ论文的第一章，后面的工作是把JesseQ讲清楚一些</p>
 
 
 
