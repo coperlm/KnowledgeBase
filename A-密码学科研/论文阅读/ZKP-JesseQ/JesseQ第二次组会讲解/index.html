@@ -1563,32 +1563,43 @@
 
 <p>继续上次的内容，具体讲JesseQ的算法</p>
 <p>（上次的内容是前情提要，本次的内容全部建立在上次的基础上，主要体现在差异点）</p>
-<p><img alt="" src="JesseQ第二次组会讲解/slide_000.jpg" /></p>
-<p><img alt="" src="slide_001.jpg" /></p>
+<p>文字部分是对PPT的补充</p>
 <p><img alt="" src="slide_002.jpg" /></p>
 <p><img alt="" src="slide_003.jpg" /></p>
+<p>上次组会我是按直接运行2PC来理解的，但是实际上用到的是一个名为OT的东东，好像是叫什么不经意传输，反正可以当作可信第三方来用</p>
 <p><img alt="" src="slide_004.jpg" /></p>
+<p>JesseQ提出了三个这个<span class="arithmatex">\(\mathcal{F}\)</span>的东东，其中<span class="arithmatex">\(\mathcal{F}_{qsVOLE}^{p,r}\)</span>基于QuivkSilver模型，而又是JQv1和JQv2的基石</p>
 <p><img alt="" src="slide_005.jpg" /></p>
+<p>这是JesseQ的，前面的方案不一定这样更新</p>
 <p><img alt="" src="slide_006.jpg" /></p>
 <p><img alt="" src="slide_007.jpg" /></p>
 <p><img alt="" src="slide_008.jpg" /></p>
 <p><img alt="" src="slide_009.jpg" /></p>
 <p><img alt="" src="slide_010.jpg" /></p>
+<p>其实我也不知道他的式子怎么来的，但是看起来确实是正确的-并且作者也没有给正确性证明，故我这里用乘法门手动推了一下</p>
 <p><img alt="" src="slide_011.jpg" /></p>
 <p><img alt="" src="slide_012.jpg" /></p>
 <p><img alt="" src="slide_013.jpg" /></p>
+<p>这是一点小感悟，但是不知道如何优化~</p>
 <p><img alt="" src="slide_014.jpg" /></p>
+<p>这是我第一个idea，最终被证明不行了</p>
+<pre><code>该方案在正确性和安全性（零知识性与健全性）方面是可以保障的，但在效率上难以优于现有方案。
+具体来说，对于 d=w−u，原方案中 u 由随机数生成器产生；若令 d 由类随机数生成器产生，则需要在在线阶段对 IT-MAC 进行额外绑定，因此整体效率不可能优于 JesseQ 论文中的方案。
+</code></pre>
 <p><img alt="" src="slide_015.jpg" /></p>
 <p><img alt="" src="slide_016.jpg" /></p>
 <p><img alt="" src="slide_017.jpg" /></p>
 <p><img alt="" src="slide_018.jpg" /></p>
 <p><img alt="" src="slide_019.jpg" /></p>
+<p>然后这是另一个创新点，最终发现没什么意思，做起来不太划算</p>
 <p><img alt="" src="slide_020.jpg" /></p>
 <p><img alt="" src="slide_021.jpg" /></p>
 <p><img alt="" src="slide_022.jpg" /></p>
 <p><img alt="" src="slide_023.jpg" /></p>
 <p><img alt="" src="slide_024.jpg" /></p>
+<p>最后一个创新点，用TEE实现公开验证，但是比较草率</p>
 <p><img alt="" src="slide_025.jpg" /></p>
+<p>后续工作打算把那篇美密关于VOLEitH看了，在具体决定这个值不值得做</p>
 
 
 
