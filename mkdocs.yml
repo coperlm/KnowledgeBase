@@ -1,13 +1,16 @@
 site_name: Coperlm的芝士库🧀
 site_url: https://coperlm.github.io/KnowledgeBase/
 site_description: Knowledge Base of @coperlm
+repo_url: https://github.com/coperlm/KnowledgeBase
+repo_name: GitHub
 
 theme:
   name: material
 
-nav:
-  - Home: index.md
-  - About: about.md
+# 如果注释掉，则用默认目录排序
+# nav:
+#   - Home: index.md
+#   - About: about.md
 
 extra_javascript:
   - javascripts/mathjax.js
