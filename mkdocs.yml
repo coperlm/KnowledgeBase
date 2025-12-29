@@ -5,9 +5,9 @@ site_description: Knowledge Base of @coperlm
 theme:
   name: material
 
-# nav:
-#   - Home: index.md
-#   - About: about.md
+nav:
+  - Home: index.md
+  - About: about.md
 
 extra_javascript:
   - javascripts/mathjax.js
