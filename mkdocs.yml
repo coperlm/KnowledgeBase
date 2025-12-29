@@ -2,7 +2,7 @@ site_name: Coperlm的芝士库🧀
 site_url: https://coperlm.github.io/KnowledgeBase/
 site_description: Knowledge Base of @coperlm
 repo_url: https://github.com/coperlm/KnowledgeBase
-# repo_name: GitHub
+repo_name: GitHub
 
 theme:
   name: material
