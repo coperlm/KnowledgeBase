@@ -1,7 +1,7 @@
 # 计算机考研
 
 <div style="text-align: center; margin: 30px 0;">
-  <div style="background: linear-gradient(135deg, #2b4c89ff 0%, #144eb3ff 100%); padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); color: white; max-width: 600px; margin: 0 auto;">
+  <div style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); color: white; max-width: 600px; margin: 0 auto;">
     <h2 style="margin-top: 0; font-size: 28px; font-weight: bold;">⏰ 考研倒计时</h2>
     <div id="countdown-target" style="font-size: 18px; margin: 10px 0; opacity: 0.9;">目标: 2026年12月19日</div>
     <div id="countdown-details" style="display: flex; justify-content: space-around; margin-top: 20px;">
