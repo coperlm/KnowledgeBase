@@ -19,7 +19,7 @@ npm install pnpm
 pnpm create slidev
 ```
 
-# localhostu打不开哇
+## localhostu打不开哇
 
 实际运行的时候，出现了ipv4未启用，而 ipv6 的本地回环不通的情况
 
