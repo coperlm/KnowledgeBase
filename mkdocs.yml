@@ -6,6 +6,10 @@ repo_name: GitHub
 
 theme:
   name: material
+  language: zh
+
+extra_css:
+  - stylesheets/extra.css
 
 # 如果注释掉，则用默认目录排序
 # nav:

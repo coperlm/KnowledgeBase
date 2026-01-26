@@ -19,12 +19,11 @@ npm install pnpm
 pnpm create slidev
 ```
 
-## localhostu打不开哇
+## localhost打不开哇
 
 实际运行的时候，出现了ipv4未启用，而 ipv6 的本地回环不通的情况
 
-![ce6f1b4ab8931287a7ab87bd8d926bff.png](./images
-/ce6f1b4ab8931287a7ab87bd8d926bff.png)
+![](./images/ce6f1b4ab8931287a7ab87bd8d926bff.png)
 
 gemini说需要强制监听`pnpm exec slidev --host 0.0.0.0`；但是实际上最新版本的slidev并没有host命令（貌似是vite的指令，可以改为`-- --host`，但是依旧不能成功访问到），于是参照[CLI](https://cn.sli.dev/builtin/cli)的教程，只需直接运行`pnpm exec slidev --remote`即可，这样可以解决ipv4的问题
 
