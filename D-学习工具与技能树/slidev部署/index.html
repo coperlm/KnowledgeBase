@@ -1599,6 +1599,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#localhostu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        localhostu打不开哇
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1883,6 +1894,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#localhostu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        localhostu打不开哇
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1914,7 +1936,7 @@
 <pre><code>npm install pnpm
 pnpm create slidev
 </code></pre>
-<h1 id="localhostu">localhostu打不开哇</h1>
+<h2 id="localhostu">localhostu打不开哇</h2>
 <p>实际运行的时候，出现了ipv4未启用，而 ipv6 的本地回环不通的情况</p>
 <p><img alt="ce6f1b4ab8931287a7ab87bd8d926bff.png" src="../images/ce6f1b4ab8931287a7ab87bd8d926bff.png" /></p>
 <p>gemini说需要强制监听<code>pnpm exec slidev --host 0.0.0.0</code>；但是实际上最新版本的slidev并没有host命令（貌似是vite的指令，可以改为<code>-- --host</code>，但是依旧不能成功访问到），于是参照<a href="https://cn.sli.dev/builtin/cli">CLI</a>的教程，只需直接运行<code>pnpm exec slidev --remote</code>即可，这样可以解决ipv4的问题</p>
