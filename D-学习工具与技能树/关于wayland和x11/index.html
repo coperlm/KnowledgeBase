@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://coperlm.github.io/KnowledgeBase/A-%E5%AF%86%E7%A0%81%E5%AD%A6%E7%A7%91%E7%A0%94/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/ZKP-JesseQ/JesseQ%E7%AC%AC%E4%BA%8C%E6%AC%A1%E7%BB%84%E4%BC%9A%E8%AE%B2%E8%A7%A3/">
+        <link rel="canonical" href="https://coperlm.github.io/KnowledgeBase/D-%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E4%B8%8E%E6%8A%80%E8%83%BD%E6%A0%91/%E5%85%B3%E4%BA%8Ewayland%E5%92%8Cx11/">
       
       
-        <link rel="prev" href="../JesseQ%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%BB%84%E4%BC%9A%E8%AE%B2%E8%A7%A3/">
+        <link rel="prev" href="../slidev%E9%83%A8%E7%BD%B2/">
       
       
-        <link rel="next" href="../../../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/">
+        <link rel="next" href="../%E5%8F%8C%E6%8B%BC%E5%AD%A6%E4%B9%A0/">
       
       
         
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>JesseQ第二次组会讲解 - Coperlm的芝士库🧀</title>
+        <title>关于wayland和x11 - Coperlm的芝士库🧀</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -50,7 +50,7 @@
       
     
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -67,6 +67,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#waylandx11" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -79,7 +84,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="Coperlm的芝士库🧀" class="md-header__button md-logo" aria-label="Coperlm的芝士库🧀" data-md-component="logo">
+    <a href="../.." title="Coperlm的芝士库🧀" class="md-header__button md-logo" aria-label="Coperlm的芝士库🧀" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -99,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              JesseQ第二次组会讲解
+              关于wayland和x11
             
           </span>
         </div>
@@ -189,7 +194,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Coperlm的芝士库🧀" class="md-nav__button md-logo" aria-label="Coperlm的芝士库🧀" data-md-component="logo">
+    <a href="../.." title="Coperlm的芝士库🧀" class="md-nav__button md-logo" aria-label="Coperlm的芝士库🧀" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -219,7 +224,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -243,20 +248,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -277,7 +280,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -295,7 +298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../" class="md-nav__link">
+      <a href="../../A-%E5%AF%86%E7%A0%81%E5%AD%A6%E7%A7%91%E7%A0%94/" class="md-nav__link">
         
   
   
@@ -370,7 +373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%8130%E7%AF%87/" class="md-nav__link">
+      <a href="../../A-%E5%AF%86%E7%A0%81%E5%AD%A6%E7%A7%91%E7%A0%94/%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%8130%E7%AF%87/" class="md-nav__link">
         
   
   
@@ -398,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%8130%E7%AF%87/01-%E7%A6%BB%E6%95%A3%E5%AF%B9%E6%95%B0/" class="md-nav__link">
+      <a href="../../A-%E5%AF%86%E7%A0%81%E5%AD%A6%E7%A7%91%E7%A0%94/%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%8130%E7%AF%87/01-%E7%A6%BB%E6%95%A3%E5%AF%B9%E6%95%B0/" class="md-nav__link">
         
   
   
@@ -431,20 +434,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
         
           
           <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
@@ -465,7 +466,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -483,7 +484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../" class="md-nav__link">
+      <a href="../../A-%E5%AF%86%E7%A0%81%E5%AD%A6%E7%A7%91%E7%A0%94/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" class="md-nav__link">
         
   
   
@@ -508,20 +509,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2" >
         
           
           <label class="md-nav__link" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
@@ -542,7 +541,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -560,7 +559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../JesseQ%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%BB%84%E4%BC%9A%E8%AE%B2%E8%A7%A3/" class="md-nav__link">
+      <a href="../../A-%E5%AF%86%E7%A0%81%E5%AD%A6%E7%A7%91%E7%A0%94/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/ZKP-JesseQ/JesseQ%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%BB%84%E4%BC%9A%E8%AE%B2%E8%A7%A3/" class="md-nav__link">
         
   
   
@@ -585,17 +584,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../A-%E5%AF%86%E7%A0%81%E5%AD%A6%E7%A7%91%E7%A0%94/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/ZKP-JesseQ/JesseQ%E7%AC%AC%E4%BA%8C%E6%AC%A1%E7%BB%84%E4%BC%9A%E8%AE%B2%E8%A7%A3/" class="md-nav__link">
         
   
   
@@ -611,7 +603,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -694,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/" class="md-nav__link">
+      <a href="../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/" class="md-nav__link">
         
   
   
@@ -769,7 +760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/408/" class="md-nav__link">
+      <a href="../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/408/" class="md-nav__link">
         
   
   
@@ -844,7 +835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/408/CO/" class="md-nav__link">
+      <a href="../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/408/CO/" class="md-nav__link">
         
   
   
@@ -872,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/408/CO/2-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%BF%90%E7%AE%97/" class="md-nav__link">
+      <a href="../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/408/CO/2-%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E8%BF%90%E7%AE%97/" class="md-nav__link">
         
   
   
@@ -900,7 +891,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/408/CO/3-%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+      <a href="../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/408/CO/3-%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
         
   
   
@@ -991,7 +982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/" class="md-nav__link">
+      <a href="../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/" class="md-nav__link">
         
   
   
@@ -1019,7 +1010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/%E9%AB%98%E6%95%B0-01-%E5%87%BD%E6%95%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
+      <a href="../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/%E9%AB%98%E6%95%B0-01-%E5%87%BD%E6%95%B0%E6%9E%81%E9%99%90/" class="md-nav__link">
         
   
   
@@ -1047,7 +1038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/%E9%AB%98%E6%95%B0-02-%E6%95%B0%E5%88%97%E6%9E%81%E9%99%90/" class="md-nav__link">
+      <a href="../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/%E9%AB%98%E6%95%B0-02-%E6%95%B0%E5%88%97%E6%9E%81%E9%99%90/" class="md-nav__link">
         
   
   
@@ -1075,7 +1066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/%E9%AB%98%E6%95%B0-03-%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+      <a href="../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/%E9%AB%98%E6%95%B0-03-%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E6%A6%82%E5%BF%B5/" class="md-nav__link">
         
   
   
@@ -1103,7 +1094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/%E9%AB%98%E6%95%B0-04-%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E8%AE%A1%E7%AE%97/" class="md-nav__link">
+      <a href="../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/%E9%AB%98%E6%95%B0-04-%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E8%AE%A1%E7%AE%97/" class="md-nav__link">
         
   
   
@@ -1131,7 +1122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/%E9%AB%98%E6%95%B0-05-%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/%E6%95%B0%E5%AD%A6/%E9%AB%98%E6%95%B0-05-%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E5%BA%94%E7%94%A8/" class="md-nav__link">
         
   
   
@@ -1214,7 +1205,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/%E8%8B%B1%E8%AF%AD/%E7%94%B0%E7%80%9A%E5%8D%9A%E8%AF%AD%E6%B3%95%E8%AF%BE3.0/" class="md-nav__link">
+      <a href="../../B-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/%E8%8B%B1%E8%AF%AD/%E7%94%B0%E7%80%9A%E5%8D%9A%E8%AF%AD%E6%B3%95%E8%AF%BE3.0/" class="md-nav__link">
         
   
   
@@ -1304,7 +1295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../C-%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="md-nav__link">
+      <a href="../../C-%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="md-nav__link">
         
   
   
@@ -1379,7 +1370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../C-%E5%B5%8C%E5%85%A5%E5%BC%8F/FPGA/" class="md-nav__link">
+      <a href="../../C-%E5%B5%8C%E5%85%A5%E5%BC%8F/FPGA/" class="md-nav__link">
         
   
   
@@ -1407,7 +1398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../C-%E5%B5%8C%E5%85%A5%E5%BC%8F/FPGA/FPGA%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/" class="md-nav__link">
+      <a href="../../C-%E5%B5%8C%E5%85%A5%E5%BC%8F/FPGA/FPGA%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83/" class="md-nav__link">
         
   
   
@@ -1447,18 +1438,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -1479,7 +1472,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1497,7 +1490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D-%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E4%B8%8E%E6%8A%80%E8%83%BD%E6%A0%91/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -1525,7 +1518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D-%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E4%B8%8E%E6%8A%80%E8%83%BD%E6%A0%91/slidev%E9%83%A8%E7%BD%B2/" class="md-nav__link">
+      <a href="../slidev%E9%83%A8%E7%BD%B2/" class="md-nav__link">
         
   
   
@@ -1550,10 +1543,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../../D-%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E4%B8%8E%E6%8A%80%E8%83%BD%E6%A0%91/%E5%85%B3%E4%BA%8Ewayland%E5%92%8Cx11/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1569,6 +1571,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1581,7 +1584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D-%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E4%B8%8E%E6%8A%80%E8%83%BD%E6%A0%91/%E5%8F%8C%E6%8B%BC%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+      <a href="../%E5%8F%8C%E6%8B%BC%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
         
   
   
@@ -1663,7 +1666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../E-%E7%94%9F%E6%B4%BB%E7%B1%BB/" class="md-nav__link">
+      <a href="../../E-%E7%94%9F%E6%B4%BB%E7%B1%BB/" class="md-nav__link">
         
   
   
@@ -1745,7 +1748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Z-%E5%85%B6%E4%BB%96/" class="md-nav__link">
+      <a href="../../Z-%E5%85%B6%E4%BB%96/" class="md-nav__link">
         
   
   
@@ -1790,6 +1793,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -1809,47 +1814,56 @@
   
 
 
-  <h1>JesseQ第二次组会讲解</h1>
+<h1 id="waylandx11">关于wayland和x11</h1>
+<p>解决了部分应用输入法出问题（不能直接输入中文）的情况</p>
+<p>具体问题描述：我安装了Zettlr，但是出现了打字的时候可能输入法失效，输入法是rime小鹤双拼，必须点进去重新选输入法才能打中文；并且我发现是切换页面的时候出现的，也就是我把页面切换到浏览器，再换回来就输入法没有中文了，浏览器还正常</p>
+<p>原理是</p>
+<pre><code>现状：Electron 应用（如 Zettlr, Discord, VS Code, Obsidian）本质上是一个浏览器（Chromium）。虽然 Chromium 早就宣称支持 Wayland，但它对 **Linux 输入法协议（Text Input Protocol）** 的支持非常不稳定，经常在版本迭代中出现“回退”。
 
-<p>继续上次的内容，具体讲JesseQ的算法</p>
-<p>（上次的内容是前情提要，本次的内容全部建立在上次的基础上，主要体现在差异点）</p>
-<p>文字部分是对PPT的补充</p>
-<p><img alt="" src="slide_002.jpg" /></p>
-<p><img alt="" src="slide_003.jpg" /></p>
-<p>上次组会我是按直接运行2PC来理解的，但是实际上用到的是一个名为OT的东东，好像是叫什么不经意传输，反正可以当作可信第三方来用</p>
-<p><img alt="" src="slide_004.jpg" /></p>
-<p>JesseQ提出了三个这个<span class="arithmatex">\(\mathcal{F}\)</span>的东东，其中<span class="arithmatex">\(\mathcal{F}_{qsVOLE}^{p,r}\)</span>基于QuivkSilver模型，而又是JQv1和JQv2的基石</p>
-<p><img alt="" src="slide_005.jpg" /></p>
-<p>这是JesseQ的，前面的方案不一定这样更新</p>
-<p><img alt="" src="slide_006.jpg" /></p>
-<p><img alt="" src="slide_007.jpg" /></p>
-<p><img alt="" src="slide_008.jpg" /></p>
-<p><img alt="" src="slide_009.jpg" /></p>
-<p><img alt="" src="slide_010.jpg" /></p>
-<p>其实我也不知道他的式子怎么来的，但是看起来确实是正确的-并且作者也没有给正确性证明，故我这里用乘法门手动推了一下</p>
-<p><img alt="" src="slide_011.jpg" /></p>
-<p><img alt="" src="slide_012.jpg" /></p>
-<p><img alt="" src="slide_013.jpg" /></p>
-<p>这是一点小感悟，但是不知道如何优化~</p>
-<p><img alt="" src="slide_014.jpg" /></p>
-<p>这是我第一个idea，最终被证明不行了</p>
-<pre><code>该方案在正确性和安全性（零知识性与健全性）方面是可以保障的，但在效率上难以优于现有方案。
-具体来说，对于 d=w−u，原方案中 u 由随机数生成器产生；若令 d 由类随机数生成器产生，则需要在在线阶段对 IT-MAC 进行额外绑定，因此整体效率不可能优于 JesseQ 论文中的方案。
+问题：在 Wayland 模式下，应用需要主动告诉输入法“我现在在这个坐标，请弹窗”。如果 Electron 这一块没写好（或者和你的 KDE/Fcitx5 版本不匹配），就会出现焦点丢失、无选词框、切回来无法输入等问题。
 </code></pre>
-<p><img alt="" src="slide_015.jpg" /></p>
-<p><img alt="" src="slide_016.jpg" /></p>
-<p><img alt="" src="slide_017.jpg" /></p>
-<p><img alt="" src="slide_018.jpg" /></p>
-<p><img alt="" src="slide_019.jpg" /></p>
-<p>然后这是另一个创新点，最终发现没什么意思，做起来不太划算</p>
-<p><img alt="" src="slide_020.jpg" /></p>
-<p><img alt="" src="slide_021.jpg" /></p>
-<p><img alt="" src="slide_022.jpg" /></p>
-<p><img alt="" src="slide_023.jpg" /></p>
-<p><img alt="" src="slide_024.jpg" /></p>
-<p>最后一个创新点，用TEE实现公开验证，但是比较草率</p>
-<p><img alt="" src="slide_025.jpg" /></p>
-<p>后续工作打算把那篇美密关于VOLEitH看了，在具体决定这个值不值得做</p>
+<p>所以直接降级求稳，打开的时候加一句<code>\--ozone-platform=x11</code>即可</p>
+<p>用我刚刚弄好的zettlr为例</p>
+<p>第一步：复制启动文件到用户目录</p>
+<pre><code>cp /usr/share/applications/zettlr.desktop ~/.local/share/applications/
+</code></pre>
+<p>第二步：编辑配置文件</p>
+<pre><code>nano ~/.local/share/applications/zettlr.desktop
+</code></pre>
+<p>第三步：修改 Exec 行</p>
+<pre><code>Exec=/usr/bin/zettlr --ozone-platform=x11 %U
+</code></pre>
+<p>例如我原本是</p>
+<pre><code>\[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Zettlr
+Comment=A Markdown Editor for the 21st century
+Exec=zettlr
+Icon=zettlr
+Terminal=false
+StartupNotify=false
+Categories=Office;
+MimeType=text/markdown;
+StartupWMClass=Zettlr
+</code></pre>
+<p>只需改为</p>
+<pre><code>[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Zettlr
+Comment=A Markdown Editor for the 21st century
+# ↓↓↓↓↓↓ 重点修改了这一行 ↓↓↓↓↓↓
+Exec=zettlr --ozone-platform=x11 %U
+# ↑↑↑↑↑↑ 重点修改了这一行 ↑↑↑↑↑↑
+Icon=zettlr
+Terminal=false
+StartupNotify=false
+Categories=Office;
+MimeType=text/markdown;
+StartupWMClass=Zettlr
+</code></pre>
+<p>然后重启应用即可</p>
 
 
 
@@ -1899,12 +1913,12 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../../../../javascripts/mathjax.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
@@ -1914,7 +1928,7 @@
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../../../../javascripts/tablesort.js"></script>
+        <script src="../../javascripts/tablesort.js"></script>
       
     
   </body>
