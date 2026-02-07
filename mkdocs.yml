@@ -13,7 +13,7 @@ theme:
   palette:
 
     - primary: indigo
-    - accent: light blue
+    - accent: amber
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
       toggle:
@@ -54,7 +54,7 @@ theme:
     previous: fontawesome/solid/angle-left
     next: fontawesome/solid/angle-right
 
-# 指定字体
+# 指定字体（微软雅黑 + time new roma）
 # extra_css:
 #   - stylesheets/extra.css
 
