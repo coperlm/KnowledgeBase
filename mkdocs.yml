@@ -36,13 +36,15 @@ theme:
     - navigation.instant.prefetch
     - navigation.instant.progress
     - navigation.tabs
-    - navigation.tabs.sticky
+    # - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
     - navigation.path
     - navigation.prune
     - navigation.indexes
     - navigation.top
+    - search.suggest
+    - search.highlight
 
   # logo: images/cheese.gif
   # favicon: images/note.gif
@@ -88,5 +90,5 @@ copyright: >
   <a href="#__consent">Change cookie settings</a>
 
 # 搜索没了
-# plugins:
-#   - privacy
+plugins:
+  - search
