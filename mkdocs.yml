@@ -5,6 +5,9 @@ repo_url: https://github.com/coperlm/KnowledgeBase
 repo_name: GitHub
 
 theme:
+  font:
+    text: Roboto
+    code: Roboto Mono
   name: material
   language: zh
   palette:
@@ -71,17 +74,17 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
 
-extra:
-  # consent:
-  #   title: Cookie consent
-  #   description: >- 
-  #     We use cookies to recognize your repeated visits and preferences, as well
-  #     as to measure the effectiveness of our documentation and whether users
-  #     find what they're searching for. With your consent, you're helping us to
-  #     make our documentation better.extra:
-  #   actions:
-  #     - accept
-  #     - manage
+# extra:
+#   consent:
+#     title: Cookie consent
+#     description: >- 
+#       We use cookies to recognize your repeated visits and preferences, as well
+#       as to measure the effectiveness of our documentation and whether users
+#       find what they're searching for. With your consent, you're helping us to
+#       make our documentation better.extra:
+#     actions:
+#       - accept
+#       - manage
 
 copyright: >
   Copyright &copy; 2025 - 2026 coperlm –
