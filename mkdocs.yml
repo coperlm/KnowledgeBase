@@ -9,6 +9,8 @@ theme:
   language: zh
   palette:
 
+    - primary: indigo
+    - accent: light blue
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
       toggle:
@@ -28,14 +30,24 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
+    
+  features:
+    - navigation.instant
+  
+  logo: images/cheese.gif
+  favicon: images/note.gif
+
+  icon:
+    previous: fontawesome/solid/angle-left
+    next: fontawesome/solid/angle-right
 
 extra_css:
   - stylesheets/extra.css
 
 # 如果注释掉，则用默认目录排序
-# nav:
-#   - Home: index.md
-#   - About: about.md
+nav:
+  - Home: index.md
+  - About: about.md
 
 extra_javascript:
   - javascripts/mathjax.js
