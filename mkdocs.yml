@@ -54,8 +54,9 @@ theme:
     previous: fontawesome/solid/angle-left
     next: fontawesome/solid/angle-right
 
-extra_css:
-  - stylesheets/extra.css
+# 指定字体
+# extra_css:
+#   - stylesheets/extra.css
 
 # 如果注释掉，则用默认目录排序
 # nav:
