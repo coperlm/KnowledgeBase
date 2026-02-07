@@ -33,7 +33,17 @@ theme:
     
   features:
     - navigation.instant
-  
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.prune
+    - navigation.indexes
+    - navigation.top
+
   # logo: images/cheese.gif
   # favicon: images/note.gif
 
@@ -77,5 +87,6 @@ copyright: >
   Copyright &copy; 2025 - 2026 coperlm –
   <a href="#__consent">Change cookie settings</a>
 
-plugins:
-  - privacy
+# 搜索没了
+# plugins:
+#   - privacy
