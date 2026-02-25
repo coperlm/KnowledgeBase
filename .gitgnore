@@ -2,3 +2,4 @@ site/
 .vscode/
 .DS_Stroe
 docs/未整理/
+.cache/
