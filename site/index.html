@@ -1054,10 +1054,10 @@
     <button type="button" data-kb-action="collapse">全部收起</button>
     <button type="button" data-kb-action="expand">全部展开</button>
     <span class="kb-tree-controls__sep"></span>
-    <button type="button" data-kb-depth="1">展开到 1 层</button>
-    <button type="button" data-kb-depth="2">展开到 2 层</button>
-    <button type="button" data-kb-depth="3">展开到 3 层</button>
-    <button type="button" data-kb-depth="4">展开到 4 层</button>
+    <button type="button" data-kb-depth="1">展开 1 层</button>
+    <button type="button" data-kb-depth="2">展开 2 层</button>
+    <button type="button" data-kb-depth="3">展开 3 层</button>
+    <button type="button" data-kb-depth="4">展开 4 层</button>
     <label class="kb-tree-controls__depth">
         自定义层级
         <input type="number" min="1" max="20" value="5" data-kb-depth-input>
@@ -1066,7 +1066,11 @@
 </div>
 
 <div class="kb-tree" data-kb-tree-root>
-    <p data-kb-tree-status>正在加载目录索引…</p>
+  <div class="kb-tree__status">
+    <span data-kb-tree-status>正在加载目录索引…</span>
+    <button type="button" class="kb-tree__refresh" data-kb-tree-refresh>刷新</button>
+  </div>
+  <div class="kb-tree__content" data-kb-tree-content></div>
 </div>
 
 

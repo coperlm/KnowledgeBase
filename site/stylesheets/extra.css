@@ -94,16 +94,56 @@
   box-shadow: var(--md-shadow-z1);
 }
 
+.kb-tree__status {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0.15rem 0.25rem 0.55rem;
+}
+
 .kb-tree [data-kb-tree-status] {
-  margin: 0;
   color: var(--md-default-fg-color--light);
+  display: inline-block;
+}
+
+.kb-tree__refresh {
+  font: inherit;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.55rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  cursor: pointer;
+  box-shadow: var(--md-shadow-z1);
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.kb-tree__refresh:hover {
+  border-color: var(--md-primary-fg-color);
+  color: var(--md-primary-fg-color);
+  background: var(--md-default-bg-color--lightest);
+}
+
+.kb-tree__refresh:focus-visible {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 2px;
+}
+
+.kb-tree__refresh:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
 }
 
 /* Reset Material list markers ONLY inside the tree */
 .kb-tree ul {
   list-style: none;
-  padding-left: 0;
   margin: 0;
+}
+
+.kb-tree .kb-tree__root {
+  padding-left: 0;
 }
 
 .kb-tree .kb-tree__item {
@@ -121,7 +161,7 @@
   content: "";
 }
 
-.kb-tree__children {
+.kb-tree .kb-tree__children {
   padding-left: 0.9rem;
   margin: 0.2rem 0 0.2rem 0.7rem;
   border-left: 1px solid var(--md-default-fg-color--lightest);
