@@ -261,8 +261,8 @@
     return await res.json();
   }
 
-  function buildUI(container, tree, baseUrl) {
-    container.textContent = "";
+  function buildUI(contentEl, tree, baseUrl) {
+    contentEl.textContent = "";
 
     var ul = createEl("ul", "kb-tree__root");
     ul.setAttribute("data-kb-tree", "1");
@@ -273,9 +273,9 @@
     }
 
     // Collapse all by default, then expand to 2
-    container.appendChild(ul);
-    setAllExpanded(container, false);
-    expandToDepth(container, 2);
+    contentEl.appendChild(ul);
+    setAllExpanded(contentEl, false);
+    expandToDepth(contentEl, 2);
   }
 
   function wireControls(controlsEl, treeRootEl) {
@@ -286,7 +286,7 @@
 
     controlsEl.addEventListener("click", function (ev) {
       var target = ev.target;
-      if (!(target instanceof HTMLElement)) return;
+      if (!(target instanceof Element)) return;
 
       var action = target.getAttribute("data-kb-action");
       if (action === "collapse") {
@@ -315,45 +315,57 @@
   }
 
   async function init() {
-    var container = document.querySelector("[data-kb-tree-root]");
-    if (!container) return;
+    if (init._running) return;
+    init._running = true;
 
-    var status = container.querySelector("[data-kb-tree-status]");
+    var rootEl = document.querySelector("[data-kb-tree-root]");
+    if (!rootEl) {
+      init._running = false;
+      return;
+    }
+
+    var status = rootEl.querySelector("[data-kb-tree-status]");
+    var contentEl = rootEl.querySelector("[data-kb-tree-content]");
+    if (!contentEl) {
+      contentEl = document.createElement("div");
+      contentEl.className = "kb-tree__content";
+      contentEl.setAttribute("data-kb-tree-content", "");
+      rootEl.appendChild(contentEl);
+    }
+    var refreshBtn = rootEl.querySelector("[data-kb-tree-refresh]");
 
     var baseFromCfg = getBaseFromMaterialConfig();
     // Material provides '.' for base; keep it.
     var baseUrl = baseFromCfg || ".";
 
     try {
+      if (status) status.textContent = "正在加载目录索引…";
+      if (refreshBtn) refreshBtn.disabled = true;
+
       var idx = await loadSearchIndex(baseUrl);
       var docs = Array.isArray(idx.docs) ? idx.docs : [];
       var pages = pickPageLevelDocs(docs);
       var tree = buildTree(pages);
 
-      buildUI(container, tree, baseUrl);
+      buildUI(contentEl, tree, baseUrl);
 
       var controls = document.querySelector("[data-kb-tree-controls]");
-      wireControls(controls, container);
+      wireControls(controls, contentEl);
+
+      if (status) status.textContent = "目录索引已加载（" + pages.length + " 页）";
+      if (refreshBtn) refreshBtn.disabled = false;
     } catch (e) {
       var msg = (e && e.name === "AbortError")
         ? "加载超时（网络较差或被拦截）。"
         : "加载失败：" + (e && e.message ? e.message : String(e));
 
       if (status) {
-        status.textContent = msg + " 点击此处重试。";
-        status.style.cursor = "pointer";
-        status.addEventListener(
-          "click",
-          function () {
-            status.style.cursor = "";
-            status.textContent = "正在重新加载目录索引…";
-            init();
-          },
-          { once: true }
-        );
-      } else {
-        container.textContent = msg;
+        status.textContent = msg + " 请点击“刷新”重试。";
       }
+
+      if (refreshBtn) refreshBtn.disabled = false;
+    } finally {
+      init._running = false;
     }
   }
 
@@ -363,25 +375,56 @@
     scheduleInit._pending = true;
     requestAnimationFrame(function () {
       scheduleInit._pending = false;
-      init();
+      (function initWithRetry(attempt) {
+        if (document.querySelector("[data-kb-tree-root]")) {
+          init();
+          return;
+        }
+        if (attempt >= 20) return;
+        setTimeout(function () {
+          initWithRetry(attempt + 1);
+        }, 100);
+      })(0);
     });
   }
 
   function hookMaterialInstantNavigation() {
-    // Material exposes an RxJS observable that emits on every page change
-    // See: window.document$ in the bundled theme script
+    // Material exposes RxJS observables that emit on navigation
+    // See: window.location$, window.document$ in the bundled theme script
     if (typeof window === "undefined") return false;
-    var doc$ = window.document$;
-    if (!doc$ || typeof doc$.subscribe !== "function") return false;
 
-    doc$.subscribe(function () {
-      scheduleInit();
-    });
-    return true;
+    var hooked = false;
+    var loc$ = window.location$;
+    if (loc$ && typeof loc$.subscribe === "function") {
+      loc$.subscribe(function () {
+        scheduleInit();
+      });
+      hooked = true;
+    }
+
+    var doc$ = window.document$;
+    if (doc$ && typeof doc$.subscribe === "function") {
+      doc$.subscribe(function () {
+        scheduleInit();
+      });
+      hooked = true;
+    }
+
+    return hooked;
   }
 
   // Initial load
   document.addEventListener("DOMContentLoaded", scheduleInit);
+
+  // Manual refresh button (event delegation)
+  document.addEventListener("click", function (ev) {
+    var target = ev.target;
+    if (!(target instanceof Element)) return;
+    var btn = target.closest("[data-kb-tree-refresh]");
+    if (!btn) return;
+    ev.preventDefault();
+    scheduleInit();
+  });
 
   // Instant navigation (primary)
   var hooked = hookMaterialInstantNavigation();
