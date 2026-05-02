@@ -1,4 +1,4 @@
-/* global document, fetch, URL */
+/* global document, fetch, URL, window */
 
 (function () {
   "use strict";
@@ -281,6 +281,9 @@
   function wireControls(controlsEl, treeRootEl) {
     if (!controlsEl) return;
 
+    if (controlsEl.getAttribute("data-kb-tree-bound") === "1") return;
+    controlsEl.setAttribute("data-kb-tree-bound", "1");
+
     controlsEl.addEventListener("click", function (ev) {
       var target = ev.target;
       if (!(target instanceof HTMLElement)) return;
@@ -354,7 +357,37 @@
     }
   }
 
-  // Material uses instant navigation; re-init on page change
-  document.addEventListener("DOMContentLoaded", init);
-  document.addEventListener("navigation:load", init);
+  function scheduleInit() {
+    // Defer to the next frame so Material can finish swapping the DOM
+    if (scheduleInit._pending) return;
+    scheduleInit._pending = true;
+    requestAnimationFrame(function () {
+      scheduleInit._pending = false;
+      init();
+    });
+  }
+
+  function hookMaterialInstantNavigation() {
+    // Material exposes an RxJS observable that emits on every page change
+    // See: window.document$ in the bundled theme script
+    if (typeof window === "undefined") return false;
+    var doc$ = window.document$;
+    if (!doc$ || typeof doc$.subscribe !== "function") return false;
+
+    doc$.subscribe(function () {
+      scheduleInit();
+    });
+    return true;
+  }
+
+  // Initial load
+  document.addEventListener("DOMContentLoaded", scheduleInit);
+
+  // Instant navigation (primary)
+  var hooked = hookMaterialInstantNavigation();
+
+  // Fallback for older versions / different integrations
+  if (!hooked) {
+    document.addEventListener("navigation:load", scheduleInit);
+  }
 })();
