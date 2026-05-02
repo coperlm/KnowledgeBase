@@ -54,6 +54,50 @@
     return a.localeCompare(b, "zh-Hans-CN", { numeric: true, sensitivity: "base" });
   }
 
+  function pickPageLevelDocs(docs) {
+    // mkdocs-material 的 search_index.json 同时包含：
+    // 1) 页面级条目（location 不含 #）
+    // 2) 小节/标题级条目（location 含 #）
+    // 之前直接用 docs 会导致小节标题覆盖页面标题，进而让目录树“看起来”结构错乱。
+    // 这里按“去掉 # 后的页面路径”聚合，并优先选择页面级条目。
+
+    var byLoc = new Map();
+
+    for (var i = 0; i < docs.length; i++) {
+      var doc = docs[i] || {};
+      var rawLoc = String(doc.location || "");
+      var pageLoc = normalizeLocation(rawLoc);
+      var isPageRecord = rawLoc.indexOf("#") === -1;
+
+      var existing = byLoc.get(pageLoc);
+      if (!existing) {
+        byLoc.set(pageLoc, {
+          location: pageLoc,
+          title: doc.title || "",
+          isPageRecord: isPageRecord,
+        });
+        continue;
+      }
+
+      // Prefer page-level record over section-level record
+      if (!existing.isPageRecord && isPageRecord) {
+        existing.location = pageLoc;
+        existing.title = doc.title || existing.title;
+        existing.isPageRecord = true;
+        continue;
+      }
+
+      // Fill missing title if any
+      if ((!existing.title || String(existing.title).trim() === "") && doc.title) {
+        existing.title = doc.title;
+      }
+    }
+
+    return Array.from(byLoc.values()).map(function (d) {
+      return { location: d.location, title: d.title };
+    });
+  }
+
   function buildTree(docs) {
     var root = { name: "root", children: new Map(), page: null };
 
@@ -217,26 +261,15 @@
     return await res.json();
   }
 
-  function isIndexPageRootPresent(tree) {
-    // just a helper if needed later
-    return tree && tree.page && tree.page.location === "";
-  }
-
   function buildUI(container, tree, baseUrl) {
     container.textContent = "";
 
     var ul = createEl("ul", "kb-tree__root");
     ul.setAttribute("data-kb-tree", "1");
 
-    // Render home first (if exists)
-    if (tree.page) {
-      var home = { name: "主页", children: tree.children, page: tree.page };
-      ul.appendChild(renderNode(home, baseUrl, null, 0));
-    } else {
-      var kids = mapToSortedArray(tree.children);
-      for (var i = 0; i < kids.length; i++) {
-        ul.appendChild(renderNode(kids[i], baseUrl, null, 0));
-      }
+    var kids = mapToSortedArray(tree.children);
+    for (var i = 0; i < kids.length; i++) {
+      ul.appendChild(renderNode(kids[i], baseUrl, null, 0));
     }
 
     // Collapse all by default, then expand to 2
@@ -291,16 +324,8 @@
     try {
       var idx = await loadSearchIndex(baseUrl);
       var docs = Array.isArray(idx.docs) ? idx.docs : [];
-
-      var tree = buildTree(docs);
-
-      // attach home page to root if present
-      for (var i = 0; i < docs.length; i++) {
-        if ((docs[i].location || "") === "") {
-          tree.page = { location: "", title: docs[i].title || "主页" };
-          break;
-        }
-      }
+      var pages = pickPageLevelDocs(docs);
+      var tree = buildTree(pages);
 
       buildUI(container, tree, baseUrl);
 
