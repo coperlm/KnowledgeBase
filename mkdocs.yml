@@ -63,10 +63,6 @@ extra_css:
 #   - Home: index.md
 #   - About: about.md
 
-nav:
-  - 主页: index.md
-  - 全站索引: 全站索引.md
-
 extra_javascript:
   - javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

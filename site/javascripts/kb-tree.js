@@ -170,14 +170,12 @@
     var items = rootEl.querySelectorAll(".kb-tree__item");
     for (var i = 0; i < items.length; i++) {
       var li = items[i];
-      // Count ancestor ".kb-tree__children" up to current tree root
       var level = 0;
       var p = li.parentElement;
-      while (p && p !== rootEl) {
-        if (p.classList && p.classList.contains("kb-tree__children")) level += 1;
+      while (p && p.classList && !p.hasAttribute("data-kb-tree")) {
+        if (p.classList.contains("kb-tree__children")) level += 1;
         p = p.parentElement;
       }
-
       // li is at depth 'level+1' relative to root children
       if (level + 1 < depth) setExpanded(li, true);
     }
@@ -185,30 +183,7 @@
 
   async function loadSearchIndex(baseUrl) {
     var url = joinUrl(baseUrl || ".", "search/search_index.json");
-
-    // Add a timeout to avoid hanging forever on poor networks
-    var controller = typeof AbortController !== "undefined" ? new AbortController() : null;
-    var timeoutId = null;
-    if (controller) {
-      timeoutId = setTimeout(function () {
-        try {
-          controller.abort();
-        } catch (_e) {
-          // ignore
-        }
-      }, 8000);
-    }
-
-    var res;
-    try {
-      res = await fetch(url, {
-        credentials: "same-origin",
-        signal: controller ? controller.signal : undefined,
-        cache: "no-store",
-      });
-    } finally {
-      if (timeoutId != null) clearTimeout(timeoutId);
-    }
+    var res = await fetch(url, { credentials: "same-origin" });
     if (!res.ok) {
       throw new Error("无法加载 search_index.json: " + res.status);
     }
@@ -305,24 +280,10 @@
       var controls = document.querySelector("[data-kb-tree-controls]");
       wireControls(controls, container);
     } catch (e) {
-      var msg = (e && e.name === "AbortError")
-        ? "加载超时（网络较差或被拦截）。"
-        : "加载失败：" + (e && e.message ? e.message : String(e));
-
       if (status) {
-        status.textContent = msg + " 点击此处重试。";
-        status.style.cursor = "pointer";
-        status.addEventListener(
-          "click",
-          function () {
-            status.style.cursor = "";
-            status.textContent = "正在重新加载目录索引…";
-            init();
-          },
-          { once: true }
-        );
+        status.textContent = "加载失败：" + (e && e.message ? e.message : String(e));
       } else {
-        container.textContent = msg;
+        container.textContent = "加载失败";
       }
     }
   }
