@@ -2,3 +2,83 @@
   --md-text-font: "Times New Roman", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", serif;
   --md-code-font: "Roboto Mono", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", monospace;
 }
+
+.kb-tree-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.kb-tree-controls button {
+  font: inherit;
+}
+
+.kb-tree-controls__sep {
+  width: 1px;
+  height: 1.2rem;
+  background: var(--md-default-fg-color--light);
+  margin: 0 0.2rem;
+}
+
+.kb-tree-controls__depth {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.kb-tree-controls__depth input {
+  width: 5rem;
+}
+
+.kb-tree__root,
+.kb-tree__children {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.kb-tree__item {
+  margin: 0.15rem 0;
+}
+
+.kb-tree__children {
+  padding-left: 1.2rem;
+  margin-top: 0.15rem;
+}
+
+.kb-tree__row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.kb-tree__toggle,
+.kb-tree__toggle-spacer {
+  width: 1.4rem;
+  height: 1.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: inherit;
+  line-height: 1;
+}
+
+.kb-tree__toggle {
+  border: 1px solid var(--md-default-fg-color--light);
+  background: transparent;
+  cursor: pointer;
+}
+
+.kb-tree__toggle[aria-expanded="true"] {
+  border-color: var(--md-primary-fg-color);
+}
+
+.kb-tree__link {
+  text-decoration: none;
+}
+
+.kb-tree__link:hover {
+  text-decoration: underline;
+}
