@@ -121,6 +121,8 @@
       var href = node.page.location ? joinUrl(baseUrl, node.page.location) : baseUrl || ".";
       label = createEl("a", "kb-tree__link", node.page.title);
       label.href = href;
+      label.target = "_blank";
+      label.rel = "noopener noreferrer";
       row.appendChild(label);
     } else {
       label = createEl("span", "kb-tree__label", node.name);
