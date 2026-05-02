@@ -18,12 +18,13 @@
 
 .kb-tree-controls button {
   font: inherit;
-  padding: 0.25rem 0.6rem;
-  border-radius: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.55rem;
   border: 1px solid var(--md-default-fg-color--lightest);
   background: var(--md-default-bg-color);
   color: var(--md-default-fg-color);
   cursor: pointer;
+  box-shadow: var(--md-shadow-z1);
   transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
 }
 
@@ -31,6 +32,20 @@
   border-color: var(--md-primary-fg-color);
   color: var(--md-primary-fg-color);
   background: var(--md-default-bg-color--lightest);
+}
+
+/* Primary actions look like real buttons */
+.kb-tree-controls button[data-kb-action] {
+  border-color: var(--md-primary-fg-color);
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  box-shadow: var(--md-shadow-z2);
+}
+
+.kb-tree-controls button[data-kb-action]:hover {
+  border-color: var(--md-primary-fg-color--dark);
+  background: var(--md-primary-fg-color--dark);
+  color: var(--md-primary-bg-color);
 }
 
 .kb-tree-controls button:active {
@@ -84,15 +99,26 @@
   color: var(--md-default-fg-color--light);
 }
 
-.kb-tree__root,
-.kb-tree__children {
+/* Reset Material list markers ONLY inside the tree */
+.kb-tree ul {
   list-style: none;
   padding-left: 0;
   margin: 0;
 }
 
-.kb-tree__item {
-  margin: 0.15rem 0;
+.kb-tree .kb-tree__item {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.12rem 0;
+}
+
+.kb-tree .kb-tree__item::before {
+  content: none;
+  display: none;
+}
+
+.kb-tree .kb-tree__item::marker {
+  content: "";
 }
 
 .kb-tree__children {
@@ -107,6 +133,7 @@
   gap: 0.35rem;
   padding: 0.15rem 0.25rem;
   border-radius: 0.5rem;
+  line-height: 1.25;
 }
 
 .kb-tree__row:hover {
@@ -119,8 +146,8 @@
 
 .kb-tree__toggle,
 .kb-tree__toggle-spacer {
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 1.55rem;
+  height: 1.55rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -128,36 +155,47 @@
   line-height: 1;
 }
 
-.kb-tree__toggle {
+.kb-tree .kb-tree__toggle {
   border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 999px;
+  border-radius: 0.55rem;
   background: var(--md-default-bg-color);
   color: var(--md-default-fg-color--light);
   cursor: pointer;
   transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
 }
 
-.kb-tree__toggle:hover {
+.kb-tree .kb-tree__toggle:hover {
   border-color: var(--md-primary-fg-color);
   color: var(--md-primary-fg-color);
   background: var(--md-default-bg-color--lightest);
 }
 
-.kb-tree__toggle:focus-visible {
+.kb-tree .kb-tree__toggle:focus-visible {
   outline: 2px solid var(--md-accent-fg-color);
   outline-offset: 2px;
 }
 
-.kb-tree__toggle[aria-expanded="true"] {
+.kb-tree .kb-tree__toggle[aria-expanded="true"] {
   border-color: var(--md-primary-fg-color);
   background: var(--md-primary-fg-color);
   color: var(--md-primary-bg-color);
 }
 
+/* Leaf nodes: show a subtle dot instead of empty space */
+.kb-tree__toggle-spacer {
+  color: var(--md-default-fg-color--lighter);
+}
+
+.kb-tree__toggle-spacer::before {
+  content: "•";
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
 .kb-tree__link {
   text-decoration: none;
   color: var(--md-typeset-a-color);
-  padding: 0.05rem 0.2rem;
+  padding: 0.12rem 0.25rem;
   border-radius: 0.35rem;
   overflow-wrap: anywhere;
 }
@@ -183,6 +221,7 @@
 
 .kb-tree__link:hover {
   text-decoration: underline;
+  background: var(--md-default-bg-color--lightest);
 }
 
 @media (prefers-reduced-motion: reduce) {
