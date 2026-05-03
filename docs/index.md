@@ -6,8 +6,6 @@
 
 还是骗你的，我的小笨脑瓜里也是空空的
 
-# 目录
-
 <div class="kb-tree-controls" data-kb-tree-controls>
 	<button type="button" data-kb-action="collapse">全部收起</button>
 	<button type="button" data-kb-action="expand">全部展开</button>
