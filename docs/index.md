@@ -27,8 +27,7 @@
 
 <div class="kb-tree" data-kb-tree-root>
 	<div class="kb-tree__status">
-		<span data-kb-tree-status>正在加载目录索引…</span>
-		<button type="button" class="kb-tree__refresh" data-kb-tree-refresh>刷新</button>
+		<span data-kb-tree-status>正在加载目录索引…（如长时间未出现，请刷新页面）</span>
 	</div>
 	<div class="kb-tree__content" data-kb-tree-content></div>
 </div>

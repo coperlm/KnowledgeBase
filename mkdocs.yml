@@ -1,8 +1,8 @@
 site_name: Coperlm的芝士库🧀
 site_url: https://coperlm.github.io/KnowledgeBase/
 site_description: Knowledge Base of @coperlm
-repo_url: https://github.com/coperlm/KnowledgeBase
-repo_name: GitHub
+repo_url: https://coperlm.github.io/
+repo_name: 博客
 
 theme:
   font:
@@ -51,6 +51,7 @@ theme:
   # favicon: images/note.gif
 
   icon:
+    repo: fontawesome/solid/blog
     previous: fontawesome/solid/angle-left
     next: fontawesome/solid/angle-right
 

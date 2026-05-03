@@ -332,15 +332,13 @@
       contentEl.setAttribute("data-kb-tree-content", "");
       rootEl.appendChild(contentEl);
     }
-    var refreshBtn = rootEl.querySelector("[data-kb-tree-refresh]");
 
     var baseFromCfg = getBaseFromMaterialConfig();
     // Material provides '.' for base; keep it.
     var baseUrl = baseFromCfg || ".";
 
     try {
-      if (status) status.textContent = "正在加载目录索引…";
-      if (refreshBtn) refreshBtn.disabled = true;
+      if (status) status.textContent = "正在加载目录索引…（如长时间未出现，请刷新页面）";
 
       var idx = await loadSearchIndex(baseUrl);
       var docs = Array.isArray(idx.docs) ? idx.docs : [];
@@ -353,17 +351,14 @@
       wireControls(controls, contentEl);
 
       if (status) status.textContent = "目录索引已加载（" + pages.length + " 页）";
-      if (refreshBtn) refreshBtn.disabled = false;
     } catch (e) {
       var msg = (e && e.name === "AbortError")
         ? "加载超时（网络较差或被拦截）。"
         : "加载失败：" + (e && e.message ? e.message : String(e));
 
       if (status) {
-        status.textContent = msg + " 请点击“刷新”重试。";
+        status.textContent = msg + " 请刷新页面重试。";
       }
-
-      if (refreshBtn) refreshBtn.disabled = false;
     } finally {
       init._running = false;
     }
@@ -415,16 +410,6 @@
 
   // Initial load
   document.addEventListener("DOMContentLoaded", scheduleInit);
-
-  // Manual refresh button (event delegation)
-  document.addEventListener("click", function (ev) {
-    var target = ev.target;
-    if (!(target instanceof Element)) return;
-    var btn = target.closest("[data-kb-tree-refresh]");
-    if (!btn) return;
-    ev.preventDefault();
-    scheduleInit();
-  });
 
   // Instant navigation (primary)
   var hooked = hookMaterialInstantNavigation();
