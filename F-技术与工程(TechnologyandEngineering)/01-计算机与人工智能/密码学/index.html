@@ -1896,6 +1896,58 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        这里关注什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本目录建议沉淀的内容
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        写作/学习提示（针对本主题）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        边界（避免写到别处）
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1996,8 +2048,31 @@
 
 
 <h1 id="_1">密码学科研</h1>
-<p>包含密码学科研方向的笔记知识库</p>
-<p>目前分为经典基础论文阅读和前沿阅读两个部分</p>
+<p>这里用于沉淀密码学科研向笔记：安全定义、威胁模型、构造与归约证明、实现注意点，以及论文阅读的结构化记录。</p>
+<h2 id="_2">这里关注什么</h2>
+<ul>
+<li>威胁模型：被动/主动、选择密文/选择消息、适应性攻击等</li>
+<li>安全定义：IND-CPA/CCA、EUF-CMA、模拟式/不可区分式等（按需）</li>
+<li>构造范式：对称、公开密钥、签名、哈希、KDF、认证与密钥交换</li>
+<li>高级主题：零知识证明、MPC、同态/函数加密、后量子、可组合安全（按兴趣）</li>
+<li>实现与工程：侧信道、随机性、参数选择与协议边界（高层次）</li>
+</ul>
+<h2 id="_3">本目录建议沉淀的内容</h2>
+<ul>
+<li>论文阅读卡：问题—模型—假设—构造—证明结构—对比—局限—开放问题</li>
+<li>安全归约模板：Game hopping/Hybrid argument/模拟器构造的常见套路</li>
+<li>原语对照表：同一目标的不同方案、假设强弱与性能权衡</li>
+</ul>
+<h2 id="_4">写作/学习提示（针对本主题）</h2>
+<ul>
+<li>读论文先找：安全定义写在哪里？对手能力是什么？假设是否可接受？</li>
+<li>写证明时：把每个 game 的差异点写成一句话，并标注用到的引理</li>
+<li>对协议：明确参与方状态机与失败处理（尤其是认证与重放）</li>
+</ul>
+<h2 id="_5">边界（避免写到别处）</h2>
+<ul>
+<li>具体攻击实施教程或非法用途（不在此处沉淀）</li>
+</ul>
 
 
 
