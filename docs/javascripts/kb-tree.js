@@ -229,36 +229,71 @@
     }
   }
 
+  function getSearchIndexUrls(baseUrl) {
+    var urls = [];
+    if (baseUrl) {
+      urls.push(joinUrl(baseUrl, "search/search_index.json"));
+    }
+    urls.push("search/search_index.json");
+
+    var path = window.location.pathname || "/";
+    if (!path.endsWith("/")) {
+      path = path.slice(0, path.lastIndexOf("/") + 1);
+    }
+    var segments = path.replace(/^\/+/g, "").replace(/\/+$/g, "").split("/").filter(Boolean);
+    for (var depth = 1; depth <= Math.min(6, segments.length); depth++) {
+      urls.push(Array(depth + 1).join("../") + "search/search_index.json");
+    }
+    if (segments.length > 0) {
+      urls.push("/" + segments[0] + "/search/search_index.json");
+    }
+
+    return urls.filter(function (value, index, array) {
+      return array.indexOf(value) === index;
+    });
+  }
+
   async function loadSearchIndex(baseUrl) {
-    var url = joinUrl(baseUrl || ".", "search/search_index.json");
-
-    // Add a timeout to avoid hanging forever on poor networks
+    var urls = getSearchIndexUrls(baseUrl || ".");
     var controller = typeof AbortController !== "undefined" ? new AbortController() : null;
-    var timeoutId = null;
-    if (controller) {
-      timeoutId = setTimeout(function () {
-        try {
-          controller.abort();
-        } catch (_e) {
-          // ignore
-        }
-      }, 8000);
+    var lastError = null;
+
+    for (var i = 0; i < urls.length; i++) {
+      var url = urls[i];
+      var timeoutId = null;
+      if (controller) {
+        timeoutId = setTimeout(function () {
+          try {
+            controller.abort();
+          } catch (_e) {
+            // ignore
+          }
+        }, 8000);
+      }
+
+      var res;
+      try {
+        res = await fetch(url, {
+          credentials: "same-origin",
+          signal: controller ? controller.signal : undefined,
+          cache: "no-store",
+        });
+      } catch (err) {
+        lastError = err;
+      } finally {
+        if (timeoutId != null) clearTimeout(timeoutId);
+      }
+
+      if (res && res.ok) {
+        return await res.json();
+      }
+
+      if (res) {
+        lastError = new Error("HTTP " + res.status + " for " + url);
+      }
     }
 
-    var res;
-    try {
-      res = await fetch(url, {
-        credentials: "same-origin",
-        signal: controller ? controller.signal : undefined,
-        cache: "no-store",
-      });
-    } finally {
-      if (timeoutId != null) clearTimeout(timeoutId);
-    }
-    if (!res.ok) {
-      throw new Error("无法加载 search_index.json: " + res.status);
-    }
-    return await res.json();
+    throw new Error("无法加载 search_index.json: " + (lastError && lastError.message ? lastError.message : "404"));
   }
 
   function buildUI(contentEl, tree, baseUrl) {
