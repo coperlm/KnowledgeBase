@@ -4,6 +4,10 @@ site_description: Knowledge Base of @coperlm
 repo_url: https://coperlm.github.io/
 repo_name: 博客
 
+plugins:
+  - search
+  - awesome-pages
+
 theme:
   font:
     text: Roboto
