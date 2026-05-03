@@ -6,7 +6,6 @@ repo_name: 博客
 
 plugins:
   - search
-  - awesome-pages
 
 theme:
   font:
