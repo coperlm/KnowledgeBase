@@ -71,7 +71,7 @@
 }
 
 .kb-tree-controls__depth input {
-  width: 2rem;
+  width: 5rem;
   font: inherit;
   padding: 0.25rem 0.45rem;
   border-radius: 0.5rem;
@@ -107,33 +107,9 @@
   display: inline-block;
 }
 
-.kb-tree__refresh {
-  font: inherit;
-  padding: 0.3rem 0.7rem;
-  border-radius: 0.55rem;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  background: var(--md-default-bg-color);
-  color: var(--md-default-fg-color);
-  cursor: pointer;
-  box-shadow: var(--md-shadow-z1);
-  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
-}
-
-.kb-tree__refresh:hover {
-  border-color: var(--md-primary-fg-color);
-  color: var(--md-primary-fg-color);
-  background: var(--md-default-bg-color--lightest);
-}
-
-.kb-tree__refresh:focus-visible {
-  outline: 2px solid var(--md-accent-fg-color);
-  outline-offset: 2px;
-}
-
-.kb-tree__refresh:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-  box-shadow: none;
+/* Hide repo facts (stars/forks) in header source button */
+.md-source__facts {
+  display: none !important;
 }
 
 /* Reset Material list markers ONLY inside the tree */
