@@ -240,7 +240,7 @@
     if (!path.endsWith("/")) {
       path = path.slice(0, path.lastIndexOf("/") + 1);
     }
-    var segments = path.replace(/^\/+/g, "").replace(/\/+$/g, "").split("/").filter(Boolean);
+    var segments = path.replace(/^\/+/, "").replace(/\/+$/, "").split("/").filter(Boolean);
     for (var depth = 1; depth <= Math.min(6, segments.length); depth++) {
       urls.push(Array(depth + 1).join("../") + "search/search_index.json");
     }
