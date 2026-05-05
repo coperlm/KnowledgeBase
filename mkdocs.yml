@@ -9,6 +9,8 @@ exclude_docs: |
 
 plugins:
   - search
+  - tags:
+      tags_file: tags.md
 
 theme:
   font:
