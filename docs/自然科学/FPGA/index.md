@@ -1,6 +1,5 @@
 ---
 tags:
- - FPGA
  - 嵌入式
 ---
 # FPGA
