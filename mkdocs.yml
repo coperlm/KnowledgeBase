@@ -4,13 +4,13 @@ site_description: Knowledge Base of @coperlm
 repo_url: https://coperlm.github.io/
 repo_name: 博客
 
-exclude_docs: |
-  Z-未整理/
+# exclude_docs: |
+#   Z-未整理/
 
 plugins:
   - search
   - tags:
-      tags_file: tags.md
+      tags_file: KnowledgeBase/tags.md
 
 theme:
   font:
