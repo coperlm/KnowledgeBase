@@ -32,10 +32,6 @@ def on_page_markdown(markdown: str, page, config, files):
 def build_tree(docs_dir: Path) -> list[TreeNode]:
     nodes: list[TreeNode] = []
 
-    root_index = docs_dir / "index.md"
-    if root_index.exists():
-        nodes.append(TreeNode(title=read_title(root_index, "主页"), url="./"))
-
     for entry in sorted(docs_dir.iterdir(), key=sort_key):
         node = build_entry(entry, Path(entry.name))
         if node is not None:
