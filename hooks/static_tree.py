@@ -6,6 +6,11 @@ from pathlib import Path
 
 MARKER = "<!-- KB_STATIC_TREE -->"
 SKIP_DIRS = {"assets"}
+ROOT_DIR_ORDER = {
+    "自然与应用科学": 0,
+    "人文与社会科学": 1,
+    "艺术与文化生活": 2,
+}
 
 
 @dataclass
@@ -32,7 +37,7 @@ def on_page_markdown(markdown: str, page, config, files):
 def build_tree(docs_dir: Path) -> list[TreeNode]:
     nodes: list[TreeNode] = []
 
-    for entry in sorted(docs_dir.iterdir(), key=sort_key):
+    for entry in sorted(docs_dir.iterdir(), key=root_sort_key):
         node = build_entry(entry, Path(entry.name))
         if node is not None:
             nodes.append(node)
@@ -72,6 +77,12 @@ def build_dir(dir_path: Path, rel_dir: Path) -> TreeNode | None:
 
 def sort_key(path: Path):
     return (0 if path.is_dir() else 1, path.name.lower())
+
+
+def root_sort_key(path: Path):
+    if path.is_dir():
+        return (0, ROOT_DIR_ORDER.get(path.name, len(ROOT_DIR_ORDER)), path.name.lower())
+    return (1, path.name.lower())
 
 
 def read_title(path: Path, fallback: str) -> str:
