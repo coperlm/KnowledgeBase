@@ -6,6 +6,7 @@ from pathlib import Path
 
 MARKER = "<!-- KB_STATIC_TREE -->"
 SKIP_DIRS = {"assets"}
+SKIP_FILES = {"index.md", "tags.md"}
 ROOT_DIR_ORDER = {
     "自然与应用科学": 0,
     "人文与社会科学": 1,
@@ -46,7 +47,7 @@ def build_tree(docs_dir: Path) -> list[TreeNode]:
 
 
 def build_entry(entry: Path, rel_path: Path) -> TreeNode | None:
-    if entry.name.startswith(".") or entry.name in SKIP_DIRS or entry.name == "index.md":
+    if entry.name.startswith(".") or entry.name in SKIP_DIRS or entry.name in SKIP_FILES:
         return None
 
     if entry.is_dir():
