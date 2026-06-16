@@ -1,3 +1,12 @@
+:root {
+  --md-text-font: "Times New Roman", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", serif;
+  --md-code-font: "Roboto Mono", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", monospace;
+}
+
+.md-source__facts {
+  display: none !important;
+}
+
 .md-typeset pre > code,
 pre code,
 pre {
