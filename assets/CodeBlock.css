@@ -1,0 +1,9 @@
+.md-typeset pre > code,
+pre code,
+pre {
+  white-space: pre-wrap !important;       /* CSS 3 */
+  white-space: -moz-pre-wrap !important;  /* Mozilla, since FF 1.0 */
+  white-space: -pre-wrap !important;      /* Opera 7 */
+  white-space: -o-pre-wrap !important;    /* Opera 7 */
+  word-wrap: break-word !important;       /* Internet Explorer 5.5+ */
+}
