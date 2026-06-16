@@ -331,7 +331,7 @@
 }
 
 /* ...existing code... */
-pre code {
+pre {
   white-space: pre-wrap;       /* CSS 3 */
   white-space: -moz-pre-wrap;  /* Mozilla, since FF 1.0 */
   white-space: -pre-wrap;      /* Opera 7 */
