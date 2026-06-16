@@ -31,3 +31,7 @@ pre {
   list-style-type: none !important;
   padding-left: 0 !important; /* 取消左侧多余的缩进，让蓝框和标题左对齐 */
 }
+
+.md-typeset .kb-static-tree a {
+  font-weight: bold; /* 如果你觉得太粗，可以把 bold 换成 600 */
+}
