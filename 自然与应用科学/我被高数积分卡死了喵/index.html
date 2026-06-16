@@ -715,10 +715,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21" class="md-nav__link">
+  <a href="#21-tan-x-cot-x" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 凑微分
+        2.1 凑微分（专治 \(\tan x\) 和 \(\cot x\)）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 （专治第⑩组：带平方的三角函数）
       
     </span>
   </a>
@@ -727,6 +738,67 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三类 无中生有与裂项
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第三类 无中生有与裂项">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 无中生有
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 裂项相消
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第四类 三角换元
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1339,10 +1411,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21" class="md-nav__link">
+  <a href="#21-tan-x-cot-x" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 凑微分
+        2.1 凑微分（专治 \(\tan x\) 和 \(\cot x\)）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 （专治第⑩组：带平方的三角函数）
       
     </span>
   </a>
@@ -1351,6 +1434,67 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三类 无中生有与裂项
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第三类 无中生有与裂项">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 无中生有
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 裂项相消
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第四类 三角换元
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1453,7 +1597,49 @@
 <p><span class="arithmatex">\((\arcsin x)' = \frac{1}{\sqrt{1-x^2}} \implies \int \frac{1}{\sqrt{1-x^2}} dx = \arcsin x + C\)</span></p>
 <p><img alt="" src="1.4.jpg" /></p>
 <h2 id="_3">第二类 初级变形与凑微分</h2>
-<h3 id="21">2.1 凑微分</h3>
+<h3 id="21-tan-x-cot-x">2.1 凑微分（专治 <span class="arithmatex">\(\tan x\)</span> 和 <span class="arithmatex">\(\cot x\)</span>）</h3>
+<p>需要用到 <span class="arithmatex">\(\int f'(x) dx=\int df(x)\)</span></p>
+<p>所以有 <span class="arithmatex">\(\int \frac{\sin x}{\cos x} dx = -\int \frac{1}{\cos x} d(\cos x)\)</span></p>
+<p><span class="arithmatex">\(\int \tan x dx = -\ln|\cos x| + C\)</span></p>
+<p><span class="arithmatex">\(\int \cot x dx = \ln|\sin x| + C\)</span></p>
+<p><img alt="" src="2.1.jpg" /></p>
+<h3 id="22-10">2.2 （专治第⑩组：带平方的三角函数）</h3>
+<p><strong>降幂法</strong>（针对 <span class="arithmatex">\(\sin^2 x\)</span> 和 <span class="arithmatex">\(\cos^2 x\)</span>）</p>
+<p>二倍角公式：<span class="arithmatex">\(\cos 2x = 1 - 2\sin^2 x = 2\cos^2 x - 1\)</span></p>
+<p><img alt="" src="2.2.1.jpg" /></p>
+<p><strong>平方关系法</strong>（针对 <span class="arithmatex">\(\tan^2 x\)</span> 和 <span class="arithmatex">\(\cot^2 x\)</span>）</p>
+<p>平方关系 <span class="arithmatex">\(1 + \tan^2 x = \sec^2 x\)</span>，<span class="arithmatex">\(1 + \cot^2 x = \csc^2 x\)</span></p>
+<p><img alt="" src="2.2.2.jpg" /></p>
+<p><img alt="" src="2s.png" /></p>
+<h2 id="_4">第三类 无中生有与裂项</h2>
+<h3 id="31">3.1 无中生有</h3>
+<p><img alt="" src="3.1.jpg" /></p>
+<h3 id="32">3.2 裂项相消</h3>
+<p><img alt="" src="3.2.jpg" /></p>
+<p>总结：
+- 遇到 <span class="arithmatex">\(\sec x\)</span> -&gt; 无中生有，乘 <span class="arithmatex">\((\sec x + \tan x)\)</span>
+- 遇到 <span class="arithmatex">\(\frac{1}{x^2-a^2}\)</span> -&gt; 裂项大法，拆 <span class="arithmatex">\(\frac{1}{2a}\)</span> 和两个分式</p>
+<h2 id="_5">第四类 三角换元</h2>
+<p>包含：⑤和⑥（带有参数 <span class="arithmatex">\(a\)</span> 的 <span class="arithmatex">\(\arctan\)</span> 和 <span class="arithmatex">\(\arcsin\)</span>），以及最长的⑦和⑨（含有根号的对数型和长串型）</p>
+<p>核心：利用三角公式，把多项式变成单项式的平方，从而消灭加减号或根号</p>
+<ul>
+<li>看到 <span class="arithmatex">\(a^2 + x^2\)</span> <span class="arithmatex">\(\implies\)</span> 联想 <span class="arithmatex">\(1 + \tan^2 t = \sec^2 t\)</span> <span class="arithmatex">\(\implies\)</span> 令 <span class="arithmatex">\(x = a \tan t\)</span></li>
+<li>看到 <span class="arithmatex">\(a^2 - x^2\)</span>** <span class="arithmatex">\(\implies\)</span> 联想 <span class="arithmatex">\(1 - \sin^2 t = \cos^2 t\)</span> <span class="arithmatex">\(\implies\)</span> 令 <span class="arithmatex">\(x = a \sin t\)</span></li>
+</ul>
+<p><img alt="" src="4.1.jpg" /></p>
+<p><span class="arithmatex">\(\arctan\)</span> 有 <span class="arithmatex">\(\frac{1}{a}\)</span> 是因为分母没有根号，生成了 <span class="arithmatex">\(a^2\)</span>；<span class="arithmatex">\(\arcsin\)</span> 没有 <span class="arithmatex">\(\frac{1}{a}\)</span> 是因为分母有根号，把 <span class="arithmatex">\(a^2\)</span> 劈成了 <span class="arithmatex">\(a\)</span>，和分子的 <span class="arithmatex">\(dx\)</span> 产生的 <span class="arithmatex">\(a\)</span> 同归于尽了</p>
+<p><img alt="" src="4.2.jpg" /></p>
+<h2 id="_6">总结</h2>
+<ol>
+<li><strong>导数认亲局</strong>（不用推，直接倒背导数表：<span class="arithmatex">\(x^k, a^x, e^x, \sin, \cos\)</span>）</li>
+<li><strong>凑微分与降幂局</strong>（对付 <span class="arithmatex">\(\tan x\)</span> 拆解法，对付 <span class="arithmatex">\(\sin^2 x\)</span> 降幂法）</li>
+<li><strong>无中生有与裂项局</strong>（对付 <span class="arithmatex">\(\sec x\)</span> 强行乘因式，对付 <span class="arithmatex">\(\frac{1}{x^2-a^2}\)</span> 分母裂项）</li>
+<li><strong>三角换元大招局</strong>（对付根号和平方和，设 <span class="arithmatex">\(x=a\tan t\)</span> 或 <span class="arithmatex">\(a\sin t\)</span>）</li>
+</ol>
+<p>这是全部了吗？ </p>
+<p>就书上的“基本积分公式表”而言，是的，这绝对是全部了。</p>
+<p>这些够用了吗？</p>
+<p>从“公式储备”的角度来说，绝对够了；从“做题能力”的角度来说，这只是基石。 还需要 kuku 刷题</p>
 
 
 
