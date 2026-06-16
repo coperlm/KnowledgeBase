@@ -37,32 +37,45 @@ pre {
 }
 
 /* ==================================
-   目录树：精美的展开/收起按钮样式
+   目录树：极简右上角工具栏
 ================================== */
+/* 工具栏容器：将按钮推到目录的右上角，并紧贴下方蓝框 */
+.kb-tree-toolbar {
+    display: flex;
+    justify-content: flex-end;  /* 靠右对齐 */
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+/* 按钮本身：去边框、小字体、淡颜色 */
 .kb-tree-btn {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    font-size: 0.8rem;
+    font-size: 0.8rem !important; /* 强制锁定小字体，防止被 MkDocs 放大 */
     font-weight: 600;
-    color: var(--md-default-fg-color--light);
-    background-color: transparent;
-    border: 1px solid var(--md-default-fg-color--lightest);
-    border-radius: 6px; /* 圆角框 */
-    padding: 4px 10px;
+    color: var(--md-default-fg-color--light); /* 默认淡灰色 */
+    background: transparent;
+    border: none; /* 去除笨重的边框 */
+    padding: 4px 8px;
+    border-radius: 4px;
     cursor: pointer;
     transition: all 0.2s ease;
-    line-height: 1.5;
 }
 
-/* 鼠标悬浮时的变色特效（自动匹配你的 MkDocs 主题色） */
+/* 强制限定图标的大小，防止变形 */
+.kb-tree-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+/* 鼠标悬浮：出现淡色背景并变为主色调，高级感来源 */
 .kb-tree-btn:hover {
     color: var(--md-primary-fg-color);
-    border-color: var(--md-primary-fg-color);
-    background-color: var(--md-default-bg-color--lightest);
+    background-color: var(--md-default-fg-color--lightest);
 }
 
-/* 点击时的微小缩放动画 */
 .kb-tree-btn:active {
-    transform: scale(0.95);
+    transform: translateY(1px); /* 点击时微小下压感 */
 }

@@ -113,48 +113,18 @@ def to_url(rel_path: Path) -> str:
 
 
 def render_tree(nodes: list[TreeNode]) -> str:
-    # 注入精美的图标按钮，以及一段将其移动到 H1 标题右侧的 JS 脚本
+    # 极简的工具栏，纯 HTML，不包含任何复杂的 JS 注入
     html_snippet = """
-<div id="kb-tree-actions" style="display: none;">
-  <button class="kb-tree-btn" onclick="document.querySelectorAll('.kb-static-tree details').forEach(e => e.open = true)">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+<div class="kb-tree-toolbar">
+  <button class="kb-tree-btn" onclick="document.querySelectorAll('.kb-static-tree details').forEach(e => e.open = true)" title="展开所有层级">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
     全部展开
   </button>
-  <button class="kb-tree-btn" onclick="document.querySelectorAll('.kb-static-tree details').forEach(e => e.open = false); document.querySelectorAll('.kb-static-tree__root > li > details').forEach(e => e.open = true)">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 13H5v-2h14v2z"/></svg>
+  <button class="kb-tree-btn" onclick="document.querySelectorAll('.kb-static-tree details').forEach(e => e.open = false); document.querySelectorAll('.kb-static-tree__root > li > details').forEach(e => e.open = true)" title="收起到顶层">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2z"/></svg>
     全部收起
   </button>
 </div>
-
-<script>
-function moveButtonsToTitle() {
-    var h1 = document.querySelector("article h1");
-    var actions = document.getElementById("kb-tree-actions");
-    if (!actions) return;
-    
-    // 如果找到了网页大标题，就把按钮塞到标题的右侧
-    if (h1 && actions.parentNode !== h1) {
-        h1.style.display = "flex";
-        h1.style.justifyContent = "space-between";
-        h1.style.alignItems = "center";
-        h1.style.flexWrap = "wrap"; 
-        actions.style.display = "flex";
-        actions.style.gap = "0.5rem";
-        h1.appendChild(actions);
-    } else if (!h1) {
-        // 如果网页没写标题，就原地展示
-        actions.style.display = "flex";
-        actions.style.gap = "0.5rem";
-        actions.style.marginBottom = "1rem";
-    }
-}
-// 适配 MkDocs Material 的无刷新跳转
-if (typeof document$ !== "undefined") {
-    document$.subscribe(moveButtonsToTitle);
-} else {
-    window.addEventListener("DOMContentLoaded", moveButtonsToTitle);
-}
-</script>
     """
     
     lines = [html_snippet, '<div class="kb-tree kb-static-tree">', '  <ul class="kb-static-tree__root">']
