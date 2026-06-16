@@ -113,21 +113,22 @@ def to_url(rel_path: Path) -> str:
 
 
 def render_tree(nodes: list[TreeNode]) -> str:
-    # 极简的工具栏，纯 HTML，不包含任何复杂的 JS 注入
-    html_snippet = """
-<div class="kb-tree-toolbar">
-  <button class="kb-tree-btn" onclick="document.querySelectorAll('.kb-static-tree details').forEach(e => e.open = true)" title="展开所有层级">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-    全部展开
-  </button>
-  <button class="kb-tree-btn" onclick="document.querySelectorAll('.kb-static-tree details').forEach(e => e.open = false); document.querySelectorAll('.kb-static-tree__root > li > details').forEach(e => e.open = true)" title="收起到顶层">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2z"/></svg>
-    全部收起
-  </button>
-</div>
-    """
+    lines = [
+        '<div class="kb-tree kb-static-tree">',
+        '  <!-- 目录树右上角控制栏 -->',
+        '  <div style="display: flex; justify-content: flex-end; gap: 15px; margin-bottom: 5px; padding-right: 5px;">',
+        '    <a href="javascript:void(0)" onclick="document.querySelectorAll(\'.kb-static-tree details\').forEach(e => e.open = true)" style="display: inline-flex; align-items: center; gap: 4px; font-size: 0.8rem; font-weight: 600; color: var(--md-default-fg-color--light); text-decoration: none;" onmouseover="this.style.color=\'var(--md-primary-fg-color)\'" onmouseout="this.style.color=\'var(--md-default-fg-color--light)\'">',
+        '      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>',
+        '      全部展开',
+        '    </a>',
+        '    <a href="javascript:void(0)" onclick="document.querySelectorAll(\'.kb-static-tree details\').forEach(e => e.open = false); document.querySelectorAll(\'.kb-static-tree__root > li > details\').forEach(e => e.open = true)" style="display: inline-flex; align-items: center; gap: 4px; font-size: 0.8rem; font-weight: 600; color: var(--md-default-fg-color--light); text-decoration: none;" onmouseover="this.style.color=\'var(--md-primary-fg-color)\'" onmouseout="this.style.color=\'var(--md-default-fg-color--light)\'">',
+        '      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 13H5v-2h14v2z"/></svg>',
+        '      全部收起',
+        '    </a>',
+        '  </div>',
+        '  <ul class="kb-static-tree__root">'
+    ]
     
-    lines = [html_snippet, '<div class="kb-tree kb-static-tree">', '  <ul class="kb-static-tree__root">']
     for node in nodes:
         lines.extend(render_item(node, 2))
     lines.extend(["  </ul>", "</div>"])

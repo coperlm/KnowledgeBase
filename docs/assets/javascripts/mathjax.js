@@ -10,6 +10,11 @@ window.MathJax = {
     processHtmlClass: "arithmatex"
   }
 };
+
 document$.subscribe(() => {
-  MathJax.typesetPromise()
-})
+  // 让 MathJax 适应 MkDocs 的无刷新页面跳转
+  MathJax.startup.output.clearCache();
+  MathJax.typesetClear();
+  MathJax.texReset();
+  MathJax.typesetPromise();
+});
