@@ -3,7 +3,7 @@
   --md-code-font: "Roboto Mono", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", monospace;
 }
 
-.kb-tree-controls {
+/* .kb-tree-controls {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
@@ -328,7 +328,7 @@
 
 .kb-static-tree__children {
   margin-left: 0.25rem;
-}
+} */
 
 /* ...existing code... */
 pre {
