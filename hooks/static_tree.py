@@ -113,7 +113,17 @@ def to_url(rel_path: Path) -> str:
 
 
 def render_tree(nodes: list[TreeNode]) -> str:
-    lines = ["<div class=\"kb-tree kb-static-tree\">", "  <ul class=\"kb-static-tree__root\">"]
+    lines = [
+        # 🎯 新增的控制按钮区域
+        '<div style="display: flex; gap: 10px; margin-bottom: 15px;">',
+        '  <button class="md-button" onclick="document.querySelectorAll(\'.kb-static-tree details\').forEach(e => e.open = true)">全部展开</button>',
+        '  <button class="md-button" onclick="document.querySelectorAll(\'.kb-static-tree details\').forEach(e => e.open = false)">全部收起</button>',
+        '</div>',
+        
+        # 原本的树状目录开头
+        '<div class="kb-tree kb-static-tree">', 
+        '  <ul class="kb-static-tree__root">'
+    ]
     for node in nodes:
         lines.extend(render_item(node, 2))
     lines.extend(["  </ul>", "</div>"])
