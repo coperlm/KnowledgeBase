@@ -688,7 +688,6 @@
     var h1 = document.querySelector("article h1");
     var box = document.getElementById("kb-tree-btn-box");
     if (h1 && box && h1 !== box.parentNode) {
-      /* 把标题栏变成 Flex 布局，让文字在左，按钮在右 */
       h1.style.display = "flex";
       h1.style.justifyContent = "space-between";
       h1.style.alignItems = "center";
@@ -700,12 +699,11 @@
     }
   }
   alignTreeBtns();
-  /* 兼容 MkDocs 的无刷新页面跳转 */
   if (typeof document$ !== "undefined") {
     document$.subscribe(alignTreeBtns);
   }
 </script>
-<div class="kb-tree kb-static-tree">
+<div class="kb-tree kb-static-tree" style="margin-top: -20px;">
   <ul class="kb-static-tree__root">
     <li class="kb-static-tree__item">
       <details class="kb-static-tree__branch" open>
