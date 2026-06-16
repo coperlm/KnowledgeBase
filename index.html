@@ -673,6 +673,10 @@
 
 
 <h1 id="_1">主页</h1>
+<div style="display: flex; gap: 10px; margin-bottom: 15px;">
+  <button class="md-button" onclick="document.querySelectorAll('.kb-static-tree details').forEach(e => e.open = true)">全部展开</button>
+  <button class="md-button" onclick="document.querySelectorAll('.kb-static-tree details').forEach(e => e.open = false)">全部收起</button>
+</div>
 <div class="kb-tree kb-static-tree">
   <ul class="kb-static-tree__root">
     <li class="kb-static-tree__item">
@@ -704,7 +708,7 @@
               </div>
             </details>
           </li>
-          <li class="kb-static-tree__item"><a href="自然与应用科学/元素反映论/">元素反应论</a></li>
+          <li class="kb-static-tree__item"><a href="自然与应用科学/元素反应论/">元素反应论</a></li>
           <li class="kb-static-tree__item">
             <details class="kb-static-tree__branch">
               <summary><span class="kb-static-tree__chevron" aria-hidden="true"></span>医学</summary>
