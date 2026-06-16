@@ -113,7 +113,6 @@ def to_url(rel_path: Path) -> str:
 
 
 def render_tree(nodes: list[TreeNode]) -> str:
-    # 带有智能 JS 的内联样式栏：把它移动到 H1 标题内部的最右侧，并且绝对防变形
     lines = [
         '<div id="kb-tree-btn-box" style="display: flex; gap: 15px; margin-top: 5px;">',
         '  <a href="javascript:void(0)" onclick="document.querySelectorAll(\'.kb-static-tree details\').forEach(e => e.open = true)" style="display: inline-flex; align-items: center; gap: 4px; font-size: 0.8rem; font-weight: 600; color: var(--md-default-fg-color--light); text-decoration: none; line-height: normal; letter-spacing: normal;" onmouseover="this.style.color=\'var(--md-primary-fg-color)\'" onmouseout="this.style.color=\'var(--md-default-fg-color--light)\'">',
@@ -130,7 +129,6 @@ def render_tree(nodes: list[TreeNode]) -> str:
         '    var h1 = document.querySelector("article h1");',
         '    var box = document.getElementById("kb-tree-btn-box");',
         '    if (h1 && box && h1 !== box.parentNode) {',
-        '      /* 把标题栏变成 Flex 布局，让文字在左，按钮在右 */',
         '      h1.style.display = "flex";',
         '      h1.style.justifyContent = "space-between";',
         '      h1.style.alignItems = "center";',
@@ -142,12 +140,11 @@ def render_tree(nodes: list[TreeNode]) -> str:
         '    }',
         '  }',
         '  alignTreeBtns();',
-        '  /* 兼容 MkDocs 的无刷新页面跳转 */',
         '  if (typeof document$ !== "undefined") {',
         '    document$.subscribe(alignTreeBtns);',
         '  }',
         '</script>',
-        '<div class="kb-tree kb-static-tree">',
+        '<div class="kb-tree kb-static-tree" style="margin-top: -20px;">',
         '  <ul class="kb-static-tree__root">'
     ]
     
