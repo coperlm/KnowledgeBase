@@ -35,3 +35,34 @@ pre {
 .md-typeset .kb-static-tree a {
   font-weight: bold; /* 如果你觉得太粗，可以把 bold 换成 600 */
 }
+
+/* ==================================
+   目录树：精美的展开/收起按钮样式
+================================== */
+.kb-tree-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--md-default-fg-color--light);
+    background-color: transparent;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 6px; /* 圆角框 */
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 1.5;
+}
+
+/* 鼠标悬浮时的变色特效（自动匹配你的 MkDocs 主题色） */
+.kb-tree-btn:hover {
+    color: var(--md-primary-fg-color);
+    border-color: var(--md-primary-fg-color);
+    background-color: var(--md-default-bg-color--lightest);
+}
+
+/* 点击时的微小缩放动画 */
+.kb-tree-btn:active {
+    transform: scale(0.95);
+}
