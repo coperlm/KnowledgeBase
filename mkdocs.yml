@@ -60,9 +60,8 @@ theme:
     previous: fontawesome/solid/angle-left
     next: fontawesome/solid/angle-right
 
-# 指定字体（微软雅黑 + time new roma）
 extra_css:
-  - assets/stylesheets/extra.css
+  - assets/extra.css
   - assets/CodeBlock.css
 
 # 如果注释掉，则用默认目录排序
