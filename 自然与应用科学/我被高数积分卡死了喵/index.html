@@ -1606,15 +1606,22 @@
 <h3 id="22-10">2.2 （专治第⑩组：带平方的三角函数）</h3>
 <p><strong>降幂法</strong>（针对 <span class="arithmatex">\(\sin^2 x\)</span> 和 <span class="arithmatex">\(\cos^2 x\)</span>）</p>
 <p>二倍角公式：<span class="arithmatex">\(\cos 2x = 1 - 2\sin^2 x = 2\cos^2 x - 1\)</span></p>
+<p><span class="arithmatex">\(\int \sin^2 x dx=\frac{x}{2} - \frac{\sin 2x}{4} + C\)</span></p>
+<p><span class="arithmatex">\(\int \cos^2 x dx=\frac{x}{2} + \frac{\sin 2x}{4} + C\)</span></p>
 <p><img alt="" src="2.2.1.jpg" /></p>
 <p><strong>平方关系法</strong>（针对 <span class="arithmatex">\(\tan^2 x\)</span> 和 <span class="arithmatex">\(\cot^2 x\)</span>）</p>
 <p>平方关系 <span class="arithmatex">\(1 + \tan^2 x = \sec^2 x\)</span>，<span class="arithmatex">\(1 + \cot^2 x = \csc^2 x\)</span></p>
+<p><span class="arithmatex">\(\int \tan^2 x dx= \tan x - x + C\)</span></p>
+<p><span class="arithmatex">\(\int \cot^2 x dx=-\cot x - x + C\)</span></p>
 <p><img alt="" src="2.2.2.jpg" /></p>
 <p><img alt="" src="2s.png" /></p>
 <h2 id="_4">第三类 无中生有与裂项</h2>
 <h3 id="31">3.1 无中生有</h3>
+<p><span class="arithmatex">\(\int \sec x dx= \ln|\sec x + \tan x| + C\)</span></p>
+<p><span class="arithmatex">\(\int \csc x dx= \ln|\csc x - \cot x| + C\)</span></p>
 <p><img alt="" src="3.1.jpg" /></p>
 <h3 id="32">3.2 裂项相消</h3>
+<p><span class="arithmatex">\(\int \frac{1}{x^2-a^2} dx= \frac{1}{2a} \ln \left| \frac{x-a}{x+a} \right| + C\)</span></p>
 <p><img alt="" src="3.2.jpg" /></p>
 <p>总结：
 - 遇到 <span class="arithmatex">\(\sec x\)</span> -&gt; 无中生有，乘 <span class="arithmatex">\((\sec x + \tan x)\)</span>
@@ -1626,8 +1633,11 @@
 <li>看到 <span class="arithmatex">\(a^2 + x^2\)</span> <span class="arithmatex">\(\implies\)</span> 联想 <span class="arithmatex">\(1 + \tan^2 t = \sec^2 t\)</span> <span class="arithmatex">\(\implies\)</span> 令 <span class="arithmatex">\(x = a \tan t\)</span></li>
 <li>看到 <span class="arithmatex">\(a^2 - x^2\)</span>** <span class="arithmatex">\(\implies\)</span> 联想 <span class="arithmatex">\(1 - \sin^2 t = \cos^2 t\)</span> <span class="arithmatex">\(\implies\)</span> 令 <span class="arithmatex">\(x = a \sin t\)</span></li>
 </ul>
+<p><span class="arithmatex">\(\int \frac{1}{a^2+x^2} dx= \frac{1}{a} \arctan\frac{x}{a} + C\)</span></p>
+<p><span class="arithmatex">\(\int \frac{1}{\sqrt{a^2-x^2}} dx= \arcsin\frac{x}{a} + C\)</span></p>
 <p><img alt="" src="4.1.jpg" /></p>
 <p><span class="arithmatex">\(\arctan\)</span> 有 <span class="arithmatex">\(\frac{1}{a}\)</span> 是因为分母没有根号，生成了 <span class="arithmatex">\(a^2\)</span>；<span class="arithmatex">\(\arcsin\)</span> 没有 <span class="arithmatex">\(\frac{1}{a}\)</span> 是因为分母有根号，把 <span class="arithmatex">\(a^2\)</span> 劈成了 <span class="arithmatex">\(a\)</span>，和分子的 <span class="arithmatex">\(dx\)</span> 产生的 <span class="arithmatex">\(a\)</span> 同归于尽了</p>
+<p><span class="arithmatex">\(\int \frac{1}{\sqrt{x^2+a^2}} dx = \ln(x + \sqrt{x^2+a^2}) + C\)</span></p>
 <p><img alt="" src="4.2.jpg" /></p>
 <h2 id="_6">总结</h2>
 <ol>
@@ -1636,10 +1646,8 @@
 <li><strong>无中生有与裂项局</strong>（对付 <span class="arithmatex">\(\sec x\)</span> 强行乘因式，对付 <span class="arithmatex">\(\frac{1}{x^2-a^2}\)</span> 分母裂项）</li>
 <li><strong>三角换元大招局</strong>（对付根号和平方和，设 <span class="arithmatex">\(x=a\tan t\)</span> 或 <span class="arithmatex">\(a\sin t\)</span>）</li>
 </ol>
-<p>这是全部了吗？ </p>
-<p>就书上的“基本积分公式表”而言，是的，这绝对是全部了。</p>
-<p>这些够用了吗？</p>
-<p>从“公式储备”的角度来说，绝对够了；从“做题能力”的角度来说，这只是基石。 还需要 kuku 刷题</p>
+<p>这是全部了吗？ 就书上的“基本积分公式表”而言，这是全部了。</p>
+<p>这些够用了吗？从公式储备的角度来说绝对够了，从做题能力的角度来说这只是基石，还需要 kuku 刷题</p>
 
 
 
