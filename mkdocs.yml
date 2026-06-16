@@ -70,8 +70,9 @@ extra_css:
 
 extra_javascript:
   # --- MathJax (数学公式) ---
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - assets/javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
 
   # --- WaveDrom (时序图) ---
   - https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.1.0/skins/default.js

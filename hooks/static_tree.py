@@ -123,8 +123,10 @@ def render_tree(nodes: list[TreeNode]) -> str:
 def render_item(node: TreeNode, depth: int) -> list[str]:
     indent = "  " * depth
     title = html.escape(node.title)
+    # 对于纯文件（叶子节点），保留原本的 a 标签跳转逻辑
     link = f'<a href="{html.escape(node.url, quote=True)}">{title}</a>' if node.url else title
 
+    # 如果没有子节点，直接渲染
     if not node.children:
         return [f'{indent}<li class="kb-static-tree__item">{link}</li>']
 
@@ -132,12 +134,19 @@ def render_item(node: TreeNode, depth: int) -> list[str]:
     lines = [
         f'{indent}<li class="kb-static-tree__item">',
         f'{indent}  <details class="kb-static-tree__branch"{open_attr}>',
-        f'{indent}    <summary><span class="kb-static-tree__chevron" aria-hidden="true"></span>{link}</summary>',
+        # 把 <summary> 里面的 {link} 替换成了纯文本 {title}，消除 HTML 违规警告
+        f'{indent}    <summary><span class="kb-static-tree__chevron" aria-hidden="true"></span>{title}</summary>',
         f'{indent}    <div class="kb-static-tree__children">',
         f'{indent}      <ul>',
     ]
+    
+    # 如果这个父目录本身有 index.md 页面，我们把它作为子节点的第一项插入，供用户点击
+    if node.url:
+        lines.append(f'{indent}        <li class="kb-static-tree__item"><a href="{html.escape(node.url, quote=True)}">📄 {title} (概览)</a></li>')
+
     for child in node.children:
         lines.extend(render_item(child, depth + 3))
+        
     lines.extend([
         f'{indent}      </ul>',
         f'{indent}    </div>',
