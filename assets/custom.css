@@ -16,3 +16,18 @@ pre {
   white-space: -o-pre-wrap !important;    /* Opera 7 */
   word-wrap: break-word !important;       /* Internet Explorer 5.5+ */
 }
+
+/* 去除主页目录树列表前默认的黑点项目符号 */
+.md-typeset .kb-static-tree li::before {
+  content: none !important;
+  display: none !important;
+}
+
+.md-typeset .kb-static-tree li::marker {
+  content: "" !important;
+}
+
+.md-typeset .kb-static-tree ul {
+  list-style-type: none !important;
+  padding-left: 0 !important; /* 取消左侧多余的缩进，让蓝框和标题左对齐 */
+}
