@@ -1,0 +1,2299 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Knowledge Base of @coperlm">
+      
+      
+      
+        <link rel="canonical" href="https://coperlm.github.io/KnowledgeBase/%E8%87%AA%E7%84%B6%E4%B8%8E%E5%BA%94%E7%94%A8%E7%A7%91%E5%AD%A6/%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%80%E8%BD%AE%E5%A4%8D%E4%B9%A0/">
+      
+      
+        <link rel="prev" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8D%E6%98%AF%E6%9C%89%E6%89%8B%E5%B0%B1%E8%A1%8C%EF%BC%88%E9%99%88%E8%BF%B0%E5%8F%A5/">
+      
+      
+        <link rel="next" href="../%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A62025%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E9%87%8D%E7%82%B9/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>概率论一轮复习 - Coperlm的芝士库🧀</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Coperlm的芝士库🧀" class="md-header__button md-logo" aria-label="Coperlm的芝士库🧀" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Coperlm的芝士库🧀
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              概率论一轮复习
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://coperlm.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224 24c0-13.3 10.7-24 24-24 145.8 0 264 118.2 264 264 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-119.3-96.7-216-216-216-13.3 0-24-10.7-24-24M80 96c26.5 0 48 21.5 48 48v224c0 26.5 21.5 48 48 48s48-21.5 48-48-21.5-48-48-48c-8.8 0-16-7.2-16-16v-64c0-8.8 7.2-16 16-16 79.5 0 144 64.5 144 144s-64.5 144-144 144S32 447.5 32 368V144c0-26.5 21.5-48 48-48m168 0c92.8 0 168 75.2 168 168 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-66.3-53.7-120-120-120-13.3 0-24-10.7-24-24s10.7-24 24-24"/></svg>
+  </div>
+  <div class="md-source__repository">
+    博客
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  标签归档
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E4%BA%BA%E6%96%87%E4%B8%8E%E7%A4%BE%E4%BC%9A%E7%A7%91%E5%AD%A6/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  人文与社会科学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  自然与应用科学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E8%89%BA%E6%9C%AF%E4%B8%8E%E6%96%87%E5%8C%96%E7%94%9F%E6%B4%BB/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  艺术与文化生活
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Coperlm的芝士库🧀" class="md-nav__button md-logo" aria-label="Coperlm的芝士库🧀" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Coperlm的芝士库🧀
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://coperlm.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224 24c0-13.3 10.7-24 24-24 145.8 0 264 118.2 264 264 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-119.3-96.7-216-216-216-13.3 0-24-10.7-24-24M80 96c26.5 0 48 21.5 48 48v224c0 26.5 21.5 48 48 48s48-21.5 48-48-21.5-48-48-48c-8.8 0-16-7.2-16-16v-64c0-8.8 7.2-16 16-16 79.5 0 144 64.5 144 144s-64.5 144-144 144S32 447.5 32 368V144c0-26.5 21.5-48 48-48m168 0c92.8 0 168 75.2 168 168 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-66.3-53.7-120-120-120-13.3 0-24-10.7-24-24s10.7-24 24-24"/></svg>
+  </div>
+  <div class="md-source__repository">
+    博客
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    标签归档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E4%BA%BA%E6%96%87%E4%B8%8E%E7%A4%BE%E4%BC%9A%E7%A7%91%E5%AD%A6/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人文与社会科学
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然与应用科学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    自然与应用科学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%88%91%E8%A2%AB%E9%AB%98%E6%95%B0%E7%A7%AF%E5%88%86%E5%8D%A1%E6%AD%BB%E4%BA%86%E5%96%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    我被高数积分卡死了喵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../FPGA/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FPGA
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人工智能
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E5%85%83%E7%B4%A0%E5%8F%8D%E5%BA%94%E8%AE%BA/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    元素反应论
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E5%8C%BB%E5%AD%A6/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    医学
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E5%AF%86%E7%A0%81%E5%AD%A6/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    密码学
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    期末考试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    期末考试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E9%A2%84%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人工智能与大数据期末预习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BF%A1%E5%AE%89%E6%95%B0%E5%9F%BA%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    信安数基复习笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%860%E8%BD%AE%E9%A2%84%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大学物理0轮预习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F2025%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E9%87%8D%E7%82%B9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    操作系统2025期末考试重点
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%BA%932025%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E9%87%8D%E7%82%B9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据库2025期末考试重点
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8D%E6%98%AF%E6%9C%89%E6%89%8B%E5%B0%B1%E8%A1%8C%EF%BC%88%E9%99%88%E8%BF%B0%E5%8F%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构不是有手就行（陈述句
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论一轮复习
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论一轮复习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、随机事件和概率
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、随机事件和概率">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.古典概型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.几何概型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.重要公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.独立性判定
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、一维随机变量及其分布
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、一维随机变量及其分布">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.判分布
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A62025%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E9%87%8D%E7%82%B9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    现代密码学2025期末考试重点
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%9C%89%E6%89%8B%E5%B0%B1%E8%A1%8C%E8%AF%B6%E6%88%91%E6%89%8B%E5%91%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机网络有手就行诶我手呢
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%BB%84%E6%9C%9F%E6%9C%AB%E9%A2%84%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计组期末预习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%AB%98%E6%95%B0%E4%B8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高数下学习笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA408%E8%80%83%E7%A0%94/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机408考研
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机科学与技术
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E8%89%BA%E6%9C%AF%E4%B8%8E%E6%96%87%E5%8C%96%E7%94%9F%E6%B4%BB/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    艺术与文化生活
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、随机事件和概率
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、随机事件和概率">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.古典概型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.几何概型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.重要公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.独立性判定
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、一维随机变量及其分布
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、一维随机变量及其分布">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.判分布
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="导航栏" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    主页
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    自然与应用科学
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9C%9F%E6%9C%AB%E9%A2%84%E4%B9%A0/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    期末考试
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">概率论一轮复习</h1>
+<p>记录概率论的学习内容</p>
+<h2 id="_2">目录</h2>
+<p><img alt="" src="概率论一轮复习\image-20241226153014795.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241226153156568.png" /></p>
+<h2 id="_3">一、随机事件和概率</h2>
+<p><img alt="" src="概率论一轮复习\image-20241226155309296.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241226155749497.png" /></p>
+<h3 id="1">1.古典概型</h3>
+<h3 id="2">2.几何概型</h3>
+<h3 id="3">3.重要公式</h3>
+<h3 id="4">4.独立性判定</h3>
+<h2 id="_4">二、一维随机变量及其分布</h2>
+<p><img alt="" src="概率论一轮复习\image-20241226155849403.png" /></p>
+<h3 id="1_1">1.判分布</h3>
+<p>随机变量：<span class="arithmatex">\(X:\Omega\rightarrow\mathbb{R}\)</span></p>
+<p>分布函数：<span class="arithmatex">\(X\sim F(x),F(x)=P(X\leq x),F(x)\in[0,1]\)</span></p>
+<p><img alt="" src="概率论一轮复习\image-20241226161408379.png" /></p>
+<p>对于连续型<span class="arithmatex">\(F(x)=\int_{-\infty}^{x}f(t)dt,x\in\mathbb{R}\)</span></p>
+<p><img alt="" src="概率论一轮复习\image-20241226161715853.png" />
+$$
+\left{
+\begin{align}
+&amp;F(-\infty)=0,\
+&amp;F(+\infty)=1,\
+&amp;\sum_ip_i=1,\
+&amp;\int_{-\infty}^{+\infty}f(x)dx=1
+\end{align}
+\right.
+$$
+<img alt="" src="概率论一轮复习\image-20241226162907433.png" /></p>
+<p>A</p>
+<p><img alt="" src="概率论一轮复习\image-20241226163018346.png" /></p>
+<p><img alt="" src="概率论一轮复习\6274990073b1f018f2b3bd296672d12.jpg" /></p>
+<p>B选项解法二：也可以使用部分积分公式<span class="arithmatex">\(\int udv=uv-\int vdu\)</span></p>
+<h1 id="_5">部分积分公式推导过程</h1>
+<p><img alt="" src="概率论一轮复习\image-20241226164835164.png" /></p>
+<p>其中：<span class="arithmatex">\(u=v=F(x)\)</span></p>
+<p>带入部分积分公式：<span class="arithmatex">\(\int F(x) dF(x)=[F(x)F(x)]|_{-\infty}^{+\infty}−\int F(x)dF(x)\)</span></p>
+<p>故 <span class="arithmatex">\(\int F(x) dF(x)=\frac{1}{2}\)</span></p>
+<p>则 <span class="arithmatex">\(g_2(x)\)</span> 可以作为概率密度</p>
+<p><span class="arithmatex">\(g_1(x),g_2(x),g_3(x)\)</span>可以作为概率密度， <span class="arithmatex">\(g_4(x)\)</span> 不能作为概率密度</p>
+<p>C</p>
+<h3 id="2_1">2.求分布</h3>
+<ul>
+<li>
+<p>离散型分布</p>
+</li>
+<li>
+<p>0-1分布 <span class="arithmatex">\(X\sim B(1,p),X(伯努利计数变量)\sim \left(\begin{array}{l}0&amp;\quad1\\p&amp;1-p\end{array}\right)\)</span></p>
+</li>
+<li>
+<p>二项分布 <span class="arithmatex">\(X\sim B(n,p)\)</span> 分布律 <span class="arithmatex">\(U_k=P\{X=k\}=C_n^kp^k(1-p)^{n-k}\)</span></p>
+</li>
+<li>
+<p>几何分布 <span class="arithmatex">\(X\sim G(p)\)</span> 首中即停止 <span class="arithmatex">\(P\{X=k\}=p\cdot (1-p)^{k-1}\)</span></p>
+<p>无记忆性<img alt="" src="概率论一轮复习\image-20241226172043086.png" /></p>
+</li>
+<li>
+<p>超几何分布<img alt="" src="概率论一轮复习\image-20241226172116840.png" /></p>
+</li>
+<li>柏松分布 稀有事件的概率 <span class="arithmatex">\(P\{X=k\}=\frac{\lambda^k}{k!}e^{-\lambda}\)</span>，<span class="arithmatex">\(EX=\lambda\)</span></li>
+</ul>
+<p>泊松定理 若<span class="arithmatex">\(X\sim B(n,p)\)</span>，当<span class="arithmatex">\(n\)</span>很大，<span class="arithmatex">\(p\)</span>很小，<span class="arithmatex">\(\lambda=np\)</span> 适中时，二项分布可用泊松分布近似表示；一般地，当<span class="arithmatex">\(n&gt;20,p&lt;0.05\)</span> 时，用泊松近似公式通近二项分布效果比较好，特别当<span class="arithmatex">\(n&gt;100,np&lt;10\)</span> 时，逼近效果更佳
+$$
+C_n^kp^k(1-p)^{n-k}\approx\frac{\lambda^k}{k!}e^{-\lambda}
+$$
+<img alt="" src="概率论一轮复习\image-20241226172929663.png" />
+$$
+\begin{align}
+\because\ &amp;Z\sim B(2,\frac13)\
+&amp;X+Y+Z=2\
+\therefore\ &amp;X+Y=2-Z\sim B(2,\frac23)
+\end{align}
+$$
+B</p>
+<p><img alt="" src="概率论一轮复习\image-20241227084704187.png" /></p>
+<p>8</p>
+<p><img alt="" src="概率论一轮复习\image-20241227084958983.png" /></p>
+<p><img alt="" src="概率论一轮复习\3d41f9d1474d853ccd93e271382de97.jpg" /></p>
+<p>D</p>
+<ul>
+<li>
+<p>连续型分布</p>
+</li>
+<li>
+<p>均匀分布 <span class="arithmatex">\(X\sim U(a,b)\)</span>
+    $$
+    f(x)=\left{\begin{align}&amp;\frac1{b-a},a&lt;x&lt;b\ &amp;0,otherwise\end{align}\right.
+    $$</p>
+<div class="arithmatex">\[
+F(x)=\left\{\begin{align}&amp;0,x&lt;a\\&amp;\frac{x-a}{x-b},a\leq x&lt;b\\ &amp;1,x\ge b\end{align}\right.
+\]</div>
+<p><img alt="" src="概率论一轮复习\image-20241227090909632.png" /></p>
+</li>
+<li>
+<p>指数分布 <span class="arithmatex">\(X\sim E(\lambda)\)</span>
+    $$
+    f(x)=\left{\begin{align}&amp;\lambda e^{-\lambda x},x\ge0\ &amp;0,otherwise\end{align}\right.\quad(\lambda&gt;0)
+    $$</p>
+<div class="arithmatex">\[
+F(x)=\left\{\begin{align}&amp;1-e^{-\lambda x},x\ge0\\&amp;0,x&lt;0\end{align}\right.\quad(\lambda&gt;0)
+\]</div>
+<p><img alt="" src="概率论一轮复习\image-20241227092018265.png" /></p>
+<p><span class="arithmatex">\(t,s&gt;0\)</span>时，<span class="arithmatex">\(P\{X\ge t+s|X\ge t\}=P\{X\ge s\}\)</span> 称为指数分布的无记忆性</p>
+<p><span class="arithmatex">\(EX=\frac1\lambda\)</span>称为平均寿命，也称为平均等待时间，<span class="arithmatex">\(\lambda\)</span>称为失效频率，它是一个常数，失效频率不变，元件无损耗，才有无记忆性</p>
+</li>
+<li>
+<p>正态分布 <span class="arithmatex">\(X\sim N(\mu,\sigma^2)\)</span>
+    $$
+    X\sim f(x)=\frac1{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+    $$
+    <span class="arithmatex">\(\mu=0,\sigma=1\)</span>时为标准正态分布</p>
+</li>
+</ul>
+<p><img alt="" src="概率论一轮复习\image-20241227093654288.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227095003089.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227095053035.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227122206944.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227164905346.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227165359766.png" /></p>
+<p>此分布为威布尔分布，是考虑元件损耗的寿命分布；若<span class="arithmatex">\(m=1\)</span>，则成为指数分布，是理想元件（无损耗）的寿命分布</p>
+<p><img alt="" src="概率论一轮复习\image-20241227165618501.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227170404306.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227170602755.png" /></p>
+<p>A</p>
+<p><img alt="" src="概率论一轮复习\image-20241227170813857.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227172128771.png" /></p>
+<h3 id="3_1">3.用分布</h3>
+<p><img alt="" src="概率论一轮复习\image-20241227172253427.png" /></p>
+<p>A</p>
+<p><img alt="" src="概率论一轮复习\image-20241227172718820.png" /></p>
+<p>A</p>
+<p><img alt="" src="概率论一轮复习\image-20241227172955625.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227173344657.png" /></p>
+<p>A</p>
+<p><img alt="" src="概率论一轮复习\image-20241227173657936.png" /></p>
+<p>注意这里是<span class="arithmatex">\(\ge\)</span></p>
+<p><span class="arithmatex">\(k\in[1,3]\)</span></p>
+<h2 id="_6">三、一维随机变量函数的分布</h2>
+<p><img alt="" src="概率论一轮复习\image-20241227174148198.png" /></p>
+<h3 id="1-">1.离散型-&gt;离散型</h3>
+<div class="arithmatex">\[
+Y\sim \left(\begin{array}{l}g(x_1)&amp;g(x_2)&amp; ...\\\quad p_1&amp;\quad p_2&amp;...\end{array}\right)
+\]</div>
+<p><img alt="" src="概率论一轮复习\image-20241227174532760.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227175235924.png" /></p>
+<h3 id="2-">2.连续型-&gt;连续型（或混合型）</h3>
+<p>感觉讲解过程很复杂，还是直接看例题吧</p>
+<p><img alt="" src="概率论一轮复习\image-20241227180950170.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227175819907.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227180858952.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227181144259.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227213217020.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227213349706.png" /></p>
+<p>不是哥们，这玩意有点逆天</p>
+<p><img alt="" src="概率论一轮复习\image-20241227225402554.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227230811534.png" /></p>
+<p>解法二有点不理解，但是好厉害···</p>
+<h3 id="3-">3.连续型-&gt;离散型</h3>
+<p>若<span class="arithmatex">\(X\sim f_X(x)\)</span>，且<span class="arithmatex">\(Y= g(X)\)</span>是离散型随机变量；首先确定<span class="arithmatex">\(Y\)</span>的可能取值<span class="arithmatex">\(a\)</span>，然后通过计算概率<span class="arithmatex">\(P\{Y=a\}\)</span>求得<span class="arithmatex">\(Y\)</span>的概率分布</p>
+<p><img alt="" src="概率论一轮复习\image-20241227232845496.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227232754668.png" /></p>
+<p>题解给的做法，直接用几何分布的无记忆性</p>
+<p><img alt="" src="概率论一轮复习\image-20241227232927146.png" /></p>
+<h2 id="_7">四、多为随机变量及其分布</h2>
+<p><img alt="" src="概率论一轮复习\image-20241227234626568.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241227234637877.png" /></p>
+<h3 id="1_2">1.判分布</h3>
+<div class="arithmatex">\[
+F(x,y)=P\{X\leq x,Y\leq y\}
+\]</div>
+<p><span class="arithmatex">\(F(x,y)\)</span>是联合分布函数的充要条件：单调性，右连续性，有界性，非负性
+$$
+\left{
+\begin{align}
+&amp;F(-\infty,y)=0,F(x,-\infty)=0,\
+&amp;F(-\infty,-\infty)=0,F(+\infty,+\infty)=1,\
+&amp;\sum_j\sum_ip_{ij}=1,\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f(x,y)dxdy=1
+\end{align}
+\right.
+$$</p>
+<h3 id="2_2">2.求分布</h3>
+<h4 id="_8">求联合分布</h4>
+<ul>
+<li>
+<p>求<span class="arithmatex">\(F(x,y),p_{ij},f(x,y)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\((X,Y)\sim p_{ij}\)</span>，则<span class="arithmatex">\(F(x,y)=P\{X\leq x,Y\leq y\}=\sum_{x_i\leq x,y_i\leq y}p_{ij}\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\((X,Y)\sim f(x,y)\)</span>，则<span class="arithmatex">\(F(x,y)=P\{X\leq x,Y\leq y\}=\int_{-\infty}^{+\infty}du\int_{-\infty}^{+\infty}f(u,v)dv\)</span></p>
+</li>
+<li>
+<p>二维均匀分布
+  $$
+  f(x,y)=\left{\begin{align}&amp;\frac1{S_D},(x,y)\in D\&amp;0,其他\end{align}\right.
+  $$</p>
+</li>
+<li>
+<p>二维正态分布 <span class="arithmatex">\((X,Y)\sim N(\mu_1,\mu2;\sigma_1^2,\sigma_2^2;\rho)\)</span>
+  $$
+  f(x,y)=\frac1{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}exp(-\frac1{2(1-\rho^2)}((\frac{x-\mu_1}{\sigma_1})^2-2\rho(\frac{x-\mu_1}{\sigma_1})(\frac{y-\mu_2}{\sigma_2})+(\frac{y-\mu_2}{\sigma_2})^2))
+  $$
+  <img alt="" src="概率论一轮复习\image-20241228002324187.png" /></p>
+</li>
+</ul>
+<h4 id="_9">求边缘分布</h4>
+<div class="arithmatex">\[
+F_X(x)=F(x,+\infty),F_Y(y)=F(+\infty,y)\\
+  p_{i*}=\sum_jp_{ij},p_{*j}=\sum_ip_{ij}\\
+  f_X(x)=\int_{-\infty}^{+\infty}f(x,y)dy,f_Y(y)=\int_{-\infty}^{+\infty}f(x,y)dx
+\]</div>
+<h4 id="_10">求条件分布</h4>
+<p><img alt="" src="概率论一轮复习\image-20241228003103701.png" /></p>
+<h4 id="_11">判独立</h4>
+<p><img alt="" src="概率论一轮复习\image-20241228003309350.png" /></p>
+<h3 id="3_2">3.用分布</h3>
+<p><img alt="" src="概率论一轮复习\image-20241228003200867.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241228003218431.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241228003920736.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241228004001647.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241228204716039.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241228204803089.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241228204920097.png" /></p>
+<p><span class="arithmatex">\(a=0.1,b=0.1,c=0.5,d=0\)</span></p>
+<p><img alt="" src="概率论一轮复习\image-20241228210508101.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241228211129615.png" /></p>
+<p><img alt="image-20241228211232751" src="概率论一轮复习\image-20241228211232751.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241228212850307.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241228212947584.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241228214934142.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241228215529903.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241229143532802.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241229145457186.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241229145628258.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241229150523813.png" /></p>
+<h2 id="_12">五、一维随机变量函数的分布</h2>
+<p><img alt="" src="概率论一轮复习\image-20241229150605527.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241229150631218.png" /></p>
+<h3 id="1-_1">1.多维-&gt;一维</h3>
+<p>2.</p>
+<p>3.</p>
+<h2 id="_13">六、数学特征</h2>
+<p><img alt="" src="概率论一轮复习\image-20241229150733335.png" /></p>
+<p><img alt="" src="概率论一轮复习\image-20241229150814358.png" /></p>
+<h3 id="1_3">1.数学期望</h3>
+<p><img alt="image-20241229151120087" src="概率论一轮复习\image-20241229151120087.png" /></p>
+<h3 id="2_3">2.方差</h3>
+<p>3.</p>
+<h2 id="_14">七、大数定理和中心极限定理</h2>
+<p><img alt="" src="概率论一轮复习\image-20241229151301493.png" /></p>
+<h3 id="1_4">1.依概率收敛</h3>
+<p>设随机变量<span class="arithmatex">\(X\)</span>与随机变量序列<span class="arithmatex">\(\{X_n\}(n=1,2,3,…)\)</span>，如果对任意的<span class="arithmatex">\(\varepsilon&gt;0\)</span>，有
+$$
+\lim_{n\rightarrow x}P{|X_n-X|\ge\varepsilon}=0\
+或\
+\lim_{n\rightarrow x}P{|X_n-X|&lt;\varepsilon}=1
+$$
+则称随机变量序列<span class="arithmatex">\(\{X_n\}\)</span>依概率收敛于随机变量<span class="arithmatex">\(X\)</span>，记为</p>
+<p><span class="arithmatex">\(\lim_{n\to\infty}X_{n}=X(P)\)</span> 或 <span class="arithmatex">\(X_{n}{\overset{p}\longrightarrow}X(n\to\infty)\)</span></p>
+<h3 id="2_4">2.大数定律</h3>
+<h4 id="_15">切比雪夫大数定律</h4>
+<p>相互独立 方差存在且一致有上界</p>
+<p>则<span class="arithmatex">\(\{X_n\}\)</span>服从大数定理 <span class="arithmatex">\(\frac1n\sum_{i=1}^nX_i\overset{p}\longrightarrow\frac1n\sum_{i=1}^nEX_i\)</span></p>
+<h4 id="_16">伯努利大数定律</h4>
+<p><span class="arithmatex">\(\mu_n\)</span>是<span class="arithmatex">\(n\)</span>重伯努利实验中事件<span class="arithmatex">\(A\)</span>发生的次数，<span class="arithmatex">\(A\sim B(n,p)\)</span>，则 <span class="arithmatex">\(\frac{\mu_n}n\overset{p}\longrightarrow p\)</span></p>
+<h4 id="_17">辛钦大数定律</h4>
+<p>相互独立 同分布 期望存在</p>
+<p>则 <span class="arithmatex">\(\frac1n\sum_{i=1}^nX_i\overset{p}\longrightarrow\mu\)</span></p>
+<h4 id="_18">大数定律同一个结论</h4>
+<p><span class="arithmatex">\(\frac1n\sum_{i=1}^nX_i\overset{p}\longrightarrow E(\frac1n\sum_{i=1}^nX_i)\)</span></p>
+<h3 id="3_3">3.中心极限定理</h3>
+<p>列维-林德伯格定理</p>
+<p>棣莫弗-拉普拉斯定理</p>
+<p>中心极限定理同一个结论</p>
+<h2 id="_19">八、统计量及其分布</h2>
+<p><img alt="" src="概率论一轮复习\image-20241229154208904.png" /></p>
+<h3 id="1_5">1.统计量</h3>
+<p>样本均值 <span class="arithmatex">\(\overline{X}=\frac1n\sum_{i=1}^{n}X_i\)</span> </p>
+<p>样本方差 <span class="arithmatex">\(s^{2}=\frac{1}{n-1}\sum _ {i=1}^ {n}(X_i-\overline{X})^{2} = \frac {1}{n-1}(\sum _ {i=1}^ {n}X_ {i}^ {2}-\overline{X}^2)\)</span>（无偏估计）</p>
+<p>样本 <span class="arithmatex">\(k\)</span> 阶原点矩 $ A_ {k}  = \frac {1}{n} \sum _ {i=1}^ {n} x^ {k}  (k=1,2, \cdots )$</p>
+<p>样本 <span class="arithmatex">\(k\)</span> 阶中心矩 $ B_ {k}  =  \frac {1}{n}   \sum _ {i=1}^ {n}   (X_ {i}-\overline {X})^ {k}  (k=2,3, \cdots  )$</p>
+<p>顺序统计量 将样本n个观测量按其取值从小到大的顺序排列</p>
+<h3 id="2_5">2.统计量的分布</h3>
+<h4 id="_20">正态分布</h4>
+<p>略</p>
+<p><span class="arithmatex">\(\chi^2\)</span>分布</p>
+<p>3.正态总体下的常用结论</p>
+<p>九、参数估计与假设检验</p>
+<p>1.点估计和评价标准</p>
+<p>2.区间估计与假设检验</p>
+<h2 id="append">Append</h2>
+<p>还有两个小时进考场，浅速通一下概率论</p>
+<pre><code>基本概率
+联合概率求独立性
+连续函数的概率密度
+边缘密度和独立性
+协方差
+矩估计量和最大似然估计量
+显著性水平应用题
+</code></pre>
+<h3 id="_21">协方差</h3>
+<p><span class="arithmatex">\(D(aX+bY)=a^2D(X)+b^2D(Y)+2abCov(X,Y)\)</span></p>
+<p><span class="arithmatex">\(Cov(X,Y)=E(XY)-E(X)E(Y)\)</span></p>
+<p><span class="arithmatex">\(\rho_{XY}=\frac{Cov(X,Y)}{\sqrt{D(X)}\cdot\sqrt{D(Y)}}\)</span></p>
+<p><img alt="" src="概率论一轮复习\image-20241230143604750.png" /></p>
+<h3 id="_22">矩估计量和最大似然估计量</h3>
+<p><img alt="" src="概率论一轮复习\image-20241230143709401.png" /></p>
+<h3 id="_23">显著性水平应用题</h3>
+<p>要检验的假设是 <span class="arithmatex">\(H_0: \mu\)</span> 符合要求, <span class="arithmatex">\(H_1:\mu\)</span> 不符合要求（2分）</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8D%E6%98%AF%E6%9C%89%E6%89%8B%E5%B0%B1%E8%A1%8C%EF%BC%88%E9%99%88%E8%BF%B0%E5%8F%A5/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 数据结构不是有手就行（陈述句">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                数据结构不是有手就行（陈述句
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A62025%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E9%87%8D%E7%82%B9/" class="md-footer__link md-footer__link--next" aria-label="下一页: 现代密码学2025期末考试重点">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                现代密码学2025期末考试重点
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 - 2026 coperlm – <a href="#__consent">Change cookie settings</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "header.autohide", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../assets/javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.1.0/skins/default.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.1.0/wavedrom.min.js"></script>
+      
+        <script src="../../../assets/javascripts/wavedrom.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../assets/javascripts/tablesort.js"></script>
+      
+    
+  </body>
+</html>
