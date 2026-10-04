@@ -7,10 +7,13 @@ repo_name: 博客
 # exclude_docs: |
 #   Z-未整理/
 
+# plugins:
+#   - search
+#   - tags:
+#       tags_file: KnowledgeBase/tags.md
 plugins:
   - search
-  - tags:
-      tags_file: KnowledgeBase/tags.md
+  - tags
 
 hooks:
   - hooks/static_tree.py
