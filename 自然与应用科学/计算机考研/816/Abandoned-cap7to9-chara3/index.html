@@ -2451,8 +2451,12 @@
 <ul>
 <li><strong>题目要点</strong>：</li>
 <li><code>7-13</code>：A 和 B 共享对称密钥 <span class="arithmatex">\(K_{AB}\)</span>。A 收到用 <span class="arithmatex">\(K_{AB}\)</span> 加密的报文，能否向第三方证明该报文必为 B 所发（B 不能抵赖）？</li>
-<li><code>7-14</code>：比较图 7-5（具有机密性的数字签名）与图 7-6（使用报文鉴别码 MAC），哪一种更有利于鉴别？</li>
-<li><strong>符号表达式与定量对比</strong>：</li>
+<li>
+<p><code>7-14</code>：比较图 7-5（具有机密性的数字签名）与图 7-6（使用报文鉴别码 MAC），哪一种更有利于鉴别？</p>
+</li>
+<li>
+<p><strong>符号表达式与定量对比</strong>：</p>
+</li>
 <li><strong>对称加密表达式（<code>7-13</code>）</strong>：
      $<span class="arithmatex">\(A \leftarrow B : E_{K_{AB}}(X)\)</span>$<ul>
 <li><strong>结论</strong>：<strong>A 不能向第三方证明报文必出自 B</strong>。因为 A 和 B 均持有相同的对称密钥 <span class="arithmatex">\(K_{AB}\)</span>，A 完全可以自己计算出 <span class="arithmatex">\(E_{K_{AB}}(X)\)</span> 进行伪造，故不具备不可抵赖性。</li>
@@ -2464,12 +2468,16 @@
 <li><strong>鉴别能力</strong>：由于全球仅 A 拥有私钥 <span class="arithmatex">\(SK_A\)</span>，任何第三方均可用公开的 <span class="arithmatex">\(PK_A\)</span> 验证签名，<strong>同时实现源点鉴别、完整性校验与不可抵赖性（更有利于全面鉴别）</strong>。</li>
 </ul>
 </li>
-<li><strong>图 7-6 报文鉴别码 MAC 表达式（<code>7-14</code>）</strong>：
-     $<span class="arithmatex">\(A \to B : X \,\big\|\, H(X \,\|\, K_{AB})\)</span>$<ul>
+<li>
+<p><strong>图 7-6 报文鉴别码 MAC 表达式（<code>7-14</code>）</strong>：
+     $<span class="arithmatex">\(A \to B : X \,\big\|\, H(X \,\|\, K_{AB})\)</span>$</p>
+<ul>
 <li><strong>运算步骤与次数</strong>：收发双方仅需执行 <strong>1 次带共享密钥 <span class="arithmatex">\(K_{AB}\)</span> 的散列运算（极快，无公钥大数运算开销）</strong>，但不具备第三方不可抵赖性。</li>
 </ul>
 </li>
-<li><strong>【附：第7章必会定量计算公式】</strong></li>
+<li>
+<p><strong>【附：第7章必会定量计算公式】</strong></p>
+</li>
 <li><strong><span class="arithmatex">\(N\)</span> 个用户两两保密通信所需密钥总数</strong>：<ul>
 <li>无中心对称密码体制：<span class="arithmatex">\(K = C_N^2 = \mathbf{\frac{N(N-1)}{2}}\)</span>；</li>
 <li>有中心 KDC（如 Kerberos）对称体制：长期主密钥数为 <span class="arithmatex">\(\mathbf{N}\)</span>；</li>
@@ -2490,10 +2498,14 @@
 <li><strong>攻击交互公式</strong>（设攻击者为 <span class="arithmatex">\(C\)</span>，篡改未认证的公钥交换）：</li>
 <li><span class="arithmatex">\(B \to C(\text{截获}) : PK_B\)</span>，随后攻击者替换为自己的公钥：<span class="arithmatex">\(C \to A : PK_C\)</span>；</li>
 <li><span class="arithmatex">\(A\)</span> 误将 <span class="arithmatex">\(PK_C\)</span> 当作 <span class="arithmatex">\(B\)</span> 的公钥加密明文 <span class="arithmatex">\(X\)</span>：<span class="arithmatex">\(A \to C(\text{截获}) : E_{PK_C}(X)\)</span>；</li>
-<li><span class="arithmatex">\(C\)</span> 用自己的私钥解密窃取明文：<span class="arithmatex">\(D_{SK_C}\big(E_{PK_C}(X)\big) = X\)</span>，随后用 <span class="arithmatex">\(B\)</span> 的真公钥重新加密发给 <span class="arithmatex">\(B\)</span>：<span class="arithmatex">\(C \to B : E_{PK_B}(X)\)</span>。</li>
-<li><strong>防御算式（CA 数字证书绑定）</strong>：
+<li>
+<p><span class="arithmatex">\(C\)</span> 用自己的私钥解密窃取明文：<span class="arithmatex">\(D_{SK_C}\big(E_{PK_C}(X)\big) = X\)</span>，随后用 <span class="arithmatex">\(B\)</span> 的真公钥重新加密发给 <span class="arithmatex">\(B\)</span>：<span class="arithmatex">\(C \to B : E_{PK_B}(X)\)</span>。</p>
+</li>
+<li>
+<p><strong>防御算式（CA 数字证书绑定）</strong>：
   $<span class="arithmatex">\(\text{Cert}_B = \text{ID}_B \,\big\|\, PK_B \,\big\|\, D_{SK_{\text{CA}}}\Big(H(\text{ID}_B \,\|\, PK_B)\Big)\)</span>$
-  <span class="arithmatex">\(A\)</span> 用预置的 CA 公钥 <span class="arithmatex">\(PK_{\text{CA}}\)</span> 验证签名，攻击者 <span class="arithmatex">\(C\)</span> 因无 <span class="arithmatex">\(SK_{\text{CA}}\)</span> 无法伪造证书。</li>
+  <span class="arithmatex">\(A\)</span> 用预置的 CA 公钥 <span class="arithmatex">\(PK_{\text{CA}}\)</span> 验证签名，攻击者 <span class="arithmatex">\(C\)</span> 因无 <span class="arithmatex">\(SK_{\text{CA}}\)</span> 无法伪造证书。</p>
+</li>
 </ul>
 <hr />
 <h3 id="3-7-22-7-23-ipsec-sa">3. <code>7-22</code> &amp; <code>7-23</code> IPsec 协议族封装结构与安全关联 SA 复用计算</h3>
@@ -2501,8 +2513,12 @@
 <li><strong><code>7-22</code> IPsec 核心组件</strong>：</li>
 <li><strong>AH（鉴别首部，协议号 51）</strong>：提供源点鉴别 + 数据完整性 + 防重放，<strong>不提供加密</strong>。</li>
 <li><strong>ESP（封装安全有效载荷，协议号 50）</strong>：提供<strong>机密性（加密）</strong> + 源点鉴别 + 数据完整性 + 防重放。</li>
-<li><strong>IKE（互联网密钥交换）</strong>：自动协商建立安全关联 SA 与交换会话密钥。</li>
-<li><strong><code>7-23</code> 发送 6 个分组需建立几次安全关联 SA</strong>：</li>
+<li>
+<p><strong>IKE（互联网密钥交换）</strong>：自动协商建立安全关联 SA 与交换会话密钥。</p>
+</li>
+<li>
+<p><strong><code>7-23</code> 发送 6 个分组需建立几次安全关联 SA</strong>：</p>
+</li>
 <li><strong>只需在发送第 1 个分组前建立 1 次单向安全关联 SA！</strong></li>
 <li>后续接连发送的全部 6 个分组<strong>共享并复用同一个 SA</strong>（仅将每个分组 ESP 首部中的 32 位防重放序号依次递增为 <span class="arithmatex">\(1, 2, 3, 4, 5, 6\)</span>）。</li>
 </ul>
@@ -2511,9 +2527,13 @@
 <ol>
 <li><strong>协商算法与交换明文随机数</strong>：<span class="arithmatex">\(A \to B : R_A\)</span>，<span class="arithmatex">\(B \to A : R_B\)</span>；</li>
 <li><strong>证书验证</strong>：<span class="arithmatex">\(B \to A : \text{Cert}_B\)</span>（内含 <span class="arithmatex">\(PK_B\)</span>），<span class="arithmatex">\(A\)</span> 用 <span class="arithmatex">\(PK_{\text{CA}}\)</span> 校验通过；</li>
-<li><strong>传递预主密钥并导出会话密钥</strong>：<span class="arithmatex">\(A\)</span> 生成随机秘密数 <span class="arithmatex">\(S\)</span>（Pre-master Secret），发送密文 <span class="arithmatex">\(E_{PK_B}(S)\)</span>；<span class="arithmatex">\(B\)</span> 计算 <span class="arithmatex">\(D_{SK_B}\big(E_{PK_B}(S)\big) = S\)</span>。随后双方各自通过伪随机函数计算出会话密钥：
-   $<span class="arithmatex">\(K_{\text{session}} = \text{PRF}(S,\ R_A,\ R_B)\)</span>$</li>
-<li><strong>握手完成校验</strong>：双方用 <span class="arithmatex">\(K_{\text{session}}\)</span> 加密发送握手结束（Finished）报文验证完整性。</li>
+<li>
+<p><strong>传递预主密钥并导出会话密钥</strong>：<span class="arithmatex">\(A\)</span> 生成随机秘密数 <span class="arithmatex">\(S\)</span>（Pre-master Secret），发送密文 <span class="arithmatex">\(E_{PK_B}(S)\)</span>；<span class="arithmatex">\(B\)</span> 计算 <span class="arithmatex">\(D_{SK_B}\big(E_{PK_B}(S)\big) = S\)</span>。随后双方各自通过伪随机函数计算出会话密钥：
+   $<span class="arithmatex">\(K_{\text{session}} = \text{PRF}(S,\ R_A,\ R_B)\)</span>$</p>
+</li>
+<li>
+<p><strong>握手完成校验</strong>：双方用 <span class="arithmatex">\(K_{\text{session}}\)</span> 加密发送握手结束（Finished）报文验证完整性。</p>
+</li>
 </ol>
 <hr />
 <h2 id="8-4-p402404">二、 第8章《互联网上的音频/视频服务》第三类题（共 4 题，P402–404）</h2>
@@ -2647,11 +2667,15 @@
 <h3 id="6-8-20-fifofqwfq">6. <code>8-20</code> 先进先出（FIFO）、公平排队（FQ）与加权公平排队（WFQ）虚拟完结时间公式</h3>
 <ul>
 <li><strong>FIFO</strong>：按到达时间 <span class="arithmatex">\(t_{\text{arr}}\)</span> 排序，无流隔离。</li>
-<li><strong>FQ（逐字节公平排队，<code>2025-选5</code> 核心公式）</strong>：设第 <span class="arithmatex">\(k\)</span> 个队列的第 <span class="arithmatex">\(i\)</span> 个分组长度为 <span class="arithmatex">\(L_i\)</span>，到达时刻为 <span class="arithmatex">\(R_i\)</span>，则该分组的虚拟完结轮次 <span class="arithmatex">\(F_i\)</span> 为：
+<li>
+<p><strong>FQ（逐字节公平排队，<code>2025-选5</code> 核心公式）</strong>：设第 <span class="arithmatex">\(k\)</span> 个队列的第 <span class="arithmatex">\(i\)</span> 个分组长度为 <span class="arithmatex">\(L_i\)</span>，到达时刻为 <span class="arithmatex">\(R_i\)</span>，则该分组的虚拟完结轮次 <span class="arithmatex">\(F_i\)</span> 为：
   $<span class="arithmatex">\(F_i = \max\big(F_{i-1},\ R_i\big) + L_i\)</span>$
-  每次从所有非空队列中选择 <strong><span class="arithmatex">\(F_i\)</span> 最小</strong>的分组优先发送。</li>
-<li><strong>WFQ（加权公平排队）</strong>：引入队列权重 <span class="arithmatex">\(w_k\)</span>，将虚拟完结时间修正为：
-  $<span class="arithmatex">\(F_i = \max\big(F_{i-1},\ R_i\big) + \frac{L_i}{w_k}\)</span>$</li>
+  每次从所有非空队列中选择 <strong><span class="arithmatex">\(F_i\)</span> 最小</strong>的分组优先发送。</p>
+</li>
+<li>
+<p><strong>WFQ（加权公平排队）</strong>：引入队列权重 <span class="arithmatex">\(w_k\)</span>，将虚拟完结时间修正为：
+  $<span class="arithmatex">\(F_i = \max\big(F_{i-1},\ R_i\big) + \frac{L_i}{w_k}\)</span>$</p>
+</li>
 </ul>
 <hr />
 <h3 id="7-8-33-ip-voip">7. <code>8-33</code> IP 电话（VoIP）多层首部封装后的数据率与开销增长百分比计算</h3>

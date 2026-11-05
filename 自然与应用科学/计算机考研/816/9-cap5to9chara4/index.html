@@ -2869,10 +2869,12 @@
 <h2 id="28">第五章 运输层（共 28 题：两座大楼里的秘书处传奇）</h2>
 <h3 id="1-5-01">1. <code>5-01</code> 试说明运输层在协议栈中的地位和作用。运输层的通信和网络层的通信有什么重要区别？为什么运输层是必不可少的？</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：
-  想象北京有一座写字楼 A，上海有一座写字楼 B。每座写字楼里都有几十间办公室，里面坐着正在同时办公的员工（微信、浏览器、网易云音乐）。
+<li><strong>【故事时间 / 说人话】</strong>：</li>
+</ul>
+<p>想象北京有一座写字楼 A，上海有一座写字楼 B。每座写字楼里都有几十间办公室，里面坐着正在同时办公的员工（微信、浏览器、网易云音乐）。
   <strong>网络层（IP）</strong> 就像是两座城市之间的<strong>邮政卡车司机</strong>：他只认识写字楼的大门地址（IP 地址），把一麻袋信件卸在一楼传达室就算完成任务，他根本不知道哪封信该送给 302 室的微信、哪封信该送给 508 室的浏览器，更不管路上丢没丢信。
-  这时候，每座写字楼里必须设立一个<strong>总秘书处（运输层）</strong>！秘书处给每个房间编上分机号（端口号），负责把各房间写好的信收拢打包交给卡车（复用），并在收到一麻袋信后按房间号精准送到每个员工桌上（分用），甚至替员工核对信件有没有缺页少字（可靠传输）。没有这个秘书处，整袋信堆在一楼大厅，楼里的员工谁也没法干活！</li>
+  这时候，每座写字楼里必须设立一个<strong>总秘书处（运输层）</strong>！秘书处给每个房间编上分机号（端口号），负责把各房间写好的信收拢打包交给卡车（复用），并在收到一麻袋信后按房间号精准送到每个员工桌上（分用），甚至替员工核对信件有没有缺页少字（可靠传输）。没有这个秘书处，整袋信堆在一楼大厅，楼里的员工谁也没法干活！</p>
+<ul>
 <li><strong>【严谨考场结论】</strong>：</li>
 <li><strong>地位与作用</strong>：运输层处于面向通信部分的最高层，同时也是用户功能中的最低层，向上面的应用层提供端到端的逻辑通信服务。</li>
 <li><strong>核心区别（必考单选）</strong>：<strong>网络层</strong>是为主机之间提供逻辑通信（<strong>主机到主机</strong>）；而<strong>运输层</strong>是为运行在不同主机上的应用进程之间提供直接的逻辑通信（<strong>进程到进程 / 端到端</strong>）。</li>
@@ -2880,35 +2882,43 @@
 </ul>
 <h3 id="2-5-03-tcp-ip">2. <code>5-03</code> 当应用程序使用面向连接的 TCP 和无连接的 IP 时，这种传输是面向连接的还是无连接的？</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：
-  你在网上包了一辆“门到门专属搬家服务”（TCP），搬家公司向你承诺：“先生您放心，您的100箱瓷器我们会按编号1到100完好无损、一箱不差地摆进您新家客厅！”至于搬家公司底下雇的100辆货车（IP数据报）在高速公路上到底走的是京沪高速还是沈海高速、哪辆车先开哪辆车后开，你完全看不见也不用管。对你（应用程序）而言，你享受到的就是实打实的专属连接服务；而在高速交警（路由器）眼里，路上跑的全是各自独立乱窜的无连接货车。</li>
+<li><strong>【故事时间 / 说人话】</strong>：</li>
+</ul>
+<p>你在网上包了一辆“门到门专属搬家服务”（TCP），搬家公司向你承诺：“先生您放心，您的100箱瓷器我们会按编号1到100完好无损、一箱不差地摆进您新家客厅！”至于搬家公司底下雇的100辆货车（IP数据报）在高速公路上到底走的是京沪高速还是沈海高速、哪辆车先开哪辆车后开，你完全看不见也不用管。对你（应用程序）而言，你享受到的就是实打实的专属连接服务；而在高速交警（路由器）眼里，路上跑的全是各自独立乱窜的无连接货车。</p>
+<ul>
 <li><strong>【严谨考场结论】</strong>：<strong>这取决于从哪一层来看</strong>——在<strong>运输层（对应用程序而言）是面向连接的</strong>（通信前必须建立 TCP 连接，保证可靠按序交付）；但在<strong>网络层（对路由器而言）仍然是无连接的</strong>（每个封装了 TCP 报文段的 IP 数据报在互联网中独立选路传输）。</li>
 </ul>
 <h3 id="3-5-05-5-15-udp-tcp5-05-tcp-udp-5-15">3. <code>5-05</code> &amp; <code>5-15</code> 为什么有些应用愿意采用不可靠的 UDP 而不愿用可靠的 TCP（<code>5-05</code>）？使用 TCP 传实时话音会有什么问题？使用 UDP 传数据文件会有什么问题（<code>5-15</code>）？</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：
-  设想你正在跟异地恋女友打微信语音电话（实时话音）。突然网速卡了一下，你说了一句“我今天吃了红烧肉”里的“红”字丢包了。</li>
-<li>如果用 <strong>TCP（强迫症秘书）</strong>：秘书发现“红”字丢了，立刻拉响警报，死死拦住后面的“烧肉”不准播放，然后发信让对方重传“红”字。等0.5秒后重传的“红”字慢吞吞赶到时，你们的对话节奏早就乱成一团粥了！在实时通话里，少听半个字顶多“滋啦”一声，人脑自动就脑补过去了，<strong>迟到的声音比丢失的声音更可怕</strong>！</li>
-<li>反过来，如果你要给老板发一份 C 语言源代码文件或银行账单（数据文件），敢用 <strong>UDP（佛系快递员）</strong> 吗？路上只要丢掉 1 个字节的分号 <code>;</code> 或者少个 <code>0</code>，整个程序就无法编译、账单金额直接差十倍！</li>
+<li><strong>【故事时间 / 说人话】</strong>：</li>
+</ul>
+<p>设想你正在跟异地恋女友打微信语音电话（实时话音）。突然网速卡了一下，你说了一句“我今天吃了红烧肉”里的“红”字丢包了。
+  * 如果用 <strong>TCP（强迫症秘书）</strong>：秘书发现“红”字丢了，立刻拉响警报，死死拦住后面的“烧肉”不准播放，然后发信让对方重传“红”字。等0.5秒后重传的“红”字慢吞吞赶到时，你们的对话节奏早就乱成一团粥了！在实时通话里，少听半个字顶多“滋啦”一声，人脑自动就脑补过去了，<strong>迟到的声音比丢失的声音更可怕</strong>！
+  * 反过来，如果你要给老板发一份 C 语言源代码文件或银行账单（数据文件），敢用 <strong>UDP（佛系快递员）</strong> 吗？路上只要丢掉 1 个字节的分号 <code>;</code> 或者少个 <code>0</code>，整个程序就无法编译、账单金额直接差十倍！</p>
+<ul>
 <li><strong>【严谨考场结论】</strong>：</li>
 <li><strong>愿用 UDP 的应用（<code>5-05</code>）</strong>：①<strong>实时音视频/IP电话/视频会议</strong>（要求极低时延，宁可丢弃少量分组也不要迟到的重传分组）；②<strong>DNS、SNMP、DHCP、RIP</strong>（多为一次性短小请求/应答，不愿承受 TCP 三次握手建连时延与复杂状态开销）；③<strong>多播与广播应用</strong>（TCP 仅支持一对一单播，UDP 支持一对多）。</li>
 <li><strong>用错协议的后果（<code>5-15</code>）</strong>：用 TCP 传实时话音会因<strong>超时重传和拥塞控制降速引入难以忍受的巨大时延与卡顿</strong>；用纯 UDP 传数据文件则会因<strong>丢包、乱序而无重传机制，导致接收端文件残缺损坏不可用</strong>。</li>
 </ul>
 <h3 id="4-5-06-5-07-udp-5-06-udp-5-07">4. <code>5-06</code> &amp; <code>5-07</code> 接收方收到有差错的 UDP 数据报时如何处理（<code>5-06</code>）？如果应用程序非要用 UDP 完成可靠传输，这可能吗（<code>5-07</code>）？</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：
-  UDP 这位佛系快递员发现包裹在路上摔烂了（检验和出错），他的处理原则只有四个字：<strong>“毁尸灭迹”</strong>——直接扔进垃圾桶（静默丢弃），既不告诉收件人，也不通知寄件人重发（<code>5-06</code>）。
-  那如果某家公司既贪图 UDP 不用排队握手的快速度，又非要保证包裹100%寄到，怎么办（<code>5-07</code>）？很简单！<strong>员工自己在信纸里编号、自己拿秒表计时、自己写收条！</strong>（比如现代大名鼎鼎的 HTTP/3 底层的 <code>QUIC</code> 协议，以及第6章的 <code>TFTP</code> 协议，就是在应用层自己写了一套确认和重传代码，架在 UDP 之上实现了可靠传输！）。</li>
+<li><strong>【故事时间 / 说人话】</strong>：</li>
+</ul>
+<p>UDP 这位佛系快递员发现包裹在路上摔烂了（检验和出错），他的处理原则只有四个字：<strong>“毁尸灭迹”</strong>——直接扔进垃圾桶（静默丢弃），既不告诉收件人，也不通知寄件人重发（<code>5-06</code>）。
+  那如果某家公司既贪图 UDP 不用排队握手的快速度，又非要保证包裹100%寄到，怎么办（<code>5-07</code>）？很简单！<strong>员工自己在信纸里编号、自己拿秒表计时、自己写收条！</strong>（比如现代大名鼎鼎的 HTTP/3 底层的 <code>QUIC</code> 协议，以及第6章的 <code>TFTP</code> 协议，就是在应用层自己写了一套确认和重传代码，架在 UDP 之上实现了可靠传输！）。</p>
+<ul>
 <li><strong>【严谨考场结论】</strong>：</li>
 <li><strong><code>5-06</code></strong>：接收方 UDP 发现检验和有差错时，<strong>直接将其静默丢弃</strong>（既不向上交付应用层，也不发回任何差错报告）。</li>
 <li><strong><code>5-07</code></strong>：<strong>完全可能！</strong> 但可靠传输不能靠 UDP 本身，而<strong>必须由应用程序自己在应用层实现确认（ACK）、编号、超时重传和流量控制等机制</strong>。</li>
 </ul>
 <h3 id="5-5-10-5-11-5-10-udp-ip-udp-ip-udp-ip-5-11">5. <code>5-10</code> &amp; <code>5-11</code> 试说明运输层中伪首部的作用（<code>5-10</code>）。既然 UDP 和 IP 都是数据报，能否跳过 UDP 直接把应用数据交给 IP 层？UDP 提供了哪些 IP 没提供的功能（<code>5-11</code>）？</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：
-  有同学问：“UDP 就加了 8 个字节首部，跟 IP 一样不管死活往前扔，那应用层干脆跳过 UDP 直接把数据塞给 IP 层不就省了 8 个字节吗？”（<code>5-11</code>）
+<li><strong>【故事时间 / 说人话】</strong>：</li>
+</ul>
+<p>有同学问：“UDP 就加了 8 个字节首部，跟 IP 一样不管死活往前扔，那应用层干脆跳过 UDP 直接把数据塞给 IP 层不就省了 8 个字节吗？”（<code>5-11</code>）
   万万不可！如果跳过 UDP 直接塞给 IP，包裹到了对方大楼传达室（IP 层），传达室大爷看着包裹傻眼了：“这上面只写了我们大楼的 IP 地址，没写房间号（端口号）啊！我到底该送给 QQ 还是送给浏览器？”
-  至于<strong>“伪首部”</strong>（<code>5-10</code>），更是个绝妙的设计：UDP/TCP 秘书在算检验和时，偷偷把外层信封上的“寄件大楼 IP、收件大楼 IP、协议号”抄在一张临时小纸条（12字节伪首部）上一起算进检验和里，算完就把小纸条撕掉不发出去。等到了对方秘书手里，对方秘书也抄下外层信封上的 IP 地址凑上小纸条再算一遍——这样一来，<strong>哪怕邮递员把信送错了大楼（目的 IP 在路由途中被改错），或者把 TCP 信误当成 UDP 信，秘书在核对检验和时当场就能抓包报错！</strong></li>
+  至于<strong>“伪首部”</strong>（<code>5-10</code>），更是个绝妙的设计：UDP/TCP 秘书在算检验和时，偷偷把外层信封上的“寄件大楼 IP、收件大楼 IP、协议号”抄在一张临时小纸条（12字节伪首部）上一起算进检验和里，算完就把小纸条撕掉不发出去。等到了对方秘书手里，对方秘书也抄下外层信封上的 IP 地址凑上小纸条再算一遍——这样一来，<strong>哪怕邮递员把信送错了大楼（目的 IP 在路由途中被改错），或者把 TCP 信误当成 UDP 信，秘书在核对检验和时当场就能抓包报错！</strong></p>
+<ul>
 <li><strong>【严谨考场结论】</strong>：</li>
 <li><strong><code>5-10</code>（伪首部作用）</strong>：12 字节伪首部仅在计算运输层（UDP/TCP）检验和时临时添加（既不向下传送也不向上递交），目的是<strong>双重核验：既检查本层数据报在传输中是否出错，又验证 IP 层是否将该分组正确递交到了正确的目的主机 IP 地址和正确的运输层协议（防止 IP 首部地址或协议字段被篡改误投）</strong>。</li>
 <li><strong><code>5-11</code>（为何不能跳过 UDP）</strong>：<strong>不能跳过！</strong> 因为 IP 层只能把数据报送到目的主机，无法区分主机内的不同应用进程。UDP 提供了 IP 层所没有的两大核心功能：<strong>①16位端口号（实现应用进程的复用与分用）</strong>；<strong>②对整个数据报（含数据载荷）的差错检验和</strong>（IPv4 首部检验和只检验 IP 首部，不检验数据部分）。</li>
@@ -2917,12 +2927,18 @@
 <ul>
 <li><strong>(1) <code>5-16</code>：如果不使用编号是否可行？</strong></li>
 <li><strong>(2) <code>5-17</code>：收到重复报文段时悄悄丢弃而不发确认是否可行？</strong></li>
-<li><strong>(3) <code>5-18</code>：为什么只有 0/1 交替编号在报文长期滞留时依然会失败？</strong></li>
-<li><strong>【故事时间 / 说人话】</strong>：
-  这是一部通信工程师被网络丢包折磨出来的血泪进化史：</li>
-<li><strong>第一集（不给包裹编号的惨案，<code>5-16</code>）</strong>：A 给 B 寄了一箱苹果。B 收下吃了，给 A 寄回一张收条（ACK）。结果收条在半路被风刮跑了！A 等不到收条，以为苹果没寄到，于是又补发了一箱一模一样的苹果。因为箱子上<strong>没贴序号</strong>，B 收到第二箱时欢天喜地以为是 A 今天新送的第二批苹果，又收下了！结果 A 只想发 1 箱，B 却收了 2 箱重复数据！</li>
-<li><strong>第二集（收到重复包裹不回话的死锁，<code>5-17</code>）</strong>：吸取教训后，箱子贴上了序号 <code>M0</code>。A 发了 <code>M0</code>，B 收下并回发收条，结果收条又在半路丢了！A 超时重发 <code>M0</code>。B 一看：“咦？<code>M0</code> 我刚才收过了呀！”于是 B 把重发的 <code>M0</code> 扔进垃圾桶，<strong>但懒得再给 A 回一张收条</strong>。这下完蛋了——A 永远收不到 <code>M0</code> 的收条，就会天荒地老地每隔 5 秒给 B 重发一次 <code>M0</code>，双方彻底卡死在 <code>M0</code> 上！</li>
-<li><strong>第三集（幽灵旧包裹借尸还魂，<code>5-18</code>）</strong>：B 终于学会了“收到重复 <code>M0</code> 也要补发收条”。但只用 <code>0</code> 和 <code>1</code> 两个序号轮流用还是出事了：A 先发了 <code>M0</code>，结果这个 <code>M0</code> 卡在某个拥堵的路由器里昏睡了半分钟。A 超时重发了第二个 <code>M0</code>，这次收条也迟到了，A 又重发……等后来 A 和 B 顺利传完了 <code>M0</code>、传完了 <code>M1</code>，<strong>轮到下一轮发全新的 <code>M0</code> 时，新 <code>M0</code> 半路丢了，而半分钟前昏睡的那个“老古董 <code>M0</code>”恰好醒过来跑到了 B 面前！</strong> B 正等着收新一轮的 <code>M0</code> 呢，一看序号是 <code>0</code>，当场把上辈子的旧数据当成这辈子的新数据收下了！（这就是为什么 TCP 必须用长达 32 位的序号，并规定最大报文段寿命 MSL！）。</li>
+<li>
+<p><strong>(3) <code>5-18</code>：为什么只有 0/1 交替编号在报文长期滞留时依然会失败？</strong></p>
+</li>
+<li>
+<p><strong>【故事时间 / 说人话】</strong>：</p>
+</li>
+</ul>
+<p>这是一部通信工程师被网络丢包折磨出来的血泪进化史：
+  * <strong>第一集（不给包裹编号的惨案，<code>5-16</code>）</strong>：A 给 B 寄了一箱苹果。B 收下吃了，给 A 寄回一张收条（ACK）。结果收条在半路被风刮跑了！A 等不到收条，以为苹果没寄到，于是又补发了一箱一模一样的苹果。因为箱子上<strong>没贴序号</strong>，B 收到第二箱时欢天喜地以为是 A 今天新送的第二批苹果，又收下了！结果 A 只想发 1 箱，B 却收了 2 箱重复数据！
+  * <strong>第二集（收到重复包裹不回话的死锁，<code>5-17</code>）</strong>：吸取教训后，箱子贴上了序号 <code>M0</code>。A 发了 <code>M0</code>，B 收下并回发收条，结果收条又在半路丢了！A 超时重发 <code>M0</code>。B 一看：“咦？<code>M0</code> 我刚才收过了呀！”于是 B 把重发的 <code>M0</code> 扔进垃圾桶，<strong>但懒得再给 A 回一张收条</strong>。这下完蛋了——A 永远收不到 <code>M0</code> 的收条，就会天荒地老地每隔 5 秒给 B 重发一次 <code>M0</code>，双方彻底卡死在 <code>M0</code> 上！
+  * <strong>第三集（幽灵旧包裹借尸还魂，<code>5-18</code>）</strong>：B 终于学会了“收到重复 <code>M0</code> 也要补发收条”。但只用 <code>0</code> 和 <code>1</code> 两个序号轮流用还是出事了：A 先发了 <code>M0</code>，结果这个 <code>M0</code> 卡在某个拥堵的路由器里昏睡了半分钟。A 超时重发了第二个 <code>M0</code>，这次收条也迟到了，A 又重发……等后来 A 和 B 顺利传完了 <code>M0</code>、传完了 <code>M1</code>，<strong>轮到下一轮发全新的 <code>M0</code> 时，新 <code>M0</code> 半路丢了，而半分钟前昏睡的那个“老古董 <code>M0</code>”恰好醒过来跑到了 B 面前！</strong> B 正等着收新一轮的 <code>M0</code> 呢，一看序号是 <code>0</code>，当场把上辈子的旧数据当成这辈子的新数据收下了！（这就是为什么 TCP 必须用长达 32 位的序号，并规定最大报文段寿命 MSL！）。</p>
+<ul>
 <li><strong>【严谨考场结论】</strong>：</li>
 <li><strong><code>5-16</code></strong>：<strong>不可行！</strong> 当数据分组正确到达接收方、但返回的确认（ACK）丢失时，发送方会超时重传该分组；若无编号，接收方无法分辨这是“重传的旧分组”还是“新的下一分组”，会导致重复接收。</li>
 <li><strong><code>5-17</code></strong>：<strong>不可行！</strong> 接收方收到重复分组说明自己上次发出的确认（ACK）在途中丢失了；若只丢弃重复分组而不重发确认，发送方将永远收不到该分组的确认，从而陷入无限次重传该分组的死锁状态。</li>
@@ -2934,13 +2950,23 @@
 <li><strong>(2) <code>5-26</code>：为什么 TCP 有首部长度字段而 UDP 没有？</strong></li>
 <li><strong>(3) <code>5-27</code>：一个 TCP 报文段的数据部分最多为多少字节？若用户数据超过序号字段最大编号还能用 TCP 传吗？</strong></li>
 <li><strong>(4) <code>5-28</code>：A 向 B 发信源端口 <span class="arithmatex">\(m\)</span>、目的端口 <span class="arithmatex">\(n\)</span>，B 回信时源和目的端口是什么？</strong></li>
-<li><strong>(5) <code>5-29</code>：为什么丢了一个确认报文段，也不一定会引起对应数据的重传？</strong></li>
-<li><strong>【故事时间 / 说人话】</strong>：</li>
-<li><strong><code>5-25</code>（救命的前 4 字节）</strong>：当一个 IP 数据报在路上不幸夭折（比如 TTL 减到 0 或目的端口不可达）时，路由器会发回一张 <strong>ICMP 差错报告单</strong>。为了省流量，ICMP 规定只把夭折数据报的“IP 首部 + <strong>里面载荷的前 8 个字节</strong>”复印贴在报告单上寄回给源主机。TCP 和 UDP 设计师心有灵犀地把<strong>源端口（2B）和目的端口（2B）全都放在了最开头的 4 个字节</strong>！这样源主机一拿到这 8 字节残骸，前 4 个字节一看就知道该去通知哪个端口的应用程序报错！</li>
+<li>
+<p><strong>(5) <code>5-29</code>：为什么丢了一个确认报文段，也不一定会引起对应数据的重传？</strong></p>
+</li>
+<li>
+<p><strong>【故事时间 / 说人话】</strong>：</p>
+</li>
+<li>
+<p><strong><code>5-25</code>（救命的前 4 字节）</strong>：当一个 IP 数据报在路上不幸夭折（比如 TTL 减到 0 或目的端口不可达）时，路由器会发回一张 <strong>ICMP 差错报告单</strong>。为了省流量，ICMP 规定只把夭折数据报的“IP 首部 + <strong>里面载荷的前 8 个字节</strong>”复印贴在报告单上寄回给源主机。TCP 和 UDP 设计师心有灵犀地把<strong>源端口（2B）和目的端口（2B）全都放在了最开头的 4 个字节</strong>！这样源主机一拿到这 8 字节残骸，前 4 个字节一看就知道该去通知哪个端口的应用程序报错！</p>
+</li>
 <li><strong><code>5-26</code>（定长制服 vs 伸缩背包）</strong>：UDP 首部永远是死板的 8 个字节，一量就知道第 9 个字节开始是数据；而 TCP 首部除了 20 字节基本款，后面还能挂 <span class="arithmatex">\(0 \sim 40\text{ B}\)</span> 的扩展选项背包，所以必须有个“首部长度（数据偏移）”字段告诉接收方数据从哪儿开始。</li>
 <li><strong><code>5-27</code>（套娃限高与钟表转圈）</strong>：TCP 装在 IP 数据报肚子里，IP 总长度字段只有 16 位（最大 <span class="arithmatex">\(65535\text{ B}\)</span>），扣掉 <span class="arithmatex">\(20\text{ B}\)</span> IP 首部和 <span class="arithmatex">\(20\text{ B}\)</span> TCP 首部，TCP 数据部分顶天只能装 <strong><span class="arithmatex">\(65495\text{ B}\)</span></strong>！至于文件超过 <span class="arithmatex">\(2^{32}\text{ B}\)</span>（<span class="arithmatex">\(4\text{ GB}\)</span>）怎么办？就像家里的钟表只有 12 个数字却能记录一万年一样，序号用完 <span class="arithmatex">\(2^{32}-1\)</span> 后直接绕回 <span class="arithmatex">\(0\)</span> 循环使用，只要旧字节早已在网里消失，傳多大的文件都没问题！</li>
-<li><strong><code>5-28</code> &amp; <code>5-29</code>（回信地址对调与后来居上的收条）</strong>：B 给 A 回信自然把源端口设为 <span class="arithmatex">\(n\)</span>、目的端口设为 <span class="arithmatex">\(m\)</span>（<code>5-28</code>）。而 TCP 的确认号是“累积确认”（比如 <code>ack=500</code> 意思是 500 以前的我全收到了！），就算之前 <code>ack=200</code> 的收条在路上丢了，只要在超时前 <code>ack=500</code> 的收条及时赶到，发送方一看“连 500 都收到了，200 肯定早到了”，就根本不会重传（<code>5-29</code>）！</li>
-<li><strong>【严谨考场结论】</strong>：</li>
+<li>
+<p><strong><code>5-28</code> &amp; <code>5-29</code>（回信地址对调与后来居上的收条）</strong>：B 给 A 回信自然把源端口设为 <span class="arithmatex">\(n\)</span>、目的端口设为 <span class="arithmatex">\(m\)</span>（<code>5-28</code>）。而 TCP 的确认号是“累积确认”（比如 <code>ack=500</code> 意思是 500 以前的我全收到了！），就算之前 <code>ack=200</code> 的收条在路上丢了，只要在超时前 <code>ack=500</code> 的收条及时赶到，发送方一看“连 500 都收到了，200 肯定早到了”，就根本不会重传（<code>5-29</code>）！</p>
+</li>
+<li>
+<p><strong>【严谨考场结论】</strong>：</p>
+</li>
 <li><strong><code>5-25</code></strong>：为了配合 <strong>ICMP 差错报告报文</strong>（仅封装出错 IP 数据报首部及其数据载荷的<strong>前 8 字节</strong>）和防火墙/NAT 快速读取端口，将源端口和目的端口放在最前 4 字节可使源主机根据 ICMP 报文准确找到对应的应用进程端口。</li>
 <li><strong><code>5-26</code></strong>：UDP 首部长度固定为 <span class="arithmatex">\(8\text{ B}\)</span>，无需字段指明；TCP 首部包含可变长度的选项字段（总长在 <span class="arithmatex">\(20\text{ B} \sim 60\text{ B}\)</span> 之间变化），必须用 4 位“数据偏移（首部长度）”字段指明数据载荷的起始位置。</li>
 <li><strong><code>5-27</code></strong>：最多为 <strong><span class="arithmatex">\(65495\text{ B}\)</span></strong>（<span class="arithmatex">\(= 65535 - 20\text{ B IP首部} - 20\text{ B TCP首部}\)</span>）。若用户数据超过 <span class="arithmatex">\(2^{32}\text{ B}\)</span>，<strong>依然可以用 TCP 传送</strong>，因为序号按模 <span class="arithmatex">\(2^{32}\)</span> 循环绕回使用（只要旧序号报文段已超过 MSL 在网络中消失，或启用时间戳选项防绕回 PAWS）。</li>
@@ -2949,10 +2975,12 @@
 </ul>
 <h3 id="8-5-32-karn-karn">8. <code>5-32</code> 什么是 Karn 算法？若不采用 Karn 算法，重传时间最后会减小到什么程度？</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：
-  想象你给朋友寄信，平时一去一回要 10 天（<span class="arithmatex">\(\text{RTT}=10\)</span>）。有一次信在路上堵了，你等了 15 天没回音，就在第 15 天早上一口气补寄了第二封信。结果当天下午（仅过了 0.1 天），邮递员送来了一封回信！
+<li><strong>【故事时间 / 说人话】</strong>：</li>
+</ul>
+<p>想象你给朋友寄信，平时一去一回要 10 天（<span class="arithmatex">\(\text{RTT}=10\)</span>）。有一次信在路上堵了，你等了 15 天没回音，就在第 15 天早上一口气补寄了第二封信。结果当天下午（仅过了 0.1 天），邮递员送来了一封回信！
   这时候世纪难题来了：<strong>这封回信到底是针对 15 天前第一封信的（真实 <span class="arithmatex">\(\text{RTT}=15.1\)</span> 天），还是针对今天早上刚寄出的第二封信的（虚假 <span class="arithmatex">\(\text{RTT}=0.1\)</span> 天）？</strong>
-  如果不采用 <strong>Karn 算法（凡是重传过的报文段，一律不准用来测量 RTT，且每重传一次把 RTO 翻倍）</strong>，而是傻乎乎地认为每次收到的回信都是对刚发出的重传报文的回应，你就会误以为“哇！现在邮局只要 0.1 天就能来回！”，于是把超时时间 RTO 改成 0.2 天 <span class="arithmatex">\(\rightarrow\)</span> 下次 0.2 天一到又超时重传 <span class="arithmatex">\(\rightarrow\)</span> 刚重传又收到上一轮的回信 <span class="arithmatex">\(\rightarrow\)</span> 又以为只要 0.01 天……如此恶性循环，最后重传时间 RTO 会<strong>无限减小趋近于 <span class="arithmatex">\(0\)</span></strong>！</li>
+  如果不采用 <strong>Karn 算法（凡是重传过的报文段，一律不准用来测量 RTT，且每重传一次把 RTO 翻倍）</strong>，而是傻乎乎地认为每次收到的回信都是对刚发出的重传报文的回应，你就会误以为“哇！现在邮局只要 0.1 天就能来回！”，于是把超时时间 RTO 改成 0.2 天 <span class="arithmatex">\(\rightarrow\)</span> 下次 0.2 天一到又超时重传 <span class="arithmatex">\(\rightarrow\)</span> 刚重传又收到上一轮的回信 <span class="arithmatex">\(\rightarrow\)</span> 又以为只要 0.01 天……如此恶性循环，最后重传时间 RTO 会<strong>无限减小趋近于 <span class="arithmatex">\(0\)</span></strong>！</p>
+<ul>
 <li><strong>【严谨考场结论】</strong>：</li>
 <li><strong>Karn 算法核心</strong>：在计算加权平均 <span class="arithmatex">\(\text{RTT}_S\)</span> 时，<strong>只要报文段重传了，就不采用其往返时间样本</strong>（以消除确认二义性）；且每重传一次，就把超时重传时间 <span class="arithmatex">\(\text{RTO}\)</span> 增大一些（典型做法是令 <span class="arithmatex">\(\text{新 RTO} = 2 \times \text{旧 RTO}\)</span>）。</li>
 <li><strong>不采用 Karn 算法的后果</strong>：发送方每次重传后很快收到原报文段的迟到确认，误将其当作重传报文段的确认，算出的 <span class="arithmatex">\(\text{RTT}\)</span> 样本极小，导致重传时间 <strong><span class="arithmatex">\(\text{RTO}\)</span> 不断减小，最终趋近于 <span class="arithmatex">\(0\)</span>（或系统允许的最小极限值）</strong>，引发灾难性的无效重传风暴。</li>
@@ -2961,12 +2989,22 @@
 <ul>
 <li><strong>(1) <code>5-42</code>：在四报文挥手中，被动关闭方 B 收到 A 的 <code>FIN</code> 后，能否先不发 <code>ACK</code>，等后面连同 B 自己的 <code>FIN</code> 一起发？</strong></li>
 <li><strong>(2) <code>5-43</code>：在什么情况下会发生从状态 <code>SYN-SENT</code> 到状态 <code>SYN-RCVD</code> 的变迁？</strong></li>
-<li><strong>(3) <code>5-44</code>：试以具体例子说明为什么一个运输连接可以有多种方式释放。</strong></li>
-<li><strong>【故事时间 / 说人话】</strong>：</li>
-<li><strong><code>5-42</code>（为什么挥手要分四步而不是三步）</strong>：A 对 B 说：“我的话说完了，我要挂电话了（<code>FIN</code>）！”这时候 B 手里可能还有一大段话没说完（半关闭状态）。如果 B 闷声不吭，非要等自己把剩下10分钟的话全说完、发自己的 <code>FIN</code> 时才顺带确认 A 的 <code>FIN</code>，那 A 在这 10 分钟里没收到确认，会以为自己的 <code>FIN</code> 丢了，每隔几秒就狂吼一声“我要挂了！我要挂了！”。所以 B 必须先礼貌地回一句“知道了你先别说话了（<code>ACK</code>）”，等自己忙完了再发“我也说完了（<code>FIN</code>）”。</li>
+<li>
+<p><strong>(3) <code>5-44</code>：试以具体例子说明为什么一个运输连接可以有多种方式释放。</strong></p>
+</li>
+<li>
+<p><strong>【故事时间 / 说人话】</strong>：</p>
+</li>
+<li>
+<p><strong><code>5-42</code>（为什么挥手要分四步而不是三步）</strong>：A 对 B 说：“我的话说完了，我要挂电话了（<code>FIN</code>）！”这时候 B 手里可能还有一大段话没说完（半关闭状态）。如果 B 闷声不吭，非要等自己把剩下10分钟的话全说完、发自己的 <code>FIN</code> 时才顺带确认 A 的 <code>FIN</code>，那 A 在这 10 分钟里没收到确认，会以为自己的 <code>FIN</code> 丢了，每隔几秒就狂吼一声“我要挂了！我要挂了！”。所以 B 必须先礼貌地回一句“知道了你先别说话了（<code>ACK</code>）”，等自己忙完了再发“我也说完了（<code>FIN</code>）”。</p>
+</li>
 <li><strong><code>5-43</code>（心有灵犀的“同时打开”）</strong>：平时都是客户追服务器（三报文握手）；但万一两台主机在同一毫秒、用刚好配对的端口互相向对方发出了 <code>SYN</code> 建连请求呢？双方发出 <code>SYN</code> 后都进入 <code>SYN-SENT</code> 状态，紧接着在半路擦肩而过收到对方的 <code>SYN</code>，于是双方同时惊讶地变迁进入 <strong><code>SYN-RCVD</code></strong> 状态！这叫 <strong>TCP 同时打开（Simultaneous Open，注意：此时也是只建立 1 条连接，而不是 2 条！）</strong>。</li>
-<li><strong><code>5-44</code>（好聚好散 vs 拔网线硬断）</strong>：正常情况下双方四次挥手优雅告别；如果 B 收到 A 的 <code>FIN</code> 时自己恰好也没数据要发了，可以把第 2 步 <code>ACK</code> 和第 3 步 <code>FIN</code> 合并成 1 个包发出去（变成三报文挥手）；万一对方电脑突然断电或网线被挖掘机铲断，几次重传无果后只能靠超时定时器强行单方面关闭，或者发 <code>RST</code>（复位）强行断开。</li>
-<li><strong>【严谨考场结论】</strong>：</li>
+<li>
+<p><strong><code>5-44</code>（好聚好散 vs 拔网线硬断）</strong>：正常情况下双方四次挥手优雅告别；如果 B 收到 A 的 <code>FIN</code> 时自己恰好也没数据要发了，可以把第 2 步 <code>ACK</code> 和第 3 步 <code>FIN</code> 合并成 1 个包发出去（变成三报文挥手）；万一对方电脑突然断电或网线被挖掘机铲断，几次重传无果后只能靠超时定时器强行单方面关闭，或者发 <code>RST</code>（复位）强行断开。</p>
+</li>
+<li>
+<p><strong>【严谨考场结论】</strong>：</p>
+</li>
 <li><strong><code>5-42</code></strong>：<strong>一般不能省略第 2 步单独的 <code>ACK</code>！</strong> 因为被动关闭方 B 收到 <code>FIN</code> 进入半关闭状态后，其应用进程可能还有大量数据需要继续发送，要过较长时间才会发出自己的 <code>FIN</code>；若不立即发回 <code>ACK</code>，主动关闭方 A 会因超时而不断重传 <code>FIN</code> 报文段。（仅当 B 恰好也没有数据要发、能立即发出 <code>FIN</code> 时，才可将第2、3步合并为 <code>FIN+ACK</code>）。</li>
 <li><strong><code>5-43</code></strong>：发生在<strong>通信双方同时主动向对方发起连接请求（即“同时打开” Simultaneous Open）</strong>的情况下——本端发出 <code>SYN</code> 后处于 <code>SYN-SENT</code> 状态，在收到对方 <code>ACK</code> 之前先收到了对方发来的 <code>SYN</code> 报文段，于是发送 <code>SYN+ACK</code> 并进入 <code>SYN-RCVD</code> 状态。</li>
 <li><strong><code>5-44</code></strong>：运输连接释放有多种方式：①正常的<strong>四报文双方优雅释放</strong>；②当被动方无数据要发时合并第2、3步的<strong>三报文释放</strong>；③一方崩溃或链路中断，另一方经多次超时重传失败后<strong>超时强制释放</strong>；④一方发送 <strong><code>RST</code>（复位报文段）异常立即中断连接</strong>。</li>
@@ -2976,12 +3014,22 @@
 <li><strong>(1) <code>5-50</code>：图 5-6 计算 UDP 检验和的例子如何手算验证？</strong></li>
 <li><strong>(2) <code>5-52</code>：UDP 和 IP 的不可靠程度是否相同？</strong></li>
 <li><strong>(3) <code>5-53</code>：UDP 用户数据报的最小长度是多少？构成的最短 IP 数据报是多长？</strong></li>
-<li><strong>(4) <code>5-57</code>：某客户有 <span class="arithmatex">\(67000\text{ B}\)</span> 的分组，怎样使用 UDP 传送？</strong></li>
-<li><strong>【故事时间 / 说人话】</strong>：</li>
-<li><strong><code>5-50</code></strong>：把 12 字节伪首部 + 8 字节 UDP 首部 + 数据部分（奇数个字节末尾补 1 字节全 0）按每 16 位一行对齐，用二进制反码加法（最高位进位回卷加到最低位）求和，最后按位取反即得书上的 <code>11110110 11101101</code>。</li>
+<li>
+<p><strong>(4) <code>5-57</code>：某客户有 <span class="arithmatex">\(67000\text{ B}\)</span> 的分组，怎样使用 UDP 传送？</strong></p>
+</li>
+<li>
+<p><strong>【故事时间 / 说人话】</strong>：</p>
+</li>
+<li>
+<p><strong><code>5-50</code></strong>：把 12 字节伪首部 + 8 字节 UDP 首部 + 数据部分（奇数个字节末尾补 1 字节全 0）按每 16 位一行对齐，用二进制反码加法（最高位进位回卷加到最低位）求和，最后按位取反即得书上的 <code>11110110 11101101</code>。</p>
+</li>
 <li><strong><code>5-52</code></strong>：虽然 IP 和 UDP 都叫“无连接不可靠”，但 IP 老兄连包裹里的货物（数据部分）看都不看一眼，只检查外包装盒面单（IP 首部检验和）；而 UDP 至少会把里面的货物也过一遍秤（检验整个 UDP 数据报），一旦货物歪了直接拒收丢弃，不会把脏数据喂给应用程序。</li>
-<li><strong><code>5-53</code> &amp; <code>5-57</code>（最小空盒子与最大爆仓盒子）</strong>：UDP 最小可以装 <span class="arithmatex">\(0\text{ B}\)</span> 数据，只发 <strong><span class="arithmatex">\(8\text{ B}\)</span></strong> 的空首部，套上 <span class="arithmatex">\(20\text{ B}\)</span> IP 首部就是 <strong><span class="arithmatex">\(28\text{ B}\)</span></strong>（<code>5-53</code>）。反过来，客户想一口气塞 <strong><span class="arithmatex">\(67000\text{ B}\)</span></strong> 给 UDP（<code>5-57</code>）？门儿都没有！因为 UDP 首部的“总长度”字段只有 16 位（最大只能表示 <span class="arithmatex">\(65535\text{ B}\)</span>），而且底下的 IP 数据报总长也受 16 位限制（扣除 <span class="arithmatex">\(20\text{ B}\)</span> IP 首部和 <span class="arithmatex">\(8\text{ B}\)</span> UDP 首部后，单次最多只能装 <span class="arithmatex">\(65507\text{ B}\)</span> 数据）。所以客户必须在应用层自己拿菜刀把 <span class="arithmatex">\(67000\text{ B}\)</span> 切成两块（例如一块 <span class="arithmatex">\(60000\text{ B}\)</span>、一块 <span class="arithmatex">\(7000\text{ B}\)</span>），分两次调用 UDP 发送！</li>
-<li><strong>【严谨考场结论】</strong>：</li>
+<li>
+<p><strong><code>5-53</code> &amp; <code>5-57</code>（最小空盒子与最大爆仓盒子）</strong>：UDP 最小可以装 <span class="arithmatex">\(0\text{ B}\)</span> 数据，只发 <strong><span class="arithmatex">\(8\text{ B}\)</span></strong> 的空首部，套上 <span class="arithmatex">\(20\text{ B}\)</span> IP 首部就是 <strong><span class="arithmatex">\(28\text{ B}\)</span></strong>（<code>5-53</code>）。反过来，客户想一口气塞 <strong><span class="arithmatex">\(67000\text{ B}\)</span></strong> 给 UDP（<code>5-57</code>）？门儿都没有！因为 UDP 首部的“总长度”字段只有 16 位（最大只能表示 <span class="arithmatex">\(65535\text{ B}\)</span>），而且底下的 IP 数据报总长也受 16 位限制（扣除 <span class="arithmatex">\(20\text{ B}\)</span> IP 首部和 <span class="arithmatex">\(8\text{ B}\)</span> UDP 首部后，单次最多只能装 <span class="arithmatex">\(65507\text{ B}\)</span> 数据）。所以客户必须在应用层自己拿菜刀把 <span class="arithmatex">\(67000\text{ B}\)</span> 切成两块（例如一块 <span class="arithmatex">\(60000\text{ B}\)</span>、一块 <span class="arithmatex">\(7000\text{ B}\)</span>），分两次调用 UDP 发送！</p>
+</li>
+<li>
+<p><strong>【严谨考场结论】</strong>：</p>
+</li>
 <li><strong><code>5-50</code></strong>：将伪首部、UDP 首部及填充对齐的数据按 16 位字进行二进制反码求和（进位回卷），结果按位取反后与教材图 5-6 完全一致。</li>
 <li><strong><code>5-52</code></strong>：<strong>不完全相同</strong>。IP 的不可靠体现在跨网络路由时可能丢包、乱序、重复，且 <strong>IPv4 只检验首部而不检验数据载荷</strong>；UDP 虽然也不保证交付和顺序，但 <strong>UDP 检验和覆盖了整个 UDP 首部与全部数据载荷</strong>，能保证向上交付给应用进程的数据块本身是没有比特差错的。</li>
 <li><strong><code>5-53</code></strong>：UDP 用户数据报最小长度为 <strong><span class="arithmatex">\(8\text{ B}\)</span></strong>（仅含首部，数据为 <span class="arithmatex">\(0\text{ B}\)</span>）；构成的最短 IP 数据报长度为 <span class="arithmatex">\(8 + 20 = \mathbf{28\text{ B}}\)</span>。</li>
@@ -2990,16 +3038,26 @@
 <h3 id="11-5-63-5-64-tcp-5-30">11. <code>5-63</code> &amp; <code>5-64</code> TCP 有限状态机（图 5-30）进阶走迷宫：</h3>
 <ul>
 <li><strong>(1) <code>5-63</code>：TCP 连接处于 <code>SYN-RCVD</code> 状态，相继发生：(1) 应用程序发送“关闭”报文；(2) 收到 <code>FIN</code> 报文段。写出每次事件后的状态与动作。</strong></li>
-<li><strong>(2) <code>5-64</code>：TCP 连接处于 <code>FIN-WAIT-1</code> 状态，相继发生：(1) 收到 <code>ACK</code> 报文段；(2) 收到 <code>FIN</code> 报文段；(3) 发生了超时。写出每次事件后的状态与动作。</strong></li>
-<li><strong>【故事时间 / 说人话】</strong>：</li>
-<li><strong><code>5-63</code>（刚答应握手就反悔，还撞上对方也反悔）</strong>：本端刚收到 <code>SYN</code> 处于 <code>SYN-RCVD</code> 状态，还没等握手彻底完成，本端应用突然反悔喊“关闭！”（事件1）<span class="arithmatex">\(\rightarrow\)</span> 本端立刻发出 <code>FIN</code> 报文段，跨步进入 <strong><code>FIN-WAIT-1</code></strong> 状态；紧接着还没收到自己 <code>FIN</code> 的确认，迎面却收到了对方也发来的 <code>FIN</code> 报文段（事件2，双方同时关闭！）<span class="arithmatex">\(\rightarrow\)</span> 本端立即发回 <code>ACK</code> 确认报文段，状态变迁进入 <strong><code>CLOSING</code></strong> 状态！</li>
-<li><strong><code>5-64</code>（最经典的客户端主动关闭三步曲）</strong>：本端已发出 <code>FIN</code> 处于 <code>FIN-WAIT-1</code> 状态：<ol>
+<li>
+<p><strong>(2) <code>5-64</code>：TCP 连接处于 <code>FIN-WAIT-1</code> 状态，相继发生：(1) 收到 <code>ACK</code> 报文段；(2) 收到 <code>FIN</code> 报文段；(3) 发生了超时。写出每次事件后的状态与动作。</strong></p>
+</li>
+<li>
+<p><strong>【故事时间 / 说人话】</strong>：</p>
+</li>
+<li>
+<p><strong><code>5-63</code>（刚答应握手就反悔，还撞上对方也反悔）</strong>：本端刚收到 <code>SYN</code> 处于 <code>SYN-RCVD</code> 状态，还没等握手彻底完成，本端应用突然反悔喊“关闭！”（事件1）<span class="arithmatex">\(\rightarrow\)</span> 本端立刻发出 <code>FIN</code> 报文段，跨步进入 <strong><code>FIN-WAIT-1</code></strong> 状态；紧接着还没收到自己 <code>FIN</code> 的确认，迎面却收到了对方也发来的 <code>FIN</code> 报文段（事件2，双方同时关闭！）<span class="arithmatex">\(\rightarrow\)</span> 本端立即发回 <code>ACK</code> 确认报文段，状态变迁进入 <strong><code>CLOSING</code></strong> 状态！</p>
+</li>
+<li>
+<p><strong><code>5-64</code>（最经典的客户端主动关闭三步曲）</strong>：本端已发出 <code>FIN</code> 处于 <code>FIN-WAIT-1</code> 状态：</p>
+<ol>
 <li>收到对方对 <code>FIN</code> 的 <code>ACK</code> 报文段 <span class="arithmatex">\(\rightarrow\)</span> <strong>不发送任何报文（无动作）</strong>，状态进入 <strong><code>FIN-WAIT-2</code></strong>（耐心等对方发 <code>FIN</code>）；</li>
 <li>收到对方发来的 <code>FIN</code> 报文段 <span class="arithmatex">\(\rightarrow\)</span> <strong>向对方发回 <code>ACK</code> 确认报文段，并启动 <span class="arithmatex">\(2\text{MSL}\)</span> 时间等待计时器</strong>，状态进入 <strong><code>TIME-WAIT</code></strong>；</li>
 <li>发生了超时（即 <span class="arithmatex">\(2\text{MSL}\)</span> 计时器时间到）<span class="arithmatex">\(\rightarrow\)</span> <strong>释放连接控制块 TCB（无报文发送）</strong>，状态最终进入 <strong><code>CLOSED</code></strong>！</li>
 </ol>
 </li>
-<li><strong>【严谨考场结论】</strong>：</li>
+<li>
+<p><strong>【严谨考场结论】</strong>：</p>
+</li>
 <li><strong><code>5-63</code> 标准答案</strong>：<ul>
 <li>事件 (1) 后：动作为 <strong>发送 <code>FIN</code> 报文段</strong>；状态变为 <strong><code>FIN-WAIT-1</code></strong>。</li>
 <li>事件 (2) 后：动作为 <strong>发送 <code>ACK</code> 确认报文段</strong>；状态变为 <strong><code>CLOSING</code></strong>。</li>
@@ -3014,13 +3072,19 @@
 </ul>
 <h3 id="12-5-72-5-73-tcp">12. <code>5-72</code> &amp; <code>5-73</code> TCP 接收窗口的“契约精神”：为什么绝对不允许窗口前沿向后收缩？</h3>
 <ul>
-<li><strong>【题目设问】</strong>：已知 TCP 接收窗口大小是 <span class="arithmatex">\(600\)</span>，已确认序号是 <span class="arithmatex">\(300\)</span>（即当前允许发送的窗口范围是 <span class="arithmatex">\(300 \sim 899\)</span>，窗口前沿在 <span class="arithmatex">\(900\)</span>）。<code>5-72</code> 问在不断收发过程中，接收窗口可能会增大或缩小吗？举例说明哪些情况允许、哪些不允许。<code>5-73</code> 问若接收方突然不能再收数据了，立即发 <code>ack = 300, rwnd = 0</code> 使窗口前沿从 <span class="arithmatex">\(900\)</span> 后退到 <span class="arithmatex">\(300\)</span>，这是否允许？</li>
-<li><strong>【故事时间 / 说人话】</strong>：
-  这叫 TCP 滑动窗口的<strong>“君子一言，驷马难追（严禁前沿后退）”</strong>铁律！
+<li>
+<p><strong>【题目设问】</strong>：已知 TCP 接收窗口大小是 <span class="arithmatex">\(600\)</span>，已确认序号是 <span class="arithmatex">\(300\)</span>（即当前允许发送的窗口范围是 <span class="arithmatex">\(300 \sim 899\)</span>，窗口前沿在 <span class="arithmatex">\(900\)</span>）。<code>5-72</code> 问在不断收发过程中，接收窗口可能会增大或缩小吗？举例说明哪些情况允许、哪些不允许。<code>5-73</code> 问若接收方突然不能再收数据了，立即发 <code>ack = 300, rwnd = 0</code> 使窗口前沿从 <span class="arithmatex">\(900\)</span> 后退到 <span class="arithmatex">\(300\)</span>，这是否允许？</p>
+</li>
+<li>
+<p><strong>【故事时间 / 说人话】</strong>：</p>
+</li>
+</ul>
+<p>这叫 TCP 滑动窗口的<strong>“君子一言，驷马难追（严禁前沿后退）”</strong>铁律！
   接收方 B 刚才给发送方 A 发了一张支票（<code>ack = 300, rwnd = 600</code>），意思是：“300 号以前的货我收齐了，我现在仓库空着 600 个位置，<strong>允许你把 300 号一直到 900 号以前的货全发过来！</strong>”
   A 一拿到这张许可，可能已经在第 1 毫秒把 300～899 号货物全都装车发到高速公路上了！
   这时候如果 B 突然反悔，发个 <code>ack = 300, rwnd = 0</code>（把原本设在 900 的窗口右边界/前沿强行拉回到 300，这叫<strong>“窗口前沿后退 / 收缩窗口”</strong>，<code>5-73</code>），那已经在高速路上狂奔的 300～899 号货车怎么办？撞墙销毁吗？
-  所以 TCP 国际标准立下死规矩：<strong>接收窗口的大小 <code>rwnd</code> 可以变大，也可以变小，但有一个绝对底线——窗口的右边界（前沿 <span class="arithmatex">\(= \text{ack} + \text{rwnd}\)</span>）只能原地不动或向前推进，绝对不允许向后倒退！</strong> 如果 B 真的想把窗口缩小到 <span class="arithmatex">\(0\)</span>，它必须老老实实先把当初承诺的这 600 字节收进来（即一边讓 <code>ack</code> 往前加，一边让 <code>rwnd</code> 同步减小，比如发 <code>ack = 500, rwnd = 400</code>，前沿始终死死钉在 <span class="arithmatex">\(500 + 400 = 900\)</span> 不后退！）。</li>
+  所以 TCP 国际标准立下死规矩：<strong>接收窗口的大小 <code>rwnd</code> 可以变大，也可以变小，但有一个绝对底线——窗口的右边界（前沿 <span class="arithmatex">\(= \text{ack} + \text{rwnd}\)</span>）只能原地不动或向前推进，绝对不允许向后倒退！</strong> 如果 B 真的想把窗口缩小到 <span class="arithmatex">\(0\)</span>，它必须老老实实先把当初承诺的这 600 字节收进来（即一边讓 <code>ack</code> 往前加，一边让 <code>rwnd</code> 同步减小，比如发 <code>ack = 500, rwnd = 400</code>，前沿始终死死钉在 <span class="arithmatex">\(500 + 400 = 900\)</span> 不后退！）。</p>
+<ul>
 <li><strong>【严谨考场结论】</strong>：</li>
 <li><strong><code>5-72</code>（允许与禁止的情况）</strong>：初始状态为 <code>ack = 300, rwnd = 600</code>（窗口前沿在 <span class="arithmatex">\(300 + 600 = 900\)</span>）。接收窗口的大小本身是可以增大或缩小的，但<strong>必须保证新的窗口前沿 <span class="arithmatex">\((\text{ack}_{\text{新}} + \text{rwnd}_{\text{新}}) \ge \text{旧窗口前沿 } 900\)</span></strong>：<ul>
 <li><strong>可能发生（允许）的情况</strong>：①窗口增大或前移，如发 <code>ack = 400, rwnd = 600</code>（前沿移至 <span class="arithmatex">\(1000\)</span>）或 <code>ack = 300, rwnd = 700</code>（前沿移至 <span class="arithmatex">\(1000\)</span>）；②<strong>窗口缩小但前沿不后退</strong>，如收到 <span class="arithmatex">\(200\text{ B}\)</span> 数据后缓存未腾出，发 <strong><code>ack = 500, rwnd = 400</code></strong>（窗口虽从 <span class="arithmatex">\(600\)</span> 缩小为 <span class="arithmatex">\(400\)</span>，但前沿仍在 <span class="arithmatex">\(500 + 400 = 900\)</span> 未后退，完全合法！）。</li>
@@ -3033,10 +3097,18 @@
 <h2 id="8">第六章 应用层（共 8 题：万维网、邮箱与网管大管家的故事）</h2>
 <h3 id="13-6-01-6-02-6-01dns-6-02">13. <code>6-01</code> &amp; <code>6-02</code> 互联网的域名结构与电话号码结构有何异同（<code>6-01</code>）？DNS 四类域名服务器有何区别（<code>6-02</code>）？</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：</li>
-<li><strong><code>6-01</code>（倒着写的地址 vs 正着写的电话号）</strong>：我们写固定电话号码是“从大到小”（<code>+86</code> 中国 - <code>25</code> 南京 - <code>8379xxxx</code> 东南大学），而且电话局交换机看到 <code>025</code> 就知道往江苏省铜线走（号码跟物理地理位置死死绑定）。而互联网域名偏偏是<strong>“从小到大倒着写”</strong>（<code>www.seu.edu.cn</code>：最左边 <code>www</code> 是具体主机，最右边 <code>.cn</code> 才是最大的顶级域名），而且域名只看逻辑归属、<strong>跟物理地理位置毫无关系</strong>——哪怕把 <code>seu.edu.cn</code> 的服务器搬到美国机房，域名一个字母都不用改！</li>
-<li><strong><code>6-02</code>（四个级别的问路向导）</strong>：你电脑想查一个陌生网址时，先问你们学校/运营商的<strong>本地域名服务器</strong>（你的贴身秘书）；秘书查不到就去问全球最高层的<strong>根域名服务器</strong>（掌管全球顶级目录的总管）；总管说“<code>.cn</code> 的事你去问中国馆长”，这就是<strong>顶级域名服务器</strong>；中国馆长说“<code>seu.edu.cn</code> 的花名册在东南大学网络中心手里”，最后找到的这位掌握最终 IP 底牌的，就叫<strong>权限域名服务器</strong>！</li>
-<li><strong>【严谨考场结论】</strong>：</li>
+<li>
+<p><strong>【故事时间 / 说人话】</strong>：</p>
+</li>
+<li>
+<p><strong><code>6-01</code>（倒着写的地址 vs 正着写的电话号）</strong>：我们写固定电话号码是“从大到小”（<code>+86</code> 中国 - <code>25</code> 南京 - <code>8379xxxx</code> 东南大学），而且电话局交换机看到 <code>025</code> 就知道往江苏省铜线走（号码跟物理地理位置死死绑定）。而互联网域名偏偏是<strong>“从小到大倒着写”</strong>（<code>www.seu.edu.cn</code>：最左边 <code>www</code> 是具体主机，最右边 <code>.cn</code> 才是最大的顶级域名），而且域名只看逻辑归属、<strong>跟物理地理位置毫无关系</strong>——哪怕把 <code>seu.edu.cn</code> 的服务器搬到美国机房，域名一个字母都不用改！</p>
+</li>
+<li>
+<p><strong><code>6-02</code>（四个级别的问路向导）</strong>：你电脑想查一个陌生网址时，先问你们学校/运营商的<strong>本地域名服务器</strong>（你的贴身秘书）；秘书查不到就去问全球最高层的<strong>根域名服务器</strong>（掌管全球顶级目录的总管）；总管说“<code>.cn</code> 的事你去问中国馆长”，这就是<strong>顶级域名服务器</strong>；中国馆长说“<code>seu.edu.cn</code> 的花名册在东南大学网络中心手里”，最后找到的这位掌握最终 IP 底牌的，就叫<strong>权限域名服务器</strong>！</p>
+</li>
+<li>
+<p><strong>【严谨考场结论】</strong>：</p>
+</li>
 <li><strong><code>6-01</code></strong>：<strong>相同点</strong>是均采用<strong>层次树状结构</strong>以保证全球唯一性；<strong>不同点</strong>在于：①电话号码是<strong>左大右小</strong>（国家码在最左），而域名是<strong>左小右大</strong>（最高级别顶级域名在最右，级别最低的主机名在最左）；②电话号码与<strong>物理地理位置及交换机拓扑严格绑定</strong>，而域名仅反映逻辑组织管理层次，<strong>与物理地理位置和 IP 拓扑无关</strong>。</li>
 <li><strong><code>6-02</code></strong>：DNS 主要功能是将便于人记忆的<strong>域名转换为机器用于路由的 IP 地址</strong>。四类服务器区别：<ol>
 <li><strong>根域名服务器</strong>：最高层次，知道所有顶级域名服务器的域名和 IP 地址；</li>
@@ -3048,14 +3120,16 @@
 </ul>
 <h3 id="14-6-08-www-12">14. <code>6-08</code> 一口气串起万维网（WWW）的 12 个核心术语：</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：
-  1989 年欧洲核子研究中心的蒂姆·伯纳斯-李发明了<strong>万维网（WWW）</strong>。在这个世界里：
+<li><strong>【故事时间 / 说人话】</strong>：</li>
+</ul>
+<p>1989 年欧洲核子研究中心的蒂姆·伯纳斯-李发明了<strong>万维网（WWW）</strong>。在这个世界里：
   如果一篇文章里带了能点击跳转到另一篇文章的链接（<strong>超链 Hyperlink</strong>），这种纯文字网状文档就叫<strong>超文本（Hypertext）</strong>；要是里面还塞了图片、音频和视频，就升级叫<strong>超媒体（Hypermedia）</strong>。
-  为了解决三个核心问题，他发明了万维网三剑客：</li>
-<li>怎么给全世界的每个页面编个唯一门牌号？用 <strong>URL（统一资源定位符：<code>协议://主机:端口/路径</code>）</strong>；</li>
-<li>你的电脑（客户端软件叫<strong>浏览器 Browser</strong>）怎么向服务器要这个页面？用 <strong>HTTP（超文本传送协议）</strong>；</li>
-<li>拿回来的文档怎么排版显示成漂亮的图文<strong>页面（Page）</strong>？用 <strong>HTML（超文本标记语言）</strong>！
-  后来大家嫌静态网页太死板，想在网页上查实时股票或提交表单，于是让后台服务器收到请求后临时跑一段程序生成网页，这个后台接口标准就叫 <strong>CGI（通用网关接口）</strong>；再后来，干脆把一小段脚本代码（如 JavaScript）直接发给你的浏览器，让网页在你电脑屏幕上自己动起来，这就叫<strong>活动文档（Active Document）</strong>。最后网页多到几十亿个找不过来，于是诞生了百度、Google 这样的<strong>搜索引擎（Search Engine）</strong>！</li>
+  为了解决三个核心问题，他发明了万维网三剑客：
+  1. 怎么给全世界的每个页面编个唯一门牌号？用 <strong>URL（统一资源定位符：<code>协议://主机:端口/路径</code>）</strong>；
+  2. 你的电脑（客户端软件叫<strong>浏览器 Browser</strong>）怎么向服务器要这个页面？用 <strong>HTTP（超文本传送协议）</strong>；
+  3. 拿回来的文档怎么排版显示成漂亮的图文<strong>页面（Page）</strong>？用 <strong>HTML（超文本标记语言）</strong>！
+  后来大家嫌静态网页太死板，想在网页上查实时股票或提交表单，于是让后台服务器收到请求后临时跑一段程序生成网页，这个后台接口标准就叫 <strong>CGI（通用网关接口）</strong>；再后来，干脆把一小段脚本代码（如 JavaScript）直接发给你的浏览器，让网页在你电脑屏幕上自己动起来，这就叫<strong>活动文档（Active Document）</strong>。最后网页多到几十亿个找不过来，于是诞生了百度、Google 这样的<strong>搜索引擎（Search Engine）</strong>！</p>
+<ul>
 <li><strong>【严谨考场结论（英文缩写原文速记）】</strong>：</li>
 <li><strong><code>WWW</code></strong>：World Wide Web（万维网，大规模联机式信息储藏所）；</li>
 <li><strong><code>URL</code></strong>：Uniform Resource Locator（统一资源定位符，唯一标识互联网上资源的位置）；</li>
@@ -3065,20 +3139,30 @@
 </ul>
 <h3 id="15-6-13-tcp">15. <code>6-13</code> 浏览器同时打开多个并行 TCP 连接进行浏览的优缺点如何？</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：
-  你去超市买 10 件商品。如果只排 1 个收银台（单条 TCP 连接），要一件件扫码；如果你把七大姑八大姨叫来，<strong>一口气同时霸占 6 个收银台并行结账（浏览器同时打开多个 TCP 连接）</strong>，你的结账速度当然瞬间起飞，网页图片刷刷地同时蹦出来！
-  但超市老板和其他顾客就不干了：第一，世界上总共就 10 个收银台，你一个人占了 6 个，相当于在网络发生拥塞时<strong>变相抢占了 6 倍的带宽份额，对其他老实只开 1 条连接的应用极不公平，甚至加剧网络拥塞</strong>；第二，服务器同时维护成千上万个并行 TCP 连接，内存和 CPU 负担也会成倍暴增！</li>
+<li><strong>【故事时间 / 说人话】</strong>：</li>
+</ul>
+<p>你去超市买 10 件商品。如果只排 1 个收银台（单条 TCP 连接），要一件件扫码；如果你把七大姑八大姨叫来，<strong>一口气同时霸占 6 个收银台并行结账（浏览器同时打开多个 TCP 连接）</strong>，你的结账速度当然瞬间起飞，网页图片刷刷地同时蹦出来！
+  但超市老板和其他顾客就不干了：第一，世界上总共就 10 个收银台，你一个人占了 6 个，相当于在网络发生拥塞时<strong>变相抢占了 6 倍的带宽份额，对其他老实只开 1 条连接的应用极不公平，甚至加剧网络拥塞</strong>；第二，服务器同时维护成千上万个并行 TCP 连接，内存和 CPU 负担也会成倍暴增！</p>
+<ul>
 <li><strong>【严谨考场结论】</strong>：</li>
 <li><strong>优点</strong>：<strong>缩短网页的整体加载响应时间</strong>（可并行下载网页中的多个内嵌图片/脚本对象，减少往返等待时延 RTT，并在竞争链路中获得更大比例的带宽）。</li>
 <li><strong>缺点</strong>：①同时建立多条 TCP 连接会发送大量握手与控制报文，<strong>加重万维网服务器的内存与 CPU 开销</strong>；②相当于成倍绕开了单条 TCP 的拥塞控制限制，<strong>挤占其他正常用户的带宽，加剧互联网拥塞</strong>。</li>
 </ul>
 <h3 id="16-6-23-6-31-smtp-6-236-31">16. <code>6-23</code> &amp; <code>6-31</code> 简述 SMTP 通信的三个阶段（<code>6-23</code>）。基于万维网的电子邮件系统（网页邮箱）有什么特点？传送邮件时使用什么协议（<code>6-31</code>）？</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：</li>
-<li><strong><code>6-23</code>（邮递员交接班三部曲）</strong>：SMTP 发邮件就像两位极其讲礼貌的绅士打电话：①<strong>连接建立</strong>（先拨通 25 端口 TCP，互相报家门 <code>HELO</code>，绝不通过中间别的邮件服务器中转，必须直连！）；②<strong>邮件传送</strong>（报寄件人 <code>MAIL FROM</code> <span class="arithmatex">\(\rightarrow\)</span> 报收件人 <code>RCPT TO</code> <span class="arithmatex">\(\rightarrow\)</span> 喊一声 <code>DATA</code> 开始传正文，以单独一行句号 <code>.</code> 结束）；③<strong>连接释放</strong>（喊一声 <code>QUIT</code> 挂断 TCP）。</li>
-<li><strong><code>6-31</code>（必考高频坑点：用浏览器登网页版邮箱发邮件，到底用的啥协议？）</strong>：
-    很多同学一看到“发邮件”就无脑选 SMTP——错！当你不用 Outlook 客户端，而是直接打开 Chrome 浏览器登录 <code>mail.163.com</code> 和朋友收发邮件时：你电脑的浏览器和 163 网站之间无论是写信发送、还是点开读信，走的统统是万维网的 <strong><code>HTTP</code>（或 <code>HTTPS</code>）</strong>！只有当 163 服务器把你的信跨网转寄给对方的 QQ 邮箱服务器时，两台服务器之间才用 <strong><code>SMTP</code></strong>！</li>
-<li><strong>【严谨考场结论】</strong>：</li>
+<li>
+<p><strong>【故事时间 / 说人话】</strong>：</p>
+</li>
+<li>
+<p><strong><code>6-23</code>（邮递员交接班三部曲）</strong>：SMTP 发邮件就像两位极其讲礼貌的绅士打电话：①<strong>连接建立</strong>（先拨通 25 端口 TCP，互相报家门 <code>HELO</code>，绝不通过中间别的邮件服务器中转，必须直连！）；②<strong>邮件传送</strong>（报寄件人 <code>MAIL FROM</code> <span class="arithmatex">\(\rightarrow\)</span> 报收件人 <code>RCPT TO</code> <span class="arithmatex">\(\rightarrow\)</span> 喊一声 <code>DATA</code> 开始传正文，以单独一行句号 <code>.</code> 结束）；③<strong>连接释放</strong>（喊一声 <code>QUIT</code> 挂断 TCP）。</p>
+</li>
+<li>
+<p><strong><code>6-31</code>（必考高频坑点：用浏览器登网页版邮箱发邮件，到底用的啥协议？）</strong>：
+    很多同学一看到“发邮件”就无脑选 SMTP——错！当你不用 Outlook 客户端，而是直接打开 Chrome 浏览器登录 <code>mail.163.com</code> 和朋友收发邮件时：你电脑的浏览器和 163 网站之间无论是写信发送、还是点开读信，走的统统是万维网的 <strong><code>HTTP</code>（或 <code>HTTPS</code>）</strong>！只有当 163 服务器把你的信跨网转寄给对方的 QQ 邮箱服务器时，两台服务器之间才用 <strong><code>SMTP</code></strong>！</p>
+</li>
+<li>
+<p><strong>【严谨考场结论】</strong>：</p>
+</li>
 <li><strong><code>6-23</code>（SMTP 三阶段）</strong>：<strong>①连接建立</strong>（发件人邮件服务器与收件人邮件服务器直接建立 TCP 连接，发出 <code>HELO</code> 命令）；<strong>②邮件传送</strong>（依次使用 <code>MAIL FROM</code>、<code>RCPT TO</code>、<code>DATA</code> 命令传输邮件首部与内容）；<strong>③连接释放</strong>（发送完毕后发 <code>QUIT</code> 命令释放 TCP 连接）。</li>
 <li><strong><code>6-31</code>（基于万维网的邮件系统协议——必背！）</strong>：特点是用户无需在电脑上安装专用的邮件客户端软件（UA），只需使用普通浏览器即可随时随地收发管理邮件。所使用的协议为：<ul>
 <li><strong>用户浏览器 <span class="arithmatex">\(\rightarrow\)</span> 发送方邮件服务器（发信）</strong>：使用 <strong><code>HTTP</code>（或 <code>HTTPS</code>）</strong>；</li>
@@ -3089,9 +3173,11 @@
 </ul>
 <h3 id="17-6-33-6-34">17. <code>6-33</code> &amp; <code>6-34</code> 什么是网络管理？解释：网络元素、被管对象、管理进程、代理进程。</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：
-  现代网络里有成千上万台不同厂家生产的路由器、交换机、服务器，这些设备统称为<strong>网络元素（网元）</strong>。如果哪根网线断了、哪台路由器 CPU 飙到 <span class="arithmatex">\(100\%\)</span> 了，总不能让网管员跑遍全楼一间间机房去摸机器吧？
-  于是我们在监控中心设一台大电脑运行<strong>管理进程（Manager，总司令）</strong>；并在每一台路由器、交换机肚子里驻留一个小后台程序叫<strong>代理进程（Agent，潜伏哨兵）</strong>；把每台设备里需要监控的“端口状态、错包计数器、路由表项”抽象成一个个变量，叫<strong>被管对象（Managed Object）</strong>。总司令坐在办公室发个指令给哨兵，就能读写全网所有设备的状态，这就是<strong>网络管理</strong>！</li>
+<li><strong>【故事时间 / 说人话】</strong>：</li>
+</ul>
+<p>现代网络里有成千上万台不同厂家生产的路由器、交换机、服务器，这些设备统称为<strong>网络元素（网元）</strong>。如果哪根网线断了、哪台路由器 CPU 飙到 <span class="arithmatex">\(100\%\)</span> 了，总不能让网管员跑遍全楼一间间机房去摸机器吧？
+  于是我们在监控中心设一台大电脑运行<strong>管理进程（Manager，总司令）</strong>；并在每一台路由器、交换机肚子里驻留一个小后台程序叫<strong>代理进程（Agent，潜伏哨兵）</strong>；把每台设备里需要监控的“端口状态、错包计数器、路由表项”抽象成一个个变量，叫<strong>被管对象（Managed Object）</strong>。总司令坐在办公室发个指令给哨兵，就能读写全网所有设备的状态，这就是<strong>网络管理</strong>！</p>
+<ul>
 <li><strong>【严谨考场结论】</strong>：</li>
 <li><strong><code>6-33</code>（网络管理定义）</strong>：对网络中各种软硬件设备的运行状态进行<strong>监测、控制、配置、故障排查与性能优化</strong>，使网络能高效、可靠、安全地运行。</li>
 <li><strong><code>6-34</code>（四大术语）</strong>：<ol>
@@ -3106,32 +3192,48 @@
 <h2 id="6">第七章 网络安全（共 6 题：间谍、防伪印章与通行证的故事）</h2>
 <h3 id="18-7-03-7-12-7-031237-12">18. <code>7-03</code> &amp; <code>7-12</code> 为什么网络安全不仅局限于机密性（<code>7-03</code>）？举例说明：(1)既需保密又需鉴别；(2)只需保密不需鉴别；(3)不需保密但需鉴别（<code>7-12</code>）。</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：</li>
-<li><strong><code>7-03</code>（光锁进保险箱就能高枕无忧吗？）</strong>：假定你去银行给骗子汇了 100 块钱，银行把这笔指令用最顶级的密码锁进了铁盒（绝对机密，骗子根本打不开盒子看不懂里面写的啥）。但骗子根本不需要打开盒子！骗子在半路把这个铁盒完整复印了 100 份，每隔 1 秒往银行柜台扔一个一模一样的铁盒（<strong>重放攻击</strong>），银行打开一看全是合法密文，当场从你账上划走了 100 次 100 块！又或者骗子干脆用一万台机器把银行大门堵死（<strong>DoS 拒绝服务攻击</strong>）。你看，光有“机密性”而没有“防重放鉴别”和“可用性”，照样倾家荡产！</li>
-<li><strong><code>7-12</code>（三种场景对号入座）</strong>：<ol>
+<li>
+<p><strong>【故事时间 / 说人话】</strong>：</p>
+</li>
+<li>
+<p><strong><code>7-03</code>（光锁进保险箱就能高枕无忧吗？）</strong>：假定你去银行给骗子汇了 100 块钱，银行把这笔指令用最顶级的密码锁进了铁盒（绝对机密，骗子根本打不开盒子看不懂里面写的啥）。但骗子根本不需要打开盒子！骗子在半路把这个铁盒完整复印了 100 份，每隔 1 秒往银行柜台扔一个一模一样的铁盒（<strong>重放攻击</strong>），银行打开一看全是合法密文，当场从你账上划走了 100 次 100 块！又或者骗子干脆用一万台机器把银行大门堵死（<strong>DoS 拒绝服务攻击</strong>）。你看，光有“机密性”而没有“防重放鉴别”和“可用性”，照样倾家荡产！</p>
+</li>
+<li>
+<p><strong><code>7-12</code>（三种场景对号入座）</strong>：</p>
+<ol>
 <li><strong>既要保密、又要鉴别（验证是谁发的且不许别人看）</strong>：军事作战指令、网上银行转账、公司机密合同签署；</li>
 <li><strong>只要保密、不需要鉴别（不想让外人看懂内容，但不在乎验证发送者身份）</strong>：匿名举报信加密投递、自己加密存放在网盘里的私人日记、加密传输无需验证来源的公开测试流；</li>
 <li><strong>不需要保密、但必须严格鉴别（内容巴不得全天下都看见，但绝不允许任何人冒名顶替或篡改一个字）</strong>：政府发布的公开红头文件公告、软件官网发布的开源安装包数字签名、路由协议（如 OSPF/BGP）广播的路由更新报文！</li>
 </ol>
 </li>
-<li><strong>【严谨考场结论】</strong>：</li>
+<li>
+<p><strong>【严谨考场结论】</strong>：</p>
+</li>
 <li><strong><code>7-03</code></strong>：网络安全除<strong>机密性</strong>外，还必须包括<strong>完整性（防篡改）、端点鉴别（防假冒）、不可否认性（抗抵赖）和可用性（防 DoS）</strong>。例如：攻击者截获加密的银行转账密文后不经解密直接进行<strong>重放攻击（Replay）</strong>，或发动 <strong>拒绝服务攻击（DoS）</strong> 瘫痪网络，仅靠机密性均无法防御。</li>
 <li><strong><code>7-12</code></strong>：(1) <strong>既需保密又需鉴别</strong>：网上银行转账交易报文、军事机密命令；(2) <strong>需保密但不需鉴别</strong>：用户将个人本地文件加密存储或匿名加密反馈；(3) <strong>不需保密但需鉴别</strong>：公开的新闻公告、CA 发布的数字证书与公钥、OSPF 路由器洪泛的链路状态通告（内容公开，但严禁被黑客伪造篡改）。</li>
 </ul>
 <h3 id="19-7-16-5-5-6-udp">19. <code>7-16</code> 结合第 5 章图 5-6 计算 UDP 检验和的例子，说明为什么这种检验和不能用来鉴别报文？</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：
-  UDP 的检验和就像在快递纸箱外面贴了一张普通透明胶带，上面用圆珠笔写着：“本箱重 5 斤”。如果是路途颠簸不小心掉了一块砖头（随机比特误码），收件人一称发现只有 4 斤，能发现问题。
-  但如果半路遇到的是个<strong>蓄意篡改的黑客</strong>呢？黑客把箱子里的真古董偷走，塞进一块一模一样重量的烂砖头，或者干脆把古董换成废纸后，<strong>自己拿圆珠笔把纸箱上的重量改写成“本箱重 1 斤”（按公开的二进制反码求和公式花 1 微秒重新算一个新的 UDP 检验和填进去）</strong>！因为算 UDP 检验和根本不需要任何秘密钥匙（密钥），黑客算得比你还溜，收件人一核对新检验和完全正确，根本发现不了报文早被掉包了！</li>
+<li><strong>【故事时间 / 说人话】</strong>：</li>
+</ul>
+<p>UDP 的检验和就像在快递纸箱外面贴了一张普通透明胶带，上面用圆珠笔写着：“本箱重 5 斤”。如果是路途颠簸不小心掉了一块砖头（随机比特误码），收件人一称发现只有 4 斤，能发现问题。
+  但如果半路遇到的是个<strong>蓄意篡改的黑客</strong>呢？黑客把箱子里的真古董偷走，塞进一块一模一样重量的烂砖头，或者干脆把古董换成废纸后，<strong>自己拿圆珠笔把纸箱上的重量改写成“本箱重 1 斤”（按公开的二进制反码求和公式花 1 微秒重新算一个新的 UDP 检验和填进去）</strong>！因为算 UDP 检验和根本不需要任何秘密钥匙（密钥），黑客算得比你还溜，收件人一核对新检验和完全正确，根本发现不了报文早被掉包了！</p>
+<ul>
 <li><strong>【严谨考场结论】</strong>：因为 UDP 检验和的计算算法（16 位二进制反码求和）是完全公开的，且<strong>不包含任何只有收发双方才知道的秘密信息（密钥）</strong>。入侵者截获并恶意篡改报文内容后，可以极其轻易地按照公开算法<strong>重新计算出一个与篡改后报文相匹配的新检验和</strong>并替换原检验和，接收方检验时根本无法察觉报文已被篡改或伪造。要实现报文鉴别，必须使用带密钥的<strong>报文鉴别码（MAC / HMAC）或私钥数字签名</strong>。</li>
 </ul>
 <h3 id="20-7-21-7-26-7-27-kerberostls-pgp">20. <code>7-21</code> &amp; <code>7-26</code> &amp; <code>7-27</code> 三大经典安全协议故事会：Kerberos、TLS 抓骗子与 PGP 邮件加密</h3>
 <ul>
 <li><strong>(1) <code>7-21</code>：试讨论 Kerberos 协议的优缺点。</strong></li>
 <li><strong>(2) <code>7-26</code>：在图 7-21（TLS 电子商务交易）中，假定第一步顾客 A 误把报文发给了一个骗子，骗子冒充经销商 B 继续下面步骤。问交互到第几个步骤时，顾客 A 可以发现对方是骗子？</strong></li>
-<li><strong>(3) <code>7-27</code>：电子邮件安全协议 PGP 主要包含哪些措施？</strong></li>
-<li><strong>【故事时间 / 说人话】</strong>：</li>
-<li><strong><code>7-21</code>（Kerberos 游乐园双票制）</strong>：去迪士尼乐园（大型内网），你先在检票大门（<strong>鉴别服务器 AS</strong>）验明正身，换取一张全天有效的“入园手环（TGT 票据授予票）”；然后你想玩过山车或旋转木马（各个应用服务器）时，拿手环去园内服务台（<strong>票据授予服务器 TGS</strong>）换取“过山车一次性体验券（会话密钥票据）”。<ul>
+<li>
+<p><strong>(3) <code>7-27</code>：电子邮件安全协议 PGP 主要包含哪些措施？</strong></p>
+</li>
+<li>
+<p><strong>【故事时间 / 说人话】</strong>：</p>
+</li>
+<li>
+<p><strong><code>7-21</code>（Kerberos 游乐园双票制）</strong>：去迪士尼乐园（大型内网），你先在检票大门（<strong>鉴别服务器 AS</strong>）验明正身，换取一张全天有效的“入园手环（TGT 票据授予票）”；然后你想玩过山车或旋转木马（各个应用服务器）时，拿手环去园内服务台（<strong>票据授予服务器 TGS</strong>）换取“过山车一次性体验券（会话密钥票据）”。</p>
+<ul>
 <li><strong>好处</strong>：你的真实密码永远只在大门验证一次，绝不在网上明文传输，而且全靠飞快的对称加密！</li>
 <li><strong>坏处</strong>：①全园所有人都指望大门和服务台（KDC），一旦它俩宕机或被黑，全网瘫痪（<strong>单点故障</strong>）；②每张票都严格印着“14:00~14:05有效”（时间戳防重放），要求全网所有电脑的<strong>时钟必须高度同步</strong>！</li>
 </ul>
@@ -3142,8 +3244,12 @@
 <li><strong>情况二（高明骗子去真经销商 B 网站上把 B 公开的真证书复制过来发给 A）</strong>：因为证书是公开的，A 在第 2 步验签发现证书居然是真的！于是 A 在 <strong>第 3 步</strong> 产生一个随机密码（预主密钥），用证书里 <strong>真经销商 B 的公钥加密</strong> 后发给骗子。这下骗子彻底傻眼了——因为骗子手里<strong>没有真经销商 B 的私钥</strong>，根本解不开这个加密包，在 <strong>第 4 步</strong> 骗子无法算出正确的会话密钥发回确认，顾客 A 在 <strong>第 3～4 步</strong> 彻底识破骗子！</li>
 </ul>
 </li>
-<li><strong><code>7-27</code>（PGP 邮件的“五合一豪華套餐”）</strong>：写一封既防偷看、又防篡改、还能防赖账的 PGP 安全邮件，一共做五件事：①先对信件算个 <strong>Hash 摘要</strong>；②用<strong>发件人自己的私钥</strong>对摘要签名（防抵赖+防篡改）；③把信和签名拼在一起，临时摇号生成一个<strong>一次性对称密钥</strong>把它俩快速加密（保密）；④用<strong>收件人的公钥</strong>把这个一次性对称密钥锁起来附在信头；⑤最后用 <strong>base64</strong> 转成纯 ASCII 码发走！</li>
-<li><strong>【严谨考场结论】</strong>：</li>
+<li>
+<p><strong><code>7-27</code>（PGP 邮件的“五合一豪華套餐”）</strong>：写一封既防偷看、又防篡改、还能防赖账的 PGP 安全邮件，一共做五件事：①先对信件算个 <strong>Hash 摘要</strong>；②用<strong>发件人自己的私钥</strong>对摘要签名（防抵赖+防篡改）；③把信和签名拼在一起，临时摇号生成一个<strong>一次性对称密钥</strong>把它俩快速加密（保密）；④用<strong>收件人的公钥</strong>把这个一次性对称密钥锁起来附在信头；⑤最后用 <strong>base64</strong> 转成纯 ASCII 码发走！</p>
+</li>
+<li>
+<p><strong>【严谨考场结论】</strong>：</p>
+</li>
 <li><strong><code>7-21</code>（Kerberos 优缺点）</strong>：<strong>优点</strong>：基于高速对称密码体制，口令不在网上传输，通过 AS 与 TGS 双重票据实现单点登录与双向实体鉴别，使用时间戳有效防止重放攻击；<strong>缺点</strong>：①KDC（AS+TGS）存在<strong>单点故障与性能瓶颈</strong>；②严格依赖全网主机的<strong>时钟同步</strong>；③在大规模跨机构互联网中扩展性不如公钥 PKI 体系。</li>
 <li><strong><code>7-26</code>（TLS 识破骗子步骤）</strong>：若骗子发送的是伪造证书，顾客在 <strong>第 2 步</strong> 用 CA 公钥验证证书签名时即可立即发现；若骗子截获并重放了真正经销商 B 的合法数字证书，骗子虽能混过第 2 步，但在 <strong>第 3 步</strong> 顾客用真经销商 B 的公钥加密发送随机密钥后，骗子因<strong>没有 B 的私钥而无法解密获取该会话密钥</strong>，在随后的 <strong>第 4 步</strong> 无法完成加密握手验证而暴露！</li>
 <li><strong><code>7-27</code>（PGP 核心措施）</strong>：采用<strong>“密码散列函数（MD5/SHA） + 公钥密码（RSA） + 对称密码（IDEA/AES） + base64 编码”的混合加密签名体系</strong>：用<strong>发送方私钥对报文 Hash 摘要进行数字签名</strong>（提供鉴别与完整性）；用临时生成的<strong>一次性对称会话密钥加密邮件全文</strong>（提供高速机密性）；再用<strong>接收方公钥加密该一次性对称密钥</strong>随信发送。</li>
@@ -3152,16 +3258,24 @@
 <h2 id="10">第八章 互联网上的音频/视频服务（共 10 题：把老公路改造成多媒体高速路）</h2>
 <h3 id="21-8-03-8-05-8-08-8-038-05-ip-8-08">21. <code>8-03</code> &amp; <code>8-05</code> &amp; <code>8-08</code> 互联网多媒体改造方案（<code>8-03</code>）、三种流媒体类型区别（<code>8-05</code>）与 IP 电话连接方式（<code>8-08</code>）：</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：</li>
-<li><strong><code>8-03</code>（怎么让原本只运煤块的公路跑救护车？）</strong>：当年互联网设计时只为了传文本邮件，根本没考虑实时视频。现在要传音视频，学术界吵出了三派方案：①<strong>“大力出奇迹派”</strong>：不用改协议，直接把光纤带宽扩宽 100 倍，路宽到永远不堵车就行了！②<strong>“应用层自己想办法派”</strong>：不动路由器，在接收端加个播放蓄水池（缓存）消除抖动，再在全国各省建分仓库（CDN 内容分发网络）就近发货；③<strong>“大改路由器派”</strong>：给路由器装上 VIP 识别器（IntServ / DiffServ），见到音视频救护车直接插队放行！</li>
+<li>
+<p><strong>【故事时间 / 说人话】</strong>：</p>
+</li>
+<li>
+<p><strong><code>8-03</code>（怎么让原本只运煤块的公路跑救护车？）</strong>：当年互联网设计时只为了传文本邮件，根本没考虑实时视频。现在要传音视频，学术界吵出了三派方案：①<strong>“大力出奇迹派”</strong>：不用改协议，直接把光纤带宽扩宽 100 倍，路宽到永远不堵车就行了！②<strong>“应用层自己想办法派”</strong>：不动路由器，在接收端加个播放蓄水池（缓存）消除抖动，再在全国各省建分仓库（CDN 内容分发网络）就近发货；③<strong>“大改路由器派”</strong>：给路由器装上 VIP 识别器（IntServ / DiffServ），见到音视频救护车直接插队放行！</p>
+</li>
 <li><strong><code>8-05</code>（看 B 站录播 vs 看世界杯直播 vs 微信视频聊天）</strong>：<ol>
 <li><strong>流式存储音视频（看 B 站已上传电影）</strong>：文件早就录好存在服务器硬盘里了，边下边播，你可以随便拖进度条快进、暂停，开头多缓冲 5 秒钟完全无所谓；</li>
 <li><strong>流式实况音视频（看春晚/球赛直播）</strong>：节目正在现场边录边发，你不能往未来快进，但依然是单向看，晚个 3～5 秒看到进球也能接受；</li>
 <li><strong>交互式音视频（打微信语音/腾讯会议）</strong>：双向实时你一句我一句！时延一旦超过 <span class="arithmatex">\(0.2 \sim 0.4\text{ s}\)</span> 双方就会互相抢话，对端到端时延要求苛刻到了极致！</li>
 </ol>
 </li>
-<li><strong><code>8-08</code>（IP 电话的狭义广义与三种接法）</strong>：狭义就是打电话传声音；广义包括视频通话、多人电视会议、甚至即时通信（QQ/微信）。接法无非三种：两头都是电脑（PC 到 PC）、两头都是传统座机但中间借道互联网（电话到电话，两头加电话网关）、一头电脑一头座机（PC 到电话）。</li>
-<li><strong>【严谨考场结论】</strong>：</li>
+<li>
+<p><strong><code>8-08</code>（IP 电话的狭义广义与三种接法）</strong>：狭义就是打电话传声音；广义包括视频通话、多人电视会议、甚至即时通信（QQ/微信）。接法无非三种：两头都是电脑（PC 到 PC）、两头都是传统座机但中间借道互联网（电话到电话，两头加电话网关）、一头电脑一头座机（PC 到电话）。</p>
+</li>
+<li>
+<p><strong>【严谨考场结论】</strong>：</p>
+</li>
 <li><strong><code>8-03</code>（三种改造方案）</strong>：①大量增加网络链路带宽（扩容）；②不改动网络层，在应用层采用播放缓存、前向纠错与内容分发网络（CDN）自适应机制；③改造路由器体系结构，引入服务质量 QoS 机制（如综合服务 IntServ 与区分服务 DiffServ）。</li>
 <li><strong><code>8-05</code>（三类多媒体区别）</strong>：<strong>①流式存储</strong>（节目已预先录制存储在服务器上，支持暂停/快进/快退，允许几秒的初始播放缓存时延）；<strong>②流式实况</strong>（边录制边发送的实时广播/直播，不可快进，仍允许几秒的播放时延）；<strong>③交互式音视频</strong>（用户间实时双向交互通信，对端到端总时延极其敏感，通常要求严控在 <span class="arithmatex">\(150 \sim 400\text{ ms}\)</span> 以内）。</li>
 <li><strong><code>8-08</code>（IP 电话）</strong>：<strong>狭义 IP 电话</strong>指在 IP 网络上打语音电话；<strong>广义 IP 电话</strong>还包括交互式多媒体实时通信（视频通话、视频会议、即时通信 IM）。<strong>三种连接方式</strong>：①两个 PC 之间通话；②两个传统固定/移动电话通过两个电话网关经由 IP 网络通话；③PC 与传统电话通过一个电话网关通话。</li>
@@ -3171,9 +3285,15 @@
 <li><strong>(1) <code>8-10</code>：为什么 RTP 协议同时具有运输层和应用层的特点？</strong></li>
 <li><strong>(2) <code>8-11</code>：RTP 协议能否提供应用分组的可靠传输？</strong></li>
 <li><strong>(3) <code>8-16</code>：话音采样率 <span class="arithmatex">\(8000\text{ Hz}\)</span>，每 <span class="arithmatex">\(10\text{ ms}\)</span> 装配一个分组加时间戳。时钟计数器间隔 <span class="arithmatex">\(\Delta\)</span> 能否取为 <span class="arithmatex">\(9\text{ ms}\)</span>？若不行应取多少？</strong></li>
-<li><strong>(4) <code>8-35</code>：一个 RTP 会话有 4 个用户多播通信，每用户发视频速率 <span class="arithmatex">\(100\text{ kbit/s}\)</span>。(1) RTCP 通信量被限制在多少？(2) 每个用户能分到多少 RTCP 带宽？</strong></li>
-<li><strong>【故事时间 / 说人话】</strong>：</li>
-<li><strong><code>8-10</code> &amp; <code>8-11</code>（跨界打工人 RTP）</strong>：RTP 到底是运输层还是应用层？说它像<strong>运输层</strong>，是因为它干的是端到端拆分组装、给分组编序号、打时间戳的通用运输活儿（而且封装在 UDP 里面，像是 UDP 上面的一个运输层子层）；说它像<strong>应用层</strong>，是因为它并没有写进操作系统的内核里，而是由写音视频播放器的程序员直接作为应用程序代码库编译进去的！而且注意：<strong>RTP 自己绝对不做任何确认和重传（不提供可靠传输，<code>8-11</code>）</strong>，它只管贴序号和时间戳，丢了就丢了！</li>
+<li>
+<p><strong>(4) <code>8-35</code>：一个 RTP 会话有 4 个用户多播通信，每用户发视频速率 <span class="arithmatex">\(100\text{ kbit/s}\)</span>。(1) RTCP 通信量被限制在多少？(2) 每个用户能分到多少 RTCP 带宽？</strong></p>
+</li>
+<li>
+<p><strong>【故事时间 / 说人话】</strong>：</p>
+</li>
+<li>
+<p><strong><code>8-10</code> &amp; <code>8-11</code>（跨界打工人 RTP）</strong>：RTP 到底是运输层还是应用层？说它像<strong>运输层</strong>，是因为它干的是端到端拆分组装、给分组编序号、打时间戳的通用运输活儿（而且封装在 UDP 里面，像是 UDP 上面的一个运输层子层）；说它像<strong>应用层</strong>，是因为它并没有写进操作系统的内核里，而是由写音视频播放器的程序员直接作为应用程序代码库编译进去的！而且注意：<strong>RTP 自己绝对不做任何确认和重传（不提供可靠传输，<code>8-11</code>）</strong>，它只管贴序号和时间戳，丢了就丢了！</p>
+</li>
 <li><strong><code>8-16</code>（尺子的刻度不能跟步长拧巴！）</strong>：发送方每隔 <span class="arithmatex">\(10\text{ ms}\)</span> 稳定发 1 个语音包（即发包时刻是 <span class="arithmatex">\(0, 10, 20, 30, 40\text{ ms}\dots\)</span>）。如果给时间戳配的秒表每隔 <span class="arithmatex">\(\Delta = 9\text{ ms}\)</span> 才跳一格字：<ul>
 <li><span class="arithmatex">\(10\text{ ms}\)</span> 发第 1 包时，秒表刚跳到 <code>1</code>（<span class="arithmatex">\(9\text{ ms}\)</span>）；</li>
 <li><span class="arithmatex">\(80\text{ ms}\)</span> 发第 8 包时，秒表跳到 <code>8</code>（<span class="arithmatex">\(72\text{ ms}\)</span>）；</li>
@@ -3181,8 +3301,12 @@
 明明你是每隔 <span class="arithmatex">\(10\text{ ms}\)</span> 均匀发包的，就因为秒表刻度 <span class="arithmatex">\(9\text{ ms}\)</span> 不能整除 <span class="arithmatex">\(10\text{ ms}\)</span>，打出来的时间戳差值一会儿是 1、一会儿变成 2，<strong>秒表自己凭空制造出了“假抖动”</strong>！所以标准规定：RTP 时间戳的时钟刻度 <span class="arithmatex">\(\Delta\)</span> 直接取<strong>语音采样的周期</strong>——每秒采样 <span class="arithmatex">\(8000\)</span> 次，每次间隔 <strong><span class="arithmatex">\(\Delta = \frac{1}{8000}\text{ s} = 125\ \mu\text{s} = 0.125\text{ ms}\)</span></strong>（每 <span class="arithmatex">\(10\text{ ms}\)</span> 包正好包含 <span class="arithmatex">\(80\)</span> 个采样刻度）！</li>
 </ul>
 </li>
-<li><strong><code>8-35</code>（RTCP 的 5% 封顶规矩）</strong>：RTCP 是用来汇报路况的控制报文，绝不能让汇报路况的车把正经拉货的车（RTP）给挤死，所以规定 <strong>RTCP 总流量不得超过会话总带宽的 <span class="arithmatex">\(5\%\)</span></strong>！4 个人每人发 <span class="arithmatex">\(100\text{ kbit/s}\)</span>，总视频流量就是 <span class="arithmatex">\(400\text{ kbit/s}\)</span>，那 RTCP 总共最多只能用 <span class="arithmatex">\(400 \times 5\% = \mathbf{20\text{ kbit/s}}\)</span>，4 个人平摊下来每人分到 <strong><span class="arithmatex">\(5\text{ kbit/s}\)</span></strong>！</li>
-<li><strong>【严谨考场结论】</strong>：</li>
+<li>
+<p><strong><code>8-35</code>（RTCP 的 5% 封顶规矩）</strong>：RTCP 是用来汇报路况的控制报文，绝不能让汇报路况的车把正经拉货的车（RTP）给挤死，所以规定 <strong>RTCP 总流量不得超过会话总带宽的 <span class="arithmatex">\(5\%\)</span></strong>！4 个人每人发 <span class="arithmatex">\(100\text{ kbit/s}\)</span>，总视频流量就是 <span class="arithmatex">\(400\text{ kbit/s}\)</span>，那 RTCP 总共最多只能用 <span class="arithmatex">\(400 \times 5\% = \mathbf{20\text{ kbit/s}}\)</span>，4 个人平摊下来每人分到 <strong><span class="arithmatex">\(5\text{ kbit/s}\)</span></strong>！</p>
+</li>
+<li>
+<p><strong>【严谨考场结论】</strong>：</p>
+</li>
 <li><strong><code>8-10</code></strong>：<strong>具有运输层特点</strong>是因为它提供端到端的实时数据传输服务（包含序号、时间戳、多路复用等运输层功能，可视为 UDP 之上的运输层子层）；<strong>具有应用层特点</strong>是因为 RTP 通常不作为操作系统内核的一部分实现，而是与具体音视频编码格式紧密结合、直接集成在<strong>应用层媒体播放软件中由开发者实现</strong>。</li>
 <li><strong><code>8-11</code></strong>：<strong>不能！</strong> RTP 封装在无连接的 UDP 之上，自身只提供序号和时间戳供接收端检测丢包和还原播放时序，<strong>没有任何确认（ACK）、重传、流量控制或拥塞控制机制</strong>，故不提供可靠传输。</li>
 <li><strong><code>8-16</code></strong>：<strong>不能将 <span class="arithmatex">\(\Delta\)</span> 取为 <span class="arithmatex">\(9\text{ ms}\)</span>！</strong> 因为发包间隔 <span class="arithmatex">\(10\text{ ms}\)</span> 不是 <span class="arithmatex">\(9\text{ ms}\)</span> 的整数倍，会导致等时发出的分组被打上差值不均匀的时间戳（在第9个分组处产生跳变误差），使接收端无法准确还原等时播放间隔。<strong><span class="arithmatex">\(\Delta\)</span> 应当取为 1 个采样周期，即 <span class="arithmatex">\(\Delta = \frac{1}{8000\text{ Hz}} = \mathbf{125\ \mu\text{s}}\)</span>（<span class="arithmatex">\(0.125\text{ ms}\)</span>）</strong>（或能整除 <span class="arithmatex">\(10\text{ ms}\)</span> 的时间单位）。</li>
@@ -3194,16 +3318,24 @@
 </ul>
 <h3 id="23-8-17-8-18-8-19-8-17-qos-8-18-8-19">23. <code>8-17</code> &amp; <code>8-18</code> &amp; <code>8-19</code> 播放缓存空间上限（<code>8-17</code>）与服务质量 QoS 三大交警手段（<code>8-18</code>, <code>8-19</code>）：</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：</li>
-<li><strong><code>8-17</code>（蓄水池要修多大才不会溢出来？）</strong>：接收端的播放缓存是为了吞掉网络上的“时延抖动”。如果网络最顺畅时分组 10ms 就到，最堵时要晚到 <span class="arithmatex">\(\Delta D_{\max}\)</span> 秒（最大时延抖动），而这期间水龙头还在以每秒 <span class="arithmatex">\(R\)</span> 比特的速率往池子里灌水，那池子至少得修多大？当然是由 <strong>数据率 <span class="arithmatex">\(R\)</span> 和最大时延抖动 <span class="arithmatex">\(\Delta D_{\max}\)</span> 的乘积</strong> 决定！数据率越高、抖动越大，需要的缓存空间上限就越大！</li>
-<li><strong><code>8-18</code> &amp; <code>8-19</code>（为什么说传统互联网“毫无服务质量可言”？怎么管？）</strong>：传统 IP 协议讲究“众生平等、尽最大努力交付”——不管你是救命的远程手术视频包，还是无关紧要的垃圾邮件包，到了路由器面前统统排在一个 FIFO 队里，满了就一视同仁往地上扔，所以<strong>传统 IP 互联网根本提供不了任何时延和带宽保证（无 QoS 可言）</strong>。
-    要想有 QoS，路由器必须学会当交警，使出三大招（<code>8-19</code>）：<ol>
+<li>
+<p><strong>【故事时间 / 说人话】</strong>：</p>
+</li>
+<li>
+<p><strong><code>8-17</code>（蓄水池要修多大才不会溢出来？）</strong>：接收端的播放缓存是为了吞掉网络上的“时延抖动”。如果网络最顺畅时分组 10ms 就到，最堵时要晚到 <span class="arithmatex">\(\Delta D_{\max}\)</span> 秒（最大时延抖动），而这期间水龙头还在以每秒 <span class="arithmatex">\(R\)</span> 比特的速率往池子里灌水，那池子至少得修多大？当然是由 <strong>数据率 <span class="arithmatex">\(R\)</span> 和最大时延抖动 <span class="arithmatex">\(\Delta D_{\max}\)</span> 的乘积</strong> 决定！数据率越高、抖动越大，需要的缓存空间上限就越大！</p>
+</li>
+<li>
+<p><strong><code>8-18</code> &amp; <code>8-19</code>（为什么说传统互联网“毫无服务质量可言”？怎么管？）</strong>：传统 IP 协议讲究“众生平等、尽最大努力交付”——不管你是救命的远程手术视频包，还是无关紧要的垃圾邮件包，到了路由器面前统统排在一个 FIFO 队里，满了就一视同仁往地上扔，所以<strong>传统 IP 互联网根本提供不了任何时延和带宽保证（无 QoS 可言）</strong>。
+    要想有 QoS，路由器必须学会当交警，使出三大招（<code>8-19</code>）：</p>
+<ol>
 <li><strong>呼叫接纳（Call Admission）</strong>：上高速前先审查——“我这条高速路只剩 2M 带宽了，你这个视频通话开口就要 5M，对不起，直接拒绝你上路！”</li>
 <li><strong>管制（Policing，如漏桶算法）</strong>：上路后拿测速仪盯着你——“你买票时说平均每秒发 1M，现在突然飙到 10M，超标的包直接给你扣下或扔掉！”</li>
 <li><strong>调度（Scheduling，如 WFQ）</strong>：在收费站出口分设 VIP 车道和普通车道，按权重比例放行！</li>
 </ol>
 </li>
-<li><strong>【严谨考场结论】</strong>：</li>
+<li>
+<p><strong>【严谨考场结论】</strong>：</p>
+</li>
 <li><strong><code>8-17</code></strong>：接收端缓存空间的上限主要由<strong>实时数据流的数据率 <span class="arithmatex">\(R\)</span></strong> 和网络中的<strong>最大时延抖动（分组最大时延与最小时延之差）</strong>共同决定。<strong>实时数据流的数据率越大、网络的时延抖动越大，所需的缓存空间上限就越大</strong>（近似成正比关系）。</li>
 <li><strong><code>8-18</code></strong>：<strong>服务质量 QoS（Quality of Service）</strong>是服务性能的总效果，决定用户对服务的满意程度（可用带宽、时延、抖动、丢包率等可预计指标描述）。说“互联网根本没有服务质量可言”是因为传统互联网的 <strong>IP 协议只提供无连接、尽最大努力交付（Best-Effort）的数据报服务</strong>，对所有分组一视同仁按 FIFO 转发，不预留任何资源，因此无法对时延、抖动和丢包率做出任何承诺与保证。</li>
 <li><strong><code>8-19</code>（QoS 三大机制含义）</strong>：<ol>
@@ -3217,24 +3349,34 @@
 <h2 id="6-wi-fi">第九章 无线网络和移动网络（共 6 题：看不见的空中网线与 Wi-Fi 身份证）</h2>
 <h3 id="24-9-01-9-02-ap-9-01wi-fi-wlan-9-02">24. <code>9-01</code> &amp; <code>9-02</code> 无线局域网由哪几部分组成？接入点 AP 是否就是固定基础设施（<code>9-01</code>）？Wi-Fi 与 WLAN 是否为同义词（<code>9-02</code>）？</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：</li>
-<li><strong><code>9-01</code>（无线网的积木是怎么搭起来的？）</strong>：你手机连上寝室墙上的无线路由器（准确学名叫<strong>接入点 AP，Access Point</strong>），你和室友的手机加上这台 AP，就组成了一个最小的无线圈子，叫<strong>基本服务集 BSS（Basic Service Set）</strong>。
+<li>
+<p><strong>【故事时间 / 说人话】</strong>：</p>
+</li>
+<li>
+<p><strong><code>9-01</code>（无线网的积木是怎么搭起来的？）</strong>：你手机连上寝室墙上的无线路由器（准确学名叫<strong>接入点 AP，Access Point</strong>），你和室友的手机加上这台 AP，就组成了一个最小的无线圈子，叫<strong>基本服务集 BSS（Basic Service Set）</strong>。
     那在教学楼里，一楼有个 AP1，二楼有个 AP2，怎么让你从一楼走到二楼时微信不断网呢？学校用墙里的有线网线（叫<strong>分配系统 DS，Distribution System</strong>）把一楼 AP1 和二楼 AP2 串起来，合体成一个更大的无线覆盖区，叫<strong>扩展服务集 ESS（Extended Service Set）</strong>！
-    注意一个文字小陷阱：<strong>AP 只是固定基础设施的一部分（排头兵），整个固定基础设施不仅包括 AP，还包括背后连接各个 AP 和有线网的分配系统 DS！</strong></li>
-<li><strong><code>9-02</code>（Wi-Fi 其实就是个商业商标！）</strong>：严格来说，无线局域网的技术学名叫 <strong>WLAN（Wireless LAN）</strong>，它背后遵循的国际技术标准叫 <strong>IEEE 802.11</strong>。但当年向老百姓推销路由器时，要是印上“本机支持 IEEE 802.11b 标准”，谁看得懂啊！于是几家大厂商成立了一个商业认证联盟，起了一个像音响 Hi-Fi 一样朗朗上口的商标名字叫 <strong><code>Wi-Fi</code></strong>（贴上 Wi-Fi 标志就代表通过了 802.11 兼容性测试）。现在日常口语里大家早就把 Wi-Fi 当成了 802.11 无线局域网 WLAN 的同义词！</li>
-<li><strong>【严谨考场结论】</strong>：</li>
+    注意一个文字小陷阱：<strong>AP 只是固定基础设施的一部分（排头兵），整个固定基础设施不仅包括 AP，还包括背后连接各个 AP 和有线网的分配系统 DS！</strong></p>
+</li>
+<li>
+<p><strong><code>9-02</code>（Wi-Fi 其实就是个商业商标！）</strong>：严格来说，无线局域网的技术学名叫 <strong>WLAN（Wireless LAN）</strong>，它背后遵循的国际技术标准叫 <strong>IEEE 802.11</strong>。但当年向老百姓推销路由器时，要是印上“本机支持 IEEE 802.11b 标准”，谁看得懂啊！于是几家大厂商成立了一个商业认证联盟，起了一个像音响 Hi-Fi 一样朗朗上口的商标名字叫 <strong><code>Wi-Fi</code></strong>（贴上 Wi-Fi 标志就代表通过了 802.11 兼容性测试）。现在日常口语里大家早就把 Wi-Fi 当成了 802.11 无线局域网 WLAN 的同义词！</p>
+</li>
+<li>
+<p><strong>【严谨考场结论】</strong>：</p>
+</li>
 <li><strong><code>9-01</code></strong>：有固定基础设施的无线局域网（WLAN）主要由 <strong>移动站（主机）、接入点 AP（Access Point，基站）、基本服务集 BSS、分配系统 DS 以及扩展服务集 ESS</strong> 组成。固定基础设施能够将无线局域网与有线互联网高速连接，并支持移动站在不同 BSS 之间漫游切换，大幅提升覆盖范围与通信性能。<strong>接入点 AP 属于固定基础设施中的核心无线接入设备，但固定基础设施不仅包含 AP，还包含后台的分配系统 DS 等有线交换网络</strong>。</li>
 <li><strong><code>9-02</code></strong>：从严格技术定义上讲<strong>不是完全等同的同义词</strong>——<strong>WLAN（无线局域网）</strong>是技术大类名称，而 <strong>Wi-Fi</strong> 本质上是 Wi-Fi 联盟（WFA）为符合 <strong>IEEE 802.11 标准</strong>的无线局域网产品所制定的商业互操作性认证商标。但在当今实际应用与日常习惯中，人们已普遍将 <strong>Wi-Fi 与采用 802.11 标准的无线局域网 WLAN 当作同义词</strong>使用。</li>
 </ul>
 <h3 id="25-9-03-9-04-9-18-wi-fi-ssidbssidessid-9-039-04-ap-ssid-bssid9-18">25. <code>9-03</code> &amp; <code>9-04</code> &amp; <code>9-18</code> Wi-Fi 的“名字”与“身份证号”：SSID、BSSID、ESSID 有何区别（<code>9-03</code>）？关联的作用是什么（<code>9-04</code>）？怎么在手机电脑上查 AP 的 SSID 和 BSSID（<code>9-18</code>）？</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：
-  这三道题放在一起读，10 秒钟彻底顿悟：
+<li><strong>【故事时间 / 说人话】</strong>：</li>
+</ul>
+<p>这三道题放在一起读，10 秒钟彻底顿悟：
   你在星巴克掏出手机连 Wi-Fi，屏幕上搜出来的无线网名字叫 <strong><code>Starbucks-Free</code></strong>——这个给人眼看的、最多 32 个字符的网名，就叫 <strong>SSID（服务集标识符）</strong>！
   但是，星巴克一楼天花板上有 1 台 AP，二楼天花板上也有 1 台 AP，为了让顾客从一楼走到二楼不用重新输密码，店长把这两台 AP 的网名（SSID）全都设成了同一个名字 <code>Starbucks-Free</code>（这种跨越多个 BSS 的统一大网名也叫 <strong>ESSID</strong>）。
   那你的手机网卡在空中发数据帧时，怎么区分自己到底是把帧发给一楼那台 AP 还是二楼那台 AP 呢？靠每台 AP 机器出厂固化在无线网卡里的 <strong>48 位硬件 MAC 地址</strong>！这个 AP 的 48 位 MAC 地址，就叫 <strong>BSSID（基本服务集标识符）</strong>！
   所以：<strong>SSID 是给人类看的“网名”（文字字符串，多台 AP 可以同名）；BSSID 是给网卡看的“AP 的 48 位 MAC 身份证号”（全球唯一，十六进制）！</strong>
-  当你点击某个 SSID 输入密码连上去时，你的手机就和这台特定的 AP 签了一份“绑定协议”，叫<strong>关联（Association，<code>9-04</code>）</strong>——告诉全网：“从现在起，找我的包裹请统一交给这台 AP 转发给我！”</li>
+  当你点击某个 SSID 输入密码连上去时，你的手机就和这台特定的 AP 签了一份“绑定协议”，叫<strong>关联（Association，<code>9-04</code>）</strong>——告诉全网：“从现在起，找我的包裹请统一交给这台 AP 转发给我！”</p>
+<ul>
 <li><strong>【严谨考场结论】</strong>：</li>
 <li><strong><code>9-03</code>（SSID vs BSSID vs ESSID）</strong>：<ol>
 <li><strong>SSID（服务集标识符）</strong>：是无线局域网供用户识别的<strong>人类可读逻辑名称</strong>（最长不超过 32 字节的字符串，由管理员任意设置，如 <code>SEU-WLAN</code>）；当一个扩展服务集 ESS 包含多个 AP 时，该统一的网络名称也常被称为 <strong>ESSID</strong>。</li>
@@ -3250,8 +3392,10 @@
 </ul>
 <h3 id="26-9-16-ieee-8023-ieee-80211">26. <code>9-16</code> 试比较有线以太网 IEEE 802.3 和无线局域网 IEEE 802.11，找出它们之间的主要区别。（全书局域网收官大对比！）</h3>
 <ul>
-<li><strong>【故事时间 / 说人话】</strong>：
-  一个是插着铜线光纤、在封闭管道里跑车的 <code>802.3</code> 有线以太网；一个是暴露在空气中、隔墙就衰减、还有隐蔽站偷袭的 <code>802.11</code> 无线局域网。把它们俩拉出来排排坐，正好把第 3 章和第 9 章的所有核心考点串成一张完美对比表！</li>
+<li><strong>【故事时间 / 说人话】</strong>：</li>
+</ul>
+<p>一个是插着铜线光纤、在封闭管道里跑车的 <code>802.3</code> 有线以太网；一个是暴露在空气中、隔墙就衰减、还有隐蔽站偷袭的 <code>802.11</code> 无线局域网。把它们俩拉出来排排坐，正好把第 3 章和第 9 章的所有核心考点串成一张完美对比表！</p>
+<ul>
 <li><strong>【严谨考场结论（六维满分对比表）】</strong>：</li>
 </ul>
 <table>

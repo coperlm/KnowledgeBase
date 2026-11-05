@@ -2516,10 +2516,13 @@
 </table>
 <blockquote>
 <p><strong>【官方大纲特别补丁（谢书前4章未详述、但官方大纲明确列出，需花25分钟看王道或书页补齐的4个点）】</strong>：
-1. <strong>纠错编码（海明码 Hamming Code，大纲三(三)2）</strong>：谢书仅讲了检错码CRC，必须看《王道》掌握海明码不等式 <strong><span class="arithmatex">\(2^k \ge n + k + 1\)</span></strong>（<span class="arithmatex">\(n\)</span> 为数据位，<span class="arithmatex">\(k\)</span> 为校验位）及奇偶校验位纠错位置计算。
-2. <strong>轮询访问：令牌传递协议（大纲三(五)3）</strong>：谢书已删，记住一句话——令牌沿逻辑环传递，拿到令牌的站点才能发送1帧数据，<strong>绝对不会发生冲突，适合高负载广播信道</strong>。
-3. <strong>HDLC协议（大纲三(七)3）</strong>：谢书已删，记住面向比特、标志字段 <code>01111110</code>、零比特填充（5个1后插0）、三种帧类型（信息帧I帧首位0、监控帧S帧前两位10、无编号帧U帧前两位11）。
-4. <strong>IP组播地址映射（大纲四(六)2，谢书P179–180 <code>4.7.1 &amp; 4.7.2</code>）</strong>：记住IPv4组播使用 <strong>D类地址（前4位固定为 <code>1110</code>，范围 <code>224.0.0.0 ~ 239.255.255.255</code>）</strong>；硬件多播MAC地址高24位固定为 <code>01-00-5E</code>，第25位固定为 <code>0</code>，<strong>低23位直接复制IP组播地址的最后23位</strong>（因D类IP有28位可变而MAC仅映射23位，故有 <span class="arithmatex">\(2^{28-23} = 32\)</span> 个D类IP组播地址会映射到同一个以太网多播MAC地址上！）。</p>
+</p>
+<ol>
+<li><strong>纠错编码（海明码 Hamming Code，大纲三(三)2）</strong>：谢书仅讲了检错码CRC，必须看《王道》掌握海明码不等式 <strong><span class="arithmatex">\(2^k \ge n + k + 1\)</span></strong>（<span class="arithmatex">\(n\)</span> 为数据位，<span class="arithmatex">\(k\)</span> 为校验位）及奇偶校验位纠错位置计算。</li>
+<li><strong>轮询访问：令牌传递协议（大纲三(五)3）</strong>：谢书已删，记住一句话——令牌沿逻辑环传递，拿到令牌的站点才能发送1帧数据，<strong>绝对不会发生冲突，适合高负载广播信道</strong>。</li>
+<li><strong>HDLC协议（大纲三(七)3）</strong>：谢书已删，记住面向比特、标志字段 <code>01111110</code>、零比特填充（5个1后插0）、三种帧类型（信息帧I帧首位0、监控帧S帧前两位10、无编号帧U帧前两位11）。</li>
+<li><strong>IP组播地址映射（大纲四(六)2，谢书P179–180 <code>4.7.1 &amp; 4.7.2</code>）</strong>：记住IPv4组播使用 <strong>D类地址（前4位固定为 <code>1110</code>，范围 <code>224.0.0.0 ~ 239.255.255.255</code>）</strong>；硬件多播MAC地址高24位固定为 <code>01-00-5E</code>，第25位固定为 <code>0</code>，<strong>低23位直接复制IP组播地址的最后23位</strong>（因D类IP有28位可变而MAC仅映射23位，故有 <span class="arithmatex">\(2^{28-23} = 32\)</span> 个D类IP组播地址会映射到同一个以太网多播MAC地址上！）。</li>
+</ol>
 </blockquote>
 <hr />
 <h2 id="14">一、 第一类：必背概念题（共14个核心点，开袋即食“先理解后记忆”版）</h2>
@@ -2535,11 +2538,19 @@
 <li><strong>分组交换</strong>像“把大山切成标准快递盒”：分成小分组独立选路、边收边发（流水线）。</li>
 </ul>
 </li>
-<li><strong>【采分关键词】</strong>：分组交换四大优点——<strong>①高效</strong>（动态分配传输带宽，逐段占用链路）；<strong>②灵活</strong>（每个分组独立选择转发路由）；<strong>③迅速</strong>（无需先建立连接即可发送，流水线转发时延小）；<strong>④可靠</strong>（分布式多路由网络生存性好）。缺点——<strong>①存储转发排队时延</strong>；<strong>②每个分组需携带额外控制首部开销（Overhead）</strong>。</li>
-<li><strong><code>1-06</code> 简述互联网标准制定的几个阶段。（官方大纲一(一)3）</strong></li>
+<li>
+<p><strong>【采分关键词】</strong>：分组交换四大优点——<strong>①高效</strong>（动态分配传输带宽，逐段占用链路）；<strong>②灵活</strong>（每个分组独立选择转发路由）；<strong>③迅速</strong>（无需先建立连接即可发送，流水线转发时延小）；<strong>④可靠</strong>（分布式多路由网络生存性好）。缺点——<strong>①存储转发排队时延</strong>；<strong>②每个分组需携带额外控制首部开销（Overhead）</strong>。</p>
+</li>
+<li>
+<p><strong><code>1-06</code> 简述互联网标准制定的几个阶段。（官方大纲一(一)3）</strong></p>
+</li>
 <li><strong>【底层逻辑】</strong>：随便写个想法叫“草案”，大家觉得行就变成“建议标准”（开始给RFC编号），全球大规模验证没问题就升为“正式标准”。</li>
-<li><strong>【采分关键词】</strong>：<strong>互联网草案（Internet Draft） <span class="arithmatex">\(\rightarrow\)</span> 建议标准（Proposed Standard，从此阶段起成为 RFC 文档） <span class="arithmatex">\(\rightarrow\)</span> 互联网标准（Internet Standard）</strong>。相关标准化组织：IETF（制定互联网RFC标准）、ISO（提出OSI七层模型）、IEEE（制定802局域网标准）。</li>
-<li><strong><code>1-21</code> 协议与服务有何区别？有何关系？（官方大纲一(二)2，关联 <code>2025-选1</code>）</strong></li>
+<li>
+<p><strong>【采分关键词】</strong>：<strong>互联网草案（Internet Draft） <span class="arithmatex">\(\rightarrow\)</span> 建议标准（Proposed Standard，从此阶段起成为 RFC 文档） <span class="arithmatex">\(\rightarrow\)</span> 互联网标准（Internet Standard）</strong>。相关标准化组织：IETF（制定互联网RFC标准）、ISO（提出OSI七层模型）、IEEE（制定802局域网标准）。</p>
+</li>
+<li>
+<p><strong><code>1-21</code> 协议与服务有何区别？有何关系？（官方大纲一(二)2，关联 <code>2025-选1</code>）</strong></p>
+</li>
 <li><strong>【底层逻辑】</strong>：你（本层）和你的上级（上层）之间是“上下级服务关系”；你和远方同级办事员（对等实体）之间是“按共同规矩办事的水平协议关系”。</li>
 <li><strong>【采分关键词】</strong>：<strong>①协议是“水平的”</strong>，是控制两个对等实体进行通信的规则集合（由语法、语义、同步三要素组成）；<strong>②服务是“垂直的”</strong>，是由下层向上层通过层间接口（SAP）提供的功能；<strong>③关系</strong>：在协议的控制下，两个对等实体间的通信使得本层能够向上一层提供服务，且下层协议对上层服务用户是<strong>透明（不可见）</strong>的。</li>
 </ol>
@@ -2557,13 +2568,17 @@
 <ol>
 <li><strong><code>3-04</code> 数据链路层的三个基本问题（封装成帧、透明传输和差错检测）为什么都必须加以解决？（官方大纲三(一)~(三)）</strong></li>
 <li><strong>【底层逻辑】</strong>：物理层只管传 <code>0101</code> 比特流，既不知道哪儿是一句话的开头结尾，也会因为网线干扰传错比特。</li>
-<li><strong>【采分关键词】</strong>：<ul>
+<li>
+<p><strong>【采分关键词】</strong>：</p>
+<ul>
 <li><strong>①封装成帧</strong>：在一段数据前后分别添加首部和尾部（帧定界符），接收端才能从比特流中识别出一帧的开始和结束。</li>
 <li><strong>②透明传输</strong>：若数据部分恰好出现与帧定界符相同的二进制编码（如 <code>01111110</code>），接收端会误认为帧提前结束而截断丢弃；必须用<strong>字节填充（PPP）</strong>或<strong>零比特填充（HDLC：连续5个1后插0）</strong>解决。</li>
 <li><strong>③差错检测</strong>：实际通信链路都不是理想的，比特传输会产生误码，必须通过 <strong>CRC 循环冗余检验</strong> 检测出有差错的坏帧并直接丢弃，防止将错误数据递交网络层。</li>
 </ul>
 </li>
-<li><strong><code>3-29</code> 以太网交换机有何特点？用它怎样组成虚拟局域网 VLAN？（官方大纲三(八)1,2，<code>2026-大3</code> 原题考点！）</strong></li>
+<li>
+<p><strong><code>3-29</code> 以太网交换机有何特点？用它怎样组成虚拟局域网 VLAN？（官方大纲三(八)1,2，<code>2026-大3</code> 原题考点！）</strong></p>
+</li>
 <li><strong>【底层逻辑】</strong>：集线器（Hub）是所有人共用一条大喇叭（同属一个冲突域），而交换机给每个端口配了独立通道和转发表；但交换机默认会把广播帧发给所有人，为了防止广播风暴，就在帧头里插个4字节的部门牌号（VLAN Tag），只有牌号相同的人才能收到广播。</li>
 <li><strong>【采分关键词】</strong>：<ul>
 <li><strong>交换机（与透明网桥）特点</strong>：以太网交换机实质是一个<strong>多端口的透明网桥</strong>，工作在数据链路层（MAC子层）；支持多对端口同时<strong>全双工、无碰撞</strong>通信，每个端口独享带宽；基于 <strong>MAC地址自学习算法（①逆向学习源MAC与接收端口写入转发表；②查表转发目的MAC：表中有且不同端口则单播转发、同端口则丢弃过滤、表中无则向除接收端口外所有端口泛洪广播；③老化机制超时清除）</strong> 存储转发帧；<strong>能隔离冲突域，但不能隔离广播域</strong>。</li>
@@ -2575,40 +2590,56 @@
 <ol>
 <li><strong><code>4-01</code> 网络层向上提供的服务有哪两种？试比较其优缺点。（官方大纲二(一)5，<code>2025-选24</code> 原题）</strong></li>
 <li><strong>【底层逻辑】</strong>：到底谁来干“保证可靠、按序到达”的苦活？电信网认为应该由网络里面的交换机干（虚电路服务）；互联网先驱认为路由器只管闭着眼往前扔包（数据报服务），可靠的苦活全交给两头的电脑（TCP）自己干。</li>
-<li><strong>【采分关键词】</strong>：<ul>
+<li>
+<p><strong>【采分关键词】</strong>：</p>
+<ul>
 <li><strong>虚电路服务（面向连接）</strong>：通信前先建立逻辑连接（虚电路 VC），分组只携带短虚电路号按固定路径顺序到达，中间节点需保存连接状态表。优点是分组首部短、按序到达；缺点是路由器复杂、某节点故障则所有经过该节点的虚电路均中断。</li>
 <li><strong>数据报服务（无连接，互联网 IP 采用）</strong>：网络层向上只提供<strong>简单灵活、无连接的、尽最大努力交付（Best-Effort）</strong>的数据报服务。每个分组携带完整的目的 IP 地址独立选路，<strong>可能出错、丢失、重复或乱序到达</strong>。优点是网络造价低、路由器不保存连接状态、网络生存性极强；可靠传输由端系统的运输层（TCP）负责。</li>
 </ul>
 </li>
-<li><strong><code>4-03</code> 作为中间设备，转发器、网桥、路由器和网关有何区别？（官方大纲二(三)、三(八)、四(七)）</strong></li>
+<li>
+<p><strong><code>4-03</code> 作为中间设备，转发器、网桥、路由器和网关有何区别？（官方大纲二(三)、三(八)、四(七)）</strong></p>
+</li>
 <li><strong>【底层逻辑】</strong>：所处的协议层越高，看得懂的包头越深，隔离的范围越大。</li>
-<li><strong>【采分关键词】</strong>：<ul>
+<li>
+<p><strong>【采分关键词】</strong>：</p>
+<ul>
 <li><strong>转发器（中继器 Repeater / 集线器 Hub）</strong>：<strong>物理层</strong>，对弱化的比特信号进行再生放大和转发，<strong>既不隔离冲突域，也不隔离广播域</strong>。</li>
 <li><strong>网桥（Bridge / 局域网交换机 Switch）</strong>：<strong>数据链路层</strong>，根据 MAC 地址存储转发帧，<strong>隔离冲突域，不隔离广播域</strong>。</li>
 <li><strong>路由器（Router）</strong>：<strong>网络层</strong>，根据目的 IP 地址查路由表转发分组，<strong>既隔离冲突域，又隔离广播域</strong>。</li>
 <li><strong>网关（Gateway）</strong>：<strong>网络层以上</strong>，用于不同体系结构或高层协议之间的转换。</li>
 </ul>
 </li>
-<li><strong><code>4-07</code> 试说明 IP 地址与 MAC 地址的区别。为什么要使用这两种不同的地址？（<code>2025-大2</code>、<code>2026-大4</code> 连考两年大题！）</strong></li>
+<li>
+<p><strong><code>4-07</code> 试说明 IP 地址与 MAC 地址的区别。为什么要使用这两种不同的地址？（<code>2025-大2</code>、<code>2026-大4</code> 连考两年大题！）</strong></p>
+</li>
 <li><strong>【底层逻辑】</strong>：MAC 地址是人的“身份证号”（走到哪都不变，但邮递员光看身份证号不知道你在哪个省哪个市）；IP 地址是“省/市/街道邮政编码”（方便全国邮局分拣路由，但到了最后一个小区门口，必须靠 ARP 问出这户人家的身份证号 MAC 才能把信塞进信箱）。</li>
-<li><strong>【采分关键词】</strong>：<ul>
+<li>
+<p><strong>【采分关键词】</strong>：</p>
+<ul>
 <li><strong>结构与层次区别</strong>：<strong>MAC 地址是平面结构</strong>（48位，固化在网卡 ROM 中，与地理位置无关，无法聚合）；<strong>IP 地址是层次结构</strong>（网络前缀 + 主机号，与所连接的网络拓扑相关，便于路由器按网络前缀聚合路由表，缩小路由表规模并屏蔽底层异构网络硬件差异）。</li>
 <li><strong>作用层与转发变化规律（必背）</strong>：IP 地址工作在<strong>网络层</strong>，负责端到端的逻辑寻址；MAC 地址工作在<strong>数据链路层</strong>，负责同一局域网（单跳链路）内的物理帧交付。在跨多个路由器转发过程中（无 NAT 时），<strong>IP 数据报的源 IP 和目的 IP 全程保持不变；而数据链路层帧的源 MAC 和目的 MAC 每经过一跳路由器都会被重新改写封装一次！</strong></li>
 </ul>
 </li>
-<li><strong><code>4-10</code> 当某个路由器发现一个 IP 数据报的首部检验和有差错时，为什么采取丢弃的办法而不是要求源站重传？计算首部检验和为什么不采用 CRC 检验码？</strong><ul>
+<li>
+<p><strong><code>4-10</code> 当某个路由器发现一个 IP 数据报的首部检验和有差错时，为什么采取丢弃的办法而不是要求源站重传？计算首部检验和为什么不采用 CRC 检验码？</strong></p>
+<ul>
 <li><strong>【底层逻辑】</strong>：连信封上的字都模糊出错了，信封上写的“寄件人地址（源IP）”很可能也是错的，找谁重传去？而且路由器每秒要改几百万个包的 TTL，用 CRC 太慢了。</li>
 <li><strong>【采分关键词】</strong>：<strong>①为什么不要求重传</strong>：首部出错时，其中的<strong>源 IP 地址字段本身可能已经损坏</strong>，路由器无法得知正确的源站地址；且 IP 层本身是无连接不可靠服务，差错重传由端系统的运输层（TCP）负责。<strong>②为什么不用 CRC</strong>：路由器每转发一跳，都要将 IP 首部中的 <strong>TTL（生存时间）减 1</strong>，因此每跳都必须重新计算首部检验和；不检验数据部分且采用简单的 <strong>16位二进制反码求和</strong>（而非复杂的 CRC），是为了<strong>简化路由器计算开销，加快分组转发速度</strong>。</li>
 </ul>
 </li>
-<li><strong><code>4-16</code> (1) 试解释为什么 ARP 高速缓存每存入一个项目就要设置 10~20 分钟的超时计时器。这个时间设置得太长或太短会出现什么问题？(2) 举出至少两种不需要发送 ARP 请求分组的情况。</strong><ul>
+<li>
+<p><strong><code>4-16</code> (1) 试解释为什么 ARP 高速缓存每存入一个项目就要设置 10~20 分钟的超时计时器。这个时间设置得太长或太短会出现什么问题？(2) 举出至少两种不需要发送 ARP 请求分组的情况。</strong></p>
+<ul>
 <li><strong>【底层逻辑】</strong>：主机可能会换网卡（MAC变了）或下线，缓存永远不删就会发错人；删太快又会天天在大厅里喊喇叭（广播ARP）。</li>
 <li><strong>【采分关键词】</strong>：</li>
 <li><strong>(1) 超时原因</strong>：网络拓扑和主机接口状态是动态变化的（如主机更换网卡导致 MAC 改变、主机关机或移走）。<strong>设置太短</strong>会导致主机频繁广播 ARP 请求，增加网络通信量开销；<strong>设置太长</strong>会导致某主机更换网卡后，其他主机仍在较长时间内向已失效的旧 MAC 地址发送帧，导致通信失败。</li>
 <li><strong>(2) 不需要发 ARP 请求的情况</strong>：①源主机的 ARP 高速缓存中<strong>已经存在</strong>该目的 IP 对应的 MAC 映射记录；②发送的是<strong>广播分组</strong>（目的 MAC 直接填全 1，即 <code>FF-FF-FF-FF-FF-FF</code>）；③使用的是<strong>点对点链路（如 PPP 链路）</strong>，无需使用 MAC 地址。</li>
 </ul>
 </li>
-<li><strong><code>4-35</code> &amp; <code>4-36</code>（合并精记）试简述 RIP、OSPF 和 BGP 路由选择协议的主要特点。RIP 使用 UDP，OSPF 使用 IP，而 BGP 使用 TCP，这样做有何优点？为什么 RIP 周期性地和邻站交换路由信息而 BGP 却不这样做？（官方大纲四(二)(五)，<code>2026-选9</code> 原题）</strong><ul>
+<li>
+<p><strong><code>4-35</code> &amp; <code>4-36</code>（合并精记）试简述 RIP、OSPF 和 BGP 路由选择协议的主要特点。RIP 使用 UDP，OSPF 使用 IP，而 BGP 使用 TCP，这样做有何优点？为什么 RIP 周期性地和邻站交换路由信息而 BGP 却不这样做？（官方大纲四(二)(五)，<code>2026-选9</code> 原题）</strong></p>
+<ul>
 <li><strong>【采分关键词对比表】</strong>：</li>
 </ul>
 </li>
@@ -2662,14 +2693,18 @@
 </tbody>
 </table>
 <ol>
-<li><strong><code>4-42</code> 什么是 NAT？什么是 NAPT？NAT 的优点和缺点有哪些？NAPT 有哪些特点？（官方大纲四(三)2，<code>2025-选10</code> 原题考点）</strong><ul>
+<li>
+<p><strong><code>4-42</code> 什么是 NAT？什么是 NAPT？NAT 的优点和缺点有哪些？NAPT 有哪些特点？（官方大纲四(三)2，<code>2025-选10</code> 原题考点）</strong></p>
+<ul>
 <li><strong>【采分关键词】</strong>：</li>
 <li><strong>定义与特点</strong>：<strong>NAT（网络地址转换）</strong>将专用网内部的本地私网 IP 转换为全球合法的公网 IP；<strong>NAPT（网络地址与端口转换）</strong>在转换 IP 地址的同时还结合<strong>运输层端口号</strong>进行转换，使内部多台拥有不同私网 IP 的主机能够<strong>共同复用同一个全球公网 IP 地址</strong>同时上网。</li>
 <li><strong>关键技术坑点（必记）</strong>：NAPT 重写源 IP 和源 TCP/UDP 端口号后，<strong>必须同时重新计算 IPv4 首部检验和与 TCP/UDP 检验和</strong>（因为 TCP/UDP 检验和覆盖了包含源/目的 IP 的伪首部）。</li>
 <li><strong>优缺点</strong>：优点是<strong>极大节省了合法的全球 IPv4 公网地址</strong>，且隐藏了内网拓扑提高安全性；缺点是<strong>通信必须由专用网内部主机主动发起</strong>（外网无法主动找内网主机建立连接），且路由器需查看并修改运输层端口，破坏了网络分层的独立性与端到端透明性。</li>
 </ul>
 </li>
-<li><strong><code>4-59</code> 从 IPv4 过渡到 IPv6 的方法有哪些？（官方大纲四(四)）</strong><ul>
+<li>
+<p><strong><code>4-59</code> 从 IPv4 过渡到 IPv6 的方法有哪些？（官方大纲四(四)）</strong></p>
+<ul>
 <li><strong>【采分关键词】</strong>：<strong>①双协议栈（Dual Stack）</strong>：一部分主机或路由器同时装有 IPv4 和 IPv6 两个协议栈，根据通信对象灵活使用 IPv4 或 IPv6 地址；<strong>②隧道技术（Tunneling）</strong>：在 IPv6 分组进入 IPv4 网络时，将其<strong>封装成为 IPv4 数据报的数据载荷部分</strong>（即 IPv4 首部 + IPv6 数据报），使 IPv6 分组能穿过中间的 IPv4 网络，到达另一端后再拆去 IPv4 首部还原出 IPv6 分组。</li>
 </ul>
 </li>
@@ -2683,21 +2718,29 @@
 <ol>
 <li><strong><code>1-17</code>（发送时延 vs 传播时延基础计算）</strong></li>
 <li><strong>题目要点</strong>：距离 <span class="arithmatex">\(D = 1000\text{ km}\)</span>，传播速率 <span class="arithmatex">\(v = 2 \times 10^8\text{ m/s}\)</span>。求：(1) 数据长 <span class="arithmatex">\(10^7\text{ bit}\)</span>、速率 <span class="arithmatex">\(100\text{ kbit/s}\)</span>；(2) 数据长 <span class="arithmatex">\(10^3\text{ bit}\)</span>、速率 <span class="arithmatex">\(1\text{ Gbit/s}\)</span> 时的发送时延和传播时延。</li>
-<li><strong>开袋即食算式与答案</strong>：<ul>
+<li>
+<p><strong>开袋即食算式与答案</strong>：</p>
+<ul>
 <li>传播时延只看距离和光速，两种情况完全相同：$<span class="arithmatex">\(t_{\text{prop}} = \frac{1000 \times 10^3\text{ m}}{2 \times 10^8\text{ m/s}} = 5 \times 10^{-3}\text{ s} = 5\text{ ms}\)</span>$</li>
 <li>(1) 发送时延：$<span class="arithmatex">\(t_{\text{trans1}} = \frac{10^7\text{ bit}}{100 \times 10^3\text{ bit/s}} = 100\text{ s}\)</span>$（此时发送时延占绝对主导）。</li>
 <li>(2) 发送时延：$<span class="arithmatex">\(t_{\text{trans2}} = \frac{10^3\text{ bit}}{10^9\text{ bit/s}} = 10^{-6}\text{ s} = 1\ \mu\text{s}\)</span>$（此时传播时延 <span class="arithmatex">\(5\text{ ms}\)</span> 远大于发送时延 <span class="arithmatex">\(1\ \mu\text{s}\)</span>）。</li>
 <li><strong>结论</strong>：若数据长度大而发送速率低，总时延取决于<strong>发送时延</strong>；若数据长度短而发送速率极高，总时延主要受限于物理链路的<strong>传播时延</strong>。</li>
 </ul>
 </li>
-<li><strong><code>1-19</code>（协议多层封装开销与传输效率，关联 <code>2026-大6</code>）</strong></li>
+<li>
+<p><strong><code>1-19</code>（协议多层封装开销与传输效率，关联 <code>2026-大6</code>）</strong></p>
+</li>
 <li><strong>题目要点</strong>：应用层数据加上 <span class="arithmatex">\(20\text{ B}\)</span> TCP首部、<span class="arithmatex">\(20\text{ B}\)</span> IP首部、<span class="arithmatex">\(18\text{ B}\)</span> 以太网首尾（共 <span class="arithmatex">\(58\text{ B}\)</span> 额外开销）。求应用数据为 <span class="arithmatex">\(100\text{ B}\)</span> 和 <span class="arithmatex">\(1000\text{ B}\)</span> 时的传输效率。</li>
-<li><strong>开袋即食算式与答案</strong>：<ul>
+<li>
+<p><strong>开袋即食算式与答案</strong>：</p>
+<ul>
 <li><span class="arithmatex">\(100\text{ B}\)</span> 时效率：$<span class="arithmatex">\(\eta_1 = \frac{100}{100 + 20 + 20 + 18} = \frac{100}{158} \approx 63.3\%\)</span>$</li>
 <li><span class="arithmatex">\(1000\text{ B}\)</span> 时效率：$<span class="arithmatex">\(\eta_2 = \frac{1000}{1000 + 58} = \frac{1000}{1058} \approx 94.5\%\)</span>$</li>
 </ul>
 </li>
-<li><strong><code>1-34</code>（报文交换 vs 分组交换流水线总时延 —— <code>2025-大1</code> 8分真题100%原题母体！）</strong></li>
+<li>
+<p><strong><code>1-34</code>（报文交换 vs 分组交换流水线总时延 —— <code>2025-大1</code> 8分真题100%原题母体！）</strong></p>
+</li>
 <li><strong>题目要点</strong>：A向B发 <span class="arithmatex">\(10^7\text{ bit}\)</span> 报文，中间经2个节点交换机（即共 <strong>3段链路</strong>），每段链路速率 <span class="arithmatex">\(R = 2\text{ Mbit/s}\)</span>，忽略传播、处理和排队时延。(1) 采用报文交换；(2) 划分为 <span class="arithmatex">\(1000\)</span> 个等长分组（每个分组 <span class="arithmatex">\(10^4\text{ bit}\)</span>）流水线发送。</li>
 <li><strong>开袋即食算式与答案（背熟流水线公式）</strong>：<ul>
 <li><strong>(1) 报文交换</strong>：整报在1段链路上的发送时延 <span class="arithmatex">\(T = \frac{10^7\text{ bit}}{2 \times 10^6\text{ bit/s}} = 5\text{ s}\)</span>。</li>
@@ -2715,24 +2758,36 @@
 <ol>
 <li><strong><code>2-07</code>（奈氏准则与多进制调制比特率 —— <code>2025-选2</code> &amp; <code>2026-大1</code> 母题）</strong></li>
 <li><strong>题目要点</strong>：最高码元速率 <span class="arithmatex">\(B = 20000\text{ Baud}\)</span>，采用16个不同振幅等级（<span class="arithmatex">\(M = 16\)</span>），求数据率 <span class="arithmatex">\(R\)</span>。</li>
-<li><strong>开袋即食算式与答案</strong>：$<span class="arithmatex">\(R = B \times \log_2 M = 20000 \times \log_2 16 = 20000 \times 4 = 80000\text{ bit/s} = 80\text{ kbit/s}\)</span>$</li>
-<li><strong><code>2-08</code>（香农公式与分贝 <span class="arithmatex">\(\text{dB}\)</span> 换算 —— <code>2025-选11</code> &amp; <code>2026-选1</code> 原题）</strong></li>
+<li>
+<p><strong>开袋即食算式与答案</strong>：$<span class="arithmatex">\(R = B \times \log_2 M = 20000 \times \log_2 16 = 20000 \times 4 = 80000\text{ bit/s} = 80\text{ kbit/s}\)</span>$</p>
+</li>
+<li>
+<p><strong><code>2-08</code>（香农公式与分贝 <span class="arithmatex">\(\text{dB}\)</span> 换算 —— <code>2025-选11</code> &amp; <code>2026-选1</code> 原题）</strong></p>
+</li>
 <li><strong>题目要点</strong>：带宽 <span class="arithmatex">\(W = 3\text{ kHz} = 3000\text{ Hz}\)</span>，无差错传送 <span class="arithmatex">\(C = 64\text{ kbit/s}\)</span> 数据，求所需信噪比 <span class="arithmatex">\(S/N\)</span> 的比值和分贝值。</li>
-<li><strong>开袋即食算式与答案</strong>：<ul>
+<li>
+<p><strong>开袋即食算式与答案</strong>：</p>
+<ul>
 <li>由 <span class="arithmatex">\(C = W \log_2(1 + S/N)\)</span> 得：<span class="arithmatex">\(64000 = 3000 \times \log_2(1 + S/N) \Rightarrow \log_2(1 + S/N) = 21.33\)</span></li>
 <li>比值：$<span class="arithmatex">\(S/N = 2^{21.33} - 1 \approx 2.64 \times 10^6\)</span>$</li>
 <li>分贝值：$<span class="arithmatex">\(\text{SNR}_{\text{dB}} = 10 \log_{10}(2.64 \times 10^6) \approx 64.2\text{ dB}\)</span>$（说明在普通电话线上要达到 <span class="arithmatex">\(64\text{ kbit/s}\)</span> 需要极高的信噪比）。</li>
 <li><strong>考场秒算常备值</strong>：记住 <strong><span class="arithmatex">\(30\text{ dB} \iff S/N = 1000\)</span></strong>（<span class="arithmatex">\(\log_2 1001 \approx 10\)</span>）；<strong><span class="arithmatex">\(20\text{ dB} \iff S/N = 100\)</span></strong>（<span class="arithmatex">\(\log_2 101 \approx 6.66\)</span>）；<strong><span class="arithmatex">\(15\text{ dB} \iff S/N \approx 31.62\)</span></strong>（<span class="arithmatex">\(\log_2 32.62 \approx 5.03\)</span>）。</li>
 </ul>
 </li>
-<li><strong><code>2-11</code>（线路衰减求最大距离 —— <code>2025-选12</code> 原题）</strong></li>
+<li>
+<p><strong><code>2-11</code>（线路衰减求最大距离 —— <code>2025-选12</code> 原题）</strong></p>
+</li>
 <li><strong>题目要点</strong>：双绞线衰减为 <span class="arithmatex">\(0.7\text{ dB/km}\)</span>，容许有 <span class="arithmatex">\(20\text{ dB}\)</span> 的衰减，求最大工作距离；若要增大到 <span class="arithmatex">\(100\text{ km}\)</span>，衰减应降低到多少？</li>
-<li><strong>开袋即食算式与答案</strong>：<ul>
+<li>
+<p><strong>开袋即食算式与答案</strong>：</p>
+<ul>
 <li>最大工作距离：$<span class="arithmatex">\(L = \frac{20\text{ dB}}{0.7\text{ dB/km}} \approx 28.6\text{ km}\)</span>$</li>
 <li>若要达到 <span class="arithmatex">\(100\text{ km}\)</span>，单位衰减需降至：$<span class="arithmatex">\(\frac{20\text{ dB}}{100\text{ km}} = 0.2\text{ dB/km}\)</span>$</li>
 </ul>
 </li>
-<li><strong><code>2-16</code>（CDMA 码分多址正交内积计算 —— 官方大纲三(五)1）</strong></li>
+<li>
+<p><strong><code>2-16</code>（CDMA 码分多址正交内积计算 —— 官方大纲三(五)1）</strong></p>
+</li>
 <li><strong>题目要点</strong>：四个站8位码片序列分别为：<ul>
 <li><span class="arithmatex">\(A: (-1, -1, -1, +1, +1, -1, +1, +1)\)</span></li>
 <li><span class="arithmatex">\(B: (-1, -1, +1, -1, +1, +1, +1, -1)\)</span></li>
@@ -2753,25 +2808,33 @@
 <ol>
 <li><strong><code>3-07</code>（CRC 循环冗余检验计算与漏检分析 —— <code>2025-选15</code> 原题）</strong></li>
 <li><strong>题目要点</strong>：要发送数据 <span class="arithmatex">\(M = 1101011011\)</span>，生成多项式 <span class="arithmatex">\(P(X) = X^4 + X + 1\)</span>（即除数 <span class="arithmatex">\(P = 10011\)</span>，最高次为4，故在数据后补4个0变为 <span class="arithmatex">\(11010110110000\)</span>）。求余数 FCS；若最后1个1变成0、最后2个1都变成0能否发现？采用CRC后是否变成了可靠传输？</li>
-<li><strong>开袋即食算式与答案</strong>：<ul>
+<li>
+<p><strong>开袋即食算式与答案</strong>：</p>
+<ul>
 <li>模2除法（异或运算不借位）：<span class="arithmatex">\(11010110110000 \div 10011\)</span>，算得4位余数 <strong><span class="arithmatex">\(\text{FCS} = 1110\)</span></strong>（发送帧为 <span class="arithmatex">\(11010110111110\)</span>）。</li>
 <li>若传输中最后1位或最后2位改变，接收端用新序列除以 <span class="arithmatex">\(10011\)</span> 余数均不为 <span class="arithmatex">\(0\)</span>，<strong>都能发现差错</strong>（只要生成多项式含两项以上且最低位为1，可检出所有单比特、双比特和奇数个比特差错；但若差错多项式恰好是 <span class="arithmatex">\(P(X)\)</span> 的整数倍则会<strong>漏检</strong>）。</li>
 <li><strong>是否可靠传输（必考辨析）</strong>：<strong>不是！</strong> CRC 只是差错检测技术，接收端发现错帧后只是<strong>静默丢弃</strong>；要实现“发什么就按序无差错收到什么”的可靠传输，还必须加上<strong>确认（ACK）和重传机制</strong>。</li>
 </ul>
 </li>
-<li><strong><code>3-09</code> &amp; <code>3-10</code>（PPP 字节填充与 HDLC/PPP 零比特填充 —— 官方大纲三(七)2,3）</strong></li>
+<li>
+<p><strong><code>3-09</code> &amp; <code>3-10</code>（PPP 字节填充与 HDLC/PPP 零比特填充 —— 官方大纲三(七)2,3）</strong></p>
+</li>
 <li><strong>题目要点</strong>：<ul>
 <li><code>3-09</code>：接收到的 PPP 帧数据部分（已填充）为 <code>7D 5E FE 27 7D 5D 7D 5D 65 7D 5E</code>，求真正的数据（PPP规定：<code>7E</code> 为标志字段，数据中出现 <code>7E</code> 转义为 <code>7D 5E</code>，出现转义符 <code>7D</code> 本身转义为 <code>7D 5D</code>）。</li>
 <li><code>3-10</code>：对 <code>0110111111111100</code> 进行零比特填充；对收到的 <code>0001110111110111110110</code> 删除零比特。</li>
 </ul>
 </li>
-<li><strong>开袋即食算式与答案</strong>：<ul>
+<li>
+<p><strong>开袋即食算式与答案</strong>：</p>
+<ul>
 <li><code>3-09</code> 还原：把每组 <code>7D 5E</code> 还原为 <code>7E</code>，每组 <code>7D 5D</code> 还原为 <code>7D</code>，得真正数据：<strong><code>7E FE 27 7D 7D 65 7E</code></strong>。</li>
 <li><code>3-10</code> 零比特填充（逢连续5个1就在后面插1个0）：<code>0110 11111(插0) 11111(插0) 00</code> <span class="arithmatex">\(\rightarrow\)</span> <strong><code>011011111011111000</code></strong>。</li>
 <li><code>3-10</code> 删零比特（逢连续5个1就把紧跟其后的那个0删掉）：<code>0001110 11111(删0) 11111(删0) 110</code> <span class="arithmatex">\(\rightarrow\)</span> <strong><code>00011101111111111110</code></strong>。</li>
 </ul>
 </li>
-<li><strong><code>3-20</code>（CSMA/CD 争用期与最短有效帧长计算）</strong><ul>
+<li>
+<p><strong><code>3-20</code>（CSMA/CD 争用期与最短有效帧长计算）</strong></p>
+<ul>
 <li><strong>题目要点</strong>：<span class="arithmatex">\(L = 1\text{ km}\)</span> 长、数据率 <span class="arithmatex">\(R = 1\text{ Gbit/s}\)</span> 的 CSMA/CD 网络，信号传播速率 <span class="arithmatex">\(v = 200000\text{ km/s}\)</span>，求最短帧长。</li>
 <li><strong>开袋即食算式与答案</strong>：</li>
 <li>单程传播时延 <span class="arithmatex">\(\tau = \frac{1\text{ km}}{200000\text{ km/s}} = 5 \times 10^{-6}\text{ s} = 5\ \mu\text{s}\)</span>，争用期 <span class="arithmatex">\(2\tau = 10\ \mu\text{s}\)</span>。</li>
@@ -2779,7 +2842,9 @@
     $<span class="arithmatex">\(L_{\min} = 2\tau \times R = 10 \times 10^{-6}\text{ s} \times 10^9\text{ bit/s} = 10000\text{ bit} = 1250\text{ B}\)</span>$</li>
 </ul>
 </li>
-<li><strong><code>3-33</code>（以太网交换机自学习过程填表大题 —— <code>2026-大3</code> 原题标准模板！）</strong><ul>
+<li>
+<p><strong><code>3-33</code>（以太网交换机自学习过程填表大题 —— <code>2026-大3</code> 原题标准模板！）</strong></p>
+<ul>
 <li><strong>题目要点</strong>：图3-31中交换机有6个端口，端口 <code>1~5</code> 分别连主机 <code>A~E</code>，初始交换表为空。依次执行4个动作：①A发给D；②D发给A；③E发给A；④A发给E。填出每一步的交换表状态、转发端口及说明。</li>
 <li><strong>开袋即食标准填表答案（务必亲手画一遍）</strong>：</li>
 </ul>
@@ -2823,12 +2888,16 @@
 </table>
 <h3 id="497">第4章（9道必算题，合并为7组核心模型）</h3>
 <ol>
-<li><strong><code>4-17</code>（跨路由器转发过程中的 ARP 次数计算 —— <code>2025-大2</code>、<code>2026-大4</code> 核心逻辑）</strong><ul>
+<li>
+<p><strong><code>4-17</code>（跨路由器转发过程中的 ARP 次数计算 —— <code>2025-大2</code>、<code>2026-大4</code> 核心逻辑）</strong></p>
+<ul>
 <li><strong>题目要点</strong>：主机A发送IP数据报给主机B，途中经过了5个路由器。试问在IP数据报的发送过程中总共使用了几次ARP？（假设初始ARP缓存均为空）</li>
 <li><strong>开袋即食算式与答案</strong>：共使用 <strong>6次 ARP</strong>！因为经过5个路由器意味着共有 <strong>6段物理局域网链路</strong>（A到 <span class="arithmatex">\(R_1\)</span>、<span class="arithmatex">\(R_1\)</span> 到 <span class="arithmatex">\(R_2\)</span>、<span class="arithmatex">\(R_2\)</span> 到 <span class="arithmatex">\(R_3\)</span>、<span class="arithmatex">\(R_3\)</span> 到 <span class="arithmatex">\(R_4\)</span>、<span class="arithmatex">\(R_4\)</span> 到 <span class="arithmatex">\(R_5\)</span>、<span class="arithmatex">\(R_5\)</span> 到B），在每一段链路上发送帧之前，发送节点都需要使用1次ARP来解析下一跳接口（或最终目的主机B）的MAC地址。</li>
 </ul>
 </li>
-<li><strong><code>4-18</code>（最长前缀匹配查转发表计算）</strong><ul>
+<li>
+<p><strong><code>4-18</code>（最长前缀匹配查转发表计算）</strong></p>
+<ul>
 <li><strong>题目要点</strong>：路由器转发表有5行：<code>192.4.153.0/26</code>（跳 <span class="arithmatex">\(R_3\)</span>）、<code>128.96.39.0/25</code>（接口 <code>m0</code>）、<code>128.96.39.128/25</code>（接口 <code>m1</code>）、<code>128.96.40.0/25</code>（跳 <span class="arithmatex">\(R_2\)</span>）、<code>* 默认</code>（跳 <span class="arithmatex">\(R_4\)</span>）。求收到以下5个目的地址时的下一跳：</li>
 <li>(1) <code>128.96.39.10</code>；(2) <code>128.96.40.12</code>；(3) <code>128.96.40.151</code>；(4) <code>192.4.153.17</code>；(5) <code>192.4.153.90</code>。</li>
 <li><strong>开袋即食算式与答案（看第4字节二进制最高位）</strong>：</li>
@@ -2840,7 +2909,9 @@
 <li>(5) <code>192.4.153.90</code>：<span class="arithmatex">\(90 &gt; 63\)</span>，不匹配 <code>.153.0/26</code>，走默认路由 <span class="arithmatex">\(\rightarrow\)</span> <strong>下一跳 <span class="arithmatex">\(R_4\)</span></strong>。</li>
 </ul>
 </li>
-<li><strong><code>4-20</code>（IP 数据报分片计算 —— <code>2025-选14</code> &amp; <code>2026-选7</code> 一字不差原题！）</strong><ul>
+<li>
+<p><strong><code>4-20</code>（IP 数据报分片计算 —— <code>2025-选14</code> &amp; <code>2026-选7</code> 一字不差原题！）</strong></p>
+<ul>
 <li><strong>题目要点</strong>：总长 <span class="arithmatex">\(4000\text{ B}\)</span> 数据报（固定首部 <span class="arithmatex">\(20\text{ B}\)</span>，故原数据载荷为 <span class="arithmatex">\(3980\text{ B}\)</span>），经过 <span class="arithmatex">\(\text{MTU} = 1500\text{ B}\)</span> 的链路。求划分为几个分片？各分片的数据字段长度、片偏移字段和 MF 标志为何数值？</li>
 <li><strong>开袋即食算式与答案</strong>：</li>
 <li>每个分片最大可装数据长度 = <span class="arithmatex">\(\lfloor \frac{1500 - 20}{8} \rfloor \times 8 = 1480\text{ B}\)</span>（必须是8字节的整数倍）。</li>
@@ -2887,7 +2958,9 @@
 </tbody>
 </table>
 <ol>
-<li><strong><code>4-22</code>（CIDR 路由聚合 —— <code>2025-选13</code> 一字不差原题！）</strong><ul>
+<li>
+<p><strong><code>4-22</code>（CIDR 路由聚合 —— <code>2025-选13</code> 一字不差原题！）</strong></p>
+<ul>
 <li><strong>题目要点</strong>：聚合4个 <code>/24</code> 地址块：<code>212.56.132.0/24</code>、<code>212.56.133.0/24</code>、<code>212.56.134.0/24</code>、<code>212.56.135.0/24</code>。</li>
 <li><strong>开袋即食算式与答案</strong>：</li>
 <li>前两个字节 <code>212.56</code>（16位）完全相同；看第3字节的二进制：<ul>
@@ -2900,7 +2973,9 @@
 <li>第3字节前6位 <code>100001</code> 完全相同，故共同前缀长度 = <span class="arithmatex">\(16 + 6 = 22\)</span> 位，聚合结果为：<strong><code>212.56.132.0/22</code></strong>。</li>
 </ul>
 </li>
-<li><strong><code>4-25</code>（VLSM 可变长子网划分 —— <code>2026-选4</code> 原题模型）</strong><ul>
+<li>
+<p><strong><code>4-25</code>（VLSM 可变长子网划分 —— <code>2026-选4</code> 原题模型）</strong></p>
+<ul>
 <li><strong>题目要点</strong>：给定地址块 <code>30.138.118/23</code>（即 <code>30.138.118.0/23</code>，共 <span class="arithmatex">\(2^{32-23} = 512\)</span> 个地址，覆盖 <code>.118.0</code> 至 <code>.119.255</code>），分配给5个局域网：<span class="arithmatex">\(\text{LAN}_3\)</span>（150台主机）、<span class="arithmatex">\(\text{LAN}_2\)</span>（91台）、<span class="arithmatex">\(\text{LAN}_5\)</span>（15台）、<span class="arithmatex">\(\text{LAN}_4\)</span>（3台）、以及连接3个路由器的干道 <span class="arithmatex">\(\text{LAN}_1\)</span>（需3个路由器接口IP）。</li>
 <li><strong>开袋即食算式与答案（从大到小切蛋糕，主机数 <span class="arithmatex">\(M\)</span> 需满足 <span class="arithmatex">\(2^h - 2 \ge M\)</span>）</strong>：</li>
 <li><strong><span class="arithmatex">\(\text{LAN}_3\)</span>（150台）</strong>：需 <span class="arithmatex">\(2^8 - 2 = 254 \ge 150 \Rightarrow\)</span> 主机位8位，前缀 <strong><code>/24</code></strong>，分给 <strong><code>30.138.118.0/24</code></strong>（占掉 <code>.118.0 ~ .118.255</code>）；</li>
@@ -2913,7 +2988,9 @@
 </li>
 </ul>
 </li>
-<li><strong><code>4-37</code>（RIP 距离向量算法更新路由表大题 —— 今年计网大题头号押题！）</strong><ul>
+<li>
+<p><strong><code>4-37</code>（RIP 距离向量算法更新路由表大题 —— 今年计网大题头号押题！）</strong></p>
+<ul>
 <li><strong>题目要点</strong>：路由器B原路由表有5项：<code>(N1, 7, A)</code>、<code>(N2, 2, C)</code>、<code>(N6, 8, F)</code>、<code>(N8, 4, E)</code>、<code>(N9, 4, F)</code>。现B收到邻居 <strong>C</strong> 发来的路由信息：<code>(N2, 4)</code>、<code>(N3, 8)</code>、<code>(N6, 4)</code>、<code>(N8, 3)</code>、<code>(N9, 5)</code>。写出B更新后的路由表及每一步理由。</li>
 <li><strong>开袋即食三步满分解法（考场必须按这三步写）</strong>：</li>
 <li><strong>第一步（距离加1，下一跳改C）</strong>：将C发来的报文所有距离加1，下一跳标为C，得到修正表：<code>(N2, 5, C)</code>、<code>(N3, 9, C)</code>、<code>(N6, 5, C)</code>、<code>(N8, 4, C)</code>、<code>(N9, 6, C)</code>。</li>
@@ -2970,7 +3047,9 @@
 </tbody>
 </table>
 <ol>
-<li><strong><code>4-45</code> &amp; <code>4-46</code>（CIDR 地址块基本参数计算 —— <code>2026-选5</code> 原题模型）</strong><ul>
+<li>
+<p><strong><code>4-45</code> &amp; <code>4-46</code>（CIDR 地址块基本参数计算 —— <code>2026-选5</code> 原题模型）</strong></p>
+<ul>
 <li><strong>题目要点</strong>：已知一个 <code>/27</code> 网络中有一个地址是 <code>167.199.170.82</code>，求网络掩码、网络前缀长度、后缀长度、地址数、首地址（网络地址）及末地址（广播地址）。</li>
 <li><strong>开袋即食算式与答案</strong>：</li>
 <li>网络前缀长度 = <strong><span class="arithmatex">\(27\)</span> 位</strong>；主机后缀长度 = <span class="arithmatex">\(32 - 27 =\)</span> <strong><span class="arithmatex">\(5\)</span> 位</strong>；地址总数 = <span class="arithmatex">\(2^5 =\)</span> <strong><span class="arithmatex">\(32\)</span> 个</strong>。</li>
@@ -2982,7 +3061,9 @@
 </li>
 </ul>
 </li>
-<li><strong><code>4-48</code>（根据拓扑图编写路由器路由表 —— <code>2025-大3</code> &amp; <code>2026-大4</code> 连考两年大题原题！）</strong><ul>
+<li>
+<p><strong><code>4-48</code>（根据拓扑图编写路由器路由表 —— <code>2025-大3</code> &amp; <code>2026-大4</code> 连考两年大题原题！）</strong></p>
+<ul>
 <li><strong>题目要点</strong>：图4-80中，网络 <code>145.13.0.0/16</code> 划分为4个子网 <span class="arithmatex">\(N_1 \sim N_4\)</span>，分别直连在路由器 <span class="arithmatex">\(R\)</span> 的接口 <code>m0, m1, m2, m3</code> 上，接口 <code>m4</code> 连接互联网。写出路由器 <span class="arithmatex">\(R\)</span> 的路由表，并说明收到目的地址为 <code>145.13.160.78</code> 的分组如何转发。</li>
 <li><strong>开袋即食标准答案</strong>：</li>
 <li><strong>(1) 路由器 <span class="arithmatex">\(R\)</span> 的路由表（4个直连 + 1个默认路由，格式与真题完全一致）</strong>：</li>
@@ -3043,18 +3124,30 @@
 <li><code>1-28</code>（综合考虑TCP握手 <span class="arithmatex">\(2\text{RTT}\)</span> 与连续/停等/窗口发送 <span class="arithmatex">\(1.5\text{ MB}\)</span> 文件耗时，非常好的跨章热身题）</li>
 <li><code>1-29</code>（令传播时延等于发送时延求带宽）</li>
 <li><code>1-35</code>（时延带宽积与每比特物理宽度计算）</li>
-<li><code>1-36</code>（多段异速链路瓶颈带宽即吞吐量 <span class="arithmatex">\(\min(2\text{M}, 1\text{M}, 500\text{k}) = 500\text{ kbit/s}\)</span> 计算，对应 <code>2026-大1(2)</code> 瓶颈速率思想）</li>
-<li><strong>第2章（3题）</strong>：</li>
+<li>
+<p><code>1-36</code>（多段异速链路瓶颈带宽即吞吐量 <span class="arithmatex">\(\min(2\text{M}, 1\text{M}, 500\text{k}) = 500\text{ kbit/s}\)</span> 计算，对应 <code>2026-大1(2)</code> 瓶颈速率思想）</p>
+</li>
+<li>
+<p><strong>第2章（3题）</strong>：</p>
+</li>
 <li><code>2-09</code>（香农公式逆运算：速率增加 <span class="arithmatex">\(60\%\)</span> 求信噪比需增大多少倍）</li>
 <li><code>2-13</code>（为什么要信道复用？FDM/TDM/STDM/WDM/CDMA 基本概念）</li>
-<li><code>2-15</code>（CDMA 为什么不会互相干扰？正交码片原理简答）</li>
-<li><strong>第3章（6题）</strong>：</li>
+<li>
+<p><code>2-15</code>（CDMA 为什么不会互相干扰？正交码片原理简答）</p>
+</li>
+<li>
+<p><strong>第3章（6题）</strong>：</p>
+</li>
 <li><code>3-08</code>（CRC 模2除法另一组数字练习：<span class="arithmatex">\(101110 \div 1001\)</span>）</li>
 <li><code>3-21</code> &amp; <code>3-22</code>（比特时间概念与 CSMA/CD 退避算法等待时间 <span class="arithmatex">\(r \times 512\text{ 比特时间}\)</span> 计算）</li>
 <li><code>3-24</code>（CSMA/CD 最短帧长防碰撞边界验证，注意加上8字节前同步码和帧定界符）</li>
 <li><code>3-27</code>（集线器共享带宽 vs 交换机独享带宽数值对比：<span class="arithmatex">\(10\text{ Mbit/s}\)</span> 集线器总带宽 <span class="arithmatex">\(10\text{M}\)</span>，而10端口 <span class="arithmatex">\(10\text{M}\)</span> 交换机总带宽可达 <span class="arithmatex">\(100\text{M}\)</span>）</li>
-<li><code>3-30</code>（交换机网络最大总吞吐量计算）</li>
-<li><strong>第4章（18题）</strong>：</li>
+<li>
+<p><code>3-30</code>（交换机网络最大总吞吐量计算）</p>
+</li>
+<li>
+<p><strong>第4章（18题）</strong>：</p>
+</li>
 <li><code>4-15</code>（TCP报文在IP层分片后，求局域网向上层传送的总比特数，注意每个分片都要加20B即160位IP首部）</li>
 <li><code>4-19</code>（将 <code>/16</code> 平均分配给16个地点，求每个 <code>/20</code> 地址块的最小和最大IP）</li>
 <li><code>4-23</code>（判断两个 CIDR 地址块是否存在包含关系）</li>

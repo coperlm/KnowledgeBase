@@ -2608,8 +2608,12 @@
 <li><strong>本地域名服务器（Local DNS）</strong>：你们学校信息中心机房里的那台 DNS（也叫默认 DNS）。你电脑要查任何网址，第一步永远是先找它！</li>
 <li><strong>根域名服务器（Root DNS）</strong>：全球最高法院（共13套逻辑根，编号 <code>a.root-servers.net</code> 到 <code>m</code>）。它不存具体网站 IP，只存 <code>.com</code>、<code>.cn</code> 等所有<strong>顶级域名服务器</strong>的 IP。</li>
 <li><strong>顶级域名服务器（TLD DNS）</strong>：掌管所有以 <code>.cn</code>、<code>.com</code>、<code>.edu</code> 结尾的二级域名归谁管（比如告诉本地 DNS：“要查 <code>seu.edu.cn</code>，请去找东南大学自己的权限服务器”）。</li>
-<li><strong>权限域名服务器（Authoritative DNS）</strong>：东南大学自己机房里管 <code>seu.edu.cn</code> 这个区的服务器，只有它手里攥着 <code>www.seu.edu.cn</code> 最终的真实 IP 地址！</li>
-<li><strong>【严谨考场结论】</strong>：</li>
+<li>
+<p><strong>权限域名服务器（Authoritative DNS）</strong>：东南大学自己机房里管 <code>seu.edu.cn</code> 这个区的服务器，只有它手里攥着 <code>www.seu.edu.cn</code> 最终的真实 IP 地址！</p>
+</li>
+<li>
+<p><strong>【严谨考场结论】</strong>：</p>
+</li>
 <li><strong>DNS 主要功能</strong>：将用户使用的易于记忆的主机<strong>域名转换为 IP 地址</strong>（采用客户/服务器方式，分布式数据库系统，主要使用 <strong>UDP 端口 53</strong>）。</li>
 <li><strong>四类域名服务器职责区别</strong>：<ol>
 <li><strong>根域名服务器（Root Name Server）</strong>：最高层次的域名服务器，也是最重要的域名服务器。所有的根域名服务器都知道所有的<strong>顶级域名服务器</strong>的域名和 IP 地址。不管是哪一个本地域名服务器，若自己无法解析，首先求助的就是根域名服务器。</li>
@@ -2627,8 +2631,12 @@
 <li><strong>怎么唯一标记网上的一个资源在哪里？</strong> <span class="arithmatex">\(\rightarrow\)</span> 用 <strong>URL（统一资源定位符）</strong>；</li>
 <li><strong>客户和服务器怎么对话把资源要过来？</strong> <span class="arithmatex">\(\rightarrow\)</span> 用 <strong>HTTP（超文本传送协议）</strong>；</li>
 <li><strong>拿过来的文档怎么排版显示在屏幕上？</strong> <span class="arithmatex">\(\rightarrow\)</span> 用 <strong>HTML（超文本标记语言）</strong>；</li>
-<li><strong>用什么软件点链接看页面？</strong> <span class="arithmatex">\(\rightarrow\)</span> 用 <strong>浏览器（Browser）</strong>。</li>
-<li><strong>【严谨考场结论】</strong>：</li>
+<li>
+<p><strong>用什么软件点链接看页面？</strong> <span class="arithmatex">\(\rightarrow\)</span> 用 <strong>浏览器（Browser）</strong>。</p>
+</li>
+<li>
+<p><strong>【严谨考场结论】</strong>：</p>
+</li>
 <li><strong>WWW（World Wide Web，万维网）</strong>：是一个大规模的、联机式的信息储藏所，用链接的方法能非常方便地从互联网上的一个站点访问另一个站点。</li>
 <li><strong>URL（Uniform Resource Locator，统一资源定位符）</strong>：用来唯一标识万维网上的各种文档和资源的位置。一般格式为：<code>&lt;协议&gt;://&lt;主机&gt;:&lt;端口&gt;/&lt;路径&gt;</code>（其中协议和主机域名<strong>不区分大小写</strong>，但 <code>&lt;路径&gt;</code> <strong>有时区分大小写</strong>；HTTP 默认端口为 <strong>80</strong>）。</li>
 <li><strong>HTTP（HyperText Transfer Protocol，超文本传送协议）</strong>：定义了浏览器（万维网客户进程）怎样向万维网服务器请求万维网文档，以及服务器怎样把文档传送给浏览器的应用层协议（面向事务、无状态，基于 TCP）。</li>
@@ -2712,8 +2720,12 @@
 <ul>
 <li><strong>【说人话】</strong>：千万背熟这张协议接力图！</li>
 <li><strong>普通客户端软件（如 Outlook）发信收信</strong>：发信用 <strong>SMTP</strong> <span class="arithmatex">\(\rightarrow\)</span> 服务器间传信用 <strong>SMTP</strong> <span class="arithmatex">\(\rightarrow\)</span> 收信用 <strong>POP3 / IMAP</strong>。</li>
-<li><strong>打开浏览器网页（Webmail）发信收信</strong>：因为你用的是<strong>万维网浏览器</strong>，所以从你的浏览器到你的邮箱服务器（发信）用的是 <strong>HTTP（或 HTTPS）</strong>！从收件人的邮箱服务器到收件人的浏览器（看信）用的也是 <strong>HTTP（或 HTTPS）</strong>！<strong>只有中间“从新浪邮件服务器传给网易邮件服务器”这一段，用的才是 SMTP！</strong></li>
-<li><strong>【严谨考场结论】</strong>：</li>
+<li>
+<p><strong>打开浏览器网页（Webmail）发信收信</strong>：因为你用的是<strong>万维网浏览器</strong>，所以从你的浏览器到你的邮箱服务器（发信）用的是 <strong>HTTP（或 HTTPS）</strong>！从收件人的邮箱服务器到收件人的浏览器（看信）用的也是 <strong>HTTP（或 HTTPS）</strong>！<strong>只有中间“从新浪邮件服务器传给网易邮件服务器”这一段，用的才是 SMTP！</strong></p>
+</li>
+<li>
+<p><strong>【严谨考场结论】</strong>：</p>
+</li>
 <li><strong>主要特点</strong>：用户无需在本地计算机上安装专门的电子邮件客户端软件（用户代理 UA 就是普通的<strong>万维网浏览器</strong>），只要能上网打开浏览器登录邮箱网站，即可在任何地点收发和管理邮件，邮件始终保存在万维网邮件服务器上。</li>
 <li><strong>各阶段使用的协议（必考单选！）</strong>：<ol>
 <li><strong>发件人从浏览器把邮件发送到发送方邮件服务器</strong>：使用 <strong>HTTP（或 HTTPS）协议</strong>（而非 SMTP！）；</li>
