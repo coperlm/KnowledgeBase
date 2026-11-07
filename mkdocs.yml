@@ -90,6 +90,8 @@ extra_javascript:
 markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 # extra:
 #   consent:
