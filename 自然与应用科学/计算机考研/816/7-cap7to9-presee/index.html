@@ -2789,11 +2789,15 @@
 <h1 id="cap7to9-presee">cap7to9-presee</h1>
 <p>东南大学 816《计算机网络》第7至9章免看书核心串讲讲义</p>
 <blockquote>
-<p><strong>定制说明</strong>：</p>
-<ol>
-<li><strong>精准对齐 816 考纲</strong>：《王道》复习指南删减了第7章（网络安全）和第8章（流媒体），对第9章（无线网络）的细节挖掘也与谢希仁教材存在差异；但这三块内容在东南大学 816 大纲中均被明确单列（见大纲 <strong>三(五)2 <code>CSMA/CA</code></strong>、<strong>三(六)3 <code>IEEE 802.11</code></strong>、<strong>六(九) <code>网络安全</code></strong>、<strong>六(十) <code>流媒体</code></strong>）。</li>
+<ul>
+<li>
+<p><em>定制说明</em>*：</p>
+</li>
+<li>
+<p><strong>精准对齐 816 考纲</strong>：《王道》复习指南删减了第7章（网络安全）和第8章（流媒体），对第9章（无线网络）的细节挖掘也与谢希仁教材存在差异；但这三块内容在东南大学 816 大纲中均被明确单列（见大纲 <strong>三(五)2 <code>CSMA/CA</code></strong>、<strong>三(六)3 <code>IEEE 802.11</code></strong>、<strong>六(九) <code>网络安全</code></strong>、<strong>六(十) <code>流媒体</code></strong>）。</p>
+</li>
 <li><strong>“零剧透”防虚高原则</strong>：为了保证你后续独立做课后题时的真实测评效果，本讲义<strong>完全隐藏了课后习题的具体题号、设问角度和原题算例数字</strong>，全部采用全新的教学模型把底层公式与工程逻辑讲透。读完这份讲义，你完全不需要再去啃教材原文，直接去刷题即可测试真实水平。</li>
-</ol>
+</ul>
 </blockquote>
 <hr />
 <h2 id="7-816">模块一：第7章 网络安全（对应 816 考纲 六(九)）</h2>
@@ -2803,19 +2807,23 @@
 <h3 id="_1">一、 坏人是怎么搞破坏的？（攻击分类与安全目标）</h3>
 <p>想象小红（A）要给小明（B）通过快递寄一封机密商业合同，半路上有个黑客老王（E）盯着这条路。老王搞破坏的手段分为两大类：</p>
 <ol>
-<li><strong>被动攻击（只偷看、不动手）</strong>：</li>
-<li>老王不拦快递车，也不改信件内容，只是拿个透视镜偷偷看信里写了啥（<strong>截获/窃听</strong>）；或者就算信锁在保险箱里看不见字，老王天天蹲在路边数小红一天给小明寄几个箱子、箱子有多重，从而猜出两人是不是马上要签大合同了（这叫<strong>流量分析 Traffic Analysis</strong>）。</li>
 <li>
-<p><strong>防守策略</strong>：被动攻击不会在信件上留下任何痕迹，所以<strong>极难检测，只能靠“事前预防”（即给数据加密）</strong>。</p>
+<p><strong>被动攻击（只偷看、不动手）</strong>：</p>
+<ul>
+<li>老王不拦快递车，也不改信件内容，只是拿个透视镜偷偷看信里写了啥（<strong>截获/窃听</strong>）；或者就算信锁在保险箱里看不见字，老王天天蹲在路边数小红一天给小明寄几个箱子、箱子有多重，从而猜出两人是不是马上要签大合同了（这叫<strong>流量分析 Traffic Analysis</strong>）。</li>
+<li><strong>防守策略</strong>：被动攻击不会在信件上留下任何痕迹，所以<strong>极难检测，只能靠“事前预防”（即给数据加密）</strong>。</li>
+</ul>
 </li>
 <li>
 <p><strong>主动攻击（直接动手脚）</strong>：</p>
-</li>
+<ul>
 <li><strong>篡改（Modification）</strong>：把合同里的“付款 100 万”涂改成“付款 1 块”；</li>
 <li><strong>伪造/假冒（Masquerading）</strong>：老王自己写一封信，落款冒充小红寄给小明；</li>
 <li><strong>重放攻击（Replay Attack）</strong>：小红给银行发了一条加密指令“给老王转账 100 元”。老王虽然解不开这个加密包，但他把这个加密包原封不动地复印了 100 份，连续往银行窗口塞了 100 次，让银行重复执行扣款！</li>
 <li><strong>拒绝服务（DoS / DDoS）</strong>：老王雇了一万个人把快递站大门堵死，让小红的正经信件根本寄不出去。</li>
 <li><strong>防守策略</strong>：主动攻击很难通过纯加密彻底预防，必须结合<strong>加密、报文鉴别、序号/时间戳以及入侵检测系统（IDS）</strong>来“检测并恢复”。</li>
+</ul>
+</li>
 </ol>
 <p>由此引出网络安全的三大核心目标（记住它们各自的含义界限）：</p>
 <ul>
@@ -2829,16 +2837,20 @@
 <h4 id="1-symmetric-crypto-des3desaes">1. 对称密码体制（Symmetric Crypto，如 DES、3DES、AES）</h4>
 <ul>
 <li><strong>工作原理</strong>：加密和解密用的是<strong>同一把钥匙 <span class="arithmatex">\(K\)</span></strong>（双方事先在私底下悄悄配好同一把钥匙）。</li>
-<li><strong>核心优缺点</strong>：</li>
+<li><strong>核心优缺点</strong>：<ul>
 <li><strong>优点</strong>：加解密的数学运算极其简单，<strong>速度飞快</strong>！用来加密几百 MB 的电影或长文件毫无压力。</li>
 <li><strong>缺点</strong>：①<strong>密钥分发是个噩梦</strong>——如果有 <span class="arithmatex">\(N\)</span> 个人想两两保密通信，总共需要事先配好 <span class="arithmatex">\(\frac{N(N-1)}{2}\)</span> 把不同的钥匙；而且两人相隔万里，怎么把这把钥匙安全地寄给对方？（通常需要找一个大家都绝对信任的第三方“密钥分配中心 KDC”，最著名的协议叫 <strong>Kerberos</strong>）。②<strong>无法防止内部人耍赖（无抗抵赖性）</strong>——因为同一把钥匙只有小红和小明两个人有，如果小明自己用这把钥匙伪造了一封信，然后去法院告小红，法官根本分不清这封信到底是小红写的还是小明自己写的！</li>
 </ul>
+</li>
+</ul>
 <h4 id="2-public-key-rsa">2. 公钥密码体制（Public-Key / 非对称密码，如 RSA）</h4>
 <ul>
-<li><strong>工作原理</strong>：每个人去配锁店打造的不是一把钥匙，而是<strong>一对在数学上死死咬合的钥匙</strong>：</li>
-<li><strong>公钥（Public Key, <span class="arithmatex">\(PK\)</span>）</strong>：相当于一把<strong>“敞开挂在全世界门口的挂锁”</strong>，全天下任何人都可以免费拿你的公钥把箱子咔哒一声锁上；</li>
 <li>
-<p><strong>私钥（Private Key, <span class="arithmatex">\(SK\)</span>）</strong>：相当于<strong>“唯一能打开这把挂锁的钥匙”</strong>，全宇宙只有你自己的保险柜里藏着这一把，绝对不给第二个人看！</p>
+<p><strong>工作原理</strong>：每个人去配锁店打造的不是一把钥匙，而是<strong>一对在数学上死死咬合的钥匙</strong>：</p>
+<ul>
+<li><strong>公钥（Public Key, <span class="arithmatex">\(PK\)</span>）</strong>：相当于一把<strong>“敞开挂在全世界门口的挂锁”</strong>，全天下任何人都可以免费拿你的公钥把箱子咔哒一声锁上；</li>
+<li><strong>私钥（Private Key, <span class="arithmatex">\(SK\)</span>）</strong>：相当于<strong>“唯一能打开这把挂锁的钥匙”</strong>，全宇宙只有你自己的保险柜里藏着这一把，绝对不给第二个人看！</li>
+</ul>
 </li>
 <li>
 <p><strong>两大神仙用法（考场铁律：盯紧到底用谁的公钥、谁的私钥！）</strong>：</p>
@@ -2881,50 +2893,56 @@
 </ul>
 <h4 id="2-mitm-ca">2. 怎么防止坏人把公开挂锁偷梁换柱？（中间人攻击 MITM 与认证中心 CA）</h4>
 <ul>
-<li>公钥是公开的，但这带来了一个恐怖的漏洞——<strong>中间人攻击（Man-in-the-Middle Attack）</strong>：</li>
+<li>
+<p>公钥是公开的，但这带来了一个恐怖的漏洞——<strong>中间人攻击（Man-in-the-Middle Attack）</strong>：</p>
+<ul>
 <li>小红在网吧喊了一声：“小明，把你的公钥发给我！”</li>
 <li>躲在路由器里的黑客老王把小明的真公钥拦下来扔掉，把<strong>老王自己的公钥 <span class="arithmatex">\(PK_E\)</span></strong> 发给了小红，谎称“这就是小明的公钥”！</li>
-<li>
-<p>小红信以为真，用老王的公钥 <span class="arithmatex">\(PK_E\)</span> 把机密合同锁上发出去；老王在半路用自己的私钥 <span class="arithmatex">\(SK_E\)</span> 轻松打开偷看甚至篡改后，再用刚才截获的小明真公钥 <span class="arithmatex">\(PK_B\)</span> 锁上发给小明！小红和小明聊了一整天，浑然不知中间夹了个偷听一切的老王！</p>
+<li>小红信以为真，用老王的公钥 <span class="arithmatex">\(PK_E\)</span> 把机密合同锁上发出去；老王在半路用自己的私钥 <span class="arithmatex">\(SK_E\)</span> 轻松打开偷看甚至篡改后，再用刚才截获的小明真公钥 <span class="arithmatex">\(PK_B\)</span> 锁上发给小明！小红和小明聊了一整天，浑然不知中间夹了个偷听一切的老王！</li>
+</ul>
 </li>
 <li>
 <p><strong>终极克星：认证中心 CA 与数字证书（Digital Certificate）</strong>：</p>
-</li>
+<ul>
 <li>怎么证明这个公钥真的是小明的？去国家工商局（<strong>认证中心 CA</strong>）办一张防伪身份证（<strong>数字证书</strong>）！</li>
 <li>CA 审查完小明的真实身份后，把 <strong>“小明的名字 + 小明的公钥 <span class="arithmatex">\(PK_B\)</span>”</strong> 写在一张电子文件上，然后用 <strong>CA 自己的私钥 <span class="arithmatex">\(SK_{\text{CA}}\)</span></strong> 盖上防伪钢印（数字签名）！</li>
 <li>以后小明给别人发公钥时，直接发这张数字证书。小红电脑的浏览器出厂时就已经焊死了 <strong>CA 的公钥 <span class="arithmatex">\(PK_{\text{CA}}\)</span></strong>，拿 <span class="arithmatex">\(PK_{\text{CA}}\)</span> 一验钢印，老王的假公钥当场现原形！</li>
 </ul>
+</li>
+</ul>
 <h4 id="3">3. 协议栈里的“三大保镖”与防火墙</h4>
 <p>把上面的零件组装起来，放在网络的不同层次，就构成了三大实战协议：</p>
 <ol>
-<li><strong>网络层保镖：<code>IPsec</code>（常用于机构间建 VPN）</strong>：</li>
+<li>
+<p><strong>网络层保镖：<code>IPsec</code>（常用于机构间建 VPN）</strong>：</p>
+<ul>
 <li>在两个路由器或主机之间建立单向的逻辑安全通道，叫 <strong>安全关联 SA（Security Association，注意：一条 SA 只能保卫一个方向，双向通信必须建两条 SA；一旦建好一条 SA，后续成千上万个分组都直接复用这条 SA，绝不需要每发一个包建一次 SA！）</strong>。</li>
 <li>包含两大核心子协议：<strong><code>AH</code>（鉴别首部：只管防篡改和鉴别，不管加密保密）</strong> 和 <strong><code>ESP</code>（封装安全有效载荷：既管加密保密，又管防篡改鉴别，最常用！）</strong>。</li>
-<li>
-<p><strong>防重放序号机制</strong>：ESP 首部里有自己独立的<strong>单调递增 32 位序号</strong>。哪怕上层 TCP 因为丢包重传了同一个 TCP 报文段，到了网络层 IPsec 封装时，也<strong>必须给它分配一个新的递增 IPsec 序号</strong>（否则接收方 IPsec 会误以为是黑客重放的旧包而直接拒收！）。</p>
+<li><strong>防重放序号机制</strong>：ESP 首部里有自己独立的<strong>单调递增 32 位序号</strong>。哪怕上层 TCP 因为丢包重传了同一个 TCP 报文段，到了网络层 IPsec 封装时，也<strong>必须给它分配一个新的递增 IPsec 序号</strong>（否则接收方 IPsec 会误以为是黑客重放的旧包而直接拒收！）。</li>
+</ul>
 </li>
 <li>
 <p><strong>运输层保镖：<code>TLS / SSL</code>（就是你每天刷到的 <code>HTTPS</code>）</strong>：</p>
-</li>
-<li>
-<p>位于 TCP 之上、应用层之下。它的握手核心思想是<strong>“混合加密”</strong>：</p>
-<ol>
+<ul>
+<li>位于 TCP 之上、应用层之下。它的握手核心思想是<strong>“混合加密”</strong>：</li>
 <li>浏览器先跟服务器打招呼，服务器把自己的 <strong>CA 数字证书（内含服务器公钥）</strong> 发给浏览器；</li>
 <li>浏览器用 CA 公钥验明正身后，自己随机生成一个临时密码（预主密钥），用<strong>服务器的公钥加密</strong>发给服务器（只有真服务器有私钥能解开！）；</li>
 <li>双方用这个秘密派生出<strong>对称会话密钥</strong>，接下来的网页传输全部改用飞快的<strong>对称加密 + MAC 完整性校验</strong>！</li>
-</ol>
+</ul>
 </li>
 <li>
 <p><strong>应用层邮件保镖：<code>PGP</code></strong>：</p>
-</li>
-<li>
-<p>把数字签名（Hash + 发件人私钥）和混合加密（一次性对称密钥加密正文 + 收件人公钥加密该对称密钥）完美打包在一起的电子邮件安全标准。</p>
+<ul>
+<li>把数字签名（Hash + 发件人私钥）和混合加密（一次性对称密钥加密正文 + 收件人公钥加密该对称密钥）完美打包在一起的电子邮件安全标准。</li>
+</ul>
 </li>
 <li>
 <p><strong>大门保安：防火墙（Firewall）</strong>：</p>
-</li>
+<ul>
 <li><strong>网络级防火墙（分组过滤路由器）</strong>：工作在网络层和运输层，只看信封表面的 <strong>源/目的 IP、源/目的端口、协议号、TCP 标志位</strong>，速度快但看不懂信件内容；</li>
 <li><strong>应用级防火墙（应用网关 / 代理服务器）</strong>：工作在应用层，把信拆开逐字审查应用层内容，安全性极高但转发慢。</li>
+</ul>
+</li>
 </ol>
 <hr />
 <h2 id="8-816">模块二：第8章 互联网上的音/视频服务与流媒体（对应 816 考纲 六(十)）</h2>
@@ -2942,11 +2960,11 @@
 <h4 id="2-playout-buffer">2. 治抖神器：播放缓存（Playout Buffer）与两大必考计算模型</h4>
 <p>怎么把参差不齐到达的分组，重新变成匀速流出的水流？在接收端修一个<strong>蓄水池（播放缓存）</strong>！</p>
 <ul>
-<li><strong>【计算模型 A：定长推迟播放（消除抖动模型）】</strong></li>
-<li><strong>核心原理</strong>：第 1 个分组到达时，先忍住<strong>不要立刻播放</strong>！让它在缓存里等一会儿，故意引入一个固定的端到端<strong>播放时延 <span class="arithmatex">\(D_{\text{play}}\)</span></strong>。</li>
 <li>
-<p><strong>公式铁律</strong>：假设第 <span class="arithmatex">\(i\)</span> 个分组在 <span class="arithmatex">\(t_{\text{send}}(i)\)</span> 时刻发出，在路上花了 <span class="arithmatex">\(d_i\)</span> 时间，于 <span class="arithmatex">\(t_{\text{arr}}(i) = t_{\text{send}}(i) + d_i\)</span> 时刻到达接收端。</p>
+<p><strong>【计算模型 A：定长推迟播放（消除抖动模型）】</strong></p>
 <ul>
+<li><strong>核心原理</strong>：第 1 个分组到达时，先忍住<strong>不要立刻播放</strong>！让它在缓存里等一会儿，故意引入一个固定的端到端<strong>播放时延 <span class="arithmatex">\(D_{\text{play}}\)</span></strong>。</li>
+<li><strong>公式铁律</strong>：假设第 <span class="arithmatex">\(i\)</span> 个分组在 <span class="arithmatex">\(t_{\text{send}}(i)\)</span> 时刻发出，在路上花了 <span class="arithmatex">\(d_i\)</span> 时间，于 <span class="arithmatex">\(t_{\text{arr}}(i) = t_{\text{send}}(i) + d_i\)</span> 时刻到达接收端。</li>
 <li>如果规定端到端总延迟统一对齐为 <span class="arithmatex">\(D_{\text{play}}\)</span>，那么第 <span class="arithmatex">\(i\)</span> 个分组<strong>应当被播放的时刻</strong>就是：<span class="arithmatex">\(t_{\text{play}}(i) = t_{\text{send}}(i) + D_{\text{play}}\)</span>；</li>
 <li>该分组在缓存里需要<strong>额外等待（驻留）的时间</strong>就是：<span class="arithmatex">\(w_i = D_{\text{play}} - d_i\)</span>；</li>
 <li>如果某个分组路上太堵，<span class="arithmatex">\(d_i &gt; D_{\text{play}}\)</span>（即它到达的时刻 <span class="arithmatex">\(t_{\text{arr}}(i)\)</span> 已经超过了它本该被播放的时刻 <span class="arithmatex">\(t_{\text{play}}(i)\)</span>），这个分组就<strong>迟到作废（未能按时赶上播放）</strong>！</li>
@@ -2955,9 +2973,9 @@
 </li>
 <li>
 <p><strong>【计算模型 B：蓄水池进出水速率（缓存抽空与注满模型）】</strong></p>
-</li>
+<ul>
 <li><strong>核心原理</strong>：这就是小学数学的“水池进水管与出水管问题”！</li>
-<li>设播放缓存的总容量为 <span class="arithmatex">\(B_{\max}\)</span>，启动播放的水位阈值（积攒到多少数据才开播）为 <span class="arithmatex">\(B_{\text{start}}\)</span>。网络往缓存里灌水的速率（下载速率）为 <span class="arithmatex">\(R_{\text{in}}\)</span>，播放器从缓存里抽水读取的速率（播放消耗速率）为 <span class="arithmatex">\(R_{\text{out}}\)</span>：<ol>
+<li>设播放缓存的总容量为 <span class="arithmatex">\(B_{\max}\)</span>，启动播放的水位阈值（积攒到多少数据才开播）为 <span class="arithmatex">\(B_{\text{start}}\)</span>。网络往缓存里灌水的速率（下载速率）为 <span class="arithmatex">\(R_{\text{in}}\)</span>，播放器从缓存里抽水读取的速率（播放消耗速率）为 <span class="arithmatex">\(R_{\text{out}}\)</span>：</li>
 <li><strong>开播前的预缓冲时间</strong>：此时只进不出，水位从 <span class="arithmatex">\(0\)</span> 涨到 <span class="arithmatex">\(B_{\text{start}}\)</span> 所需时间 <span class="arithmatex">\(t_0 = \frac{B_{\text{start}}}{R_{\text{in}}}\)</span>；</li>
 <li><strong>情况一：下载比播放慢（<span class="arithmatex">\(R_{\text{in}} &lt; R_{\text{out}}\)</span>，入不敷出）</strong>：</li>
 <li>开播后，缓存水位以净消耗速率 <span class="arithmatex">\((R_{\text{out}} - R_{\text{in}})\)</span> 不断下降！</li>
@@ -2971,7 +2989,7 @@
 <p>$<span class="arithmatex">\(t_{\text{fill}} = \frac{B_{\max} - B_{\text{start}}}{R_{\text{in}} - R_{\text{out}}}\)</span>$
  <em>(若问从最开始空缓存下载算起直到装满的总时间，别忘了加上开播前预缓冲的 <span class="arithmatex">\(t_0 = \frac{B_{\text{start}}}{R_{\text{in}}}\)</span>！)</em></p>
 </li>
-</ol>
+</ul>
 </li>
 </ul>
 <hr />
@@ -2979,29 +2997,31 @@
 <p>当你在网页上点开一段在线视频时，后台其实发生了极其精妙的“四步交接班”：</p>
 <ol>
 <li><strong>第一步（拿导游图）</strong>：你的浏览器先用 <strong><code>HTTP</code></strong> 从普通万维网服务器上下载一个极小的文本文件，叫<strong>元文件（Metafile）</strong>（里面写着音视频真正存放在哪台流媒体服务器上），浏览器把元文件交给本地的<strong>媒体播放器</strong>。</li>
-<li><strong>第二步（拿遥控器发号施令 —— <code>RTSP</code> 实时流式协议）</strong>：</li>
+<li>
+<p><strong>第二步（拿遥控器发号施令 —— <code>RTSP</code> 实时流式协议）</strong>：</p>
+<ul>
 <li>媒体播放器根据元文件里的地址，直接找<strong>媒体服务器（流式服务器）</strong>建立连接，使用的是应用层的 <strong><code>RTSP</code>（Real-Time Streaming Protocol）</strong>。</li>
-<li>
-<p><strong>必考定位</strong>：<strong>RTSP 自己绝对不传输一丁点音视频数据！</strong> 它只是一个<strong>带外控制协议</strong>（就像电视机的红外遥控器），专门负责发送“播放（PLAY）、暂停（PAUSE）、快进、快退、结束（TEARDOWN）”等控制命令（RTSP 既可以用 TCP 也可以用 UDP）。</p>
-</li>
-<li>
-<p><strong>第三步（装盒运送音视频数据 —— <code>RTP</code> 实时运输协议）</strong>：</p>
-</li>
-<li>媒体服务器收到 RTSP 的播放指令后，把压缩好的音频/视频块装进 <strong><code>RTP</code>（Real-time Transport Protocol）</strong> 分组里，再把 RTP 塞进 <strong><code>UDP</code></strong> 数据报（再套上 IP）源源不断地发给播放器。</li>
-<li><strong>RTP 首部的三大法宝（必背）</strong>：<ul>
-<li><strong>①序号（16位）</strong>：每发一个 RTP 包加 1，让接收端能<strong>发现有没有丢包，并把乱序到达的包重新排好队</strong>；</li>
-<li><strong>②时间戳（32位）</strong>：记录该数据包第 1 个字节的<strong>采样时刻</strong>（注意：时间戳的时钟刻度必须与采样周期对齐，比如 <span class="arithmatex">\(8000\text{ Hz}\)</span> 语音每 <span class="arithmatex">\(125\ \mu\text{s}\)</span> 跳 1 下），让接收端精准算出包与包之间原本的时间间隔以<strong>消除抖动</strong>；</li>
-<li><strong>③标记（Marker）</strong>：标出一段话音突发的开始或一帧视频画面的边界。</li>
+<li><strong>必考定位</strong>：<strong>RTSP 自己绝对不传输一丁点音视频数据！</strong> 它只是一个<strong>带外控制协议</strong>（就像电视机的红外遥控器），专门负责发送“播放（PLAY）、暂停（PAUSE）、快进、快退、结束（TEARDOWN）”等控制命令（RTSP 既可以用 TCP 也可以用 UDP）。</li>
 </ul>
 </li>
 <li>
-<p><strong>封装开销计算提示</strong>：算 VoIP 语音通话的实际网络发送速率时，如果每隔 <span class="arithmatex">\(T\)</span> 秒打包一次，每秒就要发 <span class="arithmatex">\(N = \frac{1}{T}\)</span> 个分组；每个分组除了原始话音字节外，还要层层套上 <strong><span class="arithmatex">\(12\text{ B}\)</span> 的 RTP 首部 + <span class="arithmatex">\(8\text{ B}\)</span> 的 UDP 首部 + <span class="arithmatex">\(20\text{ B}\)</span> 的 IP 首部（共 <span class="arithmatex">\(40\text{ B} = 320\text{ bit}\)</span> 的固定首部开销）</strong>！</p>
+<p><strong>第三步（装盒运送音视频数据 —— <code>RTP</code> 实时运输协议）</strong>：</p>
+<ul>
+<li>媒体服务器收到 RTSP 的播放指令后，把压缩好的音频/视频块装进 <strong><code>RTP</code>（Real-time Transport Protocol）</strong> 分组里，再把 RTP 塞进 <strong><code>UDP</code></strong> 数据报（再套上 IP）源源不断地发给播放器。</li>
+<li><strong>RTP 首部的三大法宝（必背）</strong>：</li>
+<li><strong>①序号（16位）</strong>：每发一个 RTP 包加 1，让接收端能<strong>发现有没有丢包，并把乱序到达的包重新排好队</strong>；</li>
+<li><strong>②时间戳（32位）</strong>：记录该数据包第 1 个字节的<strong>采样时刻</strong>（注意：时间戳的时钟刻度必须与采样周期对齐，比如 <span class="arithmatex">\(8000\text{ Hz}\)</span> 语音每 <span class="arithmatex">\(125\ \mu\text{s}\)</span> 跳 1 下），让接收端精准算出包与包之间原本的时间间隔以<strong>消除抖动</strong>；</li>
+<li><strong>③标记（Marker）</strong>：标出一段话音突发的开始或一帧视频画面的边界。</li>
+<li><strong>封装开销计算提示</strong>：算 VoIP 语音通话的实际网络发送速率时，如果每隔 <span class="arithmatex">\(T\)</span> 秒打包一次，每秒就要发 <span class="arithmatex">\(N = \frac{1}{T}\)</span> 个分组；每个分组除了原始话音字节外，还要层层套上 <strong><span class="arithmatex">\(12\text{ B}\)</span> 的 RTP 首部 + <span class="arithmatex">\(8\text{ B}\)</span> 的 UDP 首部 + <span class="arithmatex">\(20\text{ B}\)</span> 的 IP 首部（共 <span class="arithmatex">\(40\text{ B} = 320\text{ bit}\)</span> 的固定首部开销）</strong>！</li>
+</ul>
 </li>
 <li>
 <p><strong>第四步（路况监督与音画同步 —— <code>RTCP</code> 实时运输控制协议）</strong>：</p>
-</li>
+<ul>
 <li>与 RTP 成对工作（同样跑在 UDP 上），自己也不传音视频数据，专门干三件事：①向发送端<strong>周期性汇报接收质量</strong>（丢包率、最大抖动），让服务器在网堵时自动把高清切为标清；②把同一个主播发出的<strong>音频流和视频流的时间戳绑定同步</strong>（防止口型对不上声音）；③标识多播组成员。</li>
 <li><strong>5% 铁律</strong>：为了防止汇报路况的 RTCP 把传输视频的 RTP 给挤占了，规定 <strong>RTCP 占用的总带宽绝不能超过整个会话总带宽的 <span class="arithmatex">\(5\%\)</span></strong>！</li>
+</ul>
+</li>
 </ol>
 <hr />
 <h3 id="vipfifo-fq-wfq">三、 路由器怎么照顾音视频 VIP？（排队调度三大算法：FIFO / FQ / WFQ）</h3>
@@ -3009,10 +3029,12 @@
 <ol>
 <li><strong>先进先出（FIFO）</strong>：所有业务排成一队，谁先到谁先走。实现最简单，但如果前面有个 FTP 下载大包堵着，后面的实时语音小包就只能干等（毫无服务质量区分）。</li>
 <li><strong>公平排队（FQ）</strong>：给每个业务流单独立一个队列，路由器出口像发牌一样轮流从每个队列里取 1 个包发送。但为了防止发长包的人占便宜，采用<strong>“逐字节轮询”</strong>思想计算每个包的虚拟完成时间，谁先算完谁先发。缺点是对所有队列一视同仁，不能给高优先级视频流分配更多带宽。</li>
-<li><strong>加权公平排队（WFQ，考纲高频计算点！）</strong>：</li>
+<li><strong>加权公平排队（WFQ，考纲高频计算点！）</strong>：<ul>
 <li>给每个队列分配不同的<strong>权重 <span class="arithmatex">\(w_i\)</span></strong>（比如队列1权重 <span class="arithmatex">\(0.6\)</span>，队列2权重 <span class="arithmatex">\(0.2\)</span>，队列3权重 <span class="arithmatex">\(0.2\)</span>，比例为 <span class="arithmatex">\(3 : 1 : 1\)</span>）。</li>
 <li>当所有队列都有包时，严格按权重比例循环服务（每发 5 个包里，队列1占 3 个，队列2、3各占 1 个）。</li>
 <li><strong>工作保守性（Work-Conserving，必考！）</strong>：如果某一时刻队列 2 空了（没有包），路由器<strong>绝对不会站在那儿发呆空等</strong>！剩下的队列 1 和队列 3 会立刻按照它们原本的权重比（<span class="arithmatex">\(0.6 : 0.2 = 3 : 1\)</span>）瓜分全部带宽（即变成每发 4 个包里，队列1发 3 个、队列3发 1 个）！</li>
+</ul>
+</li>
 </ol>
 <hr />
 <h2 id="9-ieee-80211-816-23">模块三：第9章 无线局域网 IEEE 802.11（对应 816 考纲 三(五)2、三(六)3）</h2>
@@ -3023,15 +3045,19 @@
 <p>在有线以太网（<code>802.3</code>）里，大家靠一根铜线连在一起，用的是 <strong>CSMA/CD（边发送、边监听碰撞）</strong>。但到了无线局域网（<code>802.11</code> Wi-Fi），CSMA/CD 彻底失灵了，原因有三点：</p>
 <ol>
 <li><strong>硬件上“自己震聋自己”</strong>：无线电波在空气中随距离衰减极快。当无线网卡正在往外发射信号时，自己天线口那几万倍强度的发射功率会把远处传来的微弱碰撞信号彻底淹没，硬件上根本做不到“边发送边检测碰撞”。</li>
-<li><strong>隐蔽站问题（Hidden Station Problem）</strong>：</li>
-<li>想象站点 A 和站点 C 中间隔了一堵厚承重墙（或者相距太远），A 和 C 互相听不见对方的无线信号；但基站 AP（或接收站 B）正好站在它俩中间，谁说话 B 都能听见。</li>
 <li>
-<p>当 A 正在给 B 发数据时，C 竖起耳朵听了一圈空气，发现“咦？一片安静啊！”，于是 C 也同时开口给 B 发数据——两股电波在 B 的天线上撞得粉碎！这就叫<strong>隐蔽站问题</strong>。</p>
+<p><strong>隐蔽站问题（Hidden Station Problem）</strong>：</p>
+<ul>
+<li>想象站点 A 和站点 C 中间隔了一堵厚承重墙（或者相距太远），A 和 C 互相听不见对方的无线信号；但基站 AP（或接收站 B）正好站在它俩中间，谁说话 B 都能听见。</li>
+<li>当 A 正在给 B 发数据时，C 竖起耳朵听了一圈空气，发现“咦？一片安静啊！”，于是 C 也同时开口给 B 发数据——两股电波在 B 的天线上撞得粉碎！这就叫<strong>隐蔽站问题</strong>。</li>
+</ul>
 </li>
 <li>
 <p><strong>暴露站问题（Exposed Station Problem）</strong>：</p>
-</li>
+<ul>
 <li>四个人排成一排：<span class="arithmatex">\(A \leftarrow B \quad C \rightarrow D\)</span>。B 正在给左边的 A 说话，站在 B 旁边的 C 听到了 B 的声音，误以为空气信道忙，就不敢给右边的 D 说话了——其实 C 给 D 说话根本不会干扰左边的 A 听 B 说话！这导致信道利用率白白浪费。</li>
+</ul>
+</li>
 </ol>
 <p>因此，802.11 彻底放弃了“碰撞检测（CD）”，改为<strong>“碰撞避免（CSMA/CA）” + “链路层逐帧停止等待确认（ACK）”</strong>！</p>
 <hr />
@@ -3045,25 +3071,31 @@
 </ul>
 <h4 id="2_1">机关 2：二进制指数退避与“计时器冻结”规则</h4>
 <ul>
-<li><strong>什么时候不用退避、什么时候必须退避？</strong></li>
-<li>如果一个站点突然有数据要发，一听信道本来就是空闲的，且持续空闲超过了 <code>DIFS</code>，它可以<strong>立即发送</strong>！</li>
 <li>
-<p>但如果它一听信道正忙（或者这是重传帧、连续发送的第二帧），等信道刚忙完并熬过 <code>DIFS</code> 后，此时周围可能好几个站点都憋着劲想同时抢答！为了防止大家在 <code>DIFS</code> 结束的同一微秒撞车，所有等待站点必须摇号选一个随机退避时间倒计时。</p>
+<p><strong>什么时候不用退避、什么时候必须退避？</strong></p>
+<ul>
+<li>如果一个站点突然有数据要发，一听信道本来就是空闲的，且持续空闲超过了 <code>DIFS</code>，它可以<strong>立即发送</strong>！</li>
+<li>但如果它一听信道正忙（或者这是重传帧、连续发送的第二帧），等信道刚忙完并熬过 <code>DIFS</code> 后，此时周围可能好几个站点都憋着劲想同时抢答！为了防止大家在 <code>DIFS</code> 结束的同一微秒撞车，所有等待站点必须摇号选一个随机退避时间倒计时。</li>
+</ul>
 </li>
 <li>
 <p><strong>计时器冻结规则（必考细节！）</strong>：</p>
-</li>
+<ul>
 <li>假设你摇到了倒计时 <span class="arithmatex">\(10\)</span> 个时隙，刚倒数了 <span class="arithmatex">\(3\)</span> 个时隙（还剩 <span class="arithmatex">\(7\)</span> 个），突然旁边有个倒数更短的老兄抢先开口发数据把信道占了！</li>
 <li>这时候你的倒计时<strong>立刻暂停（冻结在剩余的 <span class="arithmatex">\(7\)</span> 上）</strong>！等那个老兄发完数据、收完 <code>ACK</code>、信道再次空闲满一个 <code>DIFS</code> 后，你<strong>不需要重新摇号，而是直接从刚才冻结的 <span class="arithmatex">\(7\)</span> 继续往下倒数</strong>！这样保证了越早开始排队的站点越早发出去，对所有站点最公平！</li>
+</ul>
+</li>
 </ul>
 <h4 id="3-rts-cts-nav">机关 3：解决隐蔽站的终极杀招 —— RTS / CTS 信道预约与 NAV（虚拟载波侦听）</h4>
 <p>为了治好前面说的“隐蔽站 C 听不见 A 说话而偷袭 B”的问题，802.11 引入了可选的“举手预约制”（由于预约本身也耗时间，通常只在发送较长的数据帧时启用）：</p>
 <ol>
 <li><strong>A 发 <code>RTS</code>（请求发送，20字节极短帧）</strong>：A 等完 <code>DIFS</code> 后，先不发长数据，而是发一个极短的 <code>RTS</code> 帧给 B，里面大声喊道：“我要给 B 发长数据啦！接下来从发 <code>CTS</code>、发 <code>DATA</code> 一直到我收完 <code>ACK</code>，总共还要霸占信道 <span class="arithmatex">\(T_1\)</span> 微秒！”</li>
 <li><strong>B 回 <code>CTS</code>（允许发送，14字节极短帧）</strong>：B 收到后，只等一个极短的 <code>SIFS</code>，就向四周广播回一个 <code>CTS</code> 帧：“准奏！接下来从发 <code>DATA</code> 一直到收完 <code>ACK</code>，还要霸占信道 <span class="arithmatex">\(T_2\)</span> 微秒！”</li>
-<li><strong>全场闭嘴（设置 <code>NAV</code> 网络分配向量）</strong>：</li>
+<li><strong>全场闭嘴（设置 <code>NAV</code> 网络分配向量）</strong>：<ul>
 <li>哪怕隐蔽站 C 离 A 太远没听见 <code>RTS</code>，但 C 离 B 近啊，<strong>C 一定能清清楚楚地听见 B 广播的 <code>CTS</code>！</strong></li>
 <li>凡是听见 <code>RTS</code> 或 <code>CTS</code> 的其他吃瓜站点，都会把帧里写的“剩余占用时间”抄到自己脑门上的免打扰倒计时器里（这个倒计时器就叫 <strong><code>NAV</code> 网络分配向量</strong>）。在 <code>NAV</code> 倒计时归零之前，哪怕吃瓜站点用天线听着空气里好像没声音，也<strong>绝对不准去争用信道</strong>（这叫<strong>虚拟载波侦听</strong>）！</li>
+</ul>
+</li>
 </ol>
 <h4 id="4-rtscts">机关 4：一次完整 RTS/CTS 成功传输的时间轴总账（必背公式模板！）</h4>
 <p>把上面整个预约到确认的过程画成一条时间轴（忽略极短的电磁波空中传播时延），你会发现它永远由 <strong>“1 个 DIFS + 3 个 SIFS + 4 个帧的发送时间”</strong> 严丝合缝地拼接而成：</p>
@@ -3091,18 +3123,22 @@
 </blockquote>
 <p>我们用这个口诀看两个方向的实例（设你的手机为 <span class="arithmatex">\(H_1\)</span>，无线接入点为 <span class="arithmatex">\(\text{AP}\)</span>，连接外网的路由器接口为 <span class="arithmatex">\(R\)</span>）：</p>
 <ol>
-<li><strong>方向一：手机 <span class="arithmatex">\(H_1\)</span> 发数据，经由 <span class="arithmatex">\(\text{AP}\)</span> 发往路由器 <span class="arithmatex">\(R\)</span>（<code>去往 AP = 1, 来自 AP = 0</code>）</strong>：</li>
+<li>
+<p><strong>方向一：手机 <span class="arithmatex">\(H_1\)</span> 发数据，经由 <span class="arithmatex">\(\text{AP}\)</span> 发往路由器 <span class="arithmatex">\(R\)</span>（<code>去往 AP = 1, 来自 AP = 0</code>）</strong>：</p>
+<ul>
 <li>这一跳电波是谁收？<span class="arithmatex">\(\text{AP}\)</span> 收！所以 <strong>地址 1 = <span class="arithmatex">\(\text{AP}\)</span> 的 MAC 地址</strong>；</li>
 <li>这一跳电波是谁发？手机 <span class="arithmatex">\(H_1\)</span> 发！所以 <strong>地址 2 = 手机 <span class="arithmatex">\(H_1\)</span> 的 MAC 地址</strong>；</li>
-<li>
-<p>幕后第三者（最终要交给谁）？路由器 <span class="arithmatex">\(R\)</span>！所以 <strong>地址 3 = 路由器 <span class="arithmatex">\(R\)</span> 的 MAC 地址</strong>。</p>
+<li>幕后第三者（最终要交给谁）？路由器 <span class="arithmatex">\(R\)</span>！所以 <strong>地址 3 = 路由器 <span class="arithmatex">\(R\)</span> 的 MAC 地址</strong>。</li>
+</ul>
 </li>
 <li>
 <p><strong>方向二：路由器 <span class="arithmatex">\(R\)</span> 发来有线帧，由 <span class="arithmatex">\(\text{AP}\)</span> 转成无线帧发给手机 <span class="arithmatex">\(H_1\)</span>（<code>去往 AP = 0, 来自 AP = 1</code>）</strong>：</p>
-</li>
+<ul>
 <li>这一跳电波是谁收？手机 <span class="arithmatex">\(H_1\)</span> 收！所以 <strong>地址 1 = 手机 <span class="arithmatex">\(H_1\)</span> 的 MAC 地址</strong>；</li>
 <li>这一跳电波是谁发？<span class="arithmatex">\(\text{AP}\)</span> 发！所以 <strong>地址 2 = <span class="arithmatex">\(\text{AP}\)</span> 的 MAC 地址</strong>；</li>
 <li>幕后第三者（原本是谁交给 AP 的）？路由器 <span class="arithmatex">\(R\)</span>！所以 <strong>地址 3 = 路由器 <span class="arithmatex">\(R\)</span> 的 MAC 地址</strong>。</li>
+</ul>
+</li>
 </ol>
 <hr />
 <p><strong>自测通关建议</strong>：
