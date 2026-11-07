@@ -774,6 +774,102 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        这是什么
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录结构
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        文件与 URL 规则
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        新增或修改文档
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本地预览与构建
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        发布前检查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相关文档
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        维护原则
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -838,6 +934,105 @@
 
 
 <h1 id="_1">关于知识库</h1>
+<h2 id="_2">这是什么</h2>
+<p>这是一个用于沉淀学习过程和知识成果的个人知识库。</p>
+<p>博客更适合线性记录和阶段性分享；知识库更适合分类、检索和长期积累。这里的内容不要求一次写完，而是允许在学习过程中持续补充、修订和重新组织。</p>
+<h2 id="_3">目录结构</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">目录</th>
+<th style="text-align: left;">URL</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">自然与应用科学</td>
+<td style="text-align: left;"><code>/science/</code></td>
+<td style="text-align: left;">数学、计算机、密码学、人工智能等</td>
+</tr>
+<tr>
+<td style="text-align: left;">人文与社会科学</td>
+<td style="text-align: left;"><code>/humanities/</code></td>
+<td style="text-align: left;">宗教、语言、社会和人文相关内容</td>
+</tr>
+<tr>
+<td style="text-align: left;">艺术与文化生活</td>
+<td style="text-align: left;"><code>/arts/</code></td>
+<td style="text-align: left;">艺术、生活经验和兴趣记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">关于知识库</td>
+<td style="text-align: left;"><code>/about/</code></td>
+<td style="text-align: left;">本手册、Markdown 规范和编译排错指南</td>
+</tr>
+</tbody>
+</table>
+<p><code>about/</code> 是辅助说明目录，不会出现在首页的知识分类树中。可以通过页面底部的“关于知识库”链接进入，也可以直接访问 <code>/about/</code>。</p>
+<h2 id="url">文件与 URL 规则</h2>
+<ul>
+<li><code>docs/</code> 是文档源目录，MkDocs 会根据其中的 Markdown 文件生成网站。</li>
+<li>每个分类目录的 <code>index.md</code> 是该目录的概览页。</li>
+<li>一级目录使用简短英文名称，以避免 URL 过长；页面标题和正文仍然可以使用中文。</li>
+<li>子目录和文章文件名目前以内容可读性为优先，可以使用中文。</li>
+<li><code>docs/science/example.md</code> 会生成 <code>/science/example/</code>。</li>
+<li><code>docs/science/topic/index.md</code> 会生成 <code>/science/topic/</code>。</li>
+<li>图片、脚本和样式等静态资源应放在对应目录的 <code>assets/</code> 中，避免与文章混放。</li>
+</ul>
+<p>修改文件名或目录名会改变页面 URL。已经分享或收录的页面在改名后可能失效，因此修改前应确认是否需要保留旧链接或增加重定向。</p>
+<h2 id="_4">新增或修改文档</h2>
+<p>推荐按以下流程操作：</p>
+<ol>
+<li>根据主题选择 <code>science/</code>、<code>humanities/</code> 或 <code>arts/</code>。</li>
+<li>如果是一个新的分类，创建目录和 <code>index.md</code>，并在概览页说明该分类的范围。</li>
+<li>为文章选择清晰、稳定的文件名；需要缩短 URL 时，优先使用简短英文文件名。</li>
+<li>使用一级标题作为文章标题，例如 <code># 外部排序</code>。</li>
+<li>图片使用相对路径引用，并确认大小写与文件名完全一致。</li>
+<li>完成后先在本地预览，再执行严格构建和空白检查。</li>
+</ol>
+<p>文章不必为了“看起来完整”一次堆满所有内容。优先保证标题、结论、公式、示例和引用关系清楚，后续再增补细节。</p>
+<h2 id="_5">本地预览与构建</h2>
+<p>在仓库根目录执行：</p>
+<pre><code class="language-bash">mkdocs serve
+</code></pre>
+<p>然后打开终端输出的本地地址。修改 Markdown 后，浏览器会自动刷新；涉及目录、URL 或主题配置的修改时，应重新检查实际链接。</p>
+<p>提交前执行：</p>
+<pre><code class="language-bash">mkdocs build --strict --clean
+git diff --check
+</code></pre>
+<p>其中：</p>
+<ul>
+<li><code>mkdocs build --strict --clean</code> 从干净的 <code>site/</code> 目录构建整站，并将警告视为错误。</li>
+<li><code>git diff --check</code> 检查行尾空格、空白错误和冲突标记。</li>
+<li>新增但尚未被 Git 跟踪的文件不会被 <code>git diff --check</code> 检查，应额外确认文件本身没有行尾空格。</li>
+</ul>
+<p>构建通过后，还应抽查本次修改涉及的页面，重点查看公式、嵌套列表、表格、代码块和图片。</p>
+<h2 id="_6">发布前检查</h2>
+<p>发布前至少确认：</p>
+<ul>
+<li>页面标题和目录层级正确。</li>
+<li>内部链接可以打开，没有指向旧中文一级目录的链接。</li>
+<li>图片和附件在本地构建结果中正常显示。</li>
+<li>公式没有显示为裸 <code>$</code>、<code>$$</code> 或普通代码。</li>
+<li>列表没有粘连、跳号或错误缩进。</li>
+<li>首页目录树只显示知识分类，站点说明从页脚进入。</li>
+<li>生成的页面 URL 与预期一致。</li>
+</ul>
+<p>如果只修改了 Markdown 内容，通常不需要调整 <code>mkdocs.yml</code>。如果修改了主题、插件、hook 或静态资源，应进行一次完整严格构建。</p>
+<h2 id="_7">相关文档</h2>
+<ul>
+<li><a href="Markdown%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83%E4%B8%8E%E7%BC%96%E8%AF%91%E6%8E%92%E9%94%99%E6%8C%87%E5%8D%97/">Markdown 格式规范与编译排错指南</a>：公式、列表、表格、代码块和编译异常的详细处理规则。</li>
+<li><a href="../">知识库首页</a>：浏览当前知识分类。</li>
+</ul>
+<h2 id="_8">维护原则</h2>
+<ul>
+<li>内容优先于装饰，先保证知识准确、结构清楚，再调整样式。</li>
+<li>源 Markdown 是唯一应直接修改的内容，不要手动编辑 <code>site/</code> 下的编译产物。</li>
+<li>修改要尽量小而明确，避免无关的批量重命名。</li>
+<li>新增功能或配置后，补充相应的说明，并用实际构建结果验证。</li>
+<li>对不确定的内容保留来源、推导过程或待核验说明，不把猜测写成结论。</li>
+</ul>
 
 
 
@@ -918,10 +1113,7 @@
     </div>
   
   
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
+    Made with Material for MkDocs
   
 </div>
       
