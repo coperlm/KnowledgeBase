@@ -2719,9 +2719,9 @@
 <ul>
 <li><strong>题目要点</strong>：距离 <span class="arithmatex">\(D = 1000\text{ km}\)</span>，传播速率 <span class="arithmatex">\(v = 2 \times 10^8\text{ m/s}\)</span>。求：(1) 数据长 <span class="arithmatex">\(10^7\text{ bit}\)</span>、速率 <span class="arithmatex">\(100\text{ kbit/s}\)</span>；(2) 数据长 <span class="arithmatex">\(10^3\text{ bit}\)</span>、速率 <span class="arithmatex">\(1\text{ Gbit/s}\)</span> 时的发送时延和传播时延。</li>
 <li><strong>开袋即食算式与答案</strong>：</li>
-<li>传播时延只看距离和光速，两种情况完全相同：$<span class="arithmatex">\(t_{\text{prop}} = \frac{1000 \times 10^3\text{ m}}{2 \times 10^8\text{ m/s}} = 5 \times 10^{-3}\text{ s} = 5\text{ ms}\)</span>$</li>
-<li>(1) 发送时延：$<span class="arithmatex">\(t_{\text{trans1}} = \frac{10^7\text{ bit}}{100 \times 10^3\text{ bit/s}} = 100\text{ s}\)</span>$（此时发送时延占绝对主导）。</li>
-<li>(2) 发送时延：$<span class="arithmatex">\(t_{\text{trans2}} = \frac{10^3\text{ bit}}{10^9\text{ bit/s}} = 10^{-6}\text{ s} = 1\ \mu\text{s}\)</span>$（此时传播时延 <span class="arithmatex">\(5\text{ ms}\)</span> 远大于发送时延 <span class="arithmatex">\(1\ \mu\text{s}\)</span>）。</li>
+<li>传播时延只看距离和光速，两种情况完全相同：<span class="arithmatex">\(t_{\text{prop}} = \frac{1000 \times 10^3\text{ m}}{2 \times 10^8\text{ m/s}} = 5 \times 10^{-3}\text{ s} = 5\text{ ms}\)</span></li>
+<li>(1) 发送时延：<span class="arithmatex">\(t_{\text{trans1}} = \frac{10^7\text{ bit}}{100 \times 10^3\text{ bit/s}} = 100\text{ s}\)</span>（此时发送时延占绝对主导）。</li>
+<li>(2) 发送时延：<span class="arithmatex">\(t_{\text{trans2}} = \frac{10^3\text{ bit}}{10^9\text{ bit/s}} = 10^{-6}\text{ s} = 1\ \mu\text{s}\)</span>（此时传播时延 <span class="arithmatex">\(5\text{ ms}\)</span> 远大于发送时延 <span class="arithmatex">\(1\ \mu\text{s}\)</span>）。</li>
 <li><strong>结论</strong>：若数据长度大而发送速率低，总时延取决于<strong>发送时延</strong>；若数据长度短而发送速率极高，总时延主要受限于物理链路的<strong>传播时延</strong>。</li>
 </ul>
 </li>
@@ -2730,8 +2730,8 @@
 <ul>
 <li><strong>题目要点</strong>：应用层数据加上 <span class="arithmatex">\(20\text{ B}\)</span> TCP首部、<span class="arithmatex">\(20\text{ B}\)</span> IP首部、<span class="arithmatex">\(18\text{ B}\)</span> 以太网首尾（共 <span class="arithmatex">\(58\text{ B}\)</span> 额外开销）。求应用数据为 <span class="arithmatex">\(100\text{ B}\)</span> 和 <span class="arithmatex">\(1000\text{ B}\)</span> 时的传输效率。</li>
 <li><strong>开袋即食算式与答案</strong>：</li>
-<li><span class="arithmatex">\(100\text{ B}\)</span> 时效率：$<span class="arithmatex">\(\eta_1 = \frac{100}{100 + 20 + 20 + 18} = \frac{100}{158} \approx 63.3\%\)</span>$</li>
-<li><span class="arithmatex">\(1000\text{ B}\)</span> 时效率：$<span class="arithmatex">\(\eta_2 = \frac{1000}{1000 + 58} = \frac{1000}{1058} \approx 94.5\%\)</span>$</li>
+<li><span class="arithmatex">\(100\text{ B}\)</span> 时效率：<span class="arithmatex">\(\eta_1 = \frac{100}{100 + 20 + 20 + 18} = \frac{100}{158} \approx 63.3\%\)</span></li>
+<li><span class="arithmatex">\(1000\text{ B}\)</span> 时效率：<span class="arithmatex">\(\eta_2 = \frac{1000}{1000 + 58} = \frac{1000}{1058} \approx 94.5\%\)</span></li>
 </ul>
 </li>
 <li>
@@ -2740,13 +2740,13 @@
 <li><strong>题目要点</strong>：A向B发 <span class="arithmatex">\(10^7\text{ bit}\)</span> 报文，中间经2个节点交换机（即共 <strong>3段链路</strong>），每段链路速率 <span class="arithmatex">\(R = 2\text{ Mbit/s}\)</span>，忽略传播、处理和排队时延。(1) 采用报文交换；(2) 划分为 <span class="arithmatex">\(1000\)</span> 个等长分组（每个分组 <span class="arithmatex">\(10^4\text{ bit}\)</span>）流水线发送。</li>
 <li><strong>开袋即食算式与答案（背熟流水线公式）</strong>：</li>
 <li><strong>(1) 报文交换</strong>：整报在1段链路上的发送时延 <span class="arithmatex">\(T = \frac{10^7\text{ bit}}{2 \times 10^6\text{ bit/s}} = 5\text{ s}\)</span>。</li>
-<li>到第一个交换机需 <span class="arithmatex">\(5\text{ s}\)</span>；经过3段链路存储转发到达B共需：$<span class="arithmatex">\(3 \times 5\text{ s} = 15\text{ s}\)</span>$</li>
+<li>到第一个交换机需 <span class="arithmatex">\(5\text{ s}\)</span>；经过3段链路存储转发到达B共需：<span class="arithmatex">\(3 \times 5\text{ s} = 15\text{ s}\)</span></li>
 <li><strong>(2) 分组交换流水线</strong>：单个分组在1段链路上的发送时延 <span class="arithmatex">\(t = \frac{10^4\text{ bit}}{2 \times 10^6\text{ bit/s}} = 5 \times 10^{-3}\text{ s} = 5\text{ ms}\)</span>。</li>
 <li>第1个分组到达第1个交换机需 <span class="arithmatex">\(5\text{ ms}\)</span>；</li>
 <li>第1个分组走完3段链路到达B需 <span class="arithmatex">\(3 \times 5\text{ ms} = 15\text{ ms} = 0.015\text{ s}\)</span>；</li>
 <li>其余 <span class="arithmatex">\(1000 - 1 = 999\)</span> 个分组以流水线方式紧随其后，每隔 <span class="arithmatex">\(t = 5\text{ ms}\)</span> 就有一个分组到达B！因此全部 <span class="arithmatex">\(1000\)</span> 个分组到达B的总时间为：
-     $<span class="arithmatex">\(T_{\text{total}} = 3t + (1000 - 1)t = 1002 \times 5\text{ ms} = 5.01\text{ s}\)</span>$</li>
-<li><strong>万能流水线公式（<span class="arithmatex">\(M\)</span> 个分组经过 <span class="arithmatex">\(K\)</span> 段等速链路）</strong>：$<span class="arithmatex">\(T_{\text{total}} = (K + M - 1) \times t_{\text{单包发送}} + K \times \tau_{\text{单段传播}} + (K - 1) \times t_{\text{节点处理}}\)</span>$</li>
+     <span class="arithmatex">\(T_{\text{total}} = 3t + (1000 - 1)t = 1002 \times 5\text{ ms} = 5.01\text{ s}\)</span></li>
+<li><strong>万能流水线公式（<span class="arithmatex">\(M\)</span> 个分组经过 <span class="arithmatex">\(K\)</span> 段等速链路）</strong>：<span class="arithmatex">\(T_{\text{total}} = (K + M - 1) \times t_{\text{单包发送}} + K \times \tau_{\text{单段传播}} + (K - 1) \times t_{\text{节点处理}}\)</span></li>
 </ul>
 </li>
 </ol>
@@ -2756,7 +2756,7 @@
 <p><strong><code>2-07</code>（奈氏准则与多进制调制比特率 —— <code>2025-选2</code> &amp; <code>2026-大1</code> 母题）</strong></p>
 <ul>
 <li><strong>题目要点</strong>：最高码元速率 <span class="arithmatex">\(B = 20000\text{ Baud}\)</span>，采用16个不同振幅等级（<span class="arithmatex">\(M = 16\)</span>），求数据率 <span class="arithmatex">\(R\)</span>。</li>
-<li><strong>开袋即食算式与答案</strong>：$<span class="arithmatex">\(R = B \times \log_2 M = 20000 \times \log_2 16 = 20000 \times 4 = 80000\text{ bit/s} = 80\text{ kbit/s}\)</span>$</li>
+<li><strong>开袋即食算式与答案</strong>：<span class="arithmatex">\(R = B \times \log_2 M = 20000 \times \log_2 16 = 20000 \times 4 = 80000\text{ bit/s} = 80\text{ kbit/s}\)</span></li>
 </ul>
 </li>
 <li>
@@ -2765,8 +2765,8 @@
 <li><strong>题目要点</strong>：带宽 <span class="arithmatex">\(W = 3\text{ kHz} = 3000\text{ Hz}\)</span>，无差错传送 <span class="arithmatex">\(C = 64\text{ kbit/s}\)</span> 数据，求所需信噪比 <span class="arithmatex">\(S/N\)</span> 的比值和分贝值。</li>
 <li><strong>开袋即食算式与答案</strong>：</li>
 <li>由 <span class="arithmatex">\(C = W \log_2(1 + S/N)\)</span> 得：<span class="arithmatex">\(64000 = 3000 \times \log_2(1 + S/N) \Rightarrow \log_2(1 + S/N) = 21.33\)</span></li>
-<li>比值：$<span class="arithmatex">\(S/N = 2^{21.33} - 1 \approx 2.64 \times 10^6\)</span>$</li>
-<li>分贝值：$<span class="arithmatex">\(\text{SNR}_{\text{dB}} = 10 \log_{10}(2.64 \times 10^6) \approx 64.2\text{ dB}\)</span>$（说明在普通电话线上要达到 <span class="arithmatex">\(64\text{ kbit/s}\)</span> 需要极高的信噪比）。</li>
+<li>比值：<span class="arithmatex">\(S/N = 2^{21.33} - 1 \approx 2.64 \times 10^6\)</span></li>
+<li>分贝值：<span class="arithmatex">\(\text{SNR}_{\text{dB}} = 10 \log_{10}(2.64 \times 10^6) \approx 64.2\text{ dB}\)</span>（说明在普通电话线上要达到 <span class="arithmatex">\(64\text{ kbit/s}\)</span> 需要极高的信噪比）。</li>
 <li><strong>考场秒算常备值</strong>：记住 <strong><span class="arithmatex">\(30\text{ dB} \iff S/N = 1000\)</span></strong>（<span class="arithmatex">\(\log_2 1001 \approx 10\)</span>）；<strong><span class="arithmatex">\(20\text{ dB} \iff S/N = 100\)</span></strong>（<span class="arithmatex">\(\log_2 101 \approx 6.66\)</span>）；<strong><span class="arithmatex">\(15\text{ dB} \iff S/N \approx 31.62\)</span></strong>（<span class="arithmatex">\(\log_2 32.62 \approx 5.03\)</span>）。</li>
 </ul>
 </li>
@@ -2775,8 +2775,8 @@
 <ul>
 <li><strong>题目要点</strong>：双绞线衰减为 <span class="arithmatex">\(0.7\text{ dB/km}\)</span>，容许有 <span class="arithmatex">\(20\text{ dB}\)</span> 的衰减，求最大工作距离；若要增大到 <span class="arithmatex">\(100\text{ km}\)</span>，衰减应降低到多少？</li>
 <li><strong>开袋即食算式与答案</strong>：</li>
-<li>最大工作距离：$<span class="arithmatex">\(L = \frac{20\text{ dB}}{0.7\text{ dB/km}} \approx 28.6\text{ km}\)</span>$</li>
-<li>若要达到 <span class="arithmatex">\(100\text{ km}\)</span>，单位衰减需降至：$<span class="arithmatex">\(\frac{20\text{ dB}}{100\text{ km}} = 0.2\text{ dB/km}\)</span>$</li>
+<li>最大工作距离：<span class="arithmatex">\(L = \frac{20\text{ dB}}{0.7\text{ dB/km}} \approx 28.6\text{ km}\)</span></li>
+<li>若要达到 <span class="arithmatex">\(100\text{ km}\)</span>，单位衰减需降至：<span class="arithmatex">\(\frac{20\text{ dB}}{100\text{ km}} = 0.2\text{ dB/km}\)</span></li>
 </ul>
 </li>
 <li>
@@ -2827,7 +2827,7 @@
 <li><strong>开袋即食算式与答案</strong>：</li>
 <li>单程传播时延 <span class="arithmatex">\(\tau = \frac{1\text{ km}}{200000\text{ km/s}} = 5 \times 10^{-6}\text{ s} = 5\ \mu\text{s}\)</span>，争用期 <span class="arithmatex">\(2\tau = 10\ \mu\text{s}\)</span>。</li>
 <li>最短帧长 = 在争用期 <span class="arithmatex">\(2\tau\)</span> 内可发送的比特数：
-    $<span class="arithmatex">\(L_{\min} = 2\tau \times R = 10 \times 10^{-6}\text{ s} \times 10^9\text{ bit/s} = 10000\text{ bit} = 1250\text{ B}\)</span>$</li>
+    <span class="arithmatex">\(L_{\min} = 2\tau \times R = 10 \times 10^{-6}\text{ s} \times 10^9\text{ bit/s} = 10000\text{ bit} = 1250\text{ B}\)</span></li>
 </ul>
 </li>
 <li>
@@ -3100,8 +3100,9 @@
 </tr>
 </tbody>
 </table>
-<pre><code>  * **(2) 转发 `145.13.160.78` 的过程**：第3字节 $160 = \mathbf{10}100000_2$，将目的地址与 `/18` 掩码 `255.255.192.0` 相与，只保留第3字节最高2位 `10000000` = $128$，得到网络地址 **`145.13.128.0/18`**，匹配路由表第3行，故从**接口 `m2` 直接交付**给目的主机。
-</code></pre>
+<ul>
+<li><strong>(2) 转发 <code>145.13.160.78</code> 的过程</strong>：第3字节 <span class="arithmatex">\(160 = \mathbf{10}100000_2\)</span>，将目的地址与 <code>/18</code> 掩码 <code>255.255.192.0</code> 相与，只保留第3字节最高2位 <code>10000000</code> = <span class="arithmatex">\(128\)</span>，得到网络地址 <strong><code>145.13.128.0/18</code></strong>，匹配路由表第3行，故从<strong>接口 <code>m2</code> 直接交付</strong>给目的主机。</li>
+</ul>
 <hr />
 <h2 id="33">三、 第三类：建议刷的巩固题（共33题，掌握前两类后用来练手）</h2>
 <p>这类题是对第二类必做题的同型变体补充。当你把上面19道必做母题做熟后，可以从这类题里挑着做以巩固手感：</p>

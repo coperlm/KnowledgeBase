@@ -2688,24 +2688,18 @@
 </li>
 <li>
 <p><strong>电路交换总时延</strong> <span class="arithmatex">\(T_{\text{电路}}\)</span>：包含建立连接时间 <span class="arithmatex">\(s\)</span>、整报在源点发送时延 <span class="arithmatex">\(\frac{x}{b}\)</span> 以及 <span class="arithmatex">\(k\)</span> 段链路的总传播时延 <span class="arithmatex">\(kd\)</span>：</p>
-<p>$$
- T_{\text{电路}} = s + \frac{x}{b} + kd
- $$</p>
-</li>
-<li>
-<p><strong>分组交换总时延</strong> <span class="arithmatex">\(T_{\text{分组}}\)</span><strong>（流水线转发）</strong>：报文共切分为 <span class="arithmatex">\(\frac{x}{p}\)</span> 个分组。第1个分组经过 <span class="arithmatex">\(k\)</span> 段链路需发送 <span class="arithmatex">\(k\)</span> 次（耗时 <span class="arithmatex">\(k \cdot \frac{p}{b}\)</span>）并传播 <span class="arithmatex">\(k\)</span> 段（耗时 <span class="arithmatex">\(kd\)</span>）；其余 <span class="arithmatex">\((\frac{x}{p} - 1)\)</span> 个分组以流水线方式紧随其后，每隔 <span class="arithmatex">\(\frac{p}{b}\)</span> 到达1个，共需 <span class="arithmatex">\((\frac{x}{p} - 1)\frac{p}{b} = \frac{x}{b} - \frac{p}{b}\)</span>。相加得：</p>
-<p>$$
- T_{\text{分组}} = k \cdot \frac{p}{b} + kd + \left(\frac{x}{b} - \frac{p}{b}\right) = \frac{x}{b} + (k - 1)\frac{p}{b} + kd
- $$</p>
-</li>
-<li>
-<p><strong>不等式比较</strong>：令 <span class="arithmatex">\(T_{\text{分组}} &lt; T_{\text{电路}}\)</span>，两边消去相同的 <span class="arithmatex">\(\frac{x}{b} + kd\)</span>，得最终条件：</p>
-<p>$$
- \mathbf{(k - 1)\frac{p}{b} &lt; s}
- $$</p>
-<p><em>(物理意义：当中间</em> <span class="arithmatex">\((k-1)\)</span> <em>个节点存储转发单个分组所带来的额外流水线延迟小于电路建立连接时间</em> <span class="arithmatex">\(s\)</span> <em>时，分组交换时延更小)</em>。</p>
 </li>
 </ul>
+<p><span class="arithmatex">\(T_{\text{电路}} = s + \frac{x}{b} + kd\)</span></p>
+<ol>
+<li><strong>分组交换总时延</strong> <span class="arithmatex">\(T_{\text{分组}}\)</span><strong>（流水线转发）</strong>：报文共切分为 <span class="arithmatex">\(\frac{x}{p}\)</span> 个分组。第1个分组经过 <span class="arithmatex">\(k\)</span> 段链路需发送 <span class="arithmatex">\(k\)</span> 次（耗时 <span class="arithmatex">\(k \cdot \frac{p}{b}\)</span>）并传播 <span class="arithmatex">\(k\)</span> 段（耗时 <span class="arithmatex">\(kd\)</span>）；其余 <span class="arithmatex">\((\frac{x}{p} - 1)\)</span> 个分组以流水线方式紧随其后，每隔 <span class="arithmatex">\(\frac{p}{b}\)</span> 到达1个，共需 <span class="arithmatex">\((\frac{x}{p} - 1)\frac{p}{b} = \frac{x}{b} - \frac{p}{b}\)</span>。相加得：</li>
+</ol>
+<p><span class="arithmatex">\(T_{\text{分组}} = k \cdot \frac{p}{b} + kd + \left(\frac{x}{b} - \frac{p}{b}\right) = \frac{x}{b} + (k - 1)\frac{p}{b} + kd\)</span></p>
+<ol>
+<li><strong>不等式比较</strong>：令 <span class="arithmatex">\(T_{\text{分组}} &lt; T_{\text{电路}}\)</span>，两边消去相同的 <span class="arithmatex">\(\frac{x}{b} + kd\)</span>，得最终条件：</li>
+</ol>
+<p><span class="arithmatex">\(\mathbf{(k - 1)\frac{p}{b} &lt; s}\)</span></p>
+<p><em>(物理意义：当中间</em> <span class="arithmatex">\((k-1)\)</span> <em>个节点存储转发单个分组所带来的额外流水线延迟小于电路建立连接时间</em> <span class="arithmatex">\(s\)</span> <em>时，分组交换时延更小)</em>。</p>
 <h3 id="2-1-18">2. <code>1-18</code>（不同媒体长度与速率下的传播时延及时延带宽积填表）</h3>
 <ul>
 <li>
@@ -2776,7 +2770,7 @@
 </li>
 <li>
 <p><strong>(1) 连续发送</strong>：</p>
-<ul>
+</li>
 <li>
 <p>全部文件的发送时延 <span class="arithmatex">\(t_{\text{send}} = \frac{1.5 \times 1024 \times 1024 \times 8\text{ bit}}{10 \times 10^6\text{ bit/s}} \approx 1.258\text{ s}\)</span>；</p>
 </li>
@@ -2786,11 +2780,9 @@
 <li>
 <p>总时间 <span class="arithmatex">\(= 0.16\text{ s（建连）} + 1.258\text{ s（发送）} + 0.04\text{ s（单程传播）} = \mathbf{1.458\text{ s}}\)</span>。</p>
 </li>
-</ul>
-</li>
 <li>
 <p><strong>(2) 每发完1个分组需等待1个</strong> <span class="arithmatex">\(\text{RTT}\)</span>：</p>
-<ul>
+</li>
 <li>
 <p><span class="arithmatex">\(1536\)</span> 个分组本身的发送时延之和仍为 <span class="arithmatex">\(1.258\text{ s}\)</span>，最后1个分组到达B的单程传播时延仍为 <span class="arithmatex">\(0.04\text{ s}\)</span>；</p>
 </li>
@@ -2800,11 +2792,9 @@
 <li>
 <p>总时间 <span class="arithmatex">\(= 1.458\text{ s} + 122.8\text{ s} = \mathbf{124.258\text{ s}}\)</span>。</p>
 </li>
-</ul>
-</li>
 <li>
 <p><strong>(3) 忽略发送时延，每</strong> <span class="arithmatex">\(\text{RTT}\)</span> <strong>发 20 个分组</strong>：</p>
-<ul>
+</li>
 <li>
 <p><span class="arithmatex">\(\frac{1536}{20} = 76\)</span> 余 <span class="arithmatex">\(16\)</span> 个分组。前 <span class="arithmatex">\(76\)</span> 批共发完 <span class="arithmatex">\(1520\)</span> 个分组，耗时 <span class="arithmatex">\(76 \times \text{RTT} = 76 \times 0.08\text{ s} = 6.08\text{ s}\)</span>；</p>
 </li>
@@ -2814,11 +2804,9 @@
 <li>
 <p>总时间 <span class="arithmatex">\(= 0.16\text{ s（建连）} + 6.08\text{ s} + 0.04\text{ s（末批单程传播）} = \mathbf{6.28\text{ s}}\)</span>。</p>
 </li>
-</ul>
-</li>
 <li>
 <p><strong>(4) 忽略发送时延，按</strong> <span class="arithmatex">\(1, 2, 4, 8 \dots\)</span> <strong>慢开始发送</strong>：</p>
-<ul>
+</li>
 <li>
 <p>前 <span class="arithmatex">\(k\)</span> 个 <span class="arithmatex">\(\text{RTT}\)</span> 共可发送 <span class="arithmatex">\(1 + 2 + 4 + \dots + 2^{k-1} = 2^k - 1\)</span> 个分组。当 <span class="arithmatex">\(k = 10\)</span> 时，前10个 <span class="arithmatex">\(\text{RTT}\)</span> 共发完 <span class="arithmatex">\(2^{10} - 1 = 1023\)</span> 个分组，耗时 <span class="arithmatex">\(10 \times 0.08\text{ s} = 0.80\text{ s}\)</span>；</p>
 </li>
@@ -2827,8 +2815,6 @@
 </li>
 <li>
 <p>总时间 <span class="arithmatex">\(= 0.16\text{ s（建连）} + 0.80\text{ s（前10轮）} + 0.04\text{ s（第11轮单程传播）} = \mathbf{1.00\text{ s}}\)</span>。</p>
-</li>
-</ul>
 </li>
 </ul>
 <h3 id="4-1-29">4. <code>1-29</code>（令传播时延等于发送时延求带宽）</h3>
@@ -2896,19 +2882,15 @@
 </li>
 <li>
 <p><strong>(1) 速率增加</strong> <span class="arithmatex">\(60\%\)</span><strong>（即</strong> <span class="arithmatex">\(C_2 = 35 \times 1.6 = 56\text{ kbit/s}\)</span><strong>）</strong>：</p>
-<p>$$
- \log_2(1 + (S/N)_2) = \frac{56000}{3100} \approx 18.0645 \Rightarrow (S/N)_2 = 2^{18.0645} - 1 \approx 273,660
- $$</p>
-<p>信噪比应增大到的倍数 <span class="arithmatex">\(= \frac{(S/N)_2}{(S/N)_1} \approx \frac{273660}{2504} \approx \mathbf{109.3\text{ 倍}}\)</span>（约 <strong>100倍</strong>）。</p>
-</li>
-<li>
-<p><strong>(2) 将</strong> <span class="arithmatex">\((S/N)_2\)</span> <strong>再增大到 10 倍（即</strong> <span class="arithmatex">\((S/N)_3 \approx 2.7366 \times 10^6\)</span><strong>）</strong>：</p>
-<p>$$
- C_3 = 3100 \times \log_2(1 + 2.7366 \times 10^6) \approx 3100 \times 21.384 \approx \mathbf{66.29\text{ kbit/s}}
- $$</p>
-<p>速率增长比例 <span class="arithmatex">\(= \frac{66.29 - 56}{56} \approx \mathbf{18.38\% &lt; 20\%}\)</span>，故<strong>不能再增加</strong> <span class="arithmatex">\(20\%\)</span>！</p>
 </li>
 </ul>
+<p><span class="arithmatex">\(\log_2(1 + (S/N)_2) = \frac{56000}{3100} \approx 18.0645 \Rightarrow (S/N)_2 = 2^{18.0645} - 1 \approx 273,660\)</span></p>
+<p>信噪比应增大到的倍数 <span class="arithmatex">\(= \frac{(S/N)_2}{(S/N)_1} \approx \frac{273660}{2504} \approx \mathbf{109.3\text{ 倍}}\)</span>（约 <strong>100倍</strong>）。</p>
+<ol>
+<li><strong>(2) 将</strong> <span class="arithmatex">\((S/N)_2\)</span> <strong>再增大到 10 倍（即</strong> <span class="arithmatex">\((S/N)_3 \approx 2.7366 \times 10^6\)</span><strong>）</strong>：</li>
+</ol>
+<p><span class="arithmatex">\(C_3 = 3100 \times \log_2(1 + 2.7366 \times 10^6) \approx 3100 \times 21.384 \approx \mathbf{66.29\text{ kbit/s}}\)</span></p>
+<p>速率增长比例 <span class="arithmatex">\(= \frac{66.29 - 56}{56} \approx \mathbf{18.38\% &lt; 20\%}\)</span>，故<strong>不能再增加</strong> <span class="arithmatex">\(20\%\)</span>！</p>
 <h3 id="8-2-13-2-15-cdma">8. <code>2-13</code> &amp; <code>2-15</code>（信道复用分类与 CDMA 码片正交数学原理证明）</h3>
 <ul>
 <li>
@@ -2925,9 +2907,7 @@
 <ul>
 <li>设站 <span class="arithmatex">\(S\)</span> 的 <span class="arithmatex">\(m\)</span> 位码片向量为 <span class="arithmatex">\(\mathbf{S}\)</span>，站 <span class="arithmatex">\(T\)</span> 的码片向量为 <span class="arithmatex">\(\mathbf{T}\)</span>。所有分配的码片序列两两严格<strong>正交（Orthogonal）</strong>：</li>
 </ul>
-<p>$$
-   \frac{1}{m} \mathbf{S} \cdot \mathbf{T} = 0, \quad \frac{1}{m} \mathbf{S} \cdot \mathbf{S} = +1, \quad \frac{1}{m} \mathbf{S} \cdot (-\mathbf{S}) = -1
-   $$</p>
+<p><span class="arithmatex">\(\frac{1}{m} \mathbf{S} \cdot \mathbf{T} = 0, \quad \frac{1}{m} \mathbf{S} \cdot \mathbf{S} = +1, \quad \frac{1}{m} \mathbf{S} \cdot (-\mathbf{S}) = -1\)</span></p>
 <ul>
 <li>
 <p>当多个站点同时在相同频带发送时，空气中的总信号是各站发送向量（发 <span class="arithmatex">\(1\)</span> 为 <span class="arithmatex">\(+\mathbf{X}\)</span>，发 <span class="arithmatex">\(0\)</span> 为 <span class="arithmatex">\(-\mathbf{X}\)</span>）的线性叠加：<span class="arithmatex">\(\mathbf{R}_{\text{total}} = \pm \mathbf{S} \pm \mathbf{T} \pm \dots\)</span></p>
@@ -2936,9 +2916,7 @@
 <p>接收端想听站 <span class="arithmatex">\(S\)</span> 的数据时，用 <span class="arithmatex">\(\mathbf{S}\)</span> 与总信号做规格化内积：</p>
 </li>
 </ul>
-<p>$$
-   \frac{1}{m} \mathbf{S} \cdot \mathbf{R}_{\text{total}} = \frac{1}{m}\mathbf{S}\cdot(\pm \mathbf{S}) + \frac{1}{m}\mathbf{S}\cdot(\pm \mathbf{T}) + \dots = \pm 1 + 0 + 0 = \mathbf{\pm 1}
-   $$</p>
+<p><span class="arithmatex">\(\frac{1}{m} \mathbf{S} \cdot \mathbf{R}_{\text{total}} = \frac{1}{m}\mathbf{S}\cdot(\pm \mathbf{S}) + \frac{1}{m}\mathbf{S}\cdot(\pm \mathbf{T}) + \dots = \pm 1 + 0 + 0 = \mathbf{\pm 1}\)</span></p>
 <p>其余所有站点的干扰信号在与 <span class="arithmatex">\(\mathbf{S}\)</span> 做内积时全部变为 <span class="arithmatex">\(0\)</span>，从而实现同频同时无干扰通信。</p>
 </li>
 </ul>
@@ -3011,7 +2989,7 @@
 </li>
 <li>
 <p><strong>推导过程</strong>：</p>
-<ol>
+</li>
 <li>
 <p>设 A 在 <span class="arithmatex">\(t = 0\)</span> 开始发送第 1 个比特，该比特经过单程传播时延 <span class="arithmatex">\(\tau = 225\text{ 比特时间}\)</span> 后到达 B。</p>
 </li>
@@ -3023,8 +3001,6 @@
 </li>
 <li>
 <p>而 A 发送完最短帧（含前同步码）需要 <span class="arithmatex">\(576\text{ 比特时间}\)</span>（即便不计前同步码也需 <span class="arithmatex">\(512\text{ 比特时间} &gt; 450\)</span>）。既然 A 在发完前一直未检测到碰撞，说明 B 绝没有在 <span class="arithmatex">\(t &lt; 225\)</span> 时发送，后续也绝不可能再与该帧发生碰撞。</p>
-</li>
-</ol>
 </li>
 </ul>
 <h3 id="12-3-27-3-30-vs">12. <code>3-27</code> &amp; <code>3-30</code>（集线器 vs 交换机每站带宽与全网最大总吞吐量计算）</h3>
@@ -3062,17 +3038,17 @@
 </li>
 <li>
 <p><strong>分片对齐铁律</strong>：除最后一个分片外，每个分片的数据载荷长度必须是 <strong>8字节（即</strong> <span class="arithmatex">\(64\text{ bit}\)</span><strong>）的整数倍</strong>！</p>
-<p>$$
- \lfloor \frac{1040}{64} \rfloor \times 64 = 16 \times 64 = \mathbf{1024\text{ bit}}\text{（即 } 128\text{ B）}
- $$</p>
 </li>
+</ul>
+<p><span class="arithmatex">\(\lfloor \frac{1040}{64} \rfloor \times 64 = 16 \times 64 = \mathbf{1024\text{ bit}}\text{（即 } 128\text{ B）}\)</span></p>
+<ol>
 <li>
 <p>原始 TCP 报文共 <span class="arithmatex">\(3200\text{ bit}\)</span>，按每片 <span class="arithmatex">\(1024\text{ bit}\)</span> 切分：<span class="arithmatex">\(3200 = 1024 + 1024 + 1024 + 128\)</span>，故共需切分为 <strong>4个 IP 数据报分片</strong>。</p>
 </li>
 <li>
 <p>每个分片均需附加 <span class="arithmatex">\(160\text{ bit}\)</span> 的 IP 首部，故第二个局域网向上层共需传送：<span class="arithmatex">\(3200\text{ bit（原数据）} + 4 \times 160\text{ bit（4个IP首部）} = \mathbf{3840\text{ bit}}\)</span>（<span class="arithmatex">\(= 480\text{ B}\)</span>）。</p>
 </li>
-</ul>
+</ol>
 <h3 id="14-4-19-4-31-4-33-4-51cidr">14. <code>4-19</code> &amp; <code>4-31</code> &amp; <code>4-33</code> &amp; <code>4-51</code>（CIDR 地址块切分与参数计算四连练）</h3>
 <ul>
 <li>

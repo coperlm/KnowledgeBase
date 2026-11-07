@@ -2887,7 +2887,7 @@
 <li><strong>【严谨考场结论】</strong>：<strong>不能将 <span class="arithmatex">\(\Delta\)</span> 取为 <span class="arithmatex">\(9\text{ ms}\)</span>！</strong></li>
 <li><strong>理由与正确取值</strong>：话音分组每隔 <span class="arithmatex">\(10\text{ ms}\)</span> 生成一个，若时钟周期 <span class="arithmatex">\(\Delta = 9\text{ ms}\)</span>，则分组装配间隔（<span class="arithmatex">\(10\text{ ms}\)</span>）不是时钟周期（<span class="arithmatex">\(9\text{ ms}\)</span>）的整数倍，会导致各个等时生成的分组之间的时间戳差值忽大忽小，无法准确反映等时采样时刻。</li>
 <li><strong>标准取值</strong>：根据 RTP 标准规范，音频流的时间戳时钟频率应等于其<strong>采样频率（<span class="arithmatex">\(8000\text{ Hz}\)</span>）</strong>，即每采集一个话音样本将计数器加 1。因此 <span class="arithmatex">\(\Delta\)</span> 应当取为采样周期：
-    $<span class="arithmatex">\(\Delta = \frac{1}{8000\text{ Hz}} = \mathbf{0.125\text{ ms}} = \mathbf{125\ \mu\text{s}}\)</span>$
+    <span class="arithmatex">\(\Delta = \frac{1}{8000\text{ Hz}} = \mathbf{0.125\text{ ms}} = \mathbf{125\ \mu\text{s}}\)</span>
     <em>(这样每隔 <span class="arithmatex">\(10\text{ ms}\)</span> 封装一个包含 <span class="arithmatex">\(80\)</span> 个采样点的话音分组时，相邻两个 RTP 分组的时间戳恰好固定递增 </em><em><span class="arithmatex">\(80\)</span></em><em>；哪怕退一步按分组间隔计时，<span class="arithmatex">\(\Delta\)</span> 也必须是 <span class="arithmatex">\(10\text{ ms}\)</span> 的约数)</em>。</li>
 </ul>
 <h3 id="16-8-17">16. <code>8-17</code> 在传送音频/视频数据时，接收端的缓存空间的上限由什么因素决定？实时数据流的数据率和时延抖动对缓存空间上限的确定有何影响？</h3>
@@ -2948,11 +2948,11 @@
 <li><strong>(1) RTCP 总通信量上限（会话总带宽的 <span class="arithmatex">\(5\%\)</span>）</strong>：<ul>
 <li>4 个用户每人以 <span class="arithmatex">\(100\text{ kbit/s}\)</span> 发送视频，故该多播会话的总数据流量为 <span class="arithmatex">\(4 \times 100\text{ kbit/s} = 400\text{ kbit/s}\)</span>。</li>
 <li>按照协议规定，RTCP 的总通信量被限制在会话总带宽的 <strong><span class="arithmatex">\(5\%\)</span></strong>，即：
-  $<span class="arithmatex">\(400\text{ kbit/s} \times 5\% = \mathbf{20\text{ kbit/s}}\)</span>$</li>
+  <span class="arithmatex">\(400\text{ kbit/s} \times 5\% = \mathbf{20\text{ kbit/s}}\)</span></li>
 </ul>
 </li>
 <li><strong>(2) 每一个用户分配到的 RTCP 带宽</strong>：4 个用户平分这 <span class="arithmatex">\(20\text{ kbit/s}\)</span> 的 RTCP 控制带宽，故每个用户能分配到的 RTCP 带宽为：
-    $<span class="arithmatex">\(\frac{20\text{ kbit/s}}{4} = \mathbf{5\text{ kbit/s}}\)</span>$</li>
+    <span class="arithmatex">\(\frac{20\text{ kbit/s}}{4} = \mathbf{5\text{ kbit/s}}\)</span></li>
 </ul>
 <hr />
 <h2 id="8-80211">第九章 无线网络和移动网络（共 8 题：彻底搞透 802.11 无线局域网架构与帧格式）</h2>

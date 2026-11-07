@@ -2458,19 +2458,19 @@
 <p><strong>符号表达式与定量对比</strong>：</p>
 </li>
 <li><strong>对称加密表达式（<code>7-13</code>）</strong>：
-     $<span class="arithmatex">\(A \leftarrow B : E_{K_{AB}}(X)\)</span>$<ul>
+     <span class="arithmatex">\(A \leftarrow B : E_{K_{AB}}(X)\)</span><ul>
 <li><strong>结论</strong>：<strong>A 不能向第三方证明报文必出自 B</strong>。因为 A 和 B 均持有相同的对称密钥 <span class="arithmatex">\(K_{AB}\)</span>，A 完全可以自己计算出 <span class="arithmatex">\(E_{K_{AB}}(X)\)</span> 进行伪造，故不具备不可抵赖性。</li>
 </ul>
 </li>
 <li><strong>图 7-5 具有机密性的数字签名表达式（<code>7-14</code>）</strong>：
-     $<span class="arithmatex">\(A \to B : E_{PK_B}\Big(X \,\big\|\, D_{SK_A}\big(H(X)\big)\Big)\)</span>$<ul>
+     <span class="arithmatex">\(A \to B : E_{PK_B}\Big(X \,\big\|\, D_{SK_A}\big(H(X)\big)\Big)\)</span><ul>
 <li><strong>运算步骤与次数</strong>：发送方需执行 <strong>1 次散列运算 <span class="arithmatex">\(H(X)\)</span> + 1 次私钥签名运算 <span class="arithmatex">\(D_{SK_A}\)</span>（大数模幂运算，慢） + 1 次加密运算 <span class="arithmatex">\(E_{PK_B}\)</span></strong>。</li>
 <li><strong>鉴别能力</strong>：由于全球仅 A 拥有私钥 <span class="arithmatex">\(SK_A\)</span>，任何第三方均可用公开的 <span class="arithmatex">\(PK_A\)</span> 验证签名，<strong>同时实现源点鉴别、完整性校验与不可抵赖性（更有利于全面鉴别）</strong>。</li>
 </ul>
 </li>
 <li>
 <p><strong>图 7-6 报文鉴别码 MAC 表达式（<code>7-14</code>）</strong>：
-     $<span class="arithmatex">\(A \to B : X \,\big\|\, H(X \,\|\, K_{AB})\)</span>$</p>
+     <span class="arithmatex">\(A \to B : X \,\big\|\, H(X \,\|\, K_{AB})\)</span></p>
 <ul>
 <li><strong>运算步骤与次数</strong>：收发双方仅需执行 <strong>1 次带共享密钥 <span class="arithmatex">\(K_{AB}\)</span> 的散列运算（极快，无公钥大数运算开销）</strong>，但不具备第三方不可抵赖性。</li>
 </ul>
@@ -2503,7 +2503,7 @@
 </li>
 <li>
 <p><strong>防御算式（CA 数字证书绑定）</strong>：
-  $<span class="arithmatex">\(\text{Cert}_B = \text{ID}_B \,\big\|\, PK_B \,\big\|\, D_{SK_{\text{CA}}}\Big(H(\text{ID}_B \,\|\, PK_B)\Big)\)</span>$
+  <span class="arithmatex">\(\text{Cert}_B = \text{ID}_B \,\big\|\, PK_B \,\big\|\, D_{SK_{\text{CA}}}\Big(H(\text{ID}_B \,\|\, PK_B)\Big)\)</span>
   <span class="arithmatex">\(A\)</span> 用预置的 CA 公钥 <span class="arithmatex">\(PK_{\text{CA}}\)</span> 验证签名，攻击者 <span class="arithmatex">\(C\)</span> 因无 <span class="arithmatex">\(SK_{\text{CA}}\)</span> 无法伪造证书。</p>
 </li>
 </ul>
@@ -2529,7 +2529,7 @@
 <li><strong>证书验证</strong>：<span class="arithmatex">\(B \to A : \text{Cert}_B\)</span>（内含 <span class="arithmatex">\(PK_B\)</span>），<span class="arithmatex">\(A\)</span> 用 <span class="arithmatex">\(PK_{\text{CA}}\)</span> 校验通过；</li>
 <li>
 <p><strong>传递预主密钥并导出会话密钥</strong>：<span class="arithmatex">\(A\)</span> 生成随机秘密数 <span class="arithmatex">\(S\)</span>（Pre-master Secret），发送密文 <span class="arithmatex">\(E_{PK_B}(S)\)</span>；<span class="arithmatex">\(B\)</span> 计算 <span class="arithmatex">\(D_{SK_B}\big(E_{PK_B}(S)\big) = S\)</span>。随后双方各自通过伪随机函数计算出会话密钥：
-   $<span class="arithmatex">\(K_{\text{session}} = \text{PRF}(S,\ R_A,\ R_B)\)</span>$</p>
+   <span class="arithmatex">\(K_{\text{session}} = \text{PRF}(S,\ R_A,\ R_B)\)</span></p>
 </li>
 <li>
 <p><strong>握手完成校验</strong>：双方用 <span class="arithmatex">\(K_{\text{session}}\)</span> 加密发送握手结束（Finished）报文验证完整性。</p>
@@ -2543,7 +2543,7 @@
 <li><strong>完整计算表与标准答案（设第 1 个分组在 <span class="arithmatex">\(t = 0\text{ ms}\)</span> 发出）</strong>：</li>
 <li>发送时刻公式：<span class="arithmatex">\(t_{\text{send}}(i) = 10(i - 1)\text{ ms}\)</span></li>
 <li>到达接收端时刻公式：<span class="arithmatex">\(t_{\text{arr}}(i) = t_{\text{send}}(i) + d_i\)</span></li>
-<li><strong>第(2)问：在接收端缓存中应增加的时延公式</strong>：$<span class="arithmatex">\(d_{\text{buf}}(i) = 75\text{ ms} - d_i\)</span>$</li>
+<li><strong>第(2)问：在接收端缓存中应增加的时延公式</strong>：<span class="arithmatex">\(d_{\text{buf}}(i) = 75\text{ ms} - d_i\)</span></li>
 <li>还原播放（出缓存）时刻公式：<span class="arithmatex">\(t_{\text{play}}(i) = t_{\text{send}}(i) + 75\text{ ms}\)</span></li>
 </ul>
 <table>
@@ -2669,12 +2669,12 @@
 <li><strong>FIFO</strong>：按到达时间 <span class="arithmatex">\(t_{\text{arr}}\)</span> 排序，无流隔离。</li>
 <li>
 <p><strong>FQ（逐字节公平排队，<code>2025-选5</code> 核心公式）</strong>：设第 <span class="arithmatex">\(k\)</span> 个队列的第 <span class="arithmatex">\(i\)</span> 个分组长度为 <span class="arithmatex">\(L_i\)</span>，到达时刻为 <span class="arithmatex">\(R_i\)</span>，则该分组的虚拟完结轮次 <span class="arithmatex">\(F_i\)</span> 为：
-  $<span class="arithmatex">\(F_i = \max\big(F_{i-1},\ R_i\big) + L_i\)</span>$
+  <span class="arithmatex">\(F_i = \max\big(F_{i-1},\ R_i\big) + L_i\)</span>
   每次从所有非空队列中选择 <strong><span class="arithmatex">\(F_i\)</span> 最小</strong>的分组优先发送。</p>
 </li>
 <li>
 <p><strong>WFQ（加权公平排队）</strong>：引入队列权重 <span class="arithmatex">\(w_k\)</span>，将虚拟完结时间修正为：
-  $<span class="arithmatex">\(F_i = \max\big(F_{i-1},\ R_i\big) + \frac{L_i}{w_k}\)</span>$</p>
+  <span class="arithmatex">\(F_i = \max\big(F_{i-1},\ R_i\big) + \frac{L_i}{w_k}\)</span></p>
 </li>
 </ul>
 <hr />
@@ -2683,18 +2683,18 @@
 <li><strong>已知条件</strong>：发送方每秒产生 <span class="arithmatex">\(8000\text{ B}\)</span> 话音数据。每隔 <span class="arithmatex">\(20\text{ ms}\)</span> 把得到的数据块加上 RTP 首部（无选项，固定 <strong><span class="arithmatex">\(12\text{ B}\)</span></strong>）和 UDP 首部（固定 <strong><span class="arithmatex">\(8\text{ B}\)</span></strong>）后，交给 IP 层（固定首部 <strong><span class="arithmatex">\(20\text{ B}\)</span></strong>）发送。求发送 IP 数据报的数据率（<span class="arithmatex">\(\text{kbit/s}\)</span>）及比原始话音数据率增加了百分之多少？</li>
 <li><strong>分步算式与答案</strong>：</li>
 <li><strong>原始话音数据率 <span class="arithmatex">\(R_{\text{raw}}\)</span></strong>：
-     $<span class="arithmatex">\(R_{\text{raw}} = 8000\text{ B/s} \times 8\text{ bit/B} = 64000\text{ bit/s} = \mathbf{64\text{ kbit/s}}\)</span>$</li>
+     <span class="arithmatex">\(R_{\text{raw}} = 8000\text{ B/s} \times 8\text{ bit/B} = 64000\text{ bit/s} = \mathbf{64\text{ kbit/s}}\)</span></li>
 <li><strong>每个分组的话音数据载荷与每秒分组数</strong>：<ul>
 <li>每隔 <span class="arithmatex">\(20\text{ ms} = 0.02\text{ s}\)</span> 封装 1 个分组，故每秒发送分组数 <span class="arithmatex">\(= \frac{1\text{ s}}{0.02\text{ s}} = \mathbf{50\text{ 个分组/秒}}\)</span>；</li>
 <li>每个分组携带的原始话音字节数 <span class="arithmatex">\(= 8000\text{ B/s} \times 0.02\text{ s} = \mathbf{160\text{ B}}\)</span>。</li>
 </ul>
 </li>
 <li><strong>加上 RTP + UDP + IP 首部后的单个 IP 数据报总长度</strong>：
-     $<span class="arithmatex">\(\text{总长度} = 160\text{ B (话音)} + 12\text{ B (RTP首部)} + 8\text{ B (UDP首部)} + 20\text{ B (IP首部)} = \mathbf{200\text{ B}} = 1600\text{ bit}\)</span>$</li>
+     <span class="arithmatex">\(\text{总长度} = 160\text{ B (话音)} + 12\text{ B (RTP首部)} + 8\text{ B (UDP首部)} + 20\text{ B (IP首部)} = \mathbf{200\text{ B}} = 1600\text{ bit}\)</span></li>
 <li><strong>发送 IP 数据报的数据率 <span class="arithmatex">\(R_{\text{IP}}\)</span></strong>：
-     $<span class="arithmatex">\(R_{\text{IP}} = 50\text{ 个/s} \times 1600\text{ bit/个} = 80000\text{ bit/s} = \mathbf{80\text{ kbit/s}}\)</span>$</li>
+     <span class="arithmatex">\(R_{\text{IP}} = 50\text{ 个/s} \times 1600\text{ bit/个} = 80000\text{ bit/s} = \mathbf{80\text{ kbit/s}}\)</span></li>
 <li><strong>数据率增加的百分比</strong>：
-     $<span class="arithmatex">\(\eta = \frac{80\text{ kbit/s} - 64\text{ kbit/s}}{64\text{ kbit/s}} \times 100\% = \frac{40\text{ B (首部)}}{160\text{ B (数据)}} \times 100\% = \mathbf{25\%}\)</span>$</li>
+     <span class="arithmatex">\(\eta = \frac{80\text{ kbit/s} - 64\text{ kbit/s}}{64\text{ kbit/s}} \times 100\% = \frac{40\text{ B (首部)}}{160\text{ B (数据)}} \times 100\% = \mathbf{25\%}\)</span></li>
 </ul>
 <hr />
 <h3 id="8-8-36">8. <code>8-36</code> 流媒体播放器缓存抽空（暂停）与注满时间计算（必会追及/水池问题！）</h3>
@@ -2703,18 +2703,18 @@
 <li><strong>两问分步算式与答案</strong>：</li>
 <li><strong>(1) 当输入速率 <span class="arithmatex">\(R_{\text{in}} = 2\text{ Mbit/s} &lt; R_{\text{out}} = 3\text{ Mbit/s}\)</span> 时</strong>：<ul>
 <li><strong>播放多久后暂停（缓存被抽空）</strong>：从存有 <span class="arithmatex">\(30\text{ Mbit}\)</span> 开始播放，一边以 <span class="arithmatex">\(2\text{ Mbit/s}\)</span> 往里注水，一边以 <span class="arithmatex">\(3\text{ Mbit/s}\)</span> 往外放水，净消耗速率为 <span class="arithmatex">\(R_{\text{out}} - R_{\text{in}} = 3 - 2 = 1\text{ Mbit/s}\)</span>。故把 <span class="arithmatex">\(30\text{ Mbit}\)</span> 存量全部抽空所需播放时间为：
-  $<span class="arithmatex">\(t_{\text{play}} = \frac{30\text{ Mbit}}{3\text{ Mbit/s} - 2\text{ Mbit/s}} = \mathbf{30\text{ s}}\)</span>$</li>
+  <span class="arithmatex">\(t_{\text{play}} = \frac{30\text{ Mbit}}{3\text{ Mbit/s} - 2\text{ Mbit/s}} = \mathbf{30\text{ s}}\)</span></li>
 <li><strong>暂停多久后才能继续播放</strong>：暂停期间播放器停止读取（<span class="arithmatex">\(R_{\text{out}} = 0\)</span>），TCP 继续以 <span class="arithmatex">\(R_{\text{in}} = 2\text{ Mbit/s}\)</span> 向缓存注入数据，直到重新积攒够启动阈值 <span class="arithmatex">\(30\text{ Mbit}\)</span> 时恢复播放，故暂停时间为：
-  $<span class="arithmatex">\(t_{\text{pause}} = \frac{30\text{ Mbit}}{2\text{ Mbit/s}} = \mathbf{15\text{ s}}\)</span>$</li>
+  <span class="arithmatex">\(t_{\text{pause}} = \frac{30\text{ Mbit}}{2\text{ Mbit/s}} = \mathbf{15\text{ s}}\)</span></li>
 </ul>
 </li>
 <li><strong>(2) 当输入速率改为 <span class="arithmatex">\(R_{\text{in}} = 4\text{ Mbit/s} &gt; R_{\text{out}} = 3\text{ Mbit/s}\)</span> 时（求从开始传数据到 <span class="arithmatex">\(100\text{ Mbit}\)</span> 缓存完全存满的总时间）</strong>：<ul>
 <li><strong>第一阶段（从 <span class="arithmatex">\(0\)</span> 充到 <span class="arithmatex">\(30\text{ Mbit}\)</span> 播放器启动前，只进不出）</strong>：
-  $<span class="arithmatex">\(t_1 = \frac{30\text{ Mbit}}{4\text{ Mbit/s}} = \mathbf{7.5\text{ s}}\)</span>$</li>
+  <span class="arithmatex">\(t_1 = \frac{30\text{ Mbit}}{4\text{ Mbit/s}} = \mathbf{7.5\text{ s}}\)</span></li>
 <li><strong>第二阶段（从 <span class="arithmatex">\(30\text{ Mbit}\)</span> 充到存满 <span class="arithmatex">\(100\text{ Mbit}\)</span>，边进边播，净注入速率为 <span class="arithmatex">\(4 - 3 = 1\text{ Mbit/s}\)</span>）</strong>：
-  $<span class="arithmatex">\(t_2 = \frac{100\text{ Mbit} - 30\text{ Mbit}}{4\text{ Mbit/s} - 3\text{ Mbit/s}} = \frac{70\text{ Mbit}}{1\text{ Mbit/s}} = \mathbf{70\text{ s}}\)</span>$</li>
+  <span class="arithmatex">\(t_2 = \frac{100\text{ Mbit} - 30\text{ Mbit}}{4\text{ Mbit/s} - 3\text{ Mbit/s}} = \frac{70\text{ Mbit}}{1\text{ Mbit/s}} = \mathbf{70\text{ s}}\)</span></li>
 <li><strong>总共花费时间</strong>：
-  $<span class="arithmatex">\(T_{\text{total}} = t_1 + t_2 = 7.5\text{ s} + 70\text{ s} = \mathbf{77.5\text{ s}}\)</span>$</li>
+  <span class="arithmatex">\(T_{\text{total}} = t_1 + t_2 = 7.5\text{ s} + 70\text{ s} = \mathbf{77.5\text{ s}}\)</span></li>
 </ul>
 </li>
 </ul>

@@ -2971,14 +2971,12 @@
 </li>
 <li>
 <p><strong>(1) 单个 TCP 报文段的数据部分理论最大值</strong>：受限于下层 <strong>IPv4 数据报首部中的 16 位“总长度”字段（最大值为</strong> <span class="arithmatex">\(2^{16} - 1 = 65535\)</span> <strong>字节）</strong>。扣除 IPv4 最小固定首部 <span class="arithmatex">\(20\text{ B}\)</span> 和 TCP 最小固定首部 <span class="arithmatex">\(20\text{ B}\)</span> 后，一个 TCP 报文段的数据部分最多为：</p>
-<div class="arithmatex">\[
-65535 - 20 - 20 = \mathbf{65495\text{ 字节}}
-\]</div>
+</li>
+</ul>
+<p><span class="arithmatex">\(65535 - 20 - 20 = \mathbf{65495\text{ 字节}}\)</span></p>
 <p><em>(注：在实际以太网中，受限于链路层</em> <span class="arithmatex">\(\text{MTU} = 1500\text{ B}\)</span><em>，通常将最大报文段长度</em> <span class="arithmatex">\(\text{MSS}\)</span> <em>设为</em> <span class="arithmatex">\(1500 - 20 - 20 = 1460\text{ B}\)</span> <em>以避免分片)</em>。</p>
-</li>
-<li>
-<p><strong>(2) 超过最大序号能否用 TCP 传送</strong>：<strong>完全可以！</strong> TCP 的 32 位序号字段是对字节流进行<strong>模</strong> <span class="arithmatex">\(2^{32}\)</span> <strong>循环编号（序号绕回 Wrap-around）</strong>的。当字节序号达到<strong><span class="arithmatex">\(2^{32} - 1\)</span></strong>后，下一个字节的序号会自动回到<strong><span class="arithmatex">\(0\)</span></strong>重新开始循环编号；只要旧序号的报文段在网络中已超过最大生存时间 MSL 消亡（或在高速网中配合 TCP 首部 32 位<strong>时间戳选项 PAWS 防绕回机制</strong>），TCP 就可以无限制地传送任意大小的超大文件（如几十 GB 的蓝光电影）。</p>
-</li>
+<ul>
+<li><strong>(2) 超过最大序号能否用 TCP 传送</strong>：<strong>完全可以！</strong> TCP 的 32 位序号字段是对字节流进行<strong>模</strong> <span class="arithmatex">\(2^{32}\)</span> <strong>循环编号（序号绕回 Wrap-around）</strong>的。当字节序号达到<strong><span class="arithmatex">\(2^{32} - 1\)</span></strong>后，下一个字节的序号会自动回到<strong><span class="arithmatex">\(0\)</span></strong>重新开始循环编号；只要旧序号的报文段在网络中已超过最大生存时间 MSL 消亡（或在高速网中配合 TCP 首部 32 位<strong>时间戳选项 PAWS 防绕回机制</strong>），TCP 就可以无限制地传送任意大小的超大文件（如几十 GB 的蓝光电影）。</li>
 </ul>
 <h3 id="15-5-28-a-b-tcp-m-n-b-a-tcp">15. <code>5-28</code> 主机 A 向主机 B 发送 TCP 报文段，首部中的源端口是 <span class="arithmatex">\(m\)</span> 而目的端口是 <span class="arithmatex">\(n\)</span>。当 B 向 A 发送回信时，其 TCP 报文段的首部中的源端口和目的端口分别是什么？</h3>
 <ul>

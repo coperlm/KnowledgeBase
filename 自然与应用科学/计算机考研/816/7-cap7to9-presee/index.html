@@ -2998,14 +2998,14 @@
 <li>开播后，缓存水位以净消耗速率 <span class="arithmatex">\((R_{\text{out}} - R_{\text{in}})\)</span> 不断下降。</li>
 <li>原本积攒的 <span class="arithmatex">\(B_{\text{start}}\)</span> 水量能撑多久才被抽干？</li>
 </ul>
-<p>$<span class="arithmatex">\(t_{\text{play}} = \frac{B_{\text{start}}}{R_{\text{out}} - R_{\text{in}}}\)</span>$</p>
+<p><span class="arithmatex">\(t_{\text{play}} = \frac{B_{\text{start}}}{R_{\text{out}} - R_{\text{in}}}\)</span></p>
 <ul>
 <li>抽干暂停后，播放器停止抽水，网络以 <span class="arithmatex">\(R_{\text{in}}\)</span> 重新灌满到 <span class="arithmatex">\(B_{\text{start}}\)</span> 才能恢复播放，暂停等待时间为 <span class="arithmatex">\(t_{\text{pause}} = \frac{B_{\text{start}}}{R_{\text{in}}}\)</span>。</li>
 <li><strong>情况二：下载比播放快（<span class="arithmatex">\(R_{\text{in}} &gt; R_{\text{out}}\)</span>，供大于求）</strong>：</li>
 <li>开播后，缓存水位以净增长速率 <span class="arithmatex">\((R_{\text{in}} - R_{\text{out}})\)</span> 继续上涨。</li>
 <li>从水位 <span class="arithmatex">\(B_{\text{start}}\)</span> 涨满到缓存上限 <span class="arithmatex">\(B_{\text{max}}\)</span> 需要多久？</li>
 </ul>
-<p>$<span class="arithmatex">\(t_{\text{fill}} = \frac{B_{\text{max}} - B_{\text{start}}}{R_{\text{in}} - R_{\text{out}}}\)</span>$</p>
+<p><span class="arithmatex">\(t_{\text{fill}} = \frac{B_{\text{max}} - B_{\text{start}}}{R_{\text{in}} - R_{\text{out}}}\)</span></p>
 <ul>
 <li>若从空缓存下载算起直到装满，还要加上开播前预缓冲时间 <span class="arithmatex">\(t_0 = \frac{B_{\text{start}}}{R_{\text{in}}}\)</span>。</li>
 </ul>
@@ -3118,16 +3118,16 @@
 </ol>
 <h4 id="4-rtscts">机关 4：一次完整 RTS/CTS 成功传输的时间轴总账（必背公式模板！）</h4>
 <p>把上面整个预约到确认的过程画成一条时间轴（忽略极短的电磁波空中传播时延），你会发现它永远由 <strong>“1 个 DIFS + 3 个 SIFS + 4 个帧的发送时间”</strong> 严丝合缝地拼接而成：</p>
-<div class="arithmatex">\[\text{从决定发送到收到 ACK 的总时间 } T_{\text{total}} = \text{DIFS} + T_{\text{RTS}} + \text{SIFS} + T_{\text{CTS}} + \text{SIFS} + T_{\text{DATA}} + \text{SIFS} + T_{\text{ACK}}\]</div>
+<p><span class="arithmatex">\(\text{从决定发送到收到 ACK 的总时间 } T_{\text{total}} = \text{DIFS} + T_{\text{RTS}} + \text{SIFS} + T_{\text{CTS}} + \text{SIFS} + T_{\text{DATA}} + \text{SIFS} + T_{\text{ACK}}\)</span></p>
 <p>并且从这条时间轴上，一眼就能看出 <code>RTS</code> 和 <code>CTS</code> 帧里填写的预约时间（即 <code>NAV</code> 值）有多长（<strong>就是它自己发完之后，后面还剩多少项，就把后面剩下的项全加起来！</strong>）：</p>
 <ul>
 <li><strong><code>RTS</code> 帧里填的持续时间 <span class="arithmatex">\(\text{NAV}(\text{RTS})\)</span></strong>（RTS 发完后还剩 3 个 SIFS 和 CTS、DATA、ACK 三帧）：</li>
 </ul>
-<p>$<span class="arithmatex">\(\text{NAV}(\text{RTS}) = 3 \times \text{SIFS} + T_{\text{CTS}} + T_{\text{DATA}} + T_{\text{ACK}}\)</span>$</p>
+<p><span class="arithmatex">\(\text{NAV}(\text{RTS}) = 3 \times \text{SIFS} + T_{\text{CTS}} + T_{\text{DATA}} + T_{\text{ACK}}\)</span></p>
 <ul>
 <li><strong><code>CTS</code> 帧里填的持续时间 <span class="arithmatex">\(\text{NAV}(\text{CTS})\)</span></strong>（CTS 发完后还剩 2 个 SIFS 和 DATA、ACK 两帧）：</li>
 </ul>
-<p>$<span class="arithmatex">\(\text{NAV}(\text{CTS}) = 2 \times \text{SIFS} + T_{\text{DATA}} + T_{\text{ACK}}\)</span>$
+<p><span class="arithmatex">\(\text{NAV}(\text{CTS}) = 2 \times \text{SIFS} + T_{\text{DATA}} + T_{\text{ACK}}\)</span>
 <em>(注：每个帧的发送时间 <span class="arithmatex">\(T_{\text{帧}} = \frac{\text{帧字节数} \times 8}{\text{对应发送速率}}\)</span>，把这个时间轴印在脑子里，任何 802.11 计算大题都是送分题！)</em></p>
 <hr />
 <h3 id="80211-mac-3-mac">三、 802.11 MAC 帧的“三地址迷局”（为什么无线帧要有 3 个 MAC 地址？）</h3>

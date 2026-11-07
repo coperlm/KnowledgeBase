@@ -2865,7 +2865,7 @@
 <li><strong>计算待分片的 IP 数据报总载荷长度</strong>：UDP 数据字段 <span class="arithmatex">\(8192\text{ B}\)</span> 加上 <strong><span class="arithmatex">\(8\text{ B}\)</span> 的 UDP 首部</strong>，成为 UDP 用户数据报，总长度为 <span class="arithmatex">\(8192 + 8 = \mathbf{8200\text{ B}}\)</span>（这 <span class="arithmatex">\(8200\text{ B}\)</span> 就是 IP 数据报的数据载荷部分）。</li>
 <li><strong>计算每个分片最大可携带的数据长度</strong>：以太网 <span class="arithmatex">\(\text{MTU} = 1500\text{ B}\)</span>，减去固定 <span class="arithmatex">\(20\text{ B}\)</span> 的 IP 首部，每个分片的数据字段最大长度为 <span class="arithmatex">\(1500 - 20 = \mathbf{1480\text{ B}}\)</span>（恰好是 8 字节的整数倍，<span class="arithmatex">\(1480 / 8 = 185\)</span>）。</li>
 <li><strong>计算分片个数与最后一片长度</strong>：
-     $<span class="arithmatex">\(\frac{8200}{1480} = 5 \text{ 余 } 800\text{ B}\)</span>$
+     <span class="arithmatex">\(\frac{8200}{1480} = 5 \text{ 余 } 800\text{ B}\)</span>
      故应当划分为 <strong><span class="arithmatex">\(6\)</span> 个 IP 数据报片</strong>！前 5 个分片的数据字段长度均为 <strong><span class="arithmatex">\(1480\text{ B}\)</span></strong>，第 6 个分片的数据字段长度为 <strong><span class="arithmatex">\(800\text{ B}\)</span></strong>。</li>
 <li><strong>各分片参数汇总表</strong>：</li>
 </ul>
@@ -2953,13 +2953,13 @@
 <li><strong><code>5-30</code> 计算</strong>：<ul>
 <li>发送窗口大小 <span class="arithmatex">\(W = 65535\text{ B} = 65535 \times 8 = 524,280\text{ bit}\)</span>。</li>
 <li>在每个往返时间 <span class="arithmatex">\(\text{RTT} = 20\text{ ms} = 0.02\text{ s}\)</span> 内最多只能发送一个窗口的数据量，故最大吞吐量为：
-  $<span class="arithmatex">\(\text{Throughput}_{\max} = \frac{W}{\text{RTT}} = \frac{524280\text{ bit}}{0.02\text{ s}} = 26,214,000\text{ bit/s} \approx \mathbf{26.21\text{ Mbit/s}}\)</span>$</li>
+  <span class="arithmatex">\(\text{Throughput}_{\max} = \frac{W}{\text{RTT}} = \frac{524280\text{ bit}}{0.02\text{ s}} = 26,214,000\text{ bit/s} \approx \mathbf{26.21\text{ Mbit/s}}\)</span></li>
 </ul>
 </li>
 <li><strong><code>5-31</code> 计算</strong>：<ul>
 <li><strong>(1) 最大吞吐量</strong>：由于 <span class="arithmatex">\(\text{RTT} = 2 \times 10\text{ ms} = 20\text{ ms}\)</span>（发送 <span class="arithmatex">\(65535\text{ B}\)</span> 在 <span class="arithmatex">\(1\text{ Gbit/s}\)</span> 信道上的发送时延仅 <span class="arithmatex">\(0.524\text{ ms}\)</span>，即使计入发送时延周期为 <span class="arithmatex">\(20.524\text{ ms}\)</span>，吞吐量为 <span class="arithmatex">\(25.54\text{ Mbit/s}\)</span>；按标准忽略极小发送时延计），最大吞吐量同样为 <strong><span class="arithmatex">\(\mathbf{26.21\text{ Mbit/s}}\)</span></strong>（或计入发送时延为 <strong><span class="arithmatex">\(25.5\text{ Mbit/s}\)</span></strong>）。</li>
 <li><strong>(2) 信道利用率</strong>：
-  $<span class="arithmatex">\(U = \frac{\text{实际最大吞吐量}}{\text{信道带宽}} = \frac{26.214\text{ Mbit/s}}{1000\text{ Mbit/s}} = \mathbf{2.62\%}\text{（或 } 2.55\% \text{）}\)</span>$
+  <span class="arithmatex">\(U = \frac{\text{实际最大吞吐量}}{\text{信道带宽}} = \frac{26.214\text{ Mbit/s}}{1000\text{ Mbit/s}} = \mathbf{2.62\%}\text{（或 } 2.55\% \text{）}\)</span>
   <em>(工程启示：在“高带宽、长时延”的肥管道 LFN 网络中，传统 16 位窗口 <span class="arithmatex">\(64\text{ KB}\)</span> 会导致信道利用率极低，因此在下题 <code>5-35</code> 中必须引入 TCP 窗口扩大选项！)</em></li>
 </ul>
 </li>
@@ -2971,11 +2971,11 @@
 <li><strong>【分步计算与标准答案】</strong>：</li>
 <li>公式：初始 <span class="arithmatex">\(\text{RTT}_{S0} = 30\text{ ms}\)</span>；递推公式 <span class="arithmatex">\(\text{RTT}_{S\text{新}} = (1 - \alpha)\text{RTT}_{S\text{旧}} + \alpha \cdot \text{RTT}_{\text{样本}} = 0.9 \cdot \text{RTT}_{S\text{旧}} + 0.1 \cdot \text{RTT}_{\text{样本}}\)</span>。</li>
 <li><strong>收到第1个样本（<span class="arithmatex">\(\text{RTT}_1 = 26\text{ ms}\)</span>）</strong>：
-     $<span class="arithmatex">\(\text{RTT}_{S1} = 0.9 \times 30 + 0.1 \times 26 = 27 + 2.6 = \mathbf{29.6\text{ ms}}\)</span>$</li>
+     <span class="arithmatex">\(\text{RTT}_{S1} = 0.9 \times 30 + 0.1 \times 26 = 27 + 2.6 = \mathbf{29.6\text{ ms}}\)</span></li>
 <li><strong>收到第2个样本（<span class="arithmatex">\(\text{RTT}_2 = 32\text{ ms}\)</span>）</strong>：
-     $<span class="arithmatex">\(\text{RTT}_{S2} = 0.9 \times 29.6 + 0.1 \times 32 = 26.64 + 3.2 = \mathbf{29.84\text{ ms}}\)</span>$</li>
+     <span class="arithmatex">\(\text{RTT}_{S2} = 0.9 \times 29.6 + 0.1 \times 32 = 26.64 + 3.2 = \mathbf{29.84\text{ ms}}\)</span></li>
 <li><strong>收到第3个样本（<span class="arithmatex">\(\text{RTT}_3 = 24\text{ ms}\)</span>）</strong>：
-     $<span class="arithmatex">\(\text{RTT}_{S3} = 0.9 \times 29.84 + 0.1 \times 24 = 26.856 + 2.4 = \mathbf{29.256\text{ ms}}\text{（或 } \mathbf{29.26\text{ ms}}\text{）}\)</span>$</li>
+     <span class="arithmatex">\(\text{RTT}_{S3} = 0.9 \times 29.84 + 0.1 \times 24 = 26.856 + 2.4 = \mathbf{29.256\text{ ms}}\text{（或 } \mathbf{29.26\text{ ms}}\text{）}\)</span></li>
 <li><strong>讨论结论</strong>：虽然单次测量的 <span class="arithmatex">\(\text{RTT}\)</span> 样本值在 <span class="arithmatex">\(24\text{ ms} \sim 32\text{ ms}\)</span> 之间有较大波动，但通过取较小的权值 <span class="arithmatex">\(\alpha = 0.1\)</span>，计算出的平滑往返时间 <span class="arithmatex">\(\text{RTT}_S\)</span> 始终稳定在 <span class="arithmatex">\(29.26 \sim 30\text{ ms}\)</span> 之间，变化非常平缓，有效滤除了网络瞬时抖动的干扰。</li>
 </ul>
 <hr />
@@ -2999,11 +2999,11 @@
 </li>
 <li><strong>(2) 传完整个 <span class="arithmatex">\(10\text{ MB}\)</span>（<span class="arithmatex">\(10240\)</span> 个分组）并收到全部确认所需的总 RTT 数</strong>：<ul>
 <li>在前 <span class="arithmatex">\(10\)</span> 个 <span class="arithmatex">\(\text{RTT}\)</span> 内，总共已发送并确认的分组数为：
-  $<span class="arithmatex">\(1 + 2 + 4 + \dots + 512 = 2^{10} - 1 = \mathbf{1023\text{ 个分组}}\text{（即 } 1023\text{ KB）}\)</span>$</li>
+  <span class="arithmatex">\(1 + 2 + 4 + \dots + 512 = 2^{10} - 1 = \mathbf{1023\text{ 个分组}}\text{（即 } 1023\text{ KB）}\)</span></li>
 <li>从第 11 个 <span class="arithmatex">\(\text{RTT}\)</span> 起，受接收窗口 <span class="arithmatex">\(\text{rwnd} = 1\text{ MB} = 1024\text{ KB}\)</span> 的限制，发送窗口固定保持在最大值 <strong><span class="arithmatex">\(1024\text{ 个分组}\)</span></strong> 不再增大。</li>
 <li>此时还剩余待发送的分组数 <span class="arithmatex">\(= 10240 - 1023 = \mathbf{9217\text{ 个分组}}\)</span>。</li>
 <li>每个 <span class="arithmatex">\(\text{RTT}\)</span> 最多发 <span class="arithmatex">\(1024\)</span> 个分组：
-  $<span class="arithmatex">\(\frac{9217}{1024} = 9 \text{ 余 } 1\text{ 个分组}\)</span>$
+  <span class="arithmatex">\(\frac{9217}{1024} = 9 \text{ 余 } 1\text{ 个分组}\)</span>
   即还需要 <strong><span class="arithmatex">\(9\)</span> 个满载的 RTT</strong>（发完 <span class="arithmatex">\(9 \times 1024 = 9216\)</span> 个分组）加上 <strong>最后 <span class="arithmatex">\(1\)</span> 个 RTT</strong>（发送最后剩下的 <span class="arithmatex">\(1\)</span> 个分组并收到其确认），共需 <span class="arithmatex">\(9 + 1 = 10\)</span> 个 <span class="arithmatex">\(\text{RTT}\)</span>。</li>
 <li>因此，数据传送阶段共需经过 <span class="arithmatex">\(10 + 10 = \mathbf{20\text{ 个 RTT}}\)</span>（耗时 <span class="arithmatex">\(20 \times 50\text{ ms} = \mathbf{1.0\text{ s}}\)</span>；若计入建立 TCP 连接的 <span class="arithmatex">\(1\text{ RTT}\)</span> 则为 <span class="arithmatex">\(21\text{ 个 RTT} = 1.05\text{ s}\)</span>）。</li>
 <li><strong>窗口扩大选项够用吗？</strong> TCP 窗口扩大选项最大可将 16 位窗口左移 14 位，即扩大到 <span class="arithmatex">\(65535 \times 2^{14}\text{ B} \approx 1\text{ GB}\)</span>，远大于本题所需的 <span class="arithmatex">\(1\text{ MB}\)</span>，<strong>完全够用</strong>！</li>
@@ -3012,9 +3012,9 @@
 <li><strong>(3) 有效吞吐率与链路带宽利用率</strong>：<ul>
 <li>传送并确认完 <span class="arithmatex">\(10\text{ MB}\)</span> 文件总耗时 <span class="arithmatex">\(T = 20 \times 0.05\text{ s} = 1\text{ s}\)</span>。</li>
 <li><strong>有效吞吐率</strong>：
-  $<span class="arithmatex">\(\text{Throughput} = \frac{10\text{ MB} \times 8\text{ bit/B}}{1\text{ s}} = 80\text{ Mbit/s}\text{（若按 } 10 \times 2^{20} \times 8\text{ bit 算则为 } \mathbf{83.89\text{ Mbit/s}}\text{）}\)</span>$</li>
+  <span class="arithmatex">\(\text{Throughput} = \frac{10\text{ MB} \times 8\text{ bit/B}}{1\text{ s}} = 80\text{ Mbit/s}\text{（若按 } 10 \times 2^{20} \times 8\text{ bit 算则为 } \mathbf{83.89\text{ Mbit/s}}\text{）}\)</span></li>
 <li><strong>链路带宽利用率</strong>：
-  $<span class="arithmatex">\(U = \frac{83.89\text{ Mbit/s}}{1000\text{ Mbit/s}} \approx \mathbf{8.39\%}\text{（按十进制算则为 } \mathbf{8\%}\text{）}\)</span>$</li>
+  <span class="arithmatex">\(U = \frac{83.89\text{ Mbit/s}}{1000\text{ Mbit/s}} \approx \mathbf{8.39\%}\text{（按十进制算则为 } \mathbf{8\%}\text{）}\)</span></li>
 </ul>
 </li>
 </ul>
@@ -3121,11 +3121,11 @@
 <li><strong>【已知条件与设问】</strong>：下面是以十六进制格式存储的一个 UDP 首部：<code>CB 84 00 0D 00 1C 00 1C</code>。<strong>试问：(1) 源端口号是什么？(2) 目的端口号是什么？(3) 这个用户数据报的总长度是多少？(4) 数据长度是多少？(5) 这个分组是从客户到服务器方向的，还是从服务器到客户方向的？(6) 客户进程是什么？</strong></li>
 <li><strong>【分步计算与标准答案】</strong>：</li>
 <li><strong>(1) 源端口号（前4位十六进制 <code>0xCB84</code>）</strong>：
-    $<span class="arithmatex">\(12 \times 16^3 + 11 \times 16^2 + 8 \times 16 + 4 = 49152 + 2816 + 128 + 4 = \mathbf{52100}\text{（短暂客户端口）}\)</span>$</li>
+    <span class="arithmatex">\(12 \times 16^3 + 11 \times 16^2 + 8 \times 16 + 4 = 49152 + 2816 + 128 + 4 = \mathbf{52100}\text{（短暂客户端口）}\)</span></li>
 <li><strong>(2) 目的端口号（第5~8位十六进制 <code>0x000D</code>）</strong>：
-    $<span class="arithmatex">\(0 + 13 = \mathbf{13}\text{（熟知端口号）}\)</span>$</li>
+    <span class="arithmatex">\(0 + 13 = \mathbf{13}\text{（熟知端口号）}\)</span></li>
 <li><strong>(3) 用户数据报总长度（第9~12位十六进制 <code>0x001C</code>）</strong>：
-    $<span class="arithmatex">\(1 \times 16 + 12 = \mathbf{28\text{ B}}\)</span>$</li>
+    <span class="arithmatex">\(1 \times 16 + 12 = \mathbf{28\text{ B}}\)</span></li>
 <li><strong>(4) 数据部分长度</strong>：<span class="arithmatex">\(\text{总长度 } 28\text{ B} - \text{UDP首部 } 8\text{ B} = \mathbf{20\text{ B}}\)</span>。</li>
 <li><strong>(5) 传输方向</strong>：源端口 <code>52100</code> 是短暂端口，目的端口 <code>13</code> 是熟知端口，故是 <strong>从客户到服务器方向</strong>。</li>
 <li><strong>(6) 客户进程服务类型</strong>：目的熟知端口 <code>13</code> 对应的是 <strong><code>Daytime</code>（日时间协议）</strong> 服务。</li>
@@ -3136,14 +3136,14 @@
 <li><strong>【已知条件与设问】</strong>：某客户使用 UDP 将数据发送给一个服务器，应用层数据共 <span class="arithmatex">\(16\text{ B}\)</span>。假定 IP 首部无选项（<span class="arithmatex">\(20\text{ B}\)</span>）。<strong>试分别计算：(1) <code>5-54</code> 在运输层的传输效率（有用字节与总字节之比）；(2) <code>5-55</code> 在 IP 层的传输效率；(3) <code>5-56</code> 在数据链路层（使用以太网）的传输效率。</strong></li>
 <li><strong>【分步计算与标准答案（注意以太网最短 46B 数据填充坑点！）】</strong>：</li>
 <li><strong><code>5-54</code> 运输层传输效率</strong>：加上 <span class="arithmatex">\(8\text{ B}\)</span> UDP 首部后总长为 <span class="arithmatex">\(16 + 8 = 24\text{ B}\)</span>：
-     $<span class="arithmatex">\(\eta_{\text{运输层}} = \frac{16}{16 + 8} = \frac{16}{24} \approx \mathbf{66.7\%}\)</span>$</li>
+     <span class="arithmatex">\(\eta_{\text{运输层}} = \frac{16}{16 + 8} = \frac{16}{24} \approx \mathbf{66.7\%}\)</span></li>
 <li><strong><code>5-55</code> IP 层传输效率</strong>：再加上 <span class="arithmatex">\(20\text{ B}\)</span> IP 首部后，IP 数据报总长为 <span class="arithmatex">\(24 + 20 = 44\text{ B}\)</span>：
-     $<span class="arithmatex">\(\eta_{\text{IP层}} = \frac{16}{16 + 8 + 20} = \frac{16}{44} \approx \mathbf{36.4\%}\)</span>$</li>
+     <span class="arithmatex">\(\eta_{\text{IP层}} = \frac{16}{16 + 8 + 20} = \frac{16}{44} \approx \mathbf{36.4\%}\)</span></li>
 <li><strong><code>5-56</code> 以太网数据链路层传输效率（防坑必看！）</strong>：<ul>
 <li>以太网规定 MAC 帧的数据部分<strong>最短必须为 <span class="arithmatex">\(46\text{ B}\)</span></strong>（以保证最短帧长 <span class="arithmatex">\(64\text{ B}\)</span>）！而上面交下来的 IP 数据报只有 <span class="arithmatex">\(44\text{ B} &lt; 46\text{ B}\)</span>，因此数据链路层<strong>必须在后面填充 <span class="arithmatex">\(2\text{ B}\)</span> 的全0填充字段</strong>，使其凑满 <span class="arithmatex">\(46\text{ B}\)</span>。</li>
 <li>再加上以太网 MAC 帧的 <span class="arithmatex">\(14\text{ B}\)</span> 首部和 <span class="arithmatex">\(4\text{ B}\)</span> 尾部 FCS（共 <span class="arithmatex">\(18\text{ B}\)</span>），整个以太网帧总长度为 <span class="arithmatex">\(46 + 18 = \mathbf{64\text{ B}}\)</span>（若计入物理层 8 字节前同步码则为 <span class="arithmatex">\(72\text{ B}\)</span>）。</li>
 <li>故在数据链路层的传输效率为：
-   $<span class="arithmatex">\(\eta_{\text{链路层}} = \frac{16}{46 + 18} = \frac{16}{64} = \mathbf{25\%}\text{（若计入8B前同步码则为 } \frac{16}{72} \approx 22.2\%\text{）}\)</span>$</li>
+   <span class="arithmatex">\(\eta_{\text{链路层}} = \frac{16}{46 + 18} = \frac{16}{64} = \mathbf{25\%}\text{（若计入8B前同步码则为 } \frac{16}{72} \approx 22.2\%\text{）}\)</span></li>
 </ul>
 </li>
 </ul>
@@ -3228,14 +3228,14 @@
 <li><strong>计算 <code>base64</code> 编码后的纯字符字节数</strong>：<ul>
 <li><code>base64</code> 编码规则是将每 <strong><span class="arithmatex">\(3\text{ B}\)</span>（<span class="arithmatex">\(24\text{ bit}\)</span>）</strong> 的二进制数据拆分为 <strong><span class="arithmatex">\(4\)</span> 个 <span class="arithmatex">\(6\text{ bit}\)</span> 组</strong>，映射为 <strong><span class="arithmatex">\(4\text{ B}\)</span></strong> 的 ASCII 文本字符（体积变为原来的 <span class="arithmatex">\(\frac{4}{3}\)</span> 倍）。</li>
 <li>故 <span class="arithmatex">\(3072\text{ B}\)</span> 二进制文件编码后的字节数为：
-   $<span class="arithmatex">\(3072 \times \frac{4}{3} = 1024 \times 4 = \mathbf{4096\text{ B}}\)</span>$</li>
+   <span class="arithmatex">\(3072 \times \frac{4}{3} = 1024 \times 4 = \mathbf{4096\text{ B}}\)</span></li>
 </ul>
 </li>
 <li><strong>计算需要插入多少组 <code>CR + LF</code>（每满 <span class="arithmatex">\(80\text{ B}\)</span> 插 <span class="arithmatex">\(2\text{ B}\)</span>）</strong>：
-     $<span class="arithmatex">\(\frac{4096}{80} = 51 \text{ 行} \dots \text{余 } 16\text{ B}\)</span>$<ul>
+     <span class="arithmatex">\(\frac{4096}{80} = 51 \text{ 行} \dots \text{余 } 16\text{ B}\)</span><ul>
 <li>前 <span class="arithmatex">\(51\)</span> 整行（每行 <span class="arithmatex">\(80\text{ B}\)</span>）每发送完一行都要插入 <span class="arithmatex">\(1\)</span> 个 <code>CR</code> 和 <span class="arithmatex">\(1\)</span> 个 <code>LF</code>（即每行附加 <span class="arithmatex">\(2\text{ B}\)</span>），共需插入 <span class="arithmatex">\(51 \times 2 = \mathbf{102\text{ B}}\)</span>。</li>
 <li><strong>计算最终发送总字节数</strong>：
-   $<span class="arithmatex">\(\text{总字节数} = 4096 + 51 \times 2 = \mathbf{4198\text{ B}}\)</span>$</li>
+   <span class="arithmatex">\(\text{总字节数} = 4096 + 51 \times 2 = \mathbf{4198\text{ B}}\)</span></li>
 <li><em>(注：若最后一行余下的 <span class="arithmatex">\(16\text{ B}\)</span> 末尾也额外加一组回车换行符，则为 <span class="arithmatex">\(4198 + 2 = \mathbf{4200\text{ B}}\)</span>；教材附录A两个考虑均认可，答出 <span class="arithmatex">\(4198\text{ B}\)</span> 或 <span class="arithmatex">\(4200\text{ B}\)</span> 均给满分)</em>。</li>
 </ul>
 </li>
@@ -3255,7 +3255,7 @@
 <li><strong><code>6-48</code>（C/S 模式）</strong>：<ul>
 <li>只有 1 台服务器负责上传，它必须把长度为 <span class="arithmatex">\(F\)</span> 的文件向 <span class="arithmatex">\(N\)</span> 个客户机完整发送 <span class="arithmatex">\(N\)</span> 份，总发送数据量为 <span class="arithmatex">\(N \cdot F\)</span>，而服务器上传速率为 <span class="arithmatex">\(u\)</span>。</li>
 <li>最短分发时间：
-   $<span class="arithmatex">\(T_{\text{CS}} = \mathbf{\frac{N \cdot F}{u}}\)</span>$</li>
+   <span class="arithmatex">\(T_{\text{CS}} = \mathbf{\frac{N \cdot F}{u}}\)</span></li>
 </ul>
 </li>
 <li><strong><code>6-49</code>（整文件存储转发式 P2P 模式 —— 指数倍增树）</strong>：<ul>
@@ -3266,7 +3266,7 @@
 <li>第 <span class="arithmatex">\(k\)</span> 轮结束后：总共可使 <span class="arithmatex">\(2^k - 1\)</span> 个对等方（连同服务器共 <span class="arithmatex">\(2^k\)</span> 个节点）获得完整文件。</li>
 <li>要让全部 <span class="arithmatex">\(N\)</span> 个对等方都收到完整文件，需满足 <span class="arithmatex">\(2^k - 1 \ge N \Rightarrow 2^k \ge N + 1 \Rightarrow k = \lceil \log_2(N + 1) \rceil\)</span> 轮。</li>
 <li>故最短分发时间为：
-   $<span class="arithmatex">\(T_{\text{P2P-整文件}} = \mathbf{\lceil \log_2(N + 1) \rceil \cdot \frac{F}{u}}\)</span>$</li>
+   <span class="arithmatex">\(T_{\text{P2P-整文件}} = \mathbf{\lceil \log_2(N + 1) \rceil \cdot \frac{F}{u}}\)</span></li>
 </ul>
 </li>
 <li><strong><code>6-50</code>（无限小分块流水线式 P2P 模式 —— 必做母题 <code>6-51</code> 的退化特例）</strong>：<ul>
@@ -3524,7 +3524,7 @@
 <li><strong>【已知条件与设问】</strong>：假定 IP 电话的发送方在讲话时，每秒钟产生 <span class="arithmatex">\(8000\text{ B}\)</span> 的话音数据。每隔 <span class="arithmatex">\(20\text{ ms}\)</span> 把得到的数据块加上 RTP 首部（固定 <span class="arithmatex">\(12\text{ B}\)</span>）和 UDP 首部（<span class="arithmatex">\(8\text{ B}\)</span>）后，交给 IP 层（固定首部 <span class="arithmatex">\(20\text{ B}\)</span>）发送出去。假定 RTP 首部和 IP 首部都没有选项。<strong>试计算发送方在发送这种 IP 数据报时的数据率（<span class="arithmatex">\(\text{kbit/s}\)</span>）。这个数据率比原始的话音数据率增加了百分之多少？</strong></li>
 <li><strong>【分步计算与标准答案】</strong>：</li>
 <li><strong>原始话音数据率 <span class="arithmatex">\(R_{\text{原始}}\)</span></strong>：
-     $<span class="arithmatex">\(R_{\text{原始}} = 8000\text{ B/s} \times 8\text{ bit/B} = 64000\text{ bit/s} = \mathbf{64\text{ kbit/s}}\)</span>$</li>
+     <span class="arithmatex">\(R_{\text{原始}} = 8000\text{ B/s} \times 8\text{ bit/B} = 64000\text{ bit/s} = \mathbf{64\text{ kbit/s}}\)</span></li>
 <li><strong>每个分组（每 <span class="arithmatex">\(20\text{ ms}\)</span>）包含的字节数</strong>：<ul>
 <li>每秒切分的分组个数 <span class="arithmatex">\(= \frac{1\text{ s}}{20\text{ ms}} = \frac{1000\text{ ms}}{20\text{ ms}} = \mathbf{50\text{ 个分组/秒}}\)</span>。</li>
 <li>每个分组内的原始话音数据块长度 <span class="arithmatex">\(= \frac{8000\text{ B}}{50} = \mathbf{160\text{ B}}\)</span>。</li>
@@ -3533,9 +3533,9 @@
 </ul>
 </li>
 <li><strong>发送 IP 数据报时的实际数据率 <span class="arithmatex">\(R_{\text{IP}}\)</span></strong>：
-     $<span class="arithmatex">\(R_{\text{IP}} = 50\text{ 个/s} \times 200\text{ B} \times 8\text{ bit/B} = 80000\text{ bit/s} = \mathbf{80\text{ kbit/s}}\)</span>$</li>
+     <span class="arithmatex">\(R_{\text{IP}} = 50\text{ 个/s} \times 200\text{ B} \times 8\text{ bit/B} = 80000\text{ bit/s} = \mathbf{80\text{ kbit/s}}\)</span></li>
 <li><strong>比原始话音数据率增加的百分比</strong>：
-     $<span class="arithmatex">\(\text{增加比例} = \frac{80\text{ kbit/s} - 64\text{ kbit/s}}{64\text{ kbit/s}} = \frac{40\text{ B}}{160\text{ B}} = \mathbf{25\%}\)</span>$</li>
+     <span class="arithmatex">\(\text{增加比例} = \frac{80\text{ kbit/s} - 64\text{ kbit/s}}{64\text{ kbit/s}} = \frac{40\text{ B}}{160\text{ B}} = \mathbf{25\%}\)</span></li>
 </ul>
 <hr />
 <h3 id="23-8-36">23. <code>8-36</code>（流媒体播放器缓存抽空暂停与注满时间计算 —— 漏桶/水池进出水模型）</h3>
@@ -3552,27 +3552,27 @@
 <li><strong>① 播放多久后暂停（缓存被抽空）</strong>：</li>
 <li>刚开播瞬间，缓存里已有初始蓄水量 <span class="arithmatex">\(30\text{ Mbit}\)</span>；</li>
 <li>开播期间，一边以 <span class="arithmatex">\(2\text{ Mbit/s}\)</span> 往里进水，一边以 <span class="arithmatex">\(3\text{ Mbit/s}\)</span> 往外抽水，故缓存数据的<strong>净消耗速率</strong>为：
-    $<span class="arithmatex">\(r_{\text{净減}} = 3\text{ Mbit/s} - 2\text{ Mbit/s} = \mathbf{1\text{ Mbit/s}}\)</span>$</li>
+    <span class="arithmatex">\(r_{\text{净減}} = 3\text{ Mbit/s} - 2\text{ Mbit/s} = \mathbf{1\text{ Mbit/s}}\)</span></li>
 <li>把已有的 <span class="arithmatex">\(30\text{ Mbit}\)</span> 彻底抽空所需的时间（即持续播放时间）为：
-    $<span class="arithmatex">\(t_{\text{播放}} = \frac{30\text{ Mbit}}{3 - 2\text{ Mbit/s}} = \mathbf{30\text{ s}}\)</span>$</li>
+    <span class="arithmatex">\(t_{\text{播放}} = \frac{30\text{ Mbit}}{3 - 2\text{ Mbit/s}} = \mathbf{30\text{ s}}\)</span></li>
 <li><strong>② 暂停多久后才能继续播放</strong>：</li>
 <li>暂停期间，播放器停止读取（<span class="arithmatex">\(r_{\text{out}} = 0\)</span>），只有 TCP 以 <span class="arithmatex">\(2\text{ Mbit/s}\)</span> 往缓存里注入数据；</li>
 <li>要重新攒够启动播放门槛 <span class="arithmatex">\(30\text{ Mbit}\)</span>，需要暂停等待的时间为：
-    $<span class="arithmatex">\(t_{\text{暂停}} = \frac{30\text{ Mbit}}{2\text{ Mbit/s}} = \mathbf{15\text{ s}}\)</span>$</li>
+    <span class="arithmatex">\(t_{\text{暂停}} = \frac{30\text{ Mbit}}{2\text{ Mbit/s}} = \mathbf{15\text{ s}}\)</span></li>
 </ul>
 </li>
 <li><strong>(2) 当注入速率改为 <span class="arithmatex">\(r_{\text{in}}' = 4\text{ Mbit/s} &gt; \text{播放速率 } r_{\text{out}} = 3\text{ Mbit/s}\)</span> 时（分两段相加）</strong>：<ul>
 <li><strong>第一阶段（从 <span class="arithmatex">\(0\text{ Mbit}\)</span> 攒到 <span class="arithmatex">\(30\text{ Mbit}\)</span>，此时播放器尚未开始播放）</strong>：</li>
 <li>只有进水（<span class="arithmatex">\(4\text{ Mbit/s}\)</span>），没有出水，攒够 <span class="arithmatex">\(30\text{ Mbit}\)</span> 耗时：
-    $<span class="arithmatex">\(t_1 = \frac{30\text{ Mbit}}{4\text{ Mbit/s}} = \mathbf{7.5\text{ s}}\)</span>$</li>
+    <span class="arithmatex">\(t_1 = \frac{30\text{ Mbit}}{4\text{ Mbit/s}} = \mathbf{7.5\text{ s}}\)</span></li>
 <li><strong>第二阶段（从 <span class="arithmatex">\(30\text{ Mbit}\)</span> 开始边播边下，直到把 <span class="arithmatex">\(100\text{ Mbit}\)</span> 缓存彻底灌满）</strong>：</li>
 <li>还需继续往缓存里净增加的容量 <span class="arithmatex">\(= 100\text{ Mbit} - 30\text{ Mbit} = \mathbf{70\text{ Mbit}}\)</span>；</li>
 <li>此时一边以 <span class="arithmatex">\(4\text{ Mbit/s}\)</span> 进水，一边以 <span class="arithmatex">\(3\text{ Mbit/s}\)</span> 播放出水，缓存数据的<strong>净增长速率</strong>为：
-    $<span class="arithmatex">\(r_{\text{净增}} = 4\text{ Mbit/s} - 3\text{ Mbit/s} = \mathbf{1\text{ Mbit/s}}\)</span>$</li>
+    <span class="arithmatex">\(r_{\text{净增}} = 4\text{ Mbit/s} - 3\text{ Mbit/s} = \mathbf{1\text{ Mbit/s}}\)</span></li>
 <li>灌满剩余 <span class="arithmatex">\(70\text{ Mbit}\)</span> 所需耗时：
-    $<span class="arithmatex">\(t_2 = \frac{100 - 30\text{ Mbit}}{4 - 3\text{ Mbit/s}} = \mathbf{70\text{ s}}\)</span>$</li>
+    <span class="arithmatex">\(t_2 = \frac{100 - 30\text{ Mbit}}{4 - 3\text{ Mbit/s}} = \mathbf{70\text{ s}}\)</span></li>
 <li><strong>总共花费时间</strong>：
-  $<span class="arithmatex">\(T_{\text{总}} = t_1 + t_2 = 7.5\text{ s} + 70\text{ s} = \mathbf{77.5\text{ s}}\)</span>$</li>
+  <span class="arithmatex">\(T_{\text{总}} = t_1 + t_2 = 7.5\text{ s} + 70\text{ s} = \mathbf{77.5\text{ s}}\)</span></li>
 </ul>
 </li>
 </ul>
