@@ -154,14 +154,14 @@
     - 开播后，缓存水位以净消耗速率 $(R_{\text{out}} - R_{\text{in}})$ 不断下降。
     - 原本积攒的 $B_{\text{start}}$ 水量能撑多久才被抽干？
 
-      $$t_{\text{play}} = \frac{B_{\text{start}}}{R_{\text{out}} - R_{\text{in}}}$$
+      $t_{\text{play}} = \frac{B_{\text{start}}}{R_{\text{out}} - R_{\text{in}}}$
 
     - 抽干暂停后，播放器停止抽水，网络以 $R_{\text{in}}$ 重新灌满到 $B_{\text{start}}$ 才能恢复播放，暂停等待时间为 $t_{\text{pause}} = \frac{B_{\text{start}}}{R_{\text{in}}}$。
 3. **情况二：下载比播放快（$R_{\text{in}} > R_{\text{out}}$，供大于求）**：
     - 开播后，缓存水位以净增长速率 $(R_{\text{in}} - R_{\text{out}})$ 继续上涨。
     - 从水位 $B_{\text{start}}$ 涨满到缓存上限 $B_{\text{max}}$ 需要多久？
 
-      $$t_{\text{fill}} = \frac{B_{\text{max}} - B_{\text{start}}}{R_{\text{in}} - R_{\text{out}}}$$
+      $t_{\text{fill}} = \frac{B_{\text{max}} - B_{\text{start}}}{R_{\text{in}} - R_{\text{out}}}$
 
     - 若从空缓存下载算起直到装满，还要加上开播前预缓冲时间 $t_0 = \frac{B_{\text{start}}}{R_{\text{in}}}$。
 
@@ -254,17 +254,17 @@
 #### 机关 4：一次完整 RTS/CTS 成功传输的时间轴总账（必背公式模板！）
 把上面整个预约到确认的过程画成一条时间轴（忽略极短的电磁波空中传播时延），你会发现它永远由 **“1 个 DIFS + 3 个 SIFS + 4 个帧的发送时间”** 严丝合缝地拼接而成：
 
-$$\text{从决定发送到收到 ACK 的总时间 } T_{\text{total}} = \text{DIFS} + T_{\text{RTS}} + \text{SIFS} + T_{\text{CTS}} + \text{SIFS} + T_{\text{DATA}} + \text{SIFS} + T_{\text{ACK}}$$
+$\text{从决定发送到收到 ACK 的总时间 } T_{\text{total}} = \text{DIFS} + T_{\text{RTS}} + \text{SIFS} + T_{\text{CTS}} + \text{SIFS} + T_{\text{DATA}} + \text{SIFS} + T_{\text{ACK}}$
 
 并且从这条时间轴上，一眼就能看出 `RTS` 和 `CTS` 帧里填写的预约时间（即 `NAV` 值）有多长（**就是它自己发完之后，后面还剩多少项，就把后面剩下的项全加起来！**）：
 
 * **`RTS` 帧里填的持续时间 $\text{NAV}(\text{RTS})$**（RTS 发完后还剩 3 个 SIFS 和 CTS、DATA、ACK 三帧）：
 
-  $$\text{NAV}(\text{RTS}) = 3 \times \text{SIFS} + T_{\text{CTS}} + T_{\text{DATA}} + T_{\text{ACK}}$$
+  $\text{NAV}(\text{RTS}) = 3 \times \text{SIFS} + T_{\text{CTS}} + T_{\text{DATA}} + T_{\text{ACK}}$
 
 * **`CTS` 帧里填的持续时间 $\text{NAV}(\text{CTS})$**（CTS 发完后还剩 2 个 SIFS 和 DATA、ACK 两帧）：
 
-  $$\text{NAV}(\text{CTS}) = 2 \times \text{SIFS} + T_{\text{DATA}} + T_{\text{ACK}}$$
+  $\text{NAV}(\text{CTS}) = 2 \times \text{SIFS} + T_{\text{DATA}} + T_{\text{ACK}}$
 *(注：每个帧的发送时间 $T_{\text{帧}} = \frac{\text{帧字节数} \times 8}{\text{对应发送速率}}$，把这个时间轴印在脑子里，任何 802.11 计算大题都是送分题！)*
 
 ---

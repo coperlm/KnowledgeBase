@@ -15,14 +15,14 @@
 
 * **符号表达式与定量对比**：
   1. **对称加密表达式（`7-13`）**：
-     $$A \leftarrow B : E_{K_{AB}}(X)$$
+     $A \leftarrow B : E_{K_{AB}}(X)$
      * **结论**：**A 不能向第三方证明报文必出自 B**。因为 A 和 B 均持有相同的对称密钥 $K_{AB}$，A 完全可以自己计算出 $E_{K_{AB}}(X)$ 进行伪造，故不具备不可抵赖性。
   2. **图 7-5 具有机密性的数字签名表达式（`7-14`）**：
-     $$A \to B : E_{PK_B}\Big(X \,\big\|\, D_{SK_A}\big(H(X)\big)\Big)$$
+     $A \to B : E_{PK_B}\Big(X \,\big\|\, D_{SK_A}\big(H(X)\big)\Big)$
      * **运算步骤与次数**：发送方需执行 **1 次散列运算 $H(X)$ + 1 次私钥签名运算 $D_{SK_A}$（大数模幂运算，慢） + 1 次加密运算 $E_{PK_B}$**。
      * **鉴别能力**：由于全球仅 A 拥有私钥 $SK_A$，任何第三方均可用公开的 $PK_A$ 验证签名，**同时实现源点鉴别、完整性校验与不可抵赖性（更有利于全面鉴别）**。
   3. **图 7-6 报文鉴别码 MAC 表达式（`7-14`）**：
-     $$A \to B : X \,\big\|\, H(X \,\|\, K_{AB})$$
+     $A \to B : X \,\big\|\, H(X \,\|\, K_{AB})$
      * **运算步骤与次数**：收发双方仅需执行 **1 次带共享密钥 $K_{AB}$ 的散列运算（极快，无公钥大数运算开销）**，但不具备第三方不可抵赖性。
 
 * **【附：第7章必会定量计算公式】**
@@ -45,7 +45,7 @@
   3. $C$ 用自己的私钥解密窃取明文：$D_{SK_C}\big(E_{PK_C}(X)\big) = X$，随后用 $B$ 的真公钥重新加密发给 $B$：$C \to B : E_{PK_B}(X)$。
 
 * **防御算式（CA 数字证书绑定）**：
-  $$\text{Cert}_B = \text{ID}_B \,\big\|\, PK_B \,\big\|\, D_{SK_{\text{CA}}}\Big(H(\text{ID}_B \,\|\, PK_B)\Big)$$
+  $\text{Cert}_B = \text{ID}_B \,\big\|\, PK_B \,\big\|\, D_{SK_{\text{CA}}}\Big(H(\text{ID}_B \,\|\, PK_B)\Big)$
   $A$ 用预置的 CA 公钥 $PK_{\text{CA}}$ 验证签名，攻击者 $C$ 因无 $SK_{\text{CA}}$ 无法伪造证书。
 
 ---
@@ -66,7 +66,7 @@
 1. **协商算法与交换明文随机数**：$A \to B : R_A$，$B \to A : R_B$；
 2. **证书验证**：$B \to A : \text{Cert}_B$（内含 $PK_B$），$A$ 用 $PK_{\text{CA}}$ 校验通过；
 3. **传递预主密钥并导出会话密钥**：$A$ 生成随机秘密数 $S$（Pre-master Secret），发送密文 $E_{PK_B}(S)$；$B$ 计算 $D_{SK_B}\big(E_{PK_B}(S)\big) = S$。随后双方各自通过伪随机函数计算出会话密钥：
-   $$K_{\text{session}} = \text{PRF}(S,\ R_A,\ R_B)$$
+   $K_{\text{session}} = \text{PRF}(S,\ R_A,\ R_B)$
 
 4. **握手完成校验**：双方用 $K_{\text{session}}$ 加密发送握手结束（Finished）报文验证完整性。
 
@@ -79,7 +79,7 @@
 * **完整计算表与标准答案（设第 1 个分组在 $t = 0\text{ ms}$ 发出）**：
   * 发送时刻公式：$t_{\text{send}}(i) = 10(i - 1)\text{ ms}$
   * 到达接收端时刻公式：$t_{\text{arr}}(i) = t_{\text{send}}(i) + d_i$
-  * **第(2)问：在接收端缓存中应增加的时延公式**：$$d_{\text{buf}}(i) = 75\text{ ms} - d_i$$
+  * **第(2)问：在接收端缓存中应增加的时延公式**：$d_{\text{buf}}(i) = 75\text{ ms} - d_i$
   * 还原播放（出缓存）时刻公式：$t_{\text{play}}(i) = t_{\text{send}}(i) + 75\text{ ms}$
 
 | 分组序号 $i$ | 发送时刻 $t_{\text{send}}$ | 网络时延 $d_i$ | **(1) 到达时刻 $t_{\text{arr}}$** | **(2) 缓存应增加的时延 $d_{\text{buf}}$** | 播放（出缓存）时刻 $t_{\text{play}}$ |
@@ -122,11 +122,11 @@
 ### 6. `8-20` 先进先出（FIFO）、公平排队（FQ）与加权公平排队（WFQ）虚拟完结时间公式
 * **FIFO**：按到达时间 $t_{\text{arr}}$ 排序，无流隔离。
 * **FQ（逐字节公平排队，`2025-选5` 核心公式）**：设第 $k$ 个队列的第 $i$ 个分组长度为 $L_i$，到达时刻为 $R_i$，则该分组的虚拟完结轮次 $F_i$ 为：
-  $$F_i = \max\big(F_{i-1},\ R_i\big) + L_i$$
+  $F_i = \max\big(F_{i-1},\ R_i\big) + L_i$
   每次从所有非空队列中选择 **$F_i$ 最小**的分组优先发送。
 
 * **WFQ（加权公平排队）**：引入队列权重 $w_k$，将虚拟完结时间修正为：
-  $$F_i = \max\big(F_{i-1},\ R_i\big) + \frac{L_i}{w_k}$$
+  $F_i = \max\big(F_{i-1},\ R_i\big) + \frac{L_i}{w_k}$
 
 ---
 
@@ -134,16 +134,16 @@
 * **已知条件**：发送方每秒产生 $8000\text{ B}$ 话音数据。每隔 $20\text{ ms}$ 把得到的数据块加上 RTP 首部（无选项，固定 **$12\text{ B}$**）和 UDP 首部（固定 **$8\text{ B}$**）后，交给 IP 层（固定首部 **$20\text{ B}$**）发送。求发送 IP 数据报的数据率（$\text{kbit/s}$）及比原始话音数据率增加了百分之多少？
 * **分步算式与答案**：
   1. **原始话音数据率 $R_{\text{raw}}$**：
-     $$R_{\text{raw}} = 8000\text{ B/s} \times 8\text{ bit/B} = 64000\text{ bit/s} = \mathbf{64\text{ kbit/s}}$$
+     $R_{\text{raw}} = 8000\text{ B/s} \times 8\text{ bit/B} = 64000\text{ bit/s} = \mathbf{64\text{ kbit/s}}$
   2. **每个分组的话音数据载荷与每秒分组数**：
      * 每隔 $20\text{ ms} = 0.02\text{ s}$ 封装 1 个分组，故每秒发送分组数 $= \frac{1\text{ s}}{0.02\text{ s}} = \mathbf{50\text{ 个分组/秒}}$；
      * 每个分组携带的原始话音字节数 $= 8000\text{ B/s} \times 0.02\text{ s} = \mathbf{160\text{ B}}$。
   3. **加上 RTP + UDP + IP 首部后的单个 IP 数据报总长度**：
-     $$\text{总长度} = 160\text{ B (话音)} + 12\text{ B (RTP首部)} + 8\text{ B (UDP首部)} + 20\text{ B (IP首部)} = \mathbf{200\text{ B}} = 1600\text{ bit}$$
+     $\text{总长度} = 160\text{ B (话音)} + 12\text{ B (RTP首部)} + 8\text{ B (UDP首部)} + 20\text{ B (IP首部)} = \mathbf{200\text{ B}} = 1600\text{ bit}$
   4. **发送 IP 数据报的数据率 $R_{\text{IP}}$**：
-     $$R_{\text{IP}} = 50\text{ 个/s} \times 1600\text{ bit/个} = 80000\text{ bit/s} = \mathbf{80\text{ kbit/s}}$$
+     $R_{\text{IP}} = 50\text{ 个/s} \times 1600\text{ bit/个} = 80000\text{ bit/s} = \mathbf{80\text{ kbit/s}}$
   5. **数据率增加的百分比**：
-     $$\eta = \frac{80\text{ kbit/s} - 64\text{ kbit/s}}{64\text{ kbit/s}} \times 100\% = \frac{40\text{ B (首部)}}{160\text{ B (数据)}} \times 100\% = \mathbf{25\%}$$
+     $\eta = \frac{80\text{ kbit/s} - 64\text{ kbit/s}}{64\text{ kbit/s}} \times 100\% = \frac{40\text{ B (首部)}}{160\text{ B (数据)}} \times 100\% = \mathbf{25\%}$
 
 ---
 
@@ -152,16 +152,16 @@
 * **两问分步算式与答案**：
   * **(1) 当输入速率 $R_{\text{in}} = 2\text{ Mbit/s} < R_{\text{out}} = 3\text{ Mbit/s}$ 时**：
     * **播放多久后暂停（缓存被抽空）**：从存有 $30\text{ Mbit}$ 开始播放，一边以 $2\text{ Mbit/s}$ 往里注水，一边以 $3\text{ Mbit/s}$ 往外放水，净消耗速率为 $R_{\text{out}} - R_{\text{in}} = 3 - 2 = 1\text{ Mbit/s}$。故把 $30\text{ Mbit}$ 存量全部抽空所需播放时间为：
-      $$t_{\text{play}} = \frac{30\text{ Mbit}}{3\text{ Mbit/s} - 2\text{ Mbit/s}} = \mathbf{30\text{ s}}$$
+      $t_{\text{play}} = \frac{30\text{ Mbit}}{3\text{ Mbit/s} - 2\text{ Mbit/s}} = \mathbf{30\text{ s}}$
     * **暂停多久后才能继续播放**：暂停期间播放器停止读取（$R_{\text{out}} = 0$），TCP 继续以 $R_{\text{in}} = 2\text{ Mbit/s}$ 向缓存注入数据，直到重新积攒够启动阈值 $30\text{ Mbit}$ 时恢复播放，故暂停时间为：
-      $$t_{\text{pause}} = \frac{30\text{ Mbit}}{2\text{ Mbit/s}} = \mathbf{15\text{ s}}$$
+      $t_{\text{pause}} = \frac{30\text{ Mbit}}{2\text{ Mbit/s}} = \mathbf{15\text{ s}}$
   * **(2) 当输入速率改为 $R_{\text{in}} = 4\text{ Mbit/s} > R_{\text{out}} = 3\text{ Mbit/s}$ 时（求从开始传数据到 $100\text{ Mbit}$ 缓存完全存满的总时间）**：
     * **第一阶段（从 $0$ 充到 $30\text{ Mbit}$ 播放器启动前，只进不出）**：
-      $$t_1 = \frac{30\text{ Mbit}}{4\text{ Mbit/s}} = \mathbf{7.5\text{ s}}$$
+      $t_1 = \frac{30\text{ Mbit}}{4\text{ Mbit/s}} = \mathbf{7.5\text{ s}}$
     * **第二阶段（从 $30\text{ Mbit}$ 充到存满 $100\text{ Mbit}$，边进边播，净注入速率为 $4 - 3 = 1\text{ Mbit/s}$）**：
-      $$t_2 = \frac{100\text{ Mbit} - 30\text{ Mbit}}{4\text{ Mbit/s} - 3\text{ Mbit/s}} = \frac{70\text{ Mbit}}{1\text{ Mbit/s}} = \mathbf{70\text{ s}}$$
+      $t_2 = \frac{100\text{ Mbit} - 30\text{ Mbit}}{4\text{ Mbit/s} - 3\text{ Mbit/s}} = \frac{70\text{ Mbit}}{1\text{ Mbit/s}} = \mathbf{70\text{ s}}$
     * **总共花费时间**：
-      $$T_{\text{total}} = t_1 + t_2 = 7.5\text{ s} + 70\text{ s} = \mathbf{77.5\text{ s}}$$
+      $T_{\text{total}} = t_1 + t_2 = 7.5\text{ s} + 70\text{ s} = \mathbf{77.5\text{ s}}$
 
 ---
 

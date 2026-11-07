@@ -27,7 +27,7 @@
   1. **计算待分片的 IP 数据报总载荷长度**：UDP 数据字段 $8192\text{ B}$ 加上 **$8\text{ B}$ 的 UDP 首部**，成为 UDP 用户数据报，总长度为 $8192 + 8 = \mathbf{8200\text{ B}}$（这 $8200\text{ B}$ 就是 IP 数据报的数据载荷部分）。
   2. **计算每个分片最大可携带的数据长度**：以太网 $\text{MTU} = 1500\text{ B}$，减去固定 $20\text{ B}$ 的 IP 首部，每个分片的数据字段最大长度为 $1500 - 20 = \mathbf{1480\text{ B}}$（恰好是 8 字节的整数倍，$1480 / 8 = 185$）。
   3. **计算分片个数与最后一片长度**：
-     $$\frac{8200}{1480} = 5 \text{ 余 } 800\text{ B}$$
+     $\frac{8200}{1480} = 5 \text{ 余 } 800\text{ B}$
      故应当划分为 **$6$ 个 IP 数据报片**！前 5 个分片的数据字段长度均为 **$1480\text{ B}$**，第 6 个分片的数据字段长度为 **$800\text{ B}$**。
   4. **各分片参数汇总表**：
 
@@ -66,11 +66,11 @@
   * **`5-30` 计算**：
     * 发送窗口大小 $W = 65535\text{ B} = 65535 \times 8 = 524,280\text{ bit}$。
     * 在每个往返时间 $\text{RTT} = 20\text{ ms} = 0.02\text{ s}$ 内最多只能发送一个窗口的数据量，故最大吞吐量为：
-      $$\text{Throughput}_{\max} = \frac{W}{\text{RTT}} = \frac{524280\text{ bit}}{0.02\text{ s}} = 26,214,000\text{ bit/s} \approx \mathbf{26.21\text{ Mbit/s}}$$
+      $\text{Throughput}_{\max} = \frac{W}{\text{RTT}} = \frac{524280\text{ bit}}{0.02\text{ s}} = 26,214,000\text{ bit/s} \approx \mathbf{26.21\text{ Mbit/s}}$
   * **`5-31` 计算**：
     * **(1) 最大吞吐量**：由于 $\text{RTT} = 2 \times 10\text{ ms} = 20\text{ ms}$（发送 $65535\text{ B}$ 在 $1\text{ Gbit/s}$ 信道上的发送时延仅 $0.524\text{ ms}$，即使计入发送时延周期为 $20.524\text{ ms}$，吞吐量为 $25.54\text{ Mbit/s}$；按标准忽略极小发送时延计），最大吞吐量同样为 **$\mathbf{26.21\text{ Mbit/s}}$**（或计入发送时延为 **$25.5\text{ Mbit/s}$**）。
     * **(2) 信道利用率**：
-      $$U = \frac{\text{实际最大吞吐量}}{\text{信道带宽}} = \frac{26.214\text{ Mbit/s}}{1000\text{ Mbit/s}} = \mathbf{2.62\%}\text{（或 } 2.55\% \text{）}$$
+      $U = \frac{\text{实际最大吞吐量}}{\text{信道带宽}} = \frac{26.214\text{ Mbit/s}}{1000\text{ Mbit/s}} = \mathbf{2.62\%}\text{（或 } 2.55\% \text{）}$
       *(工程启示：在“高带宽、长时延”的肥管道 LFN 网络中，传统 16 位窗口 $64\text{ KB}$ 会导致信道利用率极低，因此在下题 `5-35` 中必须引入 TCP 窗口扩大选项！)*
 
 ---
@@ -81,11 +81,11 @@
 * **【分步计算与标准答案】**：
   * 公式：初始 $\text{RTT}_{S0} = 30\text{ ms}$；递推公式 $\text{RTT}_{S\text{新}} = (1 - \alpha)\text{RTT}_{S\text{旧}} + \alpha \cdot \text{RTT}_{\text{样本}} = 0.9 \cdot \text{RTT}_{S\text{旧}} + 0.1 \cdot \text{RTT}_{\text{样本}}$。
   1. **收到第1个样本（$\text{RTT}_1 = 26\text{ ms}$）**：
-     $$\text{RTT}_{S1} = 0.9 \times 30 + 0.1 \times 26 = 27 + 2.6 = \mathbf{29.6\text{ ms}}$$
+     $\text{RTT}_{S1} = 0.9 \times 30 + 0.1 \times 26 = 27 + 2.6 = \mathbf{29.6\text{ ms}}$
   2. **收到第2个样本（$\text{RTT}_2 = 32\text{ ms}$）**：
-     $$\text{RTT}_{S2} = 0.9 \times 29.6 + 0.1 \times 32 = 26.64 + 3.2 = \mathbf{29.84\text{ ms}}$$
+     $\text{RTT}_{S2} = 0.9 \times 29.6 + 0.1 \times 32 = 26.64 + 3.2 = \mathbf{29.84\text{ ms}}$
   3. **收到第3个样本（$\text{RTT}_3 = 24\text{ ms}$）**：
-     $$\text{RTT}_{S3} = 0.9 \times 29.84 + 0.1 \times 24 = 26.856 + 2.4 = \mathbf{29.256\text{ ms}}\text{（或 } \mathbf{29.26\text{ ms}}\text{）}$$
+     $\text{RTT}_{S3} = 0.9 \times 29.84 + 0.1 \times 24 = 26.856 + 2.4 = \mathbf{29.256\text{ ms}}\text{（或 } \mathbf{29.26\text{ ms}}\text{）}$
   * **讨论结论**：虽然单次测量的 $\text{RTT}$ 样本值在 $24\text{ ms} \sim 32\text{ ms}$ 之间有较大波动，但通过取较小的权值 $\alpha = 0.1$，计算出的平滑往返时间 $\text{RTT}_S$ 始终稳定在 $29.26 \sim 30\text{ ms}$ 之间，变化非常平缓，有效滤除了网络瞬时抖动的干扰。
 
 ---
@@ -105,20 +105,20 @@
     * *(验证：第1~10个 RTT 内发送的分组数依次为 $1, 2, 4, 8, 16, 32, 64, 128, 256, 512$，经过第10个 RTT 收到确认后，在第11个 RTT 开始时发送窗口达到 $1024\text{ KB} = 1\text{ MB}$)*。
   * **(2) 传完整个 $10\text{ MB}$（$10240$ 个分组）并收到全部确认所需的总 RTT 数**：
     * 在前 $10$ 个 $\text{RTT}$ 内，总共已发送并确认的分组数为：
-      $$1 + 2 + 4 + \dots + 512 = 2^{10} - 1 = \mathbf{1023\text{ 个分组}}\text{（即 } 1023\text{ KB）}$$
+      $1 + 2 + 4 + \dots + 512 = 2^{10} - 1 = \mathbf{1023\text{ 个分组}}\text{（即 } 1023\text{ KB）}$
     * 从第 11 个 $\text{RTT}$ 起，受接收窗口 $\text{rwnd} = 1\text{ MB} = 1024\text{ KB}$ 的限制，发送窗口固定保持在最大值 **$1024\text{ 个分组}$** 不再增大。
     * 此时还剩余待发送的分组数 $= 10240 - 1023 = \mathbf{9217\text{ 个分组}}$。
     * 每个 $\text{RTT}$ 最多发 $1024$ 个分组：
-      $$\frac{9217}{1024} = 9 \text{ 余 } 1\text{ 个分组}$$
+      $\frac{9217}{1024} = 9 \text{ 余 } 1\text{ 个分组}$
       即还需要 **$9$ 个满载的 RTT**（发完 $9 \times 1024 = 9216$ 个分组）加上 **最后 $1$ 个 RTT**（发送最后剩下的 $1$ 个分组并收到其确认），共需 $9 + 1 = 10$ 个 $\text{RTT}$。
     * 因此，数据传送阶段共需经过 $10 + 10 = \mathbf{20\text{ 个 RTT}}$（耗时 $20 \times 50\text{ ms} = \mathbf{1.0\text{ s}}$；若计入建立 TCP 连接的 $1\text{ RTT}$ 则为 $21\text{ 个 RTT} = 1.05\text{ s}$）。
     * **窗口扩大选项够用吗？** TCP 窗口扩大选项最大可将 16 位窗口左移 14 位，即扩大到 $65535 \times 2^{14}\text{ B} \approx 1\text{ GB}$，远大于本题所需的 $1\text{ MB}$，**完全够用**！
   * **(3) 有效吞吐率与链路带宽利用率**：
     * 传送并确认完 $10\text{ MB}$ 文件总耗时 $T = 20 \times 0.05\text{ s} = 1\text{ s}$。
     * **有效吞吐率**：
-      $$\text{Throughput} = \frac{10\text{ MB} \times 8\text{ bit/B}}{1\text{ s}} = 80\text{ Mbit/s}\text{（若按 } 10 \times 2^{20} \times 8\text{ bit 算则为 } \mathbf{83.89\text{ Mbit/s}}\text{）}$$
+      $\text{Throughput} = \frac{10\text{ MB} \times 8\text{ bit/B}}{1\text{ s}} = 80\text{ Mbit/s}\text{（若按 } 10 \times 2^{20} \times 8\text{ bit 算则为 } \mathbf{83.89\text{ Mbit/s}}\text{）}$
     * **链路带宽利用率**：
-      $$U = \frac{83.89\text{ Mbit/s}}{1000\text{ Mbit/s}} \approx \mathbf{8.39\%}\text{（按十进制算则为 } \mathbf{8\%}\text{）}$$
+      $U = \frac{83.89\text{ Mbit/s}}{1000\text{ Mbit/s}} \approx \mathbf{8.39\%}\text{（按十进制算则为 } \mathbf{8\%}\text{）}$
 
 ---
 
@@ -151,11 +151,11 @@
 * **【已知条件与设问】**：下面是以十六进制格式存储的一个 UDP 首部：`CB 84 00 0D 00 1C 00 1C`。**试问：(1) 源端口号是什么？(2) 目的端口号是什么？(3) 这个用户数据报的总长度是多少？(4) 数据长度是多少？(5) 这个分组是从客户到服务器方向的，还是从服务器到客户方向的？(6) 客户进程是什么？**
 * **【分步计算与标准答案】**：
   * **(1) 源端口号（前4位十六进制 `0xCB84`）**：
-    $$12 \times 16^3 + 11 \times 16^2 + 8 \times 16 + 4 = 49152 + 2816 + 128 + 4 = \mathbf{52100}\text{（短暂客户端口）}$$
+    $12 \times 16^3 + 11 \times 16^2 + 8 \times 16 + 4 = 49152 + 2816 + 128 + 4 = \mathbf{52100}\text{（短暂客户端口）}$
   * **(2) 目的端口号（第5~8位十六进制 `0x000D`）**：
-    $$0 + 13 = \mathbf{13}\text{（熟知端口号）}$$
+    $0 + 13 = \mathbf{13}\text{（熟知端口号）}$
   * **(3) 用户数据报总长度（第9~12位十六进制 `0x001C`）**：
-    $$1 \times 16 + 12 = \mathbf{28\text{ B}}$$
+    $1 \times 16 + 12 = \mathbf{28\text{ B}}$
   * **(4) 数据部分长度**：$\text{总长度 } 28\text{ B} - \text{UDP首部 } 8\text{ B} = \mathbf{20\text{ B}}$。
   * **(5) 传输方向**：源端口 `52100` 是短暂端口，目的端口 `13` 是熟知端口，故是 **从客户到服务器方向**。
   * **(6) 客户进程服务类型**：目的熟知端口 `13` 对应的是 **`Daytime`（日时间协议）** 服务。
@@ -167,14 +167,14 @@
 * **【已知条件与设问】**：某客户使用 UDP 将数据发送给一个服务器，应用层数据共 $16\text{ B}$。假定 IP 首部无选项（$20\text{ B}$）。**试分别计算：(1) `5-54` 在运输层的传输效率（有用字节与总字节之比）；(2) `5-55` 在 IP 层的传输效率；(3) `5-56` 在数据链路层（使用以太网）的传输效率。**
 * **【分步计算与标准答案（注意以太网最短 46B 数据填充坑点！）】**：
   1. **`5-54` 运输层传输效率**：加上 $8\text{ B}$ UDP 首部后总长为 $16 + 8 = 24\text{ B}$：
-     $$\eta_{\text{运输层}} = \frac{16}{16 + 8} = \frac{16}{24} \approx \mathbf{66.7\%}$$
+     $\eta_{\text{运输层}} = \frac{16}{16 + 8} = \frac{16}{24} \approx \mathbf{66.7\%}$
   2. **`5-55` IP 层传输效率**：再加上 $20\text{ B}$ IP 首部后，IP 数据报总长为 $24 + 20 = 44\text{ B}$：
-     $$\eta_{\text{IP层}} = \frac{16}{16 + 8 + 20} = \frac{16}{44} \approx \mathbf{36.4\%}$$
+     $\eta_{\text{IP层}} = \frac{16}{16 + 8 + 20} = \frac{16}{44} \approx \mathbf{36.4\%}$
   3. **`5-56` 以太网数据链路层传输效率（防坑必看！）**：
      * 以太网规定 MAC 帧的数据部分**最短必须为 $46\text{ B}$**（以保证最短帧长 $64\text{ B}$）！而上面交下来的 IP 数据报只有 $44\text{ B} < 46\text{ B}$，因此数据链路层**必须在后面填充 $2\text{ B}$ 的全0填充字段**，使其凑满 $46\text{ B}$。
      * 再加上以太网 MAC 帧的 $14\text{ B}$ 首部和 $4\text{ B}$ 尾部 FCS（共 $18\text{ B}$），整个以太网帧总长度为 $46 + 18 = \mathbf{64\text{ B}}$（若计入物理层 8 字节前同步码则为 $72\text{ B}$）。
      * 故在数据链路层的传输效率为：
-       $$\eta_{\text{链路层}} = \frac{16}{46 + 18} = \frac{16}{64} = \mathbf{25\%}\text{（若计入8B前同步码则为 } \frac{16}{72} \approx 22.2\%\text{）}$$
+       $\eta_{\text{链路层}} = \frac{16}{46 + 18} = \frac{16}{64} = \mathbf{25\%}\text{（若计入8B前同步码则为 } \frac{16}{72} \approx 22.2\%\text{）}$
 
 ---
 
@@ -243,12 +243,12 @@
   1. **计算 `base64` 编码后的纯字符字节数**：
      * `base64` 编码规则是将每 **$3\text{ B}$（$24\text{ bit}$）** 的二进制数据拆分为 **$4$ 个 $6\text{ bit}$ 组**，映射为 **$4\text{ B}$** 的 ASCII 文本字符（体积变为原来的 $\frac{4}{3}$ 倍）。
      * 故 $3072\text{ B}$ 二进制文件编码后的字节数为：
-       $$3072 \times \frac{4}{3} = 1024 \times 4 = \mathbf{4096\text{ B}}$$
+       $3072 \times \frac{4}{3} = 1024 \times 4 = \mathbf{4096\text{ B}}$
   2. **计算需要插入多少组 `CR + LF`（每满 $80\text{ B}$ 插 $2\text{ B}$）**：
-     $$\frac{4096}{80} = 51 \text{ 行} \dots \text{余 } 16\text{ B}$$
+     $\frac{4096}{80} = 51 \text{ 行} \dots \text{余 } 16\text{ B}$
      * 前 $51$ 整行（每行 $80\text{ B}$）每发送完一行都要插入 $1$ 个 `CR` 和 $1$ 个 `LF`（即每行附加 $2\text{ B}$），共需插入 $51 \times 2 = \mathbf{102\text{ B}}$。
      * **计算最终发送总字节数**：
-       $$\text{总字节数} = 4096 + 51 \times 2 = \mathbf{4198\text{ B}}$$
+       $\text{总字节数} = 4096 + 51 \times 2 = \mathbf{4198\text{ B}}$
      * *(注：若最后一行余下的 $16\text{ B}$ 末尾也额外加一组回车换行符，则为 $4198 + 2 = \mathbf{4200\text{ B}}$；教材附录A两个考虑均认可，答出 $4198\text{ B}$ 或 $4200\text{ B}$ 均给满分)*。
 
 ---
@@ -264,7 +264,7 @@
   1. **`6-48`（C/S 模式）**：
      * 只有 1 台服务器负责上传，它必须把长度为 $F$ 的文件向 $N$ 个客户机完整发送 $N$ 份，总发送数据量为 $N \cdot F$，而服务器上传速率为 $u$。
      * 最短分发时间：
-       $$T_{\text{CS}} = \mathbf{\frac{N \cdot F}{u}}$$
+       $T_{\text{CS}} = \mathbf{\frac{N \cdot F}{u}}$
   2. **`6-49`（整文件存储转发式 P2P 模式 —— 指数倍增树）**：
      * 发送 1 份完整文件耗时 $\frac{F}{u}$。
      * 第 1 轮（耗时 $\frac{F}{u}$）：服务器把完整文件传给第 1 个对等方（此时共有 $1$ 个对等方拥有文件，拥有完整文件的节点总数变为 $2^1 = 2$ 个，即服务器 + 对等方1）；
@@ -273,7 +273,7 @@
      * 第 $k$ 轮结束后：总共可使 $2^k - 1$ 个对等方（连同服务器共 $2^k$ 个节点）获得完整文件。
      * 要让全部 $N$ 个对等方都收到完整文件，需满足 $2^k - 1 \ge N \Rightarrow 2^k \ge N + 1 \Rightarrow k = \lceil \log_2(N + 1) \rceil$ 轮。
      * 故最短分发时间为：
-       $$T_{\text{P2P-整文件}} = \mathbf{\lceil \log_2(N + 1) \rceil \cdot \frac{F}{u}}$$
+       $T_{\text{P2P-整文件}} = \mathbf{\lceil \log_2(N + 1) \rceil \cdot \frac{F}{u}}$
   3. **`6-50`（无限小分块流水线式 P2P 模式 —— 必做母题 `6-51` 的退化特例）**：
      * 当数据块极小时，任何一个对等方从第 $0$ 秒起只要收到一点点比特，就可以立即开启自己的上传带宽 $u$ 替服务器分担上传！因此全系统的最大总上传能力等于 $(1\text{ 台服务器} + N\text{ 个对等方})$ 的上传速率之和，但注意这里有一个物理边界：
      * 服务器至少要把文件的所有块发出去 1 遍（耗时 $\frac{F}{u}$），实际上当数据块无限小且下载带宽无限大时，服务器把每个极小块发给 1 个对等方的同时，该对等方瞬间转发给下一个对等方（流水线延迟趋于 $0$）！
@@ -407,16 +407,16 @@
 * **【已知条件与设问】**：假定 IP 电话的发送方在讲话时，每秒钟产生 $8000\text{ B}$ 的话音数据。每隔 $20\text{ ms}$ 把得到的数据块加上 RTP 首部（固定 $12\text{ B}$）和 UDP 首部（$8\text{ B}$）后，交给 IP 层（固定首部 $20\text{ B}$）发送出去。假定 RTP 首部和 IP 首部都没有选项。**试计算发送方在发送这种 IP 数据报时的数据率（$\text{kbit/s}$）。这个数据率比原始的话音数据率增加了百分之多少？**
 * **【分步计算与标准答案】**：
   1. **原始话音数据率 $R_{\text{原始}}$**：
-     $$R_{\text{原始}} = 8000\text{ B/s} \times 8\text{ bit/B} = 64000\text{ bit/s} = \mathbf{64\text{ kbit/s}}$$
+     $R_{\text{原始}} = 8000\text{ B/s} \times 8\text{ bit/B} = 64000\text{ bit/s} = \mathbf{64\text{ kbit/s}}$
   2. **每个分组（每 $20\text{ ms}$）包含的字节数**：
      * 每秒切分的分组个数 $= \frac{1\text{ s}}{20\text{ ms}} = \frac{1000\text{ ms}}{20\text{ ms}} = \mathbf{50\text{ 个分组/秒}}$。
      * 每个分组内的原始话音数据块长度 $= \frac{8000\text{ B}}{50} = \mathbf{160\text{ B}}$。
      * 每个分组附加的三层协议首部总开销 $= \text{RTP}(12\text{ B}) + \text{UDP}(8\text{ B}) + \text{IP}(20\text{ B}) = \mathbf{40\text{ B}}$！
      * 故每个 IP 数据报的总长度 $= 160\text{ B} + 40\text{ B} = \mathbf{200\text{ B}}$。
   3. **发送 IP 数据报时的实际数据率 $R_{\text{IP}}$**：
-     $$R_{\text{IP}} = 50\text{ 个/s} \times 200\text{ B} \times 8\text{ bit/B} = 80000\text{ bit/s} = \mathbf{80\text{ kbit/s}}$$
+     $R_{\text{IP}} = 50\text{ 个/s} \times 200\text{ B} \times 8\text{ bit/B} = 80000\text{ bit/s} = \mathbf{80\text{ kbit/s}}$
   4. **比原始话音数据率增加的百分比**：
-     $$\text{增加比例} = \frac{80\text{ kbit/s} - 64\text{ kbit/s}}{64\text{ kbit/s}} = \frac{40\text{ B}}{160\text{ B}} = \mathbf{25\%}$$
+     $\text{增加比例} = \frac{80\text{ kbit/s} - 64\text{ kbit/s}}{64\text{ kbit/s}} = \frac{40\text{ B}}{160\text{ B}} = \mathbf{25\%}$
 
 ---
 
@@ -431,25 +431,25 @@
     * **① 播放多久后暂停（缓存被抽空）**：
       * 刚开播瞬间，缓存里已有初始蓄水量 $30\text{ Mbit}$；
       * 开播期间，一边以 $2\text{ Mbit/s}$ 往里进水，一边以 $3\text{ Mbit/s}$ 往外抽水，故缓存数据的**净消耗速率**为：
-        $$r_{\text{净減}} = 3\text{ Mbit/s} - 2\text{ Mbit/s} = \mathbf{1\text{ Mbit/s}}$$
+        $r_{\text{净減}} = 3\text{ Mbit/s} - 2\text{ Mbit/s} = \mathbf{1\text{ Mbit/s}}$
       * 把已有的 $30\text{ Mbit}$ 彻底抽空所需的时间（即持续播放时间）为：
-        $$t_{\text{播放}} = \frac{30\text{ Mbit}}{3 - 2\text{ Mbit/s}} = \mathbf{30\text{ s}}$$
+        $t_{\text{播放}} = \frac{30\text{ Mbit}}{3 - 2\text{ Mbit/s}} = \mathbf{30\text{ s}}$
     * **② 暂停多久后才能继续播放**：
       * 暂停期间，播放器停止读取（$r_{\text{out}} = 0$），只有 TCP 以 $2\text{ Mbit/s}$ 往缓存里注入数据；
       * 要重新攒够启动播放门槛 $30\text{ Mbit}$，需要暂停等待的时间为：
-        $$t_{\text{暂停}} = \frac{30\text{ Mbit}}{2\text{ Mbit/s}} = \mathbf{15\text{ s}}$$
+        $t_{\text{暂停}} = \frac{30\text{ Mbit}}{2\text{ Mbit/s}} = \mathbf{15\text{ s}}$
   * **(2) 当注入速率改为 $r_{\text{in}}' = 4\text{ Mbit/s} > \text{播放速率 } r_{\text{out}} = 3\text{ Mbit/s}$ 时（分两段相加）**：
     * **第一阶段（从 $0\text{ Mbit}$ 攒到 $30\text{ Mbit}$，此时播放器尚未开始播放）**：
       * 只有进水（$4\text{ Mbit/s}$），没有出水，攒够 $30\text{ Mbit}$ 耗时：
-        $$t_1 = \frac{30\text{ Mbit}}{4\text{ Mbit/s}} = \mathbf{7.5\text{ s}}$$
+        $t_1 = \frac{30\text{ Mbit}}{4\text{ Mbit/s}} = \mathbf{7.5\text{ s}}$
     * **第二阶段（从 $30\text{ Mbit}$ 开始边播边下，直到把 $100\text{ Mbit}$ 缓存彻底灌满）**：
       * 还需继续往缓存里净增加的容量 $= 100\text{ Mbit} - 30\text{ Mbit} = \mathbf{70\text{ Mbit}}$；
       * 此时一边以 $4\text{ Mbit/s}$ 进水，一边以 $3\text{ Mbit/s}$ 播放出水，缓存数据的**净增长速率**为：
-        $$r_{\text{净增}} = 4\text{ Mbit/s} - 3\text{ Mbit/s} = \mathbf{1\text{ Mbit/s}}$$
+        $r_{\text{净增}} = 4\text{ Mbit/s} - 3\text{ Mbit/s} = \mathbf{1\text{ Mbit/s}}$
       * 灌满剩余 $70\text{ Mbit}$ 所需耗时：
-        $$t_2 = \frac{100 - 30\text{ Mbit}}{4 - 3\text{ Mbit/s}} = \mathbf{70\text{ s}}$$
+        $t_2 = \frac{100 - 30\text{ Mbit}}{4 - 3\text{ Mbit/s}} = \mathbf{70\text{ s}}$
     * **总共花费时间**：
-      $$T_{\text{总}} = t_1 + t_2 = 7.5\text{ s} + 70\text{ s} = \mathbf{77.5\text{ s}}$$
+      $T_{\text{总}} = t_1 + t_2 = 7.5\text{ s} + 70\text{ s} = \mathbf{77.5\text{ s}}$
 
 ---
 

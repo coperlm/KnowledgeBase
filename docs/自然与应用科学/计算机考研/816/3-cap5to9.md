@@ -51,7 +51,7 @@
 5. **`5-74` 流量控制和拥塞控制的最主要区别是什么？发送窗口的大小取决于什么？（官方大纲五(三)4）**
     * **【采分关键词】**：
      * **主要区别**：**流量控制**是一个**端到端**的问题（只涉及发送方和接收方两端），目的是抑制发送端速率，使**接收端来得及接收**（通过接收方通告的接收窗口 `rwnd` 实现）；**拥塞控制**是一个**全局性**的问题（涉及网络中所有主机、路由器及链路），目的是防止过多的数据注入到网络中，使**网络中的路由器或链路不致过载**。
-     * **发送窗口决定公式（必背）**：$$\text{发送方实际发送窗口上限} = \min(\text{接收窗口 } rwnd,\ \text{拥塞窗口 } cwnd)$$
+     * **发送窗口决定公式（必背）**：$\text{发送方实际发送窗口上限} = \min(\text{接收窗口 } rwnd,\ \text{拥塞窗口 } cwnd)$
 
 ---
 
@@ -177,8 +177,8 @@
        * 共需划分的满载报文段个数 = $\lceil \frac{2^{32}}{1460} \rceil = \lceil 2941758.42 \rceil = 2941759$ 个报文段（最后1段含余数数据）。
        * 总共需附加的各层首部总字节数 = $2941759 \times 66\text{ B} = 194156094\text{ B}$。
        * 链路上实际发送的总字节数 = $2^{32} + 194156094 = 4489123390\text{ B}$。
-       * 最短发送时间：$$t = \frac{4489123390\text{ B} \times 8\text{ bit/B}}{10 \times 10^6\text{ bit/s}} \approx 3591.3\text{ s} \approx 59.85\text{ 分钟}$$
-     * **`5-70(1)` & `5-71` 序号绕回时间公式**：$$T_{\text{wrap}} = \frac{2^{32}\text{ B} \times 8\text{ bit/B}}{\text{速率 } R}$$
+       * 最短发送时间：$t = \frac{4489123390\text{ B} \times 8\text{ bit/B}}{10 \times 10^6\text{ bit/s}} \approx 3591.3\text{ s} \approx 59.85\text{ 分钟}$
+     * **`5-70(1)` & `5-71` 序号绕回时间公式**：$T_{\text{wrap}} = \frac{2^{32}\text{ B} \times 8\text{ bit/B}}{\text{速率 } R}$
        * 当 $R = 40\text{ Gbit/s}$ 时：$T = \frac{3.436 \times 10^{10}\text{ bit}}{40 \times 10^9\text{ bit/s}} \approx \mathbf{0.86\text{ s}}$；
        * 当 $R = 2.5\text{ Gbit/s}$ 时：$T = \frac{3.436 \times 10^{10}\text{ bit}}{2.5 \times 10^9\text{ bit/s}} \approx \mathbf{13.74\text{ s}} < 14\text{ s}$（`2026-大6(1)` 考的是 $R = 5\text{ Gbit/s}$，算得 $13.74 / 2 = \mathbf{6.87\text{ s}}$，完全就是这道课后题除以2！）。
 
@@ -195,18 +195,18 @@
     * **开袋即食算式与答案**：
      * 设发送窗口为 $W$ 比特，发送整个窗口数据本身的发送时延 $T_w = \frac{W}{256 \times 10^3}$。
      * **情况一（接收端在收完第一个极小分组后就立即回确认，即忽略单帧发送时延）**：在一个往返时间 $\text{RTT} = 0.256\text{ s}$ 内发送了 $W$ 比特，故：
-       $$W = 120 \times 10^3\text{ bit/s} \times 0.256\text{ s} = 30720\text{ bit} = \mathbf{3840\text{ 字节}}$$
+       $W = 120 \times 10^3\text{ bit/s} \times 0.256\text{ s} = 30720\text{ bit} = \mathbf{3840\text{ 字节}}$
      * **情况二（接收端在收完整个窗口 $W$ 的全部数据后才发回确认）**：则一个周期总时间为 $T_w + 2\tau = \frac{W}{256\text{ k}} + 0.256\text{ s}$，由 $\frac{W}{\frac{W}{256\text{ k}} + 0.256} = 120\text{ k}$ 解得：
-       $$W \approx 57788\text{ bit} \approx \mathbf{7224\text{ 字节}}$$
+       $W \approx 57788\text{ bit} \approx \mathbf{7224\text{ 字节}}$
 
 6. **`5-33`（谢书标准 TCP 超时重传时间 $RTO$ 加权平均计算公式）**
     * **题目要点**：开始建立连接时设定初始 $RTO = 6\text{ s}$。(1) 收到连接确认报文段时，首次测出 $RTT$ 样本值为 $1.5\text{ s}$，求现在的 $RTO$ 值；(2) 接着发数据段并收到确认，第二次测出 $RTT$ 样本值为 $2.5\text{ s}$，求现在的 $RTO$ 值。（取标准权值 $\alpha = 1/8 = 0.125$，$\beta = 1/4 = 0.25$）。
     * **开袋即食公式与答案（背熟这3个递推公式）**：
-     * **首次测量初始化规则**：$$RTT_{S1} = RTT_1, \quad RTT_{D1} = \frac{RTT_1}{2}, \quad RTO = RTT_S + 4 \times RTT_D$$
+     * **首次测量初始化规则**：$RTT_{S1} = RTT_1, \quad RTT_{D1} = \frac{RTT_1}{2}, \quad RTO = RTT_S + 4 \times RTT_D$
        * 故第(1)问：$RTT_{S1} = 1.5\text{ s}$，$RTT_{D1} = 1.5 / 2 = 0.75\text{ s}$，得 **$\text{RTO}_1 = 1.5 + 4 \times 0.75 = \mathbf{4.5\text{ s}}$**。
      * **后续测量更新公式**：
-       $$RTT_{S\text{新}} = (1 - \alpha) RTT_{S\text{旧}} + \alpha \cdot RTT_{\text{新样本}} = \frac{7}{8} RTT_{S\text{旧}} + \frac{1}{8} RTT_{\text{新样本}}$$
-       $$RTT_{D\text{新}} = (1 - \beta) RTT_{D\text{旧}} + \beta \cdot |RTT_{S\text{旧}} - RTT_{\text{新样本}}| = \frac{3}{4} RTT_{D\text{旧}} + \frac{1}{4} |RTT_{S\text{旧}} - RTT_{\text{新样本}}|$$
+       $RTT_{S\text{新}} = (1 - \alpha) RTT_{S\text{旧}} + \alpha \cdot RTT_{\text{新样本}} = \frac{7}{8} RTT_{S\text{旧}} + \frac{1}{8} RTT_{\text{新样本}}$
+       $RTT_{D\text{新}} = (1 - \beta) RTT_{D\text{旧}} + \beta \cdot |RTT_{S\text{旧}} - RTT_{\text{新样本}}| = \frac{3}{4} RTT_{D\text{旧}} + \frac{1}{4} |RTT_{S\text{旧}} - RTT_{\text{新样本}}|$
        * 故第(2)问（代入 $RTT_2 = 2.5\text{ s}$）：
          * $RTT_{S2} = \frac{7}{8} \times 1.5 + \frac{1}{8} \times 2.5 = 1.3125 + 0.3125 = \mathbf{1.625\text{ s}}$；
          * $RTT_{D2} = \frac{3}{4} \times 0.75 + \frac{1}{4} \times |1.5 - 2.5| = 0.5625 + 0.25 = \mathbf{0.8125\text{ s}}$；
@@ -265,14 +265,14 @@
       * `6-16(3)`：流水线方式（Pipelining）的持续 HTTP（HTTP/1.1）。
     * **开袋即食万能公式与答案（背熟每个对象耗几个 $\text{RTT}_w$）**：
       * **预备知识**：每次新建 TCP 连接（三次握手）耗时 **$1\text{ RTT}_w$**（第三次握手可捎带发送 HTTP 请求），请求发过去到响应回来耗时 **$1\text{ RTT}_w$**。
-      * **`6-15`（仅获取 HTML 基础页）**：$$\text{总时间} = \text{RTT}_{\text{DNS}} + 1\text{ RTT}_w\text{（TCP握手）} + 1\text{ RTT}_w\text{（请求并收到HTML）} = \mathbf{\text{RTT}_{\text{DNS}} + 2\text{ RTT}_w}$$
+      * **`6-15`（仅获取 HTML 基础页）**：$\text{总时间} = \text{RTT}_{\text{DNS}} + 1\text{ RTT}_w\text{（TCP握手）} + 1\text{ RTT}_w\text{（请求并收到HTML）} = \mathbf{\text{RTT}_{\text{DNS}} + 2\text{ RTT}_w}$
       * **`6-16(1)` 串行非持续 HTTP（获取 HTML + 3个小对象，共4个对象，每个都要新建TCP连接耗 $2\text{ RTT}_w$）**：
-        $$\text{总时间} = \text{RTT}_{\text{DNS}} + 2\text{ RTT}_w\text{（HTML）} + 3 \times 2\text{ RTT}_w\text{（串行取3个对象）} = \mathbf{\text{RTT}_{\text{DNS}} + 8\text{ RTT}_w}$$
+        $\text{总时间} = \text{RTT}_{\text{DNS}} + 2\text{ RTT}_w\text{（HTML）} + 3 \times 2\text{ RTT}_w\text{（串行取3个对象）} = \mathbf{\text{RTT}_{\text{DNS}} + 8\text{ RTT}_w}$
       * **`6-16(2)` 并行非持续 HTTP（拿到 HTML 后，同时并行发起 3 条 TCP 连接去取 3 个对象）**：
-        $$\text{总时间} = \text{RTT}_{\text{DNS}} + 2\text{ RTT}_w\text{（HTML）} + 2\text{ RTT}_w\text{（3条并行连接同时握手+取回）} = \mathbf{\text{RTT}_{\text{DNS}} + 4\text{ RTT}_w}$$
+        $\text{总时间} = \text{RTT}_{\text{DNS}} + 2\text{ RTT}_w\text{（HTML）} + 2\text{ RTT}_w\text{（3条并行连接同时握手+取回）} = \mathbf{\text{RTT}_{\text{DNS}} + 4\text{ RTT}_w}$
       * **`6-16(3)` 持续连接（Persistent HTTP，全程只建 1 次 TCP 连接）**：
         * **流水线方式（Pipelining）**：拿到 HTML 后，一口气连续发出3个对象的请求，只需 **1个 $\text{RTT}_w$** 就能把3个对象全部取回：
-          $$\text{总时间（流水线）} = \text{RTT}_{\text{DNS}} + 2\text{ RTT}_w\text{（握手+HTML）} + 1\text{ RTT}_w\text{（流水线取3个对象）} = \mathbf{\text{RTT}_{\text{DNS}} + 3\text{ RTT}_w}$$
+          $\text{总时间（流水线）} = \text{RTT}_{\text{DNS}} + 2\text{ RTT}_w\text{（握手+HTML）} + 1\text{ RTT}_w\text{（流水线取3个对象）} = \mathbf{\text{RTT}_{\text{DNS}} + 3\text{ RTT}_w}$
         * *(补充：若是**非流水线方式**的持续连接，3个对象虽不用重握手，但需一问一答耗 $3\text{ RTT}_w$，总时间为 $\text{RTT}_{\text{DNS}} + 5\text{ RTT}_w$)*。
 
 12. **`6-32`（DHCP 作用与 DORA 四步过程 —— `2025-选16` 原题！）**
@@ -293,10 +293,10 @@
     * **题目要点**：服务器有一文件 $F = 15\text{ Gbit}$ 要分发给 $N$ 个对等方。服务器上传速率 $u_s = 30\text{ Mbit/s}$，每个对等方下载速率 $d = 2\text{ Mbit/s}$，上传速率 $u = 300\text{ kbit/s} = 0.3\text{ Mbit/s}$。分别计算在 (1) $N = 10$；(2) $N = 1000$ 时，C/S 方式和 P2P 方式下分发时间的最小值。
     * **开袋即食公式与答案（背熟这两个 `max` 公式）**：
       * 单位统一：$F = 15 \times 10^3\text{ Mbit} = 15000\text{ Mbit}$，$u_s = 30\text{ Mbit/s}$，$d_{\min} = 2\text{ Mbit/s}$，$u = 0.3\text{ Mbit/s}$。
-      * **一、C/S 模式最短时间公式**：$$D_{\text{CS}} = \max\left(\frac{N \cdot F}{u_s},\ \frac{F}{d_{\min}}\right)$$
+      * **一、C/S 模式最短时间公式**：$D_{\text{CS}} = \max\left(\frac{N \cdot F}{u_s},\ \frac{F}{d_{\min}}\right)$
         * 当 $N = 10$ 时：$D_{\text{CS}} = \max\left(\frac{10 \times 15000}{30},\ \frac{15000}{2}\right) = \max(5000,\ 7500) = \mathbf{7500\text{ s}}$；
         * 当 $N = 1000$ 时：$D_{\text{CS}} = \max\left(\frac{1000 \times 15000}{30},\ 7500\right) = \max(500000,\ 7500) = \mathbf{500000\text{ s}}$（随 $N$ 线性暴增！）。
-      * **二、P2P 模式最短时间公式**：$$D_{\text{P2P}} = \max\left(\frac{F}{u_s},\ \frac{F}{d_{\min}},\ \frac{N \cdot F}{u_s + N \cdot u}\right)$$
+      * **二、P2P 模式最短时间公式**：$D_{\text{P2P}} = \max\left(\frac{F}{u_s},\ \frac{F}{d_{\min}},\ \frac{N \cdot F}{u_s + N \cdot u}\right)$
         * 当 $N = 10$ 时：$\frac{F}{u_s} = 500\text{ s}$，$\frac{F}{d_{\min}} = 7500\text{ s}$，$\frac{10 \times 15000}{30 + 10 \times 0.3} = \frac{150000}{33} \approx 4545.5\text{ s} \Rightarrow D_{\text{P2P}} = \max(500,\ 7500,\ 4545.5) = \mathbf{7500\text{ s}}$；
         * 当 $N = 1000$ 时：$\frac{1000 \times 15000}{30 + 1000 \times 0.3} = \frac{15000000}{330} \approx 45454.5\text{ s} \Rightarrow D_{\text{P2P}} = \max(500,\ 7500,\ 45454.5) = \mathbf{45455\text{ s}}$（仅需 C/S 方式的约 $1/11$ 时间！）。
 
@@ -349,8 +349,8 @@
       * $\text{ACK 发送时间} = \frac{14 \times 8\text{ bit}}{1\text{ Mbit/s}} = 112\ \mu\text{s}$；
       * $\text{DATA 发送时间（1000B）} = \frac{1000 \times 8\text{ bit}}{11\text{ Mbit/s}} \approx 727.3\ \mu\text{s}$（若按谢书假定全部帧都用 $11\text{ Mbit/s}$ 算，还要加上每帧 $192\ \mu\text{s}$ 的物理层 PLCP 前同步码开销；而在考研卷如 `2026-大2` 中，直接按题干给定的基本速率与数据速率相除相加即可）：
       * **总时间公式（1个 DIFS + 3个 SIFS + 4个帧发送时间）**：
-        $$T_{\text{total}} = \text{DIFS} + T_{\text{RTS}} + \text{SIFS} + T_{\text{CTS}} + \text{SIFS} + T_{\text{DATA}} + \text{SIFS} + T_{\text{ACK}}$$
-        $$= 50 + 160 + 10 + 112 + 10 + 727.3 + 10 + 112 = \mathbf{1191.3\ \mu\text{s}}$$
+        $T_{\text{total}} = \text{DIFS} + T_{\text{RTS}} + \text{SIFS} + T_{\text{CTS}} + \text{SIFS} + T_{\text{DATA}} + \text{SIFS} + T_{\text{ACK}}$
+        $= 50 + 160 + 10 + 112 + 10 + 727.3 + 10 + 112 = \mathbf{1191.3\ \mu\text{s}}$
       * **顺手必记 NAV 公式（`2026-大2(1)` 考到）**：
         * $\text{NAV}(\text{RTS}) = 3 \times \text{SIFS} + T_{\text{CTS}} + T_{\text{DATA}} + T_{\text{ACK}}$；
         * $\text{NAV}(\text{CTS}) = 2 \times \text{SIFS} + T_{\text{DATA}} + T_{\text{ACK}}$。
