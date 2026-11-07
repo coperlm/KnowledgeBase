@@ -23,6 +23,7 @@ theme:
     text: Roboto
     code: Roboto Mono
   name: material
+  custom_dir: overrides
   language: zh
   palette:
     # - primary: indigo
