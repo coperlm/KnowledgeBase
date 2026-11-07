@@ -1742,6 +1742,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        计算模型 B：蓄水池进出水速率（缓存抽空与注满模型）
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2553,6 +2564,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        计算模型 B：蓄水池进出水速率（缓存抽空与注满模型）
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2789,15 +2811,11 @@
 <h1 id="cap7to9-presee">cap7to9-presee</h1>
 <p>东南大学 816《计算机网络》第7至9章免看书核心串讲讲义</p>
 <blockquote>
-<ul>
-<li>
-<p><em>定制说明</em>*：</p>
-</li>
-<li>
-<p><strong>精准对齐 816 考纲</strong>：《王道》复习指南删减了第7章（网络安全）和第8章（流媒体），对第9章（无线网络）的细节挖掘也与谢希仁教材存在差异；但这三块内容在东南大学 816 大纲中均被明确单列（见大纲 <strong>三(五)2 <code>CSMA/CA</code></strong>、<strong>三(六)3 <code>IEEE 802.11</code></strong>、<strong>六(九) <code>网络安全</code></strong>、<strong>六(十) <code>流媒体</code></strong>）。</p>
-</li>
+<p><strong>定制说明</strong>：</p>
+<ol>
+<li><strong>精准对齐 816 考纲</strong>：《王道》复习指南删减了第7章（网络安全）和第8章（流媒体），对第9章（无线网络）的细节挖掘也与谢希仁教材存在差异；但这三块内容在东南大学 816 大纲中均被明确单列（见大纲 <strong>三(五)2 <code>CSMA/CA</code></strong>、<strong>三(六)3 <code>IEEE 802.11</code></strong>、<strong>六(九) <code>网络安全</code></strong>、<strong>六(十) <code>流媒体</code></strong>）。</li>
 <li><strong>“零剧透”防虚高原则</strong>：为了保证你后续独立做课后题时的真实测评效果，本讲义<strong>完全隐藏了课后习题的具体题号、设问角度和原题算例数字</strong>，全部采用全新的教学模型把底层公式与工程逻辑讲透。读完这份讲义，你完全不需要再去啃教材原文，直接去刷题即可测试真实水平。</li>
-</ul>
+</ol>
 </blockquote>
 <hr />
 <h2 id="7-816">模块一：第7章 网络安全（对应 816 考纲 六(九)）</h2>
@@ -2960,9 +2978,7 @@
 <h4 id="2-playout-buffer">2. 治抖神器：播放缓存（Playout Buffer）与两大必考计算模型</h4>
 <p>怎么把参差不齐到达的分组，重新变成匀速流出的水流？在接收端修一个<strong>蓄水池（播放缓存）</strong>！</p>
 <ul>
-<li>
-<p><strong>【计算模型 A：定长推迟播放（消除抖动模型）】</strong></p>
-<ul>
+<li><strong>【计算模型 A：定长推迟播放（消除抖动模型）】</strong><ul>
 <li><strong>核心原理</strong>：第 1 个分组到达时，先忍住<strong>不要立刻播放</strong>！让它在缓存里等一会儿，故意引入一个固定的端到端<strong>播放时延 <span class="arithmatex">\(D_{\text{play}}\)</span></strong>。</li>
 <li><strong>公式铁律</strong>：假设第 <span class="arithmatex">\(i\)</span> 个分组在 <span class="arithmatex">\(t_{\text{send}}(i)\)</span> 时刻发出，在路上花了 <span class="arithmatex">\(d_i\)</span> 时间，于 <span class="arithmatex">\(t_{\text{arr}}(i) = t_{\text{send}}(i) + d_i\)</span> 时刻到达接收端。</li>
 <li>如果规定端到端总延迟统一对齐为 <span class="arithmatex">\(D_{\text{play}}\)</span>，那么第 <span class="arithmatex">\(i\)</span> 个分组<strong>应当被播放的时刻</strong>就是：<span class="arithmatex">\(t_{\text{play}}(i) = t_{\text{send}}(i) + D_{\text{play}}\)</span>；</li>
@@ -2971,27 +2987,30 @@
 <li><strong>要想让所有分组一个都不迟到</strong>，统一设定的端到端播放时延 <span class="arithmatex">\(D_{\text{play}}\)</span> 必须至少等于所有分组中经历的<strong>最大网络时延 <span class="arithmatex">\(\max(d_i)\)</span></strong>！</li>
 </ul>
 </li>
+</ul>
+<h4 id="b">计算模型 B：蓄水池进出水速率（缓存抽空与注满模型）</h4>
+<p>这就是小学数学的“水池进水管与出水管问题”：播放缓存的总容量为 <span class="arithmatex">\(B_{\max}\)</span>，启动播放的水位阈值为 <span class="arithmatex">\(B_{\text{start}}\)</span>，网络下载速率为 <span class="arithmatex">\(R_{\text{in}}\)</span>，播放器播放消耗速率为 <span class="arithmatex">\(R_{\text{out}}\)</span>。</p>
+<ol>
+<li><strong>开播前的预缓冲时间</strong>：此时只进不出，水位从 <span class="arithmatex">\(0\)</span> 涨到 <span class="arithmatex">\(B_{\text{start}}\)</span> 所需时间 <span class="arithmatex">\(t_0 = \frac{B_{\text{start}}}{R_{\text{in}}}\)</span>。</li>
 <li>
-<p><strong>【计算模型 B：蓄水池进出水速率（缓存抽空与注满模型）】</strong></p>
+<p><strong>情况一：下载比播放慢（<span class="arithmatex">\(R_{\text{in}} &lt; R_{\text{out}}\)</span>，入不敷出）</strong>：</p>
 <ul>
-<li><strong>核心原理</strong>：这就是小学数学的“水池进水管与出水管问题”！</li>
-<li>设播放缓存的总容量为 <span class="arithmatex">\(B_{\max}\)</span>，启动播放的水位阈值（积攒到多少数据才开播）为 <span class="arithmatex">\(B_{\text{start}}\)</span>。网络往缓存里灌水的速率（下载速率）为 <span class="arithmatex">\(R_{\text{in}}\)</span>，播放器从缓存里抽水读取的速率（播放消耗速率）为 <span class="arithmatex">\(R_{\text{out}}\)</span>：</li>
-<li><strong>开播前的预缓冲时间</strong>：此时只进不出，水位从 <span class="arithmatex">\(0\)</span> 涨到 <span class="arithmatex">\(B_{\text{start}}\)</span> 所需时间 <span class="arithmatex">\(t_0 = \frac{B_{\text{start}}}{R_{\text{in}}}\)</span>；</li>
-<li><strong>情况一：下载比播放慢（<span class="arithmatex">\(R_{\text{in}} &lt; R_{\text{out}}\)</span>，入不敷出）</strong>：</li>
-<li>开播后，缓存水位以净消耗速率 <span class="arithmatex">\((R_{\text{out}} - R_{\text{in}})\)</span> 不断下降！</li>
-<li>
-<p>原本积攒的 <span class="arithmatex">\(B_{\text{start}}\)</span> 水量能撑多久才被彻底抽干（暂停卡顿）？</p>
-<p>$<span class="arithmatex">\(t_{\text{play}} = \frac{B_{\text{start}}}{R_{\text{out}} - R_{\text{in}}}\)</span>$
-       * 抽干暂停后，播放器停止抽水，网络以 <span class="arithmatex">\(R_{\text{in}}\)</span> 重新灌满到 <span class="arithmatex">\(B_{\text{start}}\)</span> 才能恢复播放，暂停等待时间为 <span class="arithmatex">\(t_{\text{pause}} = \frac{B_{\text{start}}}{R_{\text{in}}}\)</span>。
-    3. <strong>情况二：下载比播放快（<span class="arithmatex">\(R_{\text{in}} &gt; R_{\text{out}}\)</span>，供大于求）</strong>：
-       * 开播后，缓存水位不仅不会降，反而以净增长速率 <span class="arithmatex">\((R_{\text{in}} - R_{\text{out}})\)</span> 继续往上涨！
-       * 从水位 <span class="arithmatex">\(B_{\text{start}}\)</span> 涨满到整个缓存上限 <span class="arithmatex">\(B_{\max}\)</span> 需要多久？</p>
-<p>$<span class="arithmatex">\(t_{\text{fill}} = \frac{B_{\max} - B_{\text{start}}}{R_{\text{in}} - R_{\text{out}}}\)</span>$
- <em>(若问从最开始空缓存下载算起直到装满的总时间，别忘了加上开播前预缓冲的 <span class="arithmatex">\(t_0 = \frac{B_{\text{start}}}{R_{\text{in}}}\)</span>！)</em></p>
-</li>
+<li>开播后，缓存水位以净消耗速率 <span class="arithmatex">\((R_{\text{out}} - R_{\text{in}})\)</span> 不断下降。</li>
+<li>原本积攒的 <span class="arithmatex">\(B_{\text{start}}\)</span> 水量能撑多久才被抽干？</li>
+</ul>
+<p>$<span class="arithmatex">\(t_{\text{play}} = \frac{B_{\text{start}}}{R_{\text{out}} - R_{\text{in}}}\)</span>$</p>
+<ul>
+<li>抽干暂停后，播放器停止抽水，网络以 <span class="arithmatex">\(R_{\text{in}}\)</span> 重新灌满到 <span class="arithmatex">\(B_{\text{start}}\)</span> 才能恢复播放，暂停等待时间为 <span class="arithmatex">\(t_{\text{pause}} = \frac{B_{\text{start}}}{R_{\text{in}}}\)</span>。</li>
+<li><strong>情况二：下载比播放快（<span class="arithmatex">\(R_{\text{in}} &gt; R_{\text{out}}\)</span>，供大于求）</strong>：</li>
+<li>开播后，缓存水位以净增长速率 <span class="arithmatex">\((R_{\text{in}} - R_{\text{out}})\)</span> 继续上涨。</li>
+<li>从水位 <span class="arithmatex">\(B_{\text{start}}\)</span> 涨满到缓存上限 <span class="arithmatex">\(B_{\text{max}}\)</span> 需要多久？</li>
+</ul>
+<p>$<span class="arithmatex">\(t_{\text{fill}} = \frac{B_{\text{max}} - B_{\text{start}}}{R_{\text{in}} - R_{\text{out}}}\)</span>$</p>
+<ul>
+<li>若从空缓存下载算起直到装满，还要加上开播前预缓冲时间 <span class="arithmatex">\(t_0 = \frac{B_{\text{start}}}{R_{\text{in}}}\)</span>。</li>
 </ul>
 </li>
-</ul>
+</ol>
 <hr />
 <h3 id="rtsp-rtp-rtcp">二、 流媒体工作的全套流程与“协议三剑客”（RTSP / RTP / RTCP）</h3>
 <p>当你在网页上点开一段在线视频时，后台其实发生了极其精妙的“四步交接班”：</p>

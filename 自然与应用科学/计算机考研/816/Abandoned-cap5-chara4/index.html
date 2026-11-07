@@ -2977,7 +2977,7 @@
 <p><em>(注：在实际以太网中，受限于链路层</em> <span class="arithmatex">\(\text{MTU} = 1500\text{ B}\)</span><em>，通常将最大报文段长度</em> <span class="arithmatex">\(\text{MSS}\)</span> <em>设为</em> <span class="arithmatex">\(1500 - 20 - 20 = 1460\text{ B}\)</span> <em>以避免分片)</em>。</p>
 </li>
 <li>
-<p><strong>(2) 超过最大序号能否用 TCP 传送</strong>：<strong>完全可以！</strong> TCP 的 32 位序号字段是对字节流进行<strong>模</strong> <span class="arithmatex">\(2^{32}\)</span> <strong>循环编号（序号绕回 Wrap-around）</strong>的。当字节序号达到<strong><em>* <span class="arithmatex">\(2^{32} - 1\)</span> </em></strong><em>后，下一个字节的序号会自动回到</em><strong><em> <span class="arithmatex">\(0\)</span> </em></strong><em>重新开始循环编号；只要旧序号的报文段在网络中已超过最大生存时间 MSL 消亡（或在高速网中配合 TCP 首部 32 位</em><em>时间戳选项 PAWS 防绕回机制</em>*），TCP 就可以无限制地传送任意大小的超大文件（如几十 GB 的蓝光电影）。</p>
+<p><strong>(2) 超过最大序号能否用 TCP 传送</strong>：<strong>完全可以！</strong> TCP 的 32 位序号字段是对字节流进行<strong>模</strong> <span class="arithmatex">\(2^{32}\)</span> <strong>循环编号（序号绕回 Wrap-around）</strong>的。当字节序号达到<strong><span class="arithmatex">\(2^{32} - 1\)</span></strong>后，下一个字节的序号会自动回到<strong><span class="arithmatex">\(0\)</span></strong>重新开始循环编号；只要旧序号的报文段在网络中已超过最大生存时间 MSL 消亡（或在高速网中配合 TCP 首部 32 位<strong>时间戳选项 PAWS 防绕回机制</strong>），TCP 就可以无限制地传送任意大小的超大文件（如几十 GB 的蓝光电影）。</p>
 </li>
 </ul>
 <h3 id="15-5-28-a-b-tcp-m-n-b-a-tcp">15. <code>5-28</code> 主机 A 向主机 B 发送 TCP 报文段，首部中的源端口是 <span class="arithmatex">\(m\)</span> 而目的端口是 <span class="arithmatex">\(n\)</span>。当 B 向 A 发送回信时，其 TCP 报文段的首部中的源端口和目的端口分别是什么？</h3>
@@ -2990,7 +2990,7 @@
 <p><strong>【说人话】</strong>：假设你给B连发了第1号包和第2号包。B收到第1号包发回的“第1号收条”在半路丢了；但紧接着0.01秒后，B收到了你的第2号包，发回了“前2号包全都收齐了”的总收条，并且这张总收条赶在你的第1号包闹钟响（超时）之前送到了你手里！既然知道前2号全齐了，你当然不用再傻乎乎重传第1号包了。</p>
 </li>
 <li>
-<p><strong>【严谨考场结论】</strong>：因为 TCP 采用的是<strong>累积确认（Cumulative Acknowledgment）</strong>机制（确认号<strong><em>* <span class="arithmatex">\(N\)</span> </em></strong><em>表明到序号</em><strong><em> <span class="arithmatex">\(N-1\)</span> </em></strong><em>为止的所有数据均已正确收到）。如果对前一个报文段的确认丢失了，但只要在发送方的</em><em>超时重传计时器到期之前</em><em>，发送方收到了接收方发来的</em><em>对后续报文段的更高序号的确认报文段</em>*，发送方就能确知前面的数据也已被对方正确收齐，从而取消重传计时器，不会引起重传。</p>
+<p><strong>【严谨考场结论】</strong>：因为 TCP 采用的是<strong>累积确认（Cumulative Acknowledgment）</strong>机制（确认号 <strong><span class="arithmatex">\(N\)</span></strong> 表明到序号 <strong><span class="arithmatex">\(N-1\)</span></strong> 为止的所有数据均已正确收到）。如果对前一个报文段的确认丢失了，但只要在发送方的<strong>超时重传计时器到期之前</strong>，发送方收到了接收方发来的<strong>对后续报文段的更高序号的确认报文段</strong>，发送方就能确知前面的数据也已被对方正确收齐，从而取消重传计时器，不会引起重传。</p>
 </li>
 </ul>
 <h3 id="17-5-32-karn-tcp-karn">17. <code>5-32</code> 什么是 Karn 算法？在 TCP 的重传机制中，若不采用 Karn 算法，而是在收到确认时都认为是对重传报文段的确认，那么由此得出的往返时间样本和重传时间都会偏小。试问：重传时间最后会减小到什么程度？</h3>
