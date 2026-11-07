@@ -5,13 +5,12 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 MARKER = "<!-- KB_STATIC_TREE -->"
-SKIP_DIRS = {"assets"}
+SKIP_DIRS = {"about", "assets"}
 SKIP_FILES = {"index.md", "tags.md"}
 ROOT_DIR_ORDER = {
-    "about": 0,
-    "science": 1,
-    "humanities": 2,
-    "arts": 3,
+    "science": 0,
+    "humanities": 1,
+    "arts": 2,
 }
 
 
