@@ -2634,9 +2634,9 @@
 <p>核心原则：你已有 408 选择题一刷基础，严禁从第 1 页逐字通读谢书正文，严禁通做全书 367 道课后题！将全书拆分为“增量独有模块”与“第1-6章主干模块”两套手法处理：</p>
 <h3 id="_1">手法一：谢书“增量独有模块”</h3>
 <p>此部分为 408 不考、但 816 必考的独有增量。课后题以概念、流程说明、协议分工辨析为主，不要花时间自己从零默写，直接拿着《习题解答》用荧光笔划出采分词熟读，达到“改成单选能秒选、出在大题最后一小问能写 2 句话拿满分”的标准：</p>
-<ul>
-<li>
-<p>[ ] 1. 第 7 章《网络安全》（7.1 至 7.6 节全文 + 7.7 节核心概念，课后题全看）：</p>
+<ul class="task-list">
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 1. 第 7 章《网络安全》（7.1 至 7.6 节全文 + 7.7 节核心概念，课后题全看）：</p>
 <ul>
 <li>安全威胁分类：被动攻击（截获、流量分析，不破坏数据，重在加密预防） vs 主动攻击（篡改、伪造、拒绝服务 DoS/DDoS、重放攻击，重在检测与恢复）。</li>
 <li>对称密码体制（DES、3DES、AES）：加解密密钥相同；运算快、效率高、适合加密海量数据；但密钥分发难、管理复杂、无法实现数字签名（无法防抵赖）。</li>
@@ -2648,8 +2648,8 @@
 <li>补充 7.7 节 IPsec 与 TLS（2025 真题已考）：掌握 IPsec 隧道模式（封装整个原 IP 分组）、安全关联数据库 SAD 与安全策略数据库 SPD、ESP 协议利用递增序号及滑动接收窗口防重放（注意：仅凭序号不能防密文篡改，防篡改仍需完整性认证 MAC，对应 2025-选20）；掌握 HTTPS 即在 HTTP 下层采用 TLS 经身份认证建立会话密钥后加密并保护完整性（对应 2025-大4 第4问）。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 2. 第 8 章《互联网上的音频/视频服务》（8.1 至 8.3 节流媒体全文，课后题全看）：</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2. 第 8 章《互联网上的音频/视频服务》（8.1 至 8.3 节流媒体全文，课后题全看）：</p>
 <ul>
 <li>传输特征：对偶尔误码和丢包容忍度高，但对时延和时延抖动（Jitter，相邻分组经历时延不同导致到达间隔不均匀）高度敏感。</li>
 <li>播放端缓冲区机制：接收端设置缓冲区暂存分组一定时间后再匀速输出播放，平滑时延抖动，消除卡顿。</li>
@@ -2660,8 +2660,8 @@
   (3) RTCP（实时传输控制协议）：与 RTP 配合的监控协议，周期性发送控制分组反馈服务质量（丢包率、时延抖动、RTT），供应用层动态调整编码速率。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 3. 第 6 章应用层 3 个单列协议（精读正文 + 必看对应课后题）：</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 3. 第 6 章应用层 3 个单列协议（精读正文 + 必看对应课后题）：</p>
 <ul>
 <li>6.3 节 TELNET（远程终端协议）：C/S 模式，TCP 端口 23；核心为网络虚拟终端 NVT（客户端将本地键盘输入转为 NVT 标准格式发给服务器，服务器再将 NVT 转为服务器 OS 内部格式，屏蔽异构系统终端差异）。</li>
 <li>6.8 节 P2P 应用工作方式：
@@ -2670,8 +2670,8 @@
 <li>6.9 节 SNMP（简单网络管理协议）：基于 UDP，管理站端口 162（接收 Trap 告警），代理端端口 161（接收请求）；五大功能域（故障管理、配置管理、计费管理、性能管理、安全管理）；三大构件（SMI 管理信息结构：定义命名与语法规则；MIB 管理信息库：树状结构存放被管变量；SNMP 报文协议）；三大操作原语（Get-Request 读取、Set-Request 写入设置、Trap 代理端突发异常时主动异步告警）。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 4. 第 3 章与第 1 章增量细节（精读正文 + 对应课后题）：</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 4. 第 3 章与第 1 章增量细节（精读正文 + 对应课后题）：</p>
 <ul>
 <li>HDLC 协议：面向比特的同步链路层协议；标志字段 Flag 固定为 01111110；零比特填充法（发送端连续 5 个 1 后强制插 0，接收端连续 5 个 1 后自动删 0）；三种帧类型及前两位编码：信息帧 I 帧（第 1 位为 0，传用户数据，带发送序号 N(S) 和接收序号 N(R)）、监控帧 S 帧（前两位 10，无数据字段，用于流量和差错控制，如 RR 接收就绪、RNR 接收未就绪、REJ 拒绝重传）、无编号帧 U 帧（前两位 11，不带序号，用于链路建立拆除与控制，如 SABM、DISC）。</li>
 <li>透明网桥（Bridge）：工作在 MAC 子层，隔离冲突域但不隔离广播域，交换机实质是多端口网桥；自学习算法三步标准话术：(1)逆向学习（收到帧记录源 MAC 与接收端口到转发表，启动/重置老化定时器）；(2)查表转发（查目的 MAC，找到且端口不同则单播转发，端口相同则丢弃过滤，未找到则向除接收端口外所有端口泛洪广播）；(3)老化机制（TTL 超时未更新自动清除）。</li>
@@ -2682,9 +2682,9 @@
 <h3 id="1-6">手法二：谢书“第 1 至 6 章主干模块”</h3>
 <p>直接翻开每章课后题与《习题解答》，按以下三个桶分流处理，只有遇到卡壳才翻回谢书正文看对应两页：</p>
 <h4 id="45">第一桶：必动笔算！全书严选约 45 道经典计算/图表母题</h4>
-<ul>
-<li>
-<p>[ ] 第 1-2 章：</p>
+<ul class="task-list">
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 第 1-2 章：</p>
 <ul>
 <li>存储转发与分组流水线时延计算（对标 2025-大1：掌握首分组到达时间 = 2<em>发送时延 + 2</em>传播时延 + 交换机处理时延；全部 M 个分组流水线到达时间 = 首分组到达时间 + (M-1)*单个分组瓶颈发送间隔；以及不分组整报转发耗时对比）。</li>
 <li>物理层码元与比特率换算（对标 2025-选2）：若有 K 种幅相状态，每码元携带 log2(K) 比特，比特率 R = 波特率 B * log2(K)。</li>
@@ -2693,8 +2693,8 @@
 <li>CDMA 码片序列正交内积计算（发送 +1 比特发原码片，发送 0 比特发反码，接收端用规格化内积还原）。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 第 3 章：</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 第 3 章：</p>
 <ul>
 <li>CRC 循环冗余校验手算模 2 除法，并明确 CRC 是检错码而非纠错码，余数为 0 仅代表本次未检出差错，若差错多项式恰好为生成多项式倍数仍会漏检（对标谢书习题 3-07）。</li>
 <li>CSMA/CD 争用期（2*传播时延）与最短有效帧长计算。</li>
@@ -2702,8 +2702,8 @@
 <li>以太网交换机/透明网桥自学习转发表填写与转发端口列表题（谢书第 3 章课后必算 2 道）。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 第 4 章（网络层占分极高，必须逐题算透）：</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 第 4 章（网络层占分极高，必须逐题算透）：</p>
 <ul>
 <li>IPv4 数据报分片计算（对标谢书习题 4-20）：总长 4000B（首部 20B，数据 3980B），MTU=1500B，则每片最大数据载荷 = 1480B（必须为 8B 整数倍）；前两片数据各 1480B，共 2960B，故第 3 片片偏移字段值 = 2960 / 8 = 370。</li>
 <li>CIDR 精确路由聚合（对标谢书习题 4-22）：将连续 4 个 /24 地址块（如第三字节 132、133、134、135，二进制前 6 位相同）聚合为 /22。</li>
@@ -2714,8 +2714,8 @@
 <li>BGP 边界路由算法（路径向量算法 Path Vector）：理解为何自治系统 AS 之间不能用距离向量或链路状态（网络规模过大、各 AS 安全与商业策略不同），BGP 如何通过 AS-Path 列表防环并实现策略路由。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 第 5-6 章（传输层与应用层核心计算）：</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 第 5-6 章（传输层与应用层核心计算）：</p>
 <ul>
 <li>TCP 三次握手与四次挥手序号计算（对标 2025-选21、谢书习题 5-62）：不带数据的 SYN 段和 FIN 段均各消耗 1 个序号（客户端发 SEQ=x 的 SYN，服务端同意连接回复 SYN=1, ACK=1, 确认号 ack=x+1；收到期待的 SEQ=901 且 FIN=1 的段，返回的确认号应为 902）。</li>
 <li>TCP 字节序号、段长度与乱序缓存累计确认（对标 2025-大5）：给三段起始序号 500、600、800 及全部收齐后的确认号 900，算各段长度（600-500=100B, 800-600=200B, 900-800=100B）；若第 2 段丢失，收到第 1 段回 ACK=600；随后收到第 3 段（800-899）虽乱序缓存，但因缺 600-799，按累计确认仍回重复 ACK=600；待重传第 2 段补齐后直跳 ACK=900。</li>
@@ -2726,19 +2726,19 @@
 </li>
 </ul>
 <h4 id="70">第二桶：用眼睛扫读答案！抓反直觉单选坑点（全书约 70 道，重点记以下真题/替补题题眼）</h4>
-<ul>
-<li>[ ] 1. 数据报 vs 虚电路（习题 4-01）：数据报服务独立携带完整目的地址、独立选路、可能乱序到达、不保证可靠交付；虚电路建立逻辑连接与路径状态，但不等于专用物理电路。</li>
-<li>[ ] 2. NAPT 校验和更新（习题 4-42）：NAPT 设备修改 UDP 数据报的源 IP 地址和源 UDP 端口号后，不仅要重算 IPv4 首部检验和，还必须重算 UDP 检验和（因为 UDP 检验和计算覆盖了包含源/目的 IP 地址的 12 字节伪首部）。</li>
-<li>[ ] 3. UDP 全零校验和规则（习题 5-51）：IPv4 中若发送方启用了 UDP 检验和，但按反码算术运算算出的检验和结果恰好为全 0（0x0000），发送时必须改填为全 1（0xFFFF），因为 UDP 首部检验和字段为全 0 专用于表示“发送方未计算/未使用检验和”。</li>
-<li>[ ] 4. TCP 连接唯一标识（习题 5-09）：一条 TCP 连接由两端套接字（Socket）即四元组（源 IP、源端口、目的 IP、目的端口）唯一标识。</li>
-<li>[ ] 5. DHCP 首次获取地址四步交互（习题 6-32）：DORA 顺序即 DISCOVER（广播发现） -&gt; OFFER（提供租约） -&gt; REQUEST（广播请求选定租约） -&gt; ACK（确认）。</li>
-<li>[ ] 6. MIME 与 SMTP（习题 6-25）：SMTP 本身仅面向 7 位 ASCII 文本，MIME 通过 base64 等编码方式把二进制附件转为文本传输（注意：base64 是编码，绝不是加密！）。</li>
-<li>[ ] 7. traceroute 推断边界（2025-选16）：一次 traceroute 成功仅证明测试当时的探测包与中间路由器返回的 ICMP 超时报文路径畅通，不能推广保证路径上所有路由器的全部 ICMP 功能或所有应用业务永久正常。</li>
-<li>[ ] 8. VLAN 与 802.1Q：虽未在 816 大纲单独列行，但包含在局域网交换机工作原理中，需掌握 VLAN 隔离广播域的作用及 802.1Q 帧插入 4 字节标记字段的跨交换机 Trunk 转发原理。</li>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 1. 数据报 vs 虚电路（习题 4-01）：数据报服务独立携带完整目的地址、独立选路、可能乱序到达、不保证可靠交付；虚电路建立逻辑连接与路径状态，但不等于专用物理电路。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2. NAPT 校验和更新（习题 4-42）：NAPT 设备修改 UDP 数据报的源 IP 地址和源 UDP 端口号后，不仅要重算 IPv4 首部检验和，还必须重算 UDP 检验和（因为 UDP 检验和计算覆盖了包含源/目的 IP 地址的 12 字节伪首部）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 3. UDP 全零校验和规则（习题 5-51）：IPv4 中若发送方启用了 UDP 检验和，但按反码算术运算算出的检验和结果恰好为全 0（0x0000），发送时必须改填为全 1（0xFFFF），因为 UDP 首部检验和字段为全 0 专用于表示“发送方未计算/未使用检验和”。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 4. TCP 连接唯一标识（习题 5-09）：一条 TCP 连接由两端套接字（Socket）即四元组（源 IP、源端口、目的 IP、目的端口）唯一标识。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 5. DHCP 首次获取地址四步交互（习题 6-32）：DORA 顺序即 DISCOVER（广播发现） -&gt; OFFER（提供租约） -&gt; REQUEST（广播请求选定租约） -&gt; ACK（确认）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 6. MIME 与 SMTP（习题 6-25）：SMTP 本身仅面向 7 位 ASCII 文本，MIME 通过 base64 等编码方式把二进制附件转为文本传输（注意：base64 是编码，绝不是加密！）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 7. traceroute 推断边界（2025-选16）：一次 traceroute 成功仅证明测试当时的探测包与中间路由器返回的 ICMP 超时报文路径畅通，不能推广保证路径上所有路由器的全部 ICMP 功能或所有应用业务永久正常。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 8. VLAN 与 802.1Q：虽未在 816 大纲单独列行，但包含在局域网交换机工作原理中，需掌握 VLAN 隔离广播域的作用及 802.1Q 帧插入 4 字节标记字段的跨交换机 Trunk 转发原理。</li>
 </ul>
 <p>【第三桶：直接划掉跳过！全书约 160 道】</p>
-<ul>
-<li>[ ] 直接划掉：每章开头纯概念复述题、同类型重复计算题（如连续 5 道同型子网划分做对 2 道即可跳过后 3 道）、以及 408 特有但 816 不考的 SDN（软件定义网络与 OpenFlow 流表）、移动 IP（归属代理/外部代理/转交地址）、纯 ALOHA 与时隙 ALOHA 协议。</li>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 直接划掉：每章开头纯概念复述题、同类型重复计算题（如连续 5 道同型子网划分做对 2 道即可跳过后 3 道）、以及 408 特有但 816 不考的 SDN（软件定义网络与 OpenFlow 流表）、移动 IP（归属代理/外部代理/转交地址）、纯 ALOHA 与时隙 ALOHA 协议。</li>
 </ul>
 <h2 id="24-195">二、未来 24 天“高强度冲刺 + 双止损哨点”每日精确执行表（每天 195 分钟）</h2>
 <p>每日时间固定切分（建议放在下午 14:00 - 17:15，对齐考研专业课生物钟）：</p>
@@ -2749,27 +2749,27 @@
 </ul>
 <h3 id="day-1-day-11">第一阶段：Day 1 - Day 11（上半程核心攻坚）</h3>
 <h4 id="day-1-day-3-3">Day 1 至 Day 3（共 3 天）</h4>
-<ul>
-<li>
-<p>[ ] 模块 A（谢书第 1 章 + 第 2 章，75 min/天）：</p>
+<ul class="task-list">
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 A（谢书第 1 章 + 第 2 章，75 min/天）：</p>
 <ul>
 <li>精读第 1 章 1.4 节标准化组织与 RFC 阶段。</li>
 <li>动笔算透：分组存储转发与流水线时延（对标 2025-大1）、码元波特率转比特率 R = B*log2(N)（2025-选2）、香农公式 dB 换算（习题 2-08）、线路衰减最大距离（习题 2-11）、CDMA 码片正交计算。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 模块 B（408 大题：2009、2010、2011 年，75 min/天）：</p>
-<ul>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 B（408 大题：2009、2010、2011 年，75 min/天）：</p>
+<ul class="task-list">
 <li>计网大题（第 47 题）：每天精做 1 道（共 3 道）。</li>
 <li>数据结构应用大题：每天精做 1 道（共 3 道）。</li>
 <li>数据结构算法代码题（手写 C/C++ 代码）：</li>
-<li>[ ] 2009 年：单链表查找倒数第 k 个结点（双指针同步移动模板）。</li>
-<li>[ ] 2010 年：一维数组循环左移 p 个位置（三次逆置 reverse 模板）。</li>
-<li>[ ] 2011 年：两个等长升序序列求中位数（双指针归并 / 二分折半模板）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2009 年：单链表查找倒数第 k 个结点（双指针同步移动模板）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2010 年：一维数组循环左移 p 个位置（三次逆置 reverse 模板）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2011 年：两个等长升序序列求中位数（双指针归并 / 二分折半模板）。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 模块 C（数据结构非 408 盲区一：广义表、矩阵压缩、栈，45 min/天）：</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 C（数据结构非 408 盲区一：广义表、矩阵压缩、栈，45 min/天）：</p>
 <ul>
 <li>彻底搞懂严蔚敏教材第 5 章【广义表】取表头 Head（取首元素，可为原子或子表）与取表尾 Tail（删首元素后剩余元素组成的表，外层必加括号！）运算，亲手重算 2025-选31：对 L = ((a, b), ((c, d), (e, f))) 求 Head(Tail(Head(Tail(L)))) = (e, f)。</li>
 <li>彻底搞懂【特殊矩阵压缩存储】（对称矩阵、上/下三角矩阵、三对角矩阵）按行优先/列优先存入一维数组的下标公式；重算 2025-选35：n 阶对称矩阵下三角按行压缩，矩阵与压缩数组下标均从 1 起时，i&gt;=j 对应下标为 i<em>(i-1)/2 + j（若压缩数组从 0 起则为 i</em>(i-1)/2 + j - 1）。</li>
@@ -2778,28 +2778,28 @@
 </li>
 </ul>
 <h4 id="day-4-day-6-3">Day 4 至 Day 6（共 3 天）</h4>
-<ul>
-<li>
-<p>[ ] 模块 A（谢书第 3 章数据链路层 + 无线局域网 CSMA/CA，75 min/天）：</p>
+<ul class="task-list">
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 A（谢书第 3 章数据链路层 + 无线局域网 CSMA/CA，75 min/天）：</p>
 <ul>
 <li>精读并背诵 HDLC（01111110、零比特填充、I/S/U 三种帧编码与功能）与透明网桥自学习三步流程。</li>
 <li>动笔算透：CRC 模 2 除法与漏检含义（习题 3-07）、CSMA/CD 最短帧长、交换机/网桥自学习转发表填写。</li>
 <li>搞透 802.11 DCF 中 SIFS 与 DIFS 长度优先级（2025-选22）及 NAV 虚拟载波侦听规则（2025-选23）。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 模块 B（408 大题：2012、2013、2014 年，75 min/天）：</p>
-<ul>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 B（408 大题：2012、2013、2014 年，75 min/天）：</p>
+<ul class="task-list">
 <li>计网大题（第 47 题）：每天 1 道（共 3 道）。</li>
 <li>数据结构应用大题：每天 1 道（共 3 道）。</li>
 <li>数据结构算法代码题（手写代码）：</li>
-<li>[ ] 2012 年：求两个单链表的公共后缀起始结点（先求表长差，长表先走 |len1-len2| 步再同步走）。</li>
-<li>[ ] 2013 年：寻找一维数组的主元素（摩尔投票抵消法 / 计数数组法）。</li>
-<li>[ ] 2014 年：求二叉树的带权路径长度 WPL（二叉树先序/层序遍历改造递归模板，必背！）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2012 年：求两个单链表的公共后缀起始结点（先求表长差，长表先走 |len1-len2| 步再同步走）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2013 年：寻找一维数组的主元素（摩尔投票抵消法 / 计数数组法）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2014 年：求二叉树的带权路径长度 WPL（二叉树先序/层序遍历改造递归模板，必背！）。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 模块 C（数据结构盲区二：KMP 比较次数、树与森林、多叉哈夫曼树，45 min/天）：</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 C（数据结构盲区二：KMP 比较次数、树与森林、多叉哈夫曼树，45 min/天）：</p>
 <ul>
 <li>亲手算透 KMP 算法的 next 数组与 nextval 数组，特别注意题干约定下标从 1 起且 next[1]=0 时，统计首次匹配成功前的实际字符比较次数（对标第 37 题，王道 4.2 节选择第 7 题）。</li>
 <li>掌握树与森林遍历和二叉树遍历的对应关系：树的后根遍历序列 = 左孩子右兄弟转换后二叉树的中序序列（对标 2025-选32）；完全二叉树按层序存入数组，当根结点下标为 0 时，结点 i 的左孩子下标为 2i+1、右孩子为 2i+2（对标 2025-选34，切勿盲目背 2i）。</li>
@@ -2808,29 +2808,29 @@
 </li>
 </ul>
 <h4 id="day-7-day-11-5">Day 7 至 Day 11（共 5 天）</h4>
-<ul>
-<li>
-<p>[ ] 模块 A（谢书第 4 章网络层重中之重，75 min/天）：</p>
+<ul class="task-list">
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 A（谢书第 4 章网络层重中之重，75 min/天）：</p>
 <ul>
 <li>动笔算透：IPv4 分片与片偏移（习题 4-20）、CIDR 路由聚合（习题 4-22）、等长/变长子网划分与路由器路由表填写（2025-大3）、RIP 距离向量路由表更新（做 3 道谢书原题）、输入队列逐字节公平排队输出顺序（2025-选19）。</li>
 <li>扫读掌握：数据报 vs 虚电路（习题 4-01）、跨子网 ARP（2025-选17、大2）、traceroute（2025-选16）、NAPT 重算 IP 与 UDP 检验和（习题 4-42）、BGP 边界路由算法、IPv6 基本过渡技术。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 模块 B（408 大题：2015、2016、2017、2018、2019 年，75 min/天）：</p>
-<ul>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 B（408 大题：2015、2016、2017、2018、2019 年，75 min/天）：</p>
+<ul class="task-list">
 <li>计网大题（第 47 题）：每天 1 道（共 5 道，跳过涉及 SDN 或移动 IP 的小问）。</li>
 <li>数据结构应用大题：每天 1 道（共 5 道）。</li>
 <li>数据结构算法代码题（手写代码）：</li>
-<li>[ ] 2015 年（即 2025 东南大学 816 第 46 题原题！）：带头结点单链表保留绝对值首次出现的结点并删除重复结点。必须滚瓜烂熟默写出 calloc 申请 seen[n+1] 标志数组、取绝对值判断、删除结点时 p-&gt;link = q-&gt;link 并 free(q) 且前驱指针 p 不前移（防止漏查刚接来的后继）、时间复杂度 O(m+n)、空间 O(n) 的完整满分答案！</li>
-<li>[ ] 2016 年：将数组划分为元素个数尽量相等且元素之和差最大的两个子集（快排 Partition 划分思想）。</li>
-<li>[ ] 2017 年：将表达式二叉树转换为等价的中缀表达式并加括号（中序遍历递归加括号模板）。</li>
-<li>[ ] 2018 年：找出数组中未出现的最小正整数（空间换时间哈希标志数组模板，与 2015 年链表题同源！）。</li>
-<li>[ ] 2019 年：单链表重排 L0 -&gt; Ln -&gt; L1 -&gt; Ln-1（快慢指针找中点 + 后半段逆置 + 交替合并三大基本功合集，必背！）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2015 年（即 2025 东南大学 816 第 46 题原题！）：带头结点单链表保留绝对值首次出现的结点并删除重复结点。必须滚瓜烂熟默写出 calloc 申请 seen[n+1] 标志数组、取绝对值判断、删除结点时 p-&gt;link = q-&gt;link 并 free(q) 且前驱指针 p 不前移（防止漏查刚接来的后继）、时间复杂度 O(m+n)、空间 O(n) 的完整满分答案！</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2016 年：将数组划分为元素个数尽量相等且元素之和差最大的两个子集（快排 Partition 划分思想）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2017 年：将表达式二叉树转换为等价的中缀表达式并加括号（中序遍历递归加括号模板）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2018 年：找出数组中未出现的最小正整数（空间换时间哈希标志数组模板，与 2015 年链表题同源！）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2019 年：单链表重排 L0 -&gt; Ln -&gt; L1 -&gt; Ln-1（快慢指针找中点 + 后半段逆置 + 交替合并三大基本功合集，必背！）。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 模块 C（王道第 6 章图论手工模拟大题攻坚，45 min/天）：</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 C（王道第 6 章图论手工模拟大题攻坚，45 min/天）：</p>
 <ul>
 <li>掌握简单带权有向图邻接矩阵入度计算：顶点 i 的入度 = 第 i 列非无穷大且非 0 的元素个数（对标 2025-选36）；邻接表存储的有向图完整 BFS 遍历时间复杂度为 O(V+E)（对标第 38 题，王道 6.3 节选择第 15 题）。</li>
 <li>亲手画图并列表计算 3 道【AOE 网拓扑排序与关键路径大题】（直接对标 2025-大8，王道 6.4 节解答题第 4 题）：熟练写出拓扑序列、正序求事件最早发生时间 ve（取 max）、逆序求事件最迟发生时间 vl（取 min）、逐条弧求活动最早开始时间 e = ve(起点) 与最迟开始时间 l = vl(终点) - 边权 w、找出 e == l（时差为 0）的全部关键活动与关键路径、总工期，并熟记采用邻接表计算关键活动的时间复杂度为 O(V+E)。</li>
@@ -2839,35 +2839,35 @@
 </li>
 </ul>
 <h4 id="day-12195">Day 12：第一次中期哨点测试与微调（195 分钟）</h4>
-<ul>
-<li>[ ] 1. 闭卷盲测（90 分钟）：不看任何参考书，随机抽测前 11 天学过的 20 道单选（含广义表、矩阵压缩、三叉哈夫曼、NAPT、802.11 NAV、公平排队）+ 2 道计网大题（分组流水线时延 + 子网划分与路由表）+ 2 道 DS 大题（2015 链表绝对值去重代码默写 + AOE 关键路径完整列表）。</li>
-<li>[ ] 2. 批改与止损诊断（60 分钟）：严格按步骤扣分。若得分率低于 75%，立刻找出是因为“看懂答案但手算算错”还是“概念没背住”，当天剩余 45 分钟全部用于重算错题，绝不带病进入下半程。</li>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 1. 闭卷盲测（90 分钟）：不看任何参考书，随机抽测前 11 天学过的 20 道单选（含广义表、矩阵压缩、三叉哈夫曼、NAPT、802.11 NAV、公平排队）+ 2 道计网大题（分组流水线时延 + 子网划分与路由表）+ 2 道 DS 大题（2015 链表绝对值去重代码默写 + AOE 关键路径完整列表）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2. 批改与止损诊断（60 分钟）：严格按步骤扣分。若得分率低于 75%，立刻找出是因为“看懂答案但手算算错”还是“概念没背住”，当天剩余 45 分钟全部用于重算错题，绝不带病进入下半程。</li>
 </ul>
 <h3 id="day-13-day-23">第二阶段：Day 13 - Day 23（下半程核心攻坚与增量收网）</h3>
 <h4 id="day-13-day-17-5">Day 13 至 Day 17（共 5 天）</h4>
-<ul>
-<li>
-<p>[ ] 模块 A（谢书第 5 章运输层重中之重，75 min/天）：</p>
+<ul class="task-list">
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 A（谢书第 5 章运输层重中之重，75 min/天）：</p>
 <ul>
 <li>动笔算透：TCP 三次握手与四次挥手序号（2025-选21、习题 5-62）、TCP 字节序号与乱序缓存累计确认（2025-大5）、TCP 拥塞控制折线图（慢开始/拥塞避免/快重传/快恢复）与 RTO 计算、TCP 首部十六进制端口号换算（2025-大4）。</li>
 <li>扫读掌握：TCP 四元组套接字（习题 5-09）、UDP 检验和算出全 0 改发全 1（0xFFFF，习题 5-51）、停止等待与滑动窗口（GBN/SR）原理。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 模块 B（408 大题：2020、2021、2022、2023、2024 年，75 min/天）：</p>
-<ul>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 B（408 大题：2020、2021、2022、2023、2024 年，75 min/天）：</p>
+<ul class="task-list">
 <li>计网大题（第 47 题）：每天 1 道（共 5 道）。</li>
 <li>数据结构应用大题：每天 1 道（共 5 道）。</li>
 <li>数据结构算法代码题（手写代码，掌握图与树存储结构代码）：</li>
-<li>[ ] 2020 年：三元组最小距离（暴力三重循环拿保底分 + 三指针推进最优解）。</li>
-<li>[ ] 2021 年：无向连通图邻接矩阵判断是否存在 EL 路径（统计度为奇数的顶点个数是否为 0 或 2）。</li>
-<li>[ ] 2022 年：顺序存储的二叉树判断是否为二叉排序树 BST（中序遍历递增判断 / 递归上下界判断）。</li>
-<li>[ ] 2023 年：有向图邻接矩阵寻找出度大于入度的 K 顶点（遍历邻接矩阵行和与列和）。</li>
-<li>[ ] 2024 年：有向图邻接表判断拓扑序列是否唯一（每次入度为 0 的顶点是否仅有一个）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2020 年：三元组最小距离（暴力三重循环拿保底分 + 三指针推进最优解）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2021 年：无向连通图邻接矩阵判断是否存在 EL 路径（统计度为奇数的顶点个数是否为 0 或 2）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2022 年：顺序存储的二叉树判断是否为二叉排序树 BST（中序遍历递增判断 / 递归上下界判断）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2023 年：有向图邻接矩阵寻找出度大于入度的 K 顶点（遍历邻接矩阵行和与列和）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2024 年：有向图邻接表判断拓扑序列是否唯一（每次入度为 0 的顶点是否仅有一个）。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 模块 C（王道第 7、8 章查找与排序手工模拟大题攻坚，45 min/天）：</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 C（王道第 7、8 章查找与排序手工模拟大题攻坚，45 min/天）：</p>
 <ul>
 <li>亲手画 3 道【二叉排序树 BST 构造、查找 ASL 与结点删除大题】（直接对标 2025-大7，王道 7.3 节解答题第 1/2 题）：给定插入序列（如 5,3,7,2,4,6,8,1,9）画出初始 BST；计算等概率成功查找 ASL（各结点所在层数之和 / 结点总数 n）；注意题干约定“不计最终 NULL 测试”时，失败查找最多与实际结点比较次数等于树高 h；熟练画出删除叶结点、删除仅有左或右孩子的结点（子树直接上提接替）、删除左右孩子均有的结点（用直接前驱或直接后继替换）后的完整树形；同时掌握 BST 删除结点 v 再作为新叶插回何时与原树相同（v 为叶时相同，v 非叶时不同，对标 2025-选37，王道 7.3 节选择第 27 题）。</li>
 <li>亲手算 3 道【散列表构造与成功/失败探测次数】（直接对标 2025-选38：表长 17，H(k)=k mod 17，线性探测插入序列后求某关键字探测次数，含初次查看）；掌握 AVL 树 4 种旋转（LL/RR/LR/RL）与 B 树插入分裂性质（仅根分裂才增加整树高度，非根分裂在父层吸收不改变树高，对标第 39 题，王道 7.4 节选择第 11 题）。</li>
@@ -2876,52 +2876,52 @@
 </li>
 </ul>
 <h4 id="day-18-day-20-3">Day 18 至 Day 20（共 3 天）</h4>
-<ul>
-<li>
-<p>[ ] 模块 A（谢书第 6 章应用层主干 + TELNET/SNMP/P2P 增量，75 min/天）：</p>
+<ul class="task-list">
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 A（谢书第 6 章应用层主干 + TELNET/SNMP/P2P 增量，75 min/天）：</p>
 <ul>
 <li>精读并背熟 6.3 TELNET(NVT)、6.8 P2P(BitTorrent)、6.9 SNMP 的正文与全部课后问答。</li>
 <li>动笔算透：习题 6-51（C/S 与 P2P 最短分发时间）、DNS + ARP + HTTP 综合流程题（对标 2025-大2、大4）。</li>
 <li>扫读掌握：DHCP DORA（习题 6-32）、MIME base64（习题 6-25）、FTP 控制连接（21 端口）与数据连接（20 端口）区别。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 模块 B（408 大题错题重算 + 953 往年真题计网大题精选，75 min/天）：</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 B（408 大题错题重算 + 953 往年真题计网大题精选，75 min/天）：</p>
 <ul>
 <li>把 Day 1 至 Day 17 做 408 大题时算错或卡壳的题目拿白纸重算一遍；从 953 往年真题中挑 3-4 道计网大题限时做。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 模块 C（408 真题选择题错题二刷清零，45 min/天）：</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 C（408 真题选择题错题二刷清零，45 min/天）：</p>
 <ul>
 <li>将你之前一刷 408 计网与数据结构选择题时做错的题目快速重做一遍，清零所有主干概念死角。</li>
 </ul>
 </li>
 </ul>
 <h4 id="day-21-day-23-3">Day 21 至 Day 23（共 3 天）</h4>
-<ul>
-<li>
-<p>[ ] 模块 A（谢书第 7 章网络安全 + 第 8 章流媒体全面收网，75 min/天）：</p>
+<ul class="task-list">
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 A（谢书第 7 章网络安全 + 第 8 章流媒体全面收网，75 min/天）：</p>
 <ul>
 <li>精读第 7 章（7.1-7.6 + 7.7 IPsec/TLS）与第 8 章（8.1-8.3 流媒体），将这两章的全部课后思考题与问答题答案拿着《习题解答》完整精读 2 遍（重点盯防：公钥加密角色习题 7-08、数字签名 5 步、CA 证书、防火墙对比、IPsec ESP 序号 2025-选20、HTTPS/TLS 2025-大4、时延抖动与播放缓冲区、RTSP/RTP/RTCP 分工及习题 8-12）。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 模块 B（953 往年真题数据结构大题 + 4 大万能代码模板闭卷默写，75 min/天）：</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 B（953 往年真题数据结构大题 + 4 大万能代码模板闭卷默写，75 min/天）：</p>
 <ul>
 <li>在白纸上闭卷默写 4 套高频代码模板：(1)单链表遍历/逆置/双指针/哈希数组去重；(2)二叉树先中后序递归改造（求 WPL/树高/判断 BST）；(3)图邻接矩阵与邻接表度统计及 BFS/DFS 遍历；(4)一维数组哈希标记与快排划分。</li>
 </ul>
 </li>
-<li>
-<p>[ ] 模块 C（考纲增量文档闭卷自测，45 min/天）：</p>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 模块 C（考纲增量文档闭卷自测，45 min/天）：</p>
 <ul>
 <li>对照《816 考纲差异文档》的全部标题，合上正文逐条口述或默写核心关键词，做到零盲区。</li>
 </ul>
 </li>
 </ul>
 <h4 id="day-24180">Day 24：终极止损验收测试（180 分钟全真模考）</h4>
-<ul>
-<li>[ ] 下午 14:00 - 17:00：拿出全真重构模拟卷（或将 2025 重构卷题卷打印出来，完全遮住答案），严格限时 180 分钟闭卷作答（计网控制在 100-105 分钟内，数据结构 75-80 分钟），考后严格按照《答案与评分细则》逐分判卷。</li>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 下午 14:00 - 17:00：拿出全真重构模拟卷（或将 2025 重构卷题卷打印出来，完全遮住答案），严格限时 180 分钟闭卷作答（计网控制在 100-105 分钟内，数据结构 75-80 分钟），考后严格按照《答案与评分细则》逐分判卷。</li>
 </ul>
 <h2 id="24-28-85">三、第 24 天后的“止损/调仓决策树”（剩余 28 天约 85 小时的保底策略）</h2>
 <ol>
