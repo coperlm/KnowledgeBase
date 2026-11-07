@@ -8,9 +8,10 @@ MARKER = "<!-- KB_STATIC_TREE -->"
 SKIP_DIRS = {"assets"}
 SKIP_FILES = {"index.md", "tags.md"}
 ROOT_DIR_ORDER = {
-    "自然与应用科学": 0,
-    "人文与社会科学": 1,
-    "艺术与文化生活": 2,
+    "about": 0,
+    "science": 1,
+    "humanities": 2,
+    "arts": 3,
 }
 
 
