@@ -467,6 +467,8 @@
       
         
       
+        
+      
     
     
     
@@ -539,6 +541,34 @@
     
   
     TODO List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="about-index-author-guide-backup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    我该咋写这个知识库捏
   
 
     
@@ -812,7 +842,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        这是什么
+        这里有什么
       
     </span>
   </a>
@@ -823,18 +853,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        目录结构
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#url" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        文件与 URL 规则
+        知识库与博客
       
     </span>
   </a>
@@ -845,7 +864,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        新增或修改文档
+        如何阅读
       
     </span>
   </a>
@@ -856,7 +875,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        本地预览与构建
+        内容说明
       
     </span>
   </a>
@@ -867,29 +886,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        发布前检查
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        相关文档
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        维护原则
+        相关页面
       
     </span>
   </a>
@@ -962,105 +959,42 @@
 
 
 <h1 id="_1">关于知识库</h1>
-<h2 id="_2">这是什么</h2>
-<p>这是一个用于沉淀学习过程和知识成果的个人知识库。</p>
-<p>博客更适合线性记录和阶段性分享；知识库更适合分类、检索和长期积累。这里的内容不要求一次写完，而是允许在学习过程中持续补充、修订和重新组织。</p>
-<h2 id="_3">目录结构</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">目录</th>
-<th style="text-align: left;">URL</th>
-<th style="text-align: left;">内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">自然与应用科学</td>
-<td style="text-align: left;"><code>/science/</code></td>
-<td style="text-align: left;">数学、计算机、密码学、人工智能等</td>
-</tr>
-<tr>
-<td style="text-align: left;">人文与社会科学</td>
-<td style="text-align: left;"><code>/humanities/</code></td>
-<td style="text-align: left;">宗教、语言、社会和人文相关内容</td>
-</tr>
-<tr>
-<td style="text-align: left;">艺术与文化生活</td>
-<td style="text-align: left;"><code>/arts/</code></td>
-<td style="text-align: left;">艺术、生活经验和兴趣记录</td>
-</tr>
-<tr>
-<td style="text-align: left;">关于知识库</td>
-<td style="text-align: left;"><code>/about/</code></td>
-<td style="text-align: left;">本手册、Markdown 规范和编译排错指南</td>
-</tr>
-</tbody>
-</table>
-<p><code>about/</code> 是辅助说明目录，不会出现在首页的知识分类树中。可以通过页面底部的“关于知识库”链接进入，也可以直接访问 <code>/about/</code>。</p>
-<h2 id="url">文件与 URL 规则</h2>
+<p>欢迎来到 Coperlm 的芝士库。</p>
+<p>这里是一个持续整理中的个人知识库，用来保存学习过程中积累的概念、推导、实践记录和阶段性总结。内容会随着学习不断补充和修订，因此它更像一座正在生长的知识花园，而不是一本一次完成的书。</p>
+<h2 id="_2">这里有什么</h2>
+<p>知识库目前主要分为三个方向：</p>
 <ul>
-<li><code>docs/</code> 是文档源目录，MkDocs 会根据其中的 Markdown 文件生成网站。</li>
-<li>每个分类目录的 <code>index.md</code> 是该目录的概览页。</li>
-<li>一级目录使用简短英文名称，以避免 URL 过长；页面标题和正文仍然可以使用中文。</li>
-<li>子目录和文章文件名目前以内容可读性为优先，可以使用中文。</li>
-<li><code>docs/science/example.md</code> 会生成 <code>/science/example/</code>。</li>
-<li><code>docs/science/topic/index.md</code> 会生成 <code>/science/topic/</code>。</li>
-<li>图片、脚本和样式等静态资源应放在对应目录的 <code>assets/</code> 中，避免与文章混放。</li>
+<li><a href="../science/">自然与应用科学</a>：数学、计算机科学、密码学、人工智能等内容。</li>
+<li><a href="../humanities/">人文与社会科学</a>：语言、宗教、社会和人文相关内容。</li>
+<li><a href="../arts/">艺术与文化生活</a>：艺术、生活经验以及个人兴趣记录。</li>
 </ul>
-<p>修改文件名或目录名会改变页面 URL。已经分享或收录的页面在改名后可能失效，因此修改前应确认是否需要保留旧链接或增加重定向。</p>
-<h2 id="_4">新增或修改文档</h2>
-<p>推荐按以下流程操作：</p>
-<ol>
-<li>根据主题选择 <code>science/</code>、<code>humanities/</code> 或 <code>arts/</code>。</li>
-<li>如果是一个新的分类，创建目录和 <code>index.md</code>，并在概览页说明该分类的范围。</li>
-<li>为文章选择清晰、稳定的文件名；需要缩短 URL 时，优先使用简短英文文件名。</li>
-<li>使用一级标题作为文章标题，例如 <code># 外部排序</code>。</li>
-<li>图片使用相对路径引用，并确认大小写与文件名完全一致。</li>
-<li>完成后先在本地预览，再执行严格构建和空白检查。</li>
-</ol>
-<p>文章不必为了“看起来完整”一次堆满所有内容。优先保证标题、结论、公式、示例和引用关系清楚，后续再增补细节。</p>
-<h2 id="_5">本地预览与构建</h2>
-<p>在仓库根目录执行：</p>
-<pre><code class="language-bash">mkdocs serve
-</code></pre>
-<p>然后打开终端输出的本地地址。修改 Markdown 后，浏览器会自动刷新；涉及目录、URL 或主题配置的修改时，应重新检查实际链接。</p>
-<p>提交前执行：</p>
-<pre><code class="language-bash">mkdocs build --strict --clean
-git diff --check
-</code></pre>
-<p>其中：</p>
+<p>不同主题会按照内容继续细分。你可以从首页的分类树开始浏览，也可以使用站点搜索直接查找关键词。</p>
+<h2 id="_3">知识库与博客</h2>
+<p>博客更适合记录正在发生的事情，文章通常按照时间和事件展开；知识库更适合保存可以反复查阅的内容，重点在于分类、关联和长期积累。</p>
+<p>同一个主题可能先出现在博客中，经过学习、整理和验证后，再沉淀为知识库中的条目。这里的文章不一定代表最终结论，阅读时可以结合文中的来源、推导和上下文理解。</p>
+<h2 id="_4">如何阅读</h2>
 <ul>
-<li><code>mkdocs build --strict --clean</code> 从干净的 <code>site/</code> 目录构建整站，并将警告视为错误。</li>
-<li><code>git diff --check</code> 检查行尾空格、空白错误和冲突标记。</li>
-<li>新增但尚未被 Git 跟踪的文件不会被 <code>git diff --check</code> 检查，应额外确认文件本身没有行尾空格。</li>
+<li>想浏览主题，可以从首页选择一个分类。</li>
+<li>想查找具体概念，可以使用页面顶部的搜索功能。</li>
+<li>想了解一篇文章所属的主题，可以查看页面上方的路径导航。</li>
+<li>想继续深入，可以沿着文章中的相关链接和参考资料阅读。</li>
 </ul>
-<p>构建通过后，还应抽查本次修改涉及的页面，重点查看公式、嵌套列表、表格、代码块和图片。</p>
-<h2 id="_6">发布前检查</h2>
-<p>发布前至少确认：</p>
+<p>知识库的页面会持续更新，部分内容可能仍在整理中。对于重要结论，建议同时查看文章给出的教材、论文或其他参考来源。</p>
+<h2 id="_5">内容说明</h2>
+<p>这里的内容主要来自个人学习和实践记录，包含笔记、例题、代码、图表与阶段性思考。不同文章的详细程度和完成度可能不同：</p>
 <ul>
-<li>页面标题和目录层级正确。</li>
-<li>内部链接可以打开，没有指向旧中文一级目录的链接。</li>
-<li>图片和附件在本地构建结果中正常显示。</li>
-<li>公式没有显示为裸 <code>$</code>、<code>$$</code> 或普通代码。</li>
-<li>列表没有粘连、跳号或错误缩进。</li>
-<li>首页目录树只显示知识分类，站点说明从页脚进入。</li>
-<li>生成的页面 URL 与预期一致。</li>
+<li>有些文章是经过多次整理的长期笔记。</li>
+<li>有些文章是刚开始形成结构的学习记录。</li>
+<li>有些文章用于保存问题、想法或未来继续研究的线索。</li>
 </ul>
-<p>如果只修改了 Markdown 内容，通常不需要调整 <code>mkdocs.yml</code>。如果修改了主题、插件、hook 或静态资源，应进行一次完整严格构建。</p>
-<h2 id="_7">相关文档</h2>
+<p>如果你发现内容中的错误、过时信息或链接失效，欢迎通过 GitHub 提出反馈。</p>
+<h2 id="_6">相关页面</h2>
 <ul>
-<li><a href="./Markdown格式规范与编译排错指南.md">Markdown 格式规范与编译排错指南</a>：公式、列表、表格、代码块和编译异常的详细处理规则。</li>
-<li><a href="../">知识库首页</a>：浏览当前知识分类。</li>
+<li><a href="../">知识库首页</a>：浏览全部主要分类。</li>
+<li><a href="%E7%9F%A5%E8%AF%86%E5%BA%93%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83%E4%B8%8E%E7%BC%96%E8%AF%91%E6%8E%92%E9%94%99%E6%8C%87%E5%8D%97/">知识库格式规范与编译排错指南</a>：了解本文档使用的格式和常见显示问题。</li>
+<li><a href="TODO/">TODO List</a>：查看正在整理和计划补充的内容。</li>
 </ul>
-<h2 id="_8">维护原则</h2>
-<ul>
-<li>内容优先于装饰，先保证知识准确、结构清楚，再调整样式。</li>
-<li>源 Markdown 是唯一应直接修改的内容，不要手动编辑 <code>site/</code> 下的编译产物。</li>
-<li>修改要尽量小而明确，避免无关的批量重命名。</li>
-<li>新增功能或配置后，补充相应的说明，并用实际构建结果验证。</li>
-<li>对不确定的内容保留来源、推导过程或待核验说明，不把猜测写成结论。</li>
-</ul>
+<p>感谢阅读，也欢迎在知识库中找到对你有帮助的内容。</p>
 
 
 
