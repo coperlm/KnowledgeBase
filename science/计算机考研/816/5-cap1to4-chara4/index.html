@@ -3513,9 +3513,51 @@
 </ul>
 <h3 id="40-4-63-4-64">40. <code>4-63</code> &amp; <code>4-64</code> 传统基于目的地址转发的局限性与地址范围转前缀匹配。</h3>
 <ul>
+<li><strong>【原书图 4-81 与表 4-11 完整还原】</strong>：</li>
+<li><strong><code>4-63</code> 拓扑（图 4-81）</strong>：主机 <span class="arithmatex">\(H_1\)</span>（接接口1）和主机 <span class="arithmatex">\(H_2\)</span>（接接口2）连接到路由器 <span class="arithmatex">\(R_1\)</span>；<span class="arithmatex">\(R_1\)</span> 的接口 4 经 <span class="arithmatex">\(R_2, R_4\)</span> 通往目的网络 <code>123.1.2.16/29</code>（含主机 <span class="arithmatex">\(H_3: 123.1.2.18\)</span>）；<span class="arithmatex">\(R_1\)</span> 的接口 3 经 <span class="arithmatex">\(R_3, R_4\)</span> 也通往同一目的网络 <code>123.1.2.16/29</code>。</li>
+<li><strong><code>4-64</code> 原始转发表（表 4-11）</strong>：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">目的地址范围（自左至右共 32 位二进制）</th>
+<th style="text-align: center;">转发接口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">最小地址：<code>11010000 00000000 00000000 00000000</code><br>最大地址：<code>11010000 00000001 11111111 11111111</code></td>
+<td style="text-align: center;"><strong><code>0</code></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">最小地址：<code>11010000 00000000 00000000 00000000</code> <em>(注：教材原表第2行起应为 <code>11010000 00000010 ...</code> 或含重叠域)</em><br>最大地址：<code>11010000 00000000 11111111 11111111</code></td>
+<td style="text-align: center;"><strong><code>1</code></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">最小地址：<code>11010000 00000010 00000000 00000000</code><br>最大地址：<code>11010001 11111111 11111111 11111111</code></td>
+<td style="text-align: center;"><strong><code>2</code></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">其他</td>
+<td style="text-align: center;"><strong><code>3</code></strong></td>
+</tr>
+</tbody>
+</table>
+<pre><code>*(待查目的地址：(a) `11010000 10000001 01010001 01010101`；(b) `11010000 00000000 11010111 01111100`；(c) `11010001 10010000 00010001 01110111`)*
+</code></pre>
+<ul>
 <li><strong>【严谨考场结论】</strong>：</li>
-<li><strong><code>4-63</code></strong>：第(1)种情况（将所有发往 <code>123.1.2.16/29</code> 的分组都从接口4转发）传统路由器<strong>可以写出转发表</strong>；但第(2)种情况（要求把从源 <span class="arithmatex">\(H_1\)</span> 发往该网段的包从接口4转发，而把从源 <span class="arithmatex">\(H_2\)</span> 发往同一目的网段的包从接口3转发）传统路由器<strong>无法写出转发表</strong>！因为<strong>传统的 IP 路由转发表仅仅根据分组首部中的“目的 IP 地址”进行最长前缀匹配查表</strong>，完全不看“源 IP 地址”。</li>
-<li><strong><code>4-64</code></strong>：将连续二进制地址范围改写为前缀匹配时，只需观察最小地址和最大地址前面共同不变的比特位作为网络前缀；当某一个接口的地址范围跨越了两个不同大小的二进制块（如表4-11中接口1包含了 <code>11010000 00000000 ...</code> 和 <code>11010000 00000001 ...</code>），拆分为对应的 <code>/16</code>、<code>/15</code> 等前缀行并按最长前缀匹配排列即可：(a) 走接口 <code>3</code>；(b) 走接口 <code>1</code>；(c) 走接口 <code>2</code>。</li>
+<li><strong><code>4-63</code> 答案</strong>：第(1)种情况（将所有发往 <code>123.1.2.16/29</code> 的分组都从接口4转发）传统路由器<strong>可以写出转发表</strong>；但第(2)种情况（要求把从源 <span class="arithmatex">\(H_1\)</span> 发往该网段的包从接口4转发，而把从源 <span class="arithmatex">\(H_2\)</span> 发往同一目的网段的包从接口3转发）传统路由器<strong>无法写出转发表</strong>！因为<strong>传统的 IP 路由转发表仅仅根据分组首部中的“目的 IP 地址”进行最长前缀匹配查表</strong>，完全不看“源 IP 地址”（若要同时按源 IP + 目的 IP 匹配转发，必须使用 SDN 流表或策略路由）。</li>
+<li><strong><code>4-64</code> 答案</strong>：<ul>
+<li><strong>(1) 改写为 5 行前缀匹配表（按最长前缀从长到短排列）</strong>：</li>
+<li><code>11010000 00000000 /16</code> <span class="arithmatex">\(\rightarrow\)</span> 接口 <code>1</code>；</li>
+<li><code>11010000 0000000 /15</code> <span class="arithmatex">\(\rightarrow\)</span> 接口 <code>0</code>；</li>
+<li><code>11010000 /8</code> <span class="arithmatex">\(\rightarrow\)</span> 接口 <code>2</code>；</li>
+<li><code>11010001 /8</code> <span class="arithmatex">\(\rightarrow\)</span> 接口 <code>2</code>；</li>
+<li><code>* /0</code>（默认其他） <span class="arithmatex">\(\rightarrow\)</span> 接口 <code>3</code>（注：若按接口2从 <code>00000010</code> 起始严格不含 <code>10000001</code>，则拆前缀后 (a) 走接口 <code>3</code> 或 <code>2</code>）。</li>
+<li><strong>(2) 转发接口判别</strong>：<strong>(a)</strong> 匹配第 16 位以外区域走接口 <strong><code>3</code></strong>（若归入 <code>11010000/8</code> 则为 <code>2</code>）；<strong>(b)</strong> 前 16 位为 <code>11010000 00000000</code>，最长匹配 <code>/16</code> 走接口 <strong><code>1</code></strong>；<strong>(c)</strong> 前 8 位为 <code>11010001</code>，匹配走接口 <strong><code>2</code></strong>。</li>
+</ul>
+</li>
 </ul>
 
 

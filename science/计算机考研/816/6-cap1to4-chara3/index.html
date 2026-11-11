@@ -3071,8 +3071,18 @@
 <p><code>3-27</code>：有 10 个站连接到以太网上，分别计算每站所能得到的带宽：(1) 10 个站连到一个 <span class="arithmatex">\(10\text{ Mbit/s}\)</span> 集线器；(2) 10 个站连到一个 <span class="arithmatex">\(100\text{ Mbit/s}\)</span> 集线器；(3) 10 个站连到一个 <span class="arithmatex">\(10\text{ Mbit/s}\)</span> 以太网交换机。</p>
 </li>
 <li>
-<p><code>3-30</code>：图 3-30 中，主交换机连接三个系的交换机 A、B、C（每系各连 3 台主机，共 9 台主机）以及 2 台服务器和 1 个路由器，所有链路速率均为 <span class="arithmatex">\(100\text{ Mbit/s}\)</span>。试计算这 9 台主机和 2 台服务器产生的最大总吞吐量。</p>
+<p><code>3-30</code>（原书图 3-30 拓扑还原如下）：某学院的主以太网交换机有三个端口分别和学院三个系的以太网（交换机 A、B、C，每个系各有 3 台主机，全网共 9 台主机）相连，另外三个端口分别和电子邮件服务器、万维网服务器以及一个连接互联网的路由器相连。图中的 A、B、C 都是 <span class="arithmatex">\(100\text{ Mbit/s}\)</span> 以太网交换机。假定所有的链路的速率都是 <span class="arithmatex">\(100\text{ Mbit/s}\)</span>，并且 9 台主机中的任何一台都可以和任何一台服务器或主机通信。试计算这 9 台主机和两台服务器产生的总的吞吐量的最大值。</p>
 </li>
+</ul>
+<pre><code class="language-text">    [万维网服务器]-------+                      +-------[路由器]---&gt; 至互联网
+                         \                    /
+    [电子邮件服务器]------+---[主以太网交换机]---+
+                         /         |          \
+                        /          |           \
+                  [交换机A]     [交换机B]     [交换机C]
+                  (一系3台)     (二系3台)     (三系3台)
+</code></pre>
+<ul>
 <li>
 <p><strong>【分步计算与标准答案】</strong>：</p>
 </li>
@@ -3251,9 +3261,32 @@
 </ul>
 <h3 id="17-4-38-4-39-rip-ospf-ebgp-ibgp">17. <code>4-38</code> &amp; <code>4-39</code>（跨自治系统 RIP + OSPF + eBGP + iBGP 协同与选路综合题）</h3>
 <ul>
-<li>
-<p><strong>【已知条件与设问（对照教材 P206 图4-79）】</strong>：假定 <span class="arithmatex">\(\text{AS}_1\)</span> 和 <span class="arithmatex">\(\text{AS}_4\)</span> 内部运行 RIP，<span class="arithmatex">\(\text{AS}_2\)</span> 和 <span class="arithmatex">\(\text{AS}_3\)</span> 内部运行 OSPF，自治系统之间运行 eBGP 和 iBGP。前缀 <span class="arithmatex">\(X\)</span> 位于 <span class="arithmatex">\(\text{AS}_4\)</span> 中。</p>
-</li>
+<li><strong>【已知条件与设问（原书 P206 图 4-79 拓扑完整还原如下）】</strong>：假定 <span class="arithmatex">\(\text{AS}_1\)</span> 和 <span class="arithmatex">\(\text{AS}_4\)</span> 内部运行协议 RIP，<span class="arithmatex">\(\text{AS}_2\)</span> 和 <span class="arithmatex">\(\text{AS}_3\)</span> 内部运行协议 OSPF，自治系统之间运行协议 eBGP 和 iBGP。起初假定在 <span class="arithmatex">\(\text{AS}_2\)</span> 和 <span class="arithmatex">\(\text{AS}_4\)</span> 之间没有物理连接（用虚线表示）。前缀 <span class="arithmatex">\(X\)</span> 位于 <span class="arithmatex">\(\text{AS}_4\)</span> 中。</li>
+</ul>
+<pre><code class="language-text">                       +-----------------------------------+
+                       |   AS4 (内部运行 RIP，含前缀 X)    |
+                       |      [R4c]------( X )------[R4a]  |
+                       +-------/-----------------------\---+
+                              / (eBGP实线)              \ (虚线: 初始无连接，
+                             /                           \ 4-39(2)变为实线，
+    +-----------------------/---+                     +---\-----------------------+
+    |      [R3c]           /    |                     |    \          [R2c]       |
+    |         \           /     |                     |     \        /            |
+    |  AS3     [R3a]-----[R3b]  |                     |  [R2a]-----[R2b]     AS2  |
+    | (OSPF)          \         |                     |    /               (OSPF) |
+    +------------------\--------+                     +---/-----------------------+
+                        \ (eBGP)                         / (eBGP)
+                         \                              /
+                       +--\----------------------------/---+
+                       |  [R1c]                   [R1b]    |
+                       |    |         AS1           |      |
+                       |  [R1a]      (RIP)          |      |
+                       |     \                      |      |
+                       |     接口1--[ 路由器 R1d ]--接口2   |
+                       +-----------------------------------+
+    （注：在 AS1 内部，R1d 从接口 1 经 R1a 到左出口 R1c 需经过 2 跳；从接口 2 到右出口 R1b 仅需 1 跳！）
+</code></pre>
+<ul>
 <li>
 <p><code>4-38</code>：试问路由器 (1) <span class="arithmatex">\(R_{3c}\)</span>（<span class="arithmatex">\(\text{AS}_3\)</span> 与 <span class="arithmatex">\(\text{AS}_4\)</span> 边界）；(2) <span class="arithmatex">\(R_{3a}\)</span>（<span class="arithmatex">\(\text{AS}_3\)</span> 内部）；(3) <span class="arithmatex">\(R_{1c}\)</span>（<span class="arithmatex">\(\text{AS}_1\)</span> 与 <span class="arithmatex">\(\text{AS}_3\)</span> 边界）；(4) <span class="arithmatex">\(R_{1d}\)</span>（<span class="arithmatex">\(\text{AS}_1\)</span> 内部）分别使用哪一个协议知道前缀 <span class="arithmatex">\(X\)</span>？</p>
 </li>
