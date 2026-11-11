@@ -3116,15 +3116,23 @@
 </tr>
 </tbody>
 </table>
-<pre><code>   试问：(1) 画出拥塞窗口与 RTT 的关系曲线；(2) 指明慢开始阶段的时间间隔；(3) 指明拥塞避免阶段的时间间隔；(4) 在 $\text{RTT}=16$（从 $42 \rightarrow 21$）和 $\text{RTT}=22$（从 $26 \rightarrow 1$）之后发送方是通过收到三个重复的确认还是通过超时检测到丢失了报文段？(5) 在 $\text{RTT}=1, 17, 23$ 时门限 `ssthresh` 分别被设置为多大？(6) 在 RTT 等于多少时发送出第 70 个报文段？(7) 假定在 $\text{RTT}=26$（此时 $\text{cwnd}=8$）之后收到了三个重复的确认，因而检测出了报文段的丢失，那么拥塞窗口 `cwnd` 和门限 `ssthresh` 应设置为多大？8. **`5-51`（UDP 检验和特殊全0/全1取值规则 —— `2025-选23` 100%原题！）**
-* **题目要点**：在以下3种情况下，UDP 的检验和在发送时的数值分别是什么？(1) 发送方决定不使用检验和；(2) 发送方使用检验和，且算出的检验和数值是全 1；(3) 发送方使用检验和，且算出的检验和数值是全 0。
-* **开袋即食标准答案**：
- * **(1) 不使用检验和**：填入**全 0**（即 `0x0000`）；
- * **(2) 使用检验和且算出结果为全 1**：正常填入**全 1**（即 `0xFFFF`）；
- * **(3) 使用检验和但算出结果恰好为全 0**：**必须改填为全 1（即 `0xFFFF`）发送！**（因为在二进制反码算术中，全 0 和全 1 都代表数值 $0$，而全 0 已被专门规定用来表示“未启用检验和”，故算得全 0 时必须发全 1 以免接收方误认为没用检验和）。
-</code></pre>
-<ol>
-<li><strong><code>5-61</code>（TCP 发送窗口前沿、后沿与可用窗口动态追踪）</strong><ul>
+<ul>
+<li>
+<p><strong>试问</strong>：(1) 画出拥塞窗口与 RTT 的关系曲线；(2) 指明慢开始阶段的时间间隔；(3) 指明拥塞避免阶段的时间间隔；(4) 在 <span class="arithmatex">\(\text{RTT}=16\)</span>（从 <span class="arithmatex">\(42 \rightarrow 21\)</span>）和 <span class="arithmatex">\(\text{RTT}=22\)</span>（从 <span class="arithmatex">\(26 \rightarrow 1\)</span>）之后发送方是通过收到三个重复的确认还是通过超时检测到丢失了报文段？(5) 在 <span class="arithmatex">\(\text{RTT}=1, 17, 23\)</span> 时门限 <code>ssthresh</code> 分别被设置为多大？(6) 在 RTT 等于多少时发送出第 70 个报文段？(7) 假定在 <span class="arithmatex">\(\text{RTT}=26\)</span>（此时 <span class="arithmatex">\(\text{cwnd}=8\)</span>）之后收到了三个重复的确认，因而检测出了报文段的丢失，那么拥塞窗口 <code>cwnd</code> 和门限 <code>ssthresh</code> 应设置为多大？</p>
+</li>
+<li>
+<p><strong><code>5-51</code>（UDP 检验和特殊全0/全1取值规则 —— <code>2025-选23</code> 100%原题！）</strong></p>
+<ul>
+<li><strong>题目要点</strong>：在以下3种情况下，UDP 的检验和在发送时的数值分别是什么？(1) 发送方决定不使用检验和；(2) 发送方使用检验和，且算出的检验和数值是全 1；(3) 发送方使用检验和，且算出的检验和数值是全 0。</li>
+<li><strong>开袋即食标准答案</strong>：</li>
+<li><strong>(1) 不使用检验和</strong>：填入<strong>全 0</strong>（即 <code>0x0000</code>）；</li>
+<li><strong>(2) 使用检验和且算出结果为全 1</strong>：正常填入<strong>全 1</strong>（即 <code>0xFFFF</code>）；</li>
+<li><strong>(3) 使用检验和但算出结果恰好为全 0</strong>：<strong>必须改填为全 1（即 <code>0xFFFF</code>）发送！</strong>（因为在二进制反码算术中，全 0 和全 1 都代表数值 <span class="arithmatex">\(0\)</span>，而全 0 已被专门规定用来表示“未启用检验和”，故算得全 0 时必须发全 1 以免接收方误认为没用检验和）。</li>
+</ul>
+</li>
+<li>
+<p><strong><code>5-61</code>（TCP 发送窗口前沿、后沿与可用窗口动态追踪）</strong></p>
+<ul>
 <li><strong>题目要点</strong>：A向B发 <span class="arithmatex">\(3\text{ KB}\)</span>（<span class="arithmatex">\(3072\text{ B}\)</span>，字节号 <span class="arithmatex">\(0 \sim 3071\)</span>）数据，发送窗口大小固定为 <span class="arithmatex">\(2\text{ KB}\)</span>（<span class="arithmatex">\(2048\text{ B}\)</span>），初始序号为 <span class="arithmatex">\(0\)</span>。依次求8种事件下的窗口位置与可用窗口大小。</li>
 <li><strong>开袋即食核对结论</strong>：记住两个不变量——<strong>窗口后沿 = 已收到的最大确认号 <code>ack</code></strong>；<strong>窗口前沿 = 窗口后沿 + 窗口大小 <span class="arithmatex">\(2048\)</span></strong>；<strong>可用窗口 = 窗口前沿 - 下一个待发送字节序号</strong>。</li>
 <li>(1) 发 <span class="arithmatex">\(1\text{ KB}\)</span>（<span class="arithmatex">\(0 \sim 1023\)</span>）：窗口覆盖 <span class="arithmatex">\([0, 2047]\)</span>，已发未确认 <span class="arithmatex">\(1024\text{ B}\)</span>，<strong>可用窗口还剩 <span class="arithmatex">\(1024\text{ B}\)</span></strong>（字节 <span class="arithmatex">\(1024 \sim 2047\)</span>）；</li>
@@ -3134,7 +3142,7 @@
 <li>(5) 收到 <code>ack = 900</code>：属于<strong>迟到的旧重复确认（<span class="arithmatex">\(&lt; 1001\)</span>），直接忽略，窗口不动</strong>！</li>
 </ul>
 </li>
-</ol>
+</ul>
 <hr />
 <h3 id="6-5">第6章 应用层（5道必算/必析母题）</h3>
 <ol>
@@ -3186,8 +3194,7 @@
 </ul>
 </li>
 </ol>
-<p><code>text
-                                 +------+
+<pre><code class="language-text">                                 +------+
                                  | MIME |
     +-----+-----+--------+------+------+------+------+-----+-----+-------+------+
     | BGP | FTP | TELNET | HTTP | SMTP | SNMP | TFTP | DNS | RIP | BOOTP | DHCP |  &lt;-- 应用层
@@ -3197,16 +3204,26 @@
     |  ICMP  |  IGMP  |                    IP                    |     OSPF     |  &lt;-- 网络层
     +--------+--------+---------+----------------------+---------+--------------+
                       |   ARP   |                      |   RARP  |
-                      +---------+----------------------+---------+</code>14. <strong><code>6-51</code>（客户/服务器 C/S 与 P2P 文件分发最短时间计算 —— <code>2025-选20</code> 100%原题！）</strong>
-    * <strong>题目要点</strong>：服务器有一文件 <span class="arithmatex">\(F = 15\text{ Gbit}\)</span> 要分发给 <span class="arithmatex">\(N\)</span> 个对等方。服务器上传速率 <span class="arithmatex">\(u_s = 30\text{ Mbit/s}\)</span>，每个对等方下载速率 <span class="arithmatex">\(d = 2\text{ Mbit/s}\)</span>，上传速率 <span class="arithmatex">\(u = 300\text{ kbit/s} = 0.3\text{ Mbit/s}\)</span>。分别计算在 (1) <span class="arithmatex">\(N = 10\)</span>；(2) <span class="arithmatex">\(N = 1000\)</span> 时，C/S 方式和 P2P 方式下分发时间的最小值。
-    * <strong>开袋即食公式与答案（背熟这两个 <code>max</code> 公式）</strong>：
-      * 单位统一：<span class="arithmatex">\(F = 15 \times 10^3\text{ Mbit} = 15000\text{ Mbit}\)</span>，<span class="arithmatex">\(u_s = 30\text{ Mbit/s}\)</span>，<span class="arithmatex">\(d_{\min} = 2\text{ Mbit/s}\)</span>，<span class="arithmatex">\(u = 0.3\text{ Mbit/s}\)</span>。
-      * <strong>一、C/S 模式最短时间公式</strong>：<span class="arithmatex">\(D_{\text{CS}} = \max\left(\frac{N \cdot F}{u_s},\ \frac{F}{d_{\min}}\right)\)</span>
-        * 当 <span class="arithmatex">\(N = 10\)</span> 时：<span class="arithmatex">\(D_{\text{CS}} = \max\left(\frac{10 \times 15000}{30},\ \frac{15000}{2}\right) = \max(5000,\ 7500) = \mathbf{7500\text{ s}}\)</span>；
-        * 当 <span class="arithmatex">\(N = 1000\)</span> 时：<span class="arithmatex">\(D_{\text{CS}} = \max\left(\frac{1000 \times 15000}{30},\ 7500\right) = \max(500000,\ 7500) = \mathbf{500000\text{ s}}\)</span>（随 <span class="arithmatex">\(N\)</span> 线性暴增！）。
-      * <strong>二、P2P 模式最短时间公式</strong>：<span class="arithmatex">\(D_{\text{P2P}} = \max\left(\frac{F}{u_s},\ \frac{F}{d_{\min}},\ \frac{N \cdot F}{u_s + N \cdot u}\right)\)</span>
-        * 当 <span class="arithmatex">\(N = 10\)</span> 时：<span class="arithmatex">\(\frac{F}{u_s} = 500\text{ s}\)</span>，<span class="arithmatex">\(\frac{F}{d_{\min}} = 7500\text{ s}\)</span>，<span class="arithmatex">\(\frac{10 \times 15000}{30 + 10 \times 0.3} = \frac{150000}{33} \approx 4545.5\text{ s} \Rightarrow D_{\text{P2P}} = \max(500,\ 7500,\ 4545.5) = \mathbf{7500\text{ s}}\)</span>；
-        * 当 <span class="arithmatex">\(N = 1000\)</span> 时：<span class="arithmatex">\(\frac{1000 \times 15000}{30 + 1000 \times 0.3} = \frac{15000000}{330} \approx 45454.5\text{ s} \Rightarrow D_{\text{P2P}} = \max(500,\ 7500,\ 45454.5) = \mathbf{45455\text{ s}}\)</span>（仅需 C/S 方式的约 <span class="arithmatex">\(1/11\)</span> 时间！）。</p>
+                      +---------+----------------------+---------+
+</code></pre>
+<ol>
+<li><strong><code>6-51</code>（客户/服务器 C/S 与 P2P 文件分发最短时间计算 —— <code>2025-选20</code> 100%原题！）</strong><ul>
+<li><strong>题目要点</strong>：服务器有一文件 <span class="arithmatex">\(F = 15\text{ Gbit}\)</span> 要分发给 <span class="arithmatex">\(N\)</span> 个对等方。服务器上传速率 <span class="arithmatex">\(u_s = 30\text{ Mbit/s}\)</span>，每个对等方下载速率 <span class="arithmatex">\(d = 2\text{ Mbit/s}\)</span>，上传速率 <span class="arithmatex">\(u = 300\text{ kbit/s} = 0.3\text{ Mbit/s}\)</span>。分别计算在 (1) <span class="arithmatex">\(N = 10\)</span>；(2) <span class="arithmatex">\(N = 1000\)</span> 时，C/S 方式和 P2P 方式下分发时间的最小值。</li>
+<li><strong>开袋即食公式与答案（背熟这两个 <code>max</code> 公式）</strong>：</li>
+<li>单位统一：<span class="arithmatex">\(F = 15 \times 10^3\text{ Mbit} = 15000\text{ Mbit}\)</span>，<span class="arithmatex">\(u_s = 30\text{ Mbit/s}\)</span>，<span class="arithmatex">\(d_{\min} = 2\text{ Mbit/s}\)</span>，<span class="arithmatex">\(u = 0.3\text{ Mbit/s}\)</span>。</li>
+<li><strong>一、C/S 模式最短时间公式</strong>：<span class="arithmatex">\(D_{\text{CS}} = \max\left(\frac{N \cdot F}{u_s},\ \frac{F}{d_{\min}}\right)\)</span><ul>
+<li>当 <span class="arithmatex">\(N = 10\)</span> 时：<span class="arithmatex">\(D_{\text{CS}} = \max\left(\frac{10 \times 15000}{30},\ \frac{15000}{2}\right) = \max(5000,\ 7500) = \mathbf{7500\text{ s}}\)</span>；</li>
+<li>当 <span class="arithmatex">\(N = 1000\)</span> 时：<span class="arithmatex">\(D_{\text{CS}} = \max\left(\frac{1000 \times 15000}{30},\ 7500\right) = \max(500000,\ 7500) = \mathbf{500000\text{ s}}\)</span>（随 <span class="arithmatex">\(N\)</span> 线性暴增！）。</li>
+</ul>
+</li>
+<li><strong>二、P2P 模式最短时间公式</strong>：<span class="arithmatex">\(D_{\text{P2P}} = \max\left(\frac{F}{u_s},\ \frac{F}{d_{\min}},\ \frac{N \cdot F}{u_s + N \cdot u}\right)\)</span><ul>
+<li>当 <span class="arithmatex">\(N = 10\)</span> 时：<span class="arithmatex">\(\frac{F}{u_s} = 500\text{ s}\)</span>，<span class="arithmatex">\(\frac{F}{d_{\min}} = 7500\text{ s}\)</span>，<span class="arithmatex">\(\frac{10 \times 15000}{30 + 10 \times 0.3} = \frac{150000}{33} \approx 4545.5\text{ s} \Rightarrow D_{\text{P2P}} = \max(500,\ 7500,\ 4545.5) = \mathbf{7500\text{ s}}\)</span>；</li>
+<li>当 <span class="arithmatex">\(N = 1000\)</span> 时：<span class="arithmatex">\(\frac{1000 \times 15000}{30 + 1000 \times 0.3} = \frac{15000000}{330} \approx 45454.5\text{ s} \Rightarrow D_{\text{P2P}} = \max(500,\ 7500,\ 45454.5) = \mathbf{45455\text{ s}}\)</span>（仅需 C/S 方式的约 <span class="arithmatex">\(1/11\)</span> 时间！）。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
 <hr />
 <h3 id="79510020252026">第7章至第9章（5道必算/必析母题，100%命中2025/2026真题）</h3>
 <ol>
@@ -3281,22 +3298,32 @@
 </tr>
 </tbody>
 </table>
-<pre><code>  *(注：在 $t=12$ 时刻分组 3、4、5 同时到达使阶梯连升3格；在 $t=15$ 时刻分组 6、7 同时到达使阶梯连升2格)*。
-  试问：(1) 分组 2 到分组 8 的时延（从发送方到接收方）各为多少？(2) 如果接收方在 $t = 8$ 时就开始播放（即要求在 $t = 8, 9, 10, 11, 12, 13, 14, 15$ 播放分组 $1 \sim 8$），试问这 8 个分组中有哪几个未能按时到达赶上播放？(3) 如果要所有的 8 个分组都能按时赶上播放，那么接收方应在什么时间开始播放？19. **`9-26`（802.11b 使用 RTS/CTS 发送数据帧总时间计算 —— `2026-大2` 100%原题题源！）**
-* **题目要点**：使用 `802.11b` 协议的站要发送 $1000\text{ B}$ 长的数据帧（已含首尾），并使用 RTS 和 CTS 帧。试计算从决定发送帧（等待 DIFS）一直到收到确认帧所经历的总时间（忽略传播时间和误码率）。
-  * *(注：谢书 `9.1.3` 节给出的 802.11b 默认标准参数为：$\text{DIFS} = 50\ \mu\text{s}$，$\text{SIFS} = 10\ \mu\text{s}$，控制帧 RTS = $20\text{ B}$、CTS = $14\text{ B}$、ACK = $14\text{ B}$ 按基本速率 $1\text{ Mbit/s}$ 发送，数据帧按 $11\text{ Mbit/s}$ 发送 —— **你看，这组参数跟 `2026-大2` 真题题干给的参数一模一样，真题只是把数据帧长度从 1000B 改成了 1500B！**)*
-* **开袋即食算式与答案**：
-  * $\text{RTS 发送时间} = \frac{20 \times 8\text{ bit}}{1\text{ Mbit/s}} = 160\ \mu\text{s}$；
-  * $\text{CTS 发送时间} = \frac{14 \times 8\text{ bit}}{1\text{ Mbit/s}} = 112\ \mu\text{s}$；
-  * $\text{ACK 发送时间} = \frac{14 \times 8\text{ bit}}{1\text{ Mbit/s}} = 112\ \mu\text{s}$；
-  * $\text{DATA 发送时间（1000B）} = \frac{1000 \times 8\text{ bit}}{11\text{ Mbit/s}} \approx 727.3\ \mu\text{s}$（若按谢书假定全部帧都用 $11\text{ Mbit/s}$ 算，还要加上每帧 $192\ \mu\text{s}$ 的物理层 PLCP 前同步码开销；而在考研卷如 `2026-大2` 中，直接按题干给定的基本速率与数据速率相除相加即可）：
-  * **总时间公式（1个 DIFS + 3个 SIFS + 4个帧发送时间）**：
-    $T_{\text{total}} = \text{DIFS} + T_{\text{RTS}} + \text{SIFS} + T_{\text{CTS}} + \text{SIFS} + T_{\text{DATA}} + \text{SIFS} + T_{\text{ACK}}$
-    $= 50 + 160 + 10 + 112 + 10 + 727.3 + 10 + 112 = \mathbf{1191.3\ \mu\text{s}}$
-  * **顺手必记 NAV 公式（`2026-大2(1)` 考到）**：
-    * $\text{NAV}(\text{RTS}) = 3 \times \text{SIFS} + T_{\text{CTS}} + T_{\text{DATA}} + T_{\text{ACK}}$；
-    * $\text{NAV}(\text{CTS}) = 2 \times \text{SIFS} + T_{\text{DATA}} + T_{\text{ACK}}$。
-</code></pre>
+<ul>
+<li><strong>注</strong>：在 <span class="arithmatex">\(t=12\)</span> 时刻分组 3、4、5 同时到达使阶梯连升3格；在 <span class="arithmatex">\(t=15\)</span> 时刻分组 6、7 同时到达使阶梯连升2格。</li>
+<li>
+<p><strong>试问</strong>：(1) 分组 2 到分组 8 的时延（从发送方到接收方）各为多少？(2) 如果接收方在 <span class="arithmatex">\(t = 8\)</span> 时就开始播放（即要求在 <span class="arithmatex">\(t = 8, 9, 10, 11, 12, 13, 14, 15\)</span> 播放分组 <span class="arithmatex">\(1 \sim 8\)</span>），试问这 8 个分组中有哪几个未能按时到达赶上播放？(3) 如果要所有的 8 个分组都能按时赶上播放，那么接收方应在什么时间开始播放？</p>
+</li>
+<li>
+<p><strong><code>9-26</code>（802.11b 使用 RTS/CTS 发送数据帧总时间计算 —— <code>2026-大2</code> 100%原题题源！）</strong></p>
+<ul>
+<li><strong>题目要点</strong>：使用 <code>802.11b</code> 协议的站要发送 <span class="arithmatex">\(1000\text{ B}\)</span> 长的数据帧（已含首尾），并使用 RTS 和 CTS 帧。试计算从决定发送帧（等待 DIFS）一直到收到确认帧所经历的总时间（忽略传播时间和误码率）。</li>
+<li><em>(注：谢书 <code>9.1.3</code> 节给出的 802.11b 默认标准参数为：<span class="arithmatex">\(\text{DIFS} = 50\ \mu\text{s}\)</span>，<span class="arithmatex">\(\text{SIFS} = 10\ \mu\text{s}\)</span>，控制帧 RTS = <span class="arithmatex">\(20\text{ B}\)</span>、CTS = <span class="arithmatex">\(14\text{ B}\)</span>、ACK = <span class="arithmatex">\(14\text{ B}\)</span> 按基本速率 <span class="arithmatex">\(1\text{ Mbit/s}\)</span> 发送，数据帧按 <span class="arithmatex">\(11\text{ Mbit/s}\)</span> 发送 —— </em><em>你看，这组参数跟 <code>2026-大2</code> 真题题干给的参数一模一样，真题只是把数据帧长度从 1000B 改成了 1500B！</em><em>)</em></li>
+<li><strong>开袋即食算式与答案</strong>：</li>
+<li><span class="arithmatex">\(\text{RTS 发送时间} = \frac{20 \times 8\text{ bit}}{1\text{ Mbit/s}} = 160\ \mu\text{s}\)</span>；</li>
+<li><span class="arithmatex">\(\text{CTS 发送时间} = \frac{14 \times 8\text{ bit}}{1\text{ Mbit/s}} = 112\ \mu\text{s}\)</span>；</li>
+<li><span class="arithmatex">\(\text{ACK 发送时间} = \frac{14 \times 8\text{ bit}}{1\text{ Mbit/s}} = 112\ \mu\text{s}\)</span>；</li>
+<li><span class="arithmatex">\(\text{DATA 发送时间（1000B）} = \frac{1000 \times 8\text{ bit}}{11\text{ Mbit/s}} \approx 727.3\ \mu\text{s}\)</span>（若按谢书假定全部帧都用 <span class="arithmatex">\(11\text{ Mbit/s}\)</span> 算，还要加上每帧 <span class="arithmatex">\(192\ \mu\text{s}\)</span> 的物理层 PLCP 前同步码开销；而在考研卷如 <code>2026-大2</code> 中，直接按题干给定的基本速率与数据速率相除相加即可）：</li>
+<li><strong>总时间公式（1个 DIFS + 3个 SIFS + 4个帧发送时间）</strong>：
+    <span class="arithmatex">\(T_{\text{total}} = \text{DIFS} + T_{\text{RTS}} + \text{SIFS} + T_{\text{CTS}} + \text{SIFS} + T_{\text{DATA}} + \text{SIFS} + T_{\text{ACK}}\)</span>
+    <span class="arithmatex">\(= 50 + 160 + 10 + 112 + 10 + 727.3 + 10 + 112 = \mathbf{1191.3\ \mu\text{s}}\)</span></li>
+<li><strong>顺手必记 NAV 公式（<code>2026-大2(1)</code> 考到）</strong>：<ul>
+<li><span class="arithmatex">\(\text{NAV}(\text{RTS}) = 3 \times \text{SIFS} + T_{\text{CTS}} + T_{\text{DATA}} + T_{\text{ACK}}\)</span>；</li>
+<li><span class="arithmatex">\(\text{NAV}(\text{CTS}) = 2 \times \text{SIFS} + T_{\text{DATA}} + T_{\text{ACK}}\)</span>。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <hr />
 <h2 id="_1">三、 第三、四、五类快速处理指南（照着上表题号打勾即可）</h2>
 <ul>
